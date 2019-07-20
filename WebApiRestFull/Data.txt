@@ -1,0 +1,47 @@
+﻿
+
+[{
+	
+	"JameMablaghKhales":"500000"
+	,"JameMablaghMaliat":"0"
+	,"JameMablaghServic":"0"
+	,"JameMablaghTakhfif":"0"
+	,"SumPriceRow":"500000"
+	,"Address":"انقلاب 8بن بست معروف ساختمان گل رز طبقه 5",
+	"Costumer_Code":"10010077"
+	,"Costumer_Name":"یونس"
+	,"ID_Kala":"79"
+	,"ChildForooshKala_TedadAsli":2
+	,"ChildForooshKala_SharhKala":""
+	,"Price_Sum":"250000"
+	,"Print_Confirm":"false"
+	,"Table_Number":"0"
+	,"Tell":"0"
+	,"User_Id":"2059"
+	,"ForooshKalaParent_TypeFact":"بیرون بر"
+	
+}
+,{
+	
+	"JameMablaghKhales":"30000"
+	,"JameMablaghMaliat":"0"
+	,"JameMablaghServic":"0"
+	,"JameMablaghTakhfif":"0"
+	,"SumPriceRow":"30000"
+	,"Address":"انقلاب 8بن بست معروف ساختمان گل رز طبقه 5",
+	"Costumer_Code":"10010077"
+	,"Costumer_Name":"یونس"
+	,"ID_Kala":"112"
+	,"ChildForooshKala_TedadAsli":1
+	,"ChildForooshKala_SharhKala":""
+	,"Price_Sum":"30000"
+	,"Print_Confirm":"false"
+	,"Table_Number":"0"
+	,"Tell":"0"
+	,"User_Id":"2059"
+	,"ForooshKalaParent_TypeFact":"بیرون بر"
+	
+}
+
+
+]

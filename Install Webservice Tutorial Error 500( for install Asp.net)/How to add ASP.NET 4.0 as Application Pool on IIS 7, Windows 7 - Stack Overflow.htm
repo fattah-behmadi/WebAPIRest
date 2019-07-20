@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage" class="html__responsive"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+        <title>How to add ASP.NET 4.0 as Application Pool on IIS 7, Windows 7 - Stack Overflow</title>
+        <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+        <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+        <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="https://stackoverflow.com/opensearch.xml">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7">
+        <meta property="og:site_name" content="Stack Overflow">
+        <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:domain" content="stackoverflow.com">
+        <meta name="twitter:title" property="og:title" itemprop="name" content="How to add ASP.NET 4.0 as Application Pool on IIS 7, Windows 7">
+        <meta name="twitter:description" property="og:description" itemprop="description" content="Configuring servers is not my strong suit by any means.
+I'm trying to move a development project to Windows 7.
+One of the things that I need to run the application is to select ASP.NET v4.0 as the ">
+        <script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/osd.js"></script><script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/amp4ads-host-v0.js"></script><script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/pubads_impl_rendering_285.js"></script><script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/rules-p-c1rF4kxgLUzNc.js" async=""></script><script async="" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/quant.js"></script><script async="" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/beacon.js"></script><script async="" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/analytics.js"></script><script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/jquery.js"></script>
+        <script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/stub.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/stacks.css">
+    <link rel="stylesheet" type="text/css" href="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/primary-unified.css">
+
+    
+            <link rel="alternate" type="application/atom+xml" title="Feed for question 'How to add ASP.NET 4.0 as Application Pool on IIS 7, Windows 7'" href="https://stackoverflow.com/feeds/question/4890245">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:4890245});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '4890245');
+                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+        
+        
+        
+        
+        
+        
+
+
+        <script>
+        StackExchange.init({"locale":"en","serverTime":1546511682,"routeName":"Questions/Show","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"childUrl":"https://meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"d5da0873b389a340b66bd624d54fbdcb2d020e40f67986df73311fa77e346d14","tid":"bdf10402-3c73-554a-8d8a-d04c4aaaf9df","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"ab":{"inline_signup_hero":{"v":"d","g":1}}},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300},"jobPreferences":{"maxNumDeveloperRoles":2,"maxNumIndustries":4},"svgIconPath":"https://cdn.sstatic.net/Img/svg-icons","svgIconHash":"6fdddd5ad9af"}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableImgurHttps":true,"forceHttpsImages":true},"userMessaging":{},"comments":{},"userProfile":{"openGraphAPIKey":"58740831ad23540e00c58987"},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"paths":{},"markdown":{"asteriskIntraWordEmphasis":true},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000},"mentions":{"maxNumUsersInDropdown":50},"slack":{"sidebarAdDismissCookie":"slack-sidebar-ad"}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"18efd9170d5e","js/moderator.en.js":"c958174d70e8","js/full-anon.en.js":"1f06c59af5bd","js/full.en.js":"18cdec1af4d0","js/wmd.en.js":"a02937dfd422","js/mobile.en.js":"18cf1b11e170","js/help.en.js":"292011d3c2af","js/tageditor.en.js":"b597f194db91","js/tageditornew.en.js":"819b5d7c43b0","js/inline-tag-editing.en.js":"db88f48821d3","js/revisions.en.js":"7c33989afe1c","js/review.en.js":"ee8e08d6b9cb","js/tagsuggestions.en.js":"b278f9a0b23b","js/post-validation.en.js":"6f403639471e","js/explore-qlist.en.js":"726bf7958c2a","js/events.en.js":"26cdf33c388a","js/keyboard-shortcuts.en.js":"50e14ee7d291","js/external-editor.en.js":"96867e259bea","js/adops.en.js":"22a9bd59b1e9","js/begin-edit-event.en.js":"3238dd301e69","js/stacks-polyfills.en.js":"bb2015fa21f5","js/external-editor.en.js":"96867e259bea","js/snippet-javascript.en.js":"dc84077cd2da","js/snippet-javascript-codemirror.en.js":"4eb4466e8bc1"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    <noscript id="noscript-css"><style>body,.top-bar{margin-top:1.9em}</style></noscript>
+    <script async="" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/full-anon.js"></script><style type="text/css">@font-face{
+    font-family: 'bnazanin';
+    src:'bnazanin.ttf';
+}
+.dideo-tooltip {
+    position: relative;
+    display: inline-block;
+    font-family: 'bnazanin';
+    margin-bottom: 2px;
+}
+
+.dideo-tooltip .tooltiptext {
+    visibility: hidden;
+    font-family: 'bnazanin';
+    width: 120px;
+    font-size: 13px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 110%;
+}
+.dideo-img{
+    width: 25px;
+    height: 25px;
+    margin-bottom: -7px;
+    filter: drop-shadow(0px 0px 2px #adadad);
+    webkit:filter: drop-shadow(0px 0px 2px #adadad);
+}
+.dideo-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.dideo-tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.srg{
+    min-width: 750px;
+}</style><script async="" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/snippet-javascript.js"></script><script async="" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/post-validation.js"></script><link rel="stylesheet" href="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/clc.css" type="text/css"><link rel="preload" href="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/integrator.js" as="script"><script type="text/javascript" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/integrator.js"></script><script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/pubads_impl_285.js" async=""></script></head>
+        <body class="question-page unified-theme">
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<header class="top-bar js-top-bar top-bar__network _fixed">
+    <div class="-container">
+        <div class="-main">
+                <a href="#" class="left-sidebar-toggle p0 ai-center jc-center js-left-sidebar-toggle" dideo-checked="true"><span class="ps-relative"></span></a>
+                                <a href="https://stackoverflow.com/" class="-logo js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:8})" dideo-checked="true">
+                        <span class="-img _glyph">Stack Overflow</span>
+                    </a>
+
+
+
+        </div>
+
+            <form id="search" action="/search" method="get" class="searchbar js-searchbar " autocomplete="off" role="search">
+                    <div class="ps-relative">
+                        <input name="q" type="text" placeholder="Search…" autocomplete="off" maxlength="240" class="f-input js-search-field ">
+                        <button type="submit" aria-label="Search..." class="s-btn s-btn__primary btn-topbar-primary js-search-submit"><svg aria-hidden="true" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.86 11.32L18 16.5 16.5 18l-5.18-5.14v-.35a7 7 0 1 1 1.19-1.19h.35zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg></button>
+                    </div>
+            </form>
+
+        
+
+
+
+
+
+<ol class="-secondary js-secondary-topbar-links drop-icons-responsively the-js-is-handling-responsiveness">
+        <li class="-item searchbar-trigger js-searchbar-trigger"><a href="#" class="-link" dideo-checked="true"><svg aria-hidden="true" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.86 11.32L18 16.5 16.5 18l-5.18-5.14v-.35a7 7 0 1 1 1.19-1.19h.35zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg></a></li>
+            <li class="-item">
+        <a href="https://stackexchange.com/users/?tab=inbox" class="-link js-inbox-button" title="Recent inbox messages" dideo-checked="true">
+            <svg aria-hidden="true" class="svg-icon iconInbox" width="20" height="18" viewBox="0 0 20 18"><path d="M15.19 1H4.63c-.85 0-1.6.54-1.85 1.35L0 10.79V15c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2v-4.21l-2.87-8.44A2 2 0 0 0 15.19 1zm-.28 10l-2 2h-6l-2-2H1.96L4.4 3.68A1 1 0 0 1 5.35 3h9.12a1 1 0 0 1 .95.68L17.86 11h-2.95z"></path></svg>
+            <span class="indicator-badge js-unread-count _important" style="display: none;"></span>
+        </a>
+    </li>
+    <li class="-item">
+        <a href="https://stackexchange.com/users/?tab=reputation" class="-link js-achievements-button" title="Recent achievements: reputation, badges, and privileges earned" data-unread-class="_highlighted-positive" dideo-checked="true">
+            <svg aria-hidden="true" class="svg-icon iconAchievements" width="18" height="18" viewBox="0 0 18 18"><path d="M15 2V1H3v1H0v4c0 1.6 1.4 3 3 3v1c.4 1.5 3 2.6 5 3v2H5s-1 1.5-1 2h10c0-.4-1-2-1-2h-3v-2c2-.4 4.6-1.5 5-3V9c1.6-.2 3-1.4 3-3V2h-3zM3 7c-.5 0-1-.5-1-1V4h1v3zm8.4 2.5L9 8 6.6 9.4l1-2.7L5 5h3l1-2.7L10 5h2.8l-2.3 1.8 1 2.7h-.1zM16 6c0 .5-.5 1-1 1V4h1v2z"></path></svg>
+            <span class="indicator-badge js-unread-count _positive" style="display: none;"></span>
+        </a>
+    </li>
+
+    <li class="-item help-button-item" data-remove-order="1"><a href="#" class="-link js-help-button" title="Help Center and other resources" dideo-checked="true">
+        <svg aria-hidden="true" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16A8 8 0 0 0 9 1zm.81 12.13c-.02.71-.55 1.15-1.24 1.13-.66-.02-1.17-.49-1.15-1.2.02-.72.56-1.18 1.22-1.16.7.03 1.2.51 1.17 1.23zM11.77 8a5.8 5.8 0 0 1-1.02.91l-.53.37c-.26.2-.42.43-.5.69a4 4 0 0 0-.09.75c0 .05-.03.16-.18.16H7.88c-.16 0-.18-.1-.18-.15.03-.66.12-1.21.4-1.66a5.29 5.29 0 0 1 1.43-1.22c.16-.12.28-.25.38-.39a1.34 1.34 0 0 0 .02-1.71c-.24-.31-.51-.46-1.03-.46-.51 0-.8.26-1.02.6-.21.33-.18.73-.18 1.1H5.75c0-1.38.35-2.25 1.1-2.76.52-.35 1.17-.5 1.93-.5 1 0 1.79.18 2.49.71.64.5.98 1.18.98 2.12 0 .57-.2 1.05-.48 1.44z"></path></svg>
+    </a></li>
+
+    <li class="-item site-switcher-item">
+        <a href="https://stackexchange.com/" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 174 Stack Exchange sites" dideo-checked="true">
+            <svg aria-hidden="true" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M1 13c0 1.1.9 2 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2zM15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2zM1 6h16v4H1V6z"></path></svg>
+        </a>
+    </li>
+
+            <li class="-ctas">
+                        <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f4890245%2fhow-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7" class="login-link s-btn btn-topbar-clear py8" rel="nofollow" dideo-checked="true">Log In</a>
+                        <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=%2fusers%2fstory%2fcurrent" class="login-link s-btn s-btn__primary py8 btn-topbar-primary" rel="nofollow" data-ga="[&quot;sign up&quot;,&quot;Sign Up Navigation&quot;,&quot;Header&quot;,null,null]" dideo-checked="true">Sign Up</a>
+
+            </li>
+
+    <li class="-dialog-container js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="https://stackoverflow.com/" dideo-checked="true">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li class="grid">
+                            <div class="fl1">
+            <a href="https://stackoverflow.com/" class="current-site-link site-link js-gps-track grid gs8 gsx" data-id="1" data-gps-track="site_switcher.click({ item_type:3 })" dideo-checked="true">
+        <div class="favicon favicon-stackoverflow site-icon grid--cell" title="Stack Overflow"></div>
+        <span class="grid--cell fl1">
+            Stack Overflow
+        </span>
+    </a>
+
+    </div>
+    <div class="related-links">
+            <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })" dideo-checked="true">help</a>
+                    <a href="https://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })" dideo-checked="true">chat</a>
+            </div>
+
+                    </li>
+                    <li class="related-site grid">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                            <a href="https://meta.stackoverflow.com/" class="site-link js-gps-track grid gs8 gsx" data-id="552" data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })" dideo-checked="true">
+        <div class="favicon favicon-stackoverflowmeta site-icon grid--cell" title="Meta Stack Overflow"></div>
+        <span class="grid--cell fl1">
+            Meta Stack Overflow
+        </span>
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })" dideo-checked="true">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f4890245%2fhow-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })" dideo-checked="true">log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites" dideo-checked="true">more stack exchange communities</a>
+            </h3>
+            <a href="https://stackoverflow.blog/" class="fr" dideo-checked="true">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+            <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="https://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })" dideo-checked="true">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })" dideo-checked="true">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="https://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })" dideo-checked="true">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })" dideo-checked="true">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })" dideo-checked="true">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                    <div class="topbar-dialog leftnav-dialog js-leftnav-dialog dno">
+                <div class="left-sidebar js-unpinned-left-sidebar" data-can-be="left-sidebar" data-is-here-when="sm"></div>
+            </div>
+    </li>
+</ol>
+
+    </div>
+</header>
+    <div id="js-gdpr-consent-banner" class="p16 bg-black-700 ff-sans fc-white ps-fixed b0 l0 r0 z-banner" role="banner" aria-hidden="false">
+        <div class="wmx8 mx-auto grid jc-center" role="alertdialog" aria-describedby="notice-message">
+            <div class="grid--cell mr12" aria-label="notice-message">
+                <p class="mb0 lh-lg">
+                    By using our site, you acknowledge that you have read and understand our <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/cookie-policy" dideo-checked="true">Cookie Policy</a>, <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/privacy-policy" dideo-checked="true">Privacy Policy</a>, and our <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/terms-of-service/public" dideo-checked="true">Terms of Service</a>.
+                </p>
+            </div>
+            <a class="grid--cell fc-white js-notice-close" aria-label="notice-dismiss" dideo-checked="true">
+                <svg aria-hidden="true" class="svg-icon m0 iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41L13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9z"></path></svg>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init({ observeSize: true }); });
+        StackExchange.scrollPadding.setPaddingTop(50, 10);     </script>
+
+
+
+
+
+
+    <div class="container">
+        
+
+
+
+
+
+<div id="left-sidebar" data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar">
+    <div class="left-sidebar--sticky-container js-sticky-leftnav">
+            <nav role="navigation">
+                <ol class="nav-links">
+                    <li>    </li><li>
+        <a href="https://stackoverflow.com/" class="pl8 js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current:false, location:2, destination:8})" dideo-checked="true">
+Home        </a>
+    </li>
+
+                    <li>
+                        <ol class="nav-links">
+                                <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Public</li>
+                                <li class=" youarehere">
+        <a id="nav-questions" href="https://stackoverflow.com/questions" class="pl8 js-gps-track nav-links--link -link__with-icon" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})" dideo-checked="true">
+<svg aria-hidden="true" class="svg-icon iconGlobe" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16A8 8 0 0 0 9 1zM8 15.32a6.4 6.4 0 0 1-5.23-7.75L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.4 6.4 0 0 1 2.32 10.24z"></path></svg>                <span class="-link--channel-name">Stack Overflow</span>
+        </a>
+    </li>
+
+    <li>
+        <a id="nav-tags" href="https://stackoverflow.com/tags" class=" js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current:false, location:2, destination:2})" dideo-checked="true">
+Tags        </a>
+    </li>
+    <li>
+        <a id="nav-users" href="https://stackoverflow.com/users" class=" js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current:false, location:2, destination:3})" dideo-checked="true">
+Users        </a>
+    </li>
+    <li>
+        <a id="nav-jobs" href="https://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab" class=" js-gps-track nav-links--link" data-gps-track="top_nav.click({is_current:false, location:2, destination:6})" dideo-checked="true">
+Jobs        </a>
+    </li>
+                                                    </ol>
+                    </li>
+                        <li>
+                            <ol class="nav-links">
+                                        <li class="p6">
+                                            <div class="ba bc-black-2 bar-sm p16 grid fd-column ps-relative overflow-hidden">
+                                                <strong class="grid--cell">Teams</strong>
+                                                <span class="grid--cell mt2 fs-caption fc-medium">Q&amp;A for work </span>
+                                                <a href="https://stackoverflow.com/teams" class="js-gps-track s-btn s-btn__outlined ta-center grid--cell mt12" data-gps-track="teams.create.left-sidenav.click({ CampaignType: None})" data-ga="[&quot;teams traffic&quot;,&quot;left nav cta&quot;,&quot;stackoverflow.com/teams&quot;,null,{&quot;dimension4&quot;:&quot;teams&quot;}]" dideo-checked="true">
+                                                    Learn More
+                                                </a>
+
+                                                <div class="ps-absolute t4 rn6">
+                                                    <svg width="53" height="49" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M49 11l.2 31H18.9L9 49v-7H4V8h31" fill="#CCEAFF"></path><path d="M44.5 19v-.3l-.2-.1-18-13-.1-.1H.5v33h4V46l.8-.6 9.9-6.9h29.3V19z" stroke="#1060E1" stroke-miterlimit="10"></path><path d="M31 2l6-1.5 7 2V38H14.9L5 45v-7H1V6h25l5-4z" fill="#fff"></path><path d="M7 16.5h13m-13 6h14m-14 6h18" stroke="#1060E1" stroke-miterlimit="10"></path><path d="M39 30a14 14 0 1 0 0-28 14 14 0 0 0 0 28z" fill="#FFB935"></path><path d="M50.5 14a13.5 13.5 0 1 1-27 0 13.5 13.5 0 0 1 27 0z" stroke="#F48024" stroke-miterlimit="10"></path><path d="M32.5 21.5v-8h9v8h-9zm2-9.5V9.3A2.5 2.5 0 0 1 37 6.8a2.5 2.5 0 0 1 2.5 2.5V12h-5zm2 3v2m1-2v2" stroke="#fff" stroke-miterlimit="10"></path></svg>
+                                                </div>
+                                            </div>
+                                        </li>
+                            </ol>
+                        </li>
+                </ol>
+            </nav>
+    </div>
+</div>
+
+        <div id="content" class="snippet-hidden">
+
+
+            
+
+
+<div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+    <div class="inner-content clearfix">
+    
+    
+
+<style>.everyoneloves__top-leaderboard:empty,.everyoneloves__mid-leaderboard:empty{                height:90px;width:728px;box-sizing:border-box;
+}</style>
+        <div id="clc-tlb" class="everyonelovesstackoverflow everyoneloves__top-leaderboard" data-google-query-id="COOVy5S10d8CFUQr4AodtmkMMg" data-clc-prefilled="true" data-clc-ready="true"><div id="google_ads_iframe_/248424177/stackoverflow.com/lb/question-pages_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/248424177/stackoverflow.com/lb/question-pages_0" title="3rd party ad content" name="google_ads_iframe_/248424177/stackoverflow.com/lb/question-pages_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" srcdoc="" data-google-container-id="1" data-load-complete="true" width="728" height="90" frameborder="0"></iframe></div></div>            <div id="question-header" class="grid">
+                    <h1 itemprop="name" class="grid--cell fs-headline1 fl1 wb-break-word"><a href="https://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7" class="question-hyperlink" dideo-checked="true">How to add ASP.NET 4.0 as Application Pool on IIS 7, Windows 7</a></h1>
+
+            
+<div class="pl8 aside-cta grid--cell" role="navigation" aria-label="ask new question">
+        <a href="https://stackoverflow.com/questions/ask" class="d-inline-flex ai-center ws-nowrap s-btn s-btn__primary" dideo-checked="true">
+            Ask Question
+        </a>
+</div>
+
+        </div>
+            <div id="mainbar" role="main" aria-label="question and answers">
+
+            
+
+<div class="question" data-questionid="4890245" id="question">
+
+    
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="4890245">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="This question shows research effort; it is useful and clear" aria-pressed="false" aria-label="up vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="193">193</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="This question does not show any research effort; it is unclear or not useful" aria-pressed="false" aria-label="down vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26z"></path></svg></button>
+
+        <button class="js-favorite-btn s-btn s-btn__unset c-pointer py8" aria-pressed="false" aria-label="favorite (102)" data-selected-classes="fc-yellow-600">
+            <svg aria-hidden="true" class="svg-icon iconStar" width="18" height="18" viewBox="0 0 18 18"><path d="M9 12.65l-5.29 3.63 1.82-6.15L.44 6.22l6.42-.17L9 0l2.14 6.05 6.42.17-5.1 3.9 1.83 6.16z"></path></svg>
+            <div class="js-favorite-count mt8" data-value="102">102</div>
+        </button>
+
+
+</div>
+
+            </div>
+
+            
+<div class="postcell post-layout--right">
+    <div class="post-text" itemprop="text">
+
+<p>Configuring servers is not my strong suit by any means.
+I'm trying to move a development project to Windows 7.
+One of the things that I need to run the application is to select ASP.NET v4.0 as the application pool within IIS.</p>
+
+<p>I went through the directions in the following link to make sure that the proper Application Development Options were selected:</p>
+
+<p><a href="http://www.gotknowhow.com/articles/how-to-install-iis7-and-enable-aspnet" rel="noreferrer" dideo-checked="true">http://www.gotknowhow.com/articles/how-to-install-iis7-and-enable-aspnet</a></p>
+
+<p>From within the <strong>IIS Manager</strong>, I select <strong>Application Pools</strong> and only see<br>
+- <strong>Classic .NET AppPool</strong><br>
+- <strong>DefaultAppPool</strong></p>
+
+<p>I need to also be able to select from<br>
+- <strong>ASP.NET v4.0</strong><br>
+- <strong>ASP.NET v4.0 Classic</strong></p>
+
+<p>How can I add these to the list of available application pools?</p>
+    </div>
+
+        <div class="post-taglist grid gs4 gsy fd-column">
+            <div class="grid ps-relative d-block">
+                <a href="https://stackoverflow.com/questions/tagged/asp.net" class="post-tag js-gps-track" title="show questions tagged 'asp.net'" rel="tag" dideo-checked="true">asp.net</a> <a href="https://stackoverflow.com/questions/tagged/iis" class="post-tag js-gps-track" title="show questions tagged 'iis'" rel="tag" dideo-checked="true">iis</a> 
+            </div>
+        </div>
+
+    <div class="mb0 ">
+        <div class="mt16 pt4 grid gs8 gsy fw-wrap jc-end ai-start">
+            <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://stackoverflow.com/q/4890245" title="short permalink to this question" class="short-link" itemprop="url" id="link-post-4890245" dideo-checked="true">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/4890245/edit" class="suggest-edit-post" title="" dideo-checked="true">improve this question</a></div>
+            </div>
+
+                <div class="post-signature grid--cell">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/4890245/revisions" title="show all edits to this post" dideo-checked="true">edited <span title="2012-11-15 02:39:56Z" class="relativetime">Nov 15 '12 at 2:39</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/197371/marcel-gosselin" dideo-checked="true"><div class="gravatar-wrapper-32"><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/9ae9ca678f8aae974814afe7687c42e7.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/197371/marcel-gosselin" dideo-checked="true">Marcel Gosselin</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">3,788</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="22 silver badges"><span class="badge2"></span><span class="badgecount">22</span></span><span title="47 bronze badges"><span class="badge3"></span><span class="badgecount">47</span></span>
+        </div>
+    </div>
+</div>                </div>
+            <div class="post-signature owner grid--cell">
+<div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2011-02-03 18:39:07Z" class="relativetime">Feb 3 '11 at 18:39</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/601993/burferd" dideo-checked="true"><div class="gravatar-wrapper-32"><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/d897be1919173692783c6ce9f256d32d.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/601993/burferd" dideo-checked="true">Burferd</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,276</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="17 silver badges"><span class="badge2"></span><span class="badgecount">17</span></span><span title="24 bronze badges"><span class="badge3"></span><span class="badgecount">24</span></span>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+                
+    <div class="post-layout--right">
+	    <div id="comments-4890245" class="comments js-comments-container ">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+    <li id="comment-16824364" class="comment js-comment " data-comment-id="16824364">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score">
+                    <span title="number of 'useful comment' votes received" class="warm">6</span>
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body" style="display: block;">
+                <span class="comment-copy">If the answer isn't 
+acceptable, maybe throw out a clue so someone knows what's missing.  
+Otherwise, it sure looks like a winner to me.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/65131/d-lambert" title="1,267 reputation" class="comment-user" dideo-checked="true">D. Lambert</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment16824364_4890245" dideo-checked="true"><span title="2012-09-19 19:44:27Z" class="relativetime-clean">Sep 19 '12 at 19:44</span></a></span>
+                                                                            </div>
+        </div>
+    </li>
+            </ul>
+	    </div>
+
+        <div id="comments-link-4890245" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments." dideo-checked="true">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick="" dideo-checked="true"></a>
+        </div>         
+    </div>        </div>
+</div>
+
+
+<div id="dfp-isb" class="everyonelovesstackoverflow everyoneloves__inline-sidebar"></div>
+        <div id="answers">
+
+                <a name="tab-top" dideo-checked="true"></a>
+                <div id="answers-header">
+                    <div class="subheader answers-subheader">
+                        <h2 data-answercount="5">
+                                5 Answers
+                            <span style="display:none;" itemprop="answerCount">5</span>
+                        </h2>
+                        <div>
+                            
+<div id="tabs">
+        <a href="https://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A" dideo-checked="true">
+            active</a>
+        <a href="https://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O" dideo-checked="true">
+            oldest</a>
+        <a class="youarehere is-selected " href="https://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V" dideo-checked="true">
+            votes</a>
+    </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+  
+<a name="4890368" dideo-checked="true"></a>
+<div id="answer-4890368" class="answer" data-answerid="4890368" itemprop="suggestedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="4890368">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is useful" aria-pressed="false" aria-label="up vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="452">452</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is not useful" aria-pressed="false" aria-label="down vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4 d-none" title="loading when this answer was accepted..." aria-label="accepted"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+
+<div class="answercell post-layout--right">
+    <div class="post-text" itemprop="text">
+<p>Chances are you need to install .NET 4 (Which will also create a new AppPool for you)</p>
+
+<p>First make sure you have <a href="http://msdn.microsoft.com/en-us/library/ms181052%28v=vs.80%29.aspx" dideo-checked="true">IIS installed</a> then perform the following steps:</p>
+
+<ol>
+<li>Open your command prompt (<kbd>Windows</kbd> + <kbd>R</kbd>) and type <code>cmd</code> and press <kbd>ENTER</kbd><br>
+<sup>You may need to start this as an administrator if you have UAC enabled.<br>
+To do so, locate the exe (usually you can start typing with Start Menu open), right click and select "Run as Administrator"</sup></li>
+<li>Type <code>cd C:\Windows\Microsoft.NET\Framework\v4.0.30319\</code> and press <kbd>ENTER</kbd>.</li>
+<li>Type <code>aspnet_regiis.exe -ir</code> and press <kbd>ENTER</kbd> again.
+<ul>
+<li>If this is a fresh version of IIS (no other sites running on it) or 
+you're not worried about the hosted sites breaking with a framework 
+change you can use <code>-i</code> instead of <code>-ir</code>. This will change their AppPools for you and steps 5-on shouldn't be necessary.</li>
+<li>at this point you will see it begin working on installing .NET's framework in to IIS for you</li>
+</ul></li>
+<li>Close the DOS prompt, re-open your start menu and right click <strong>Computer</strong> and select <strong>Manage</strong></li>
+<li>Expand the left-hand side (Services and Applications) and select <strong>Internet Information Services</strong>
+<ul>
+<li>You'll now have a new applet within the content window exclusively for IIS.</li>
+</ul></li>
+<li>Expand out your computer and locate the <strong>Application Pools</strong> node, and select it. (You should now see <em>ASP.NET v4.0</em> listed)</li>
+<li>Expand out your <strong>Sites</strong> node and locate the site you want to modify (select it)</li>
+<li>To the right you'll notice <strong>Basic Settings...</strong> just below the <em>Edit Site</em> text. Click this, and a new window should appear</li>
+<li>Select the .NET 4 AppPool using the <kbd>Select...</kbd> button and click ok.</li>
+<li>Restart the site, and you should be good-to-go.</li>
+</ol>
+
+<p>(You can repeat steps 7-on for every site you want to apply .NET 4 on as well).</p>
+
+<hr>
+
+<p>Additional References:</p>
+
+<ol>
+<li><a href="http://www.microsoft.com/net/download/version-4" dideo-checked="true">.NET 4 Framework</a><br>
+The framework for those that don't already have it.</li>
+<li><a href="http://windows.microsoft.com/en-us/windows-vista/Command-Prompt-frequently-asked-questions" dideo-checked="true">How do I run a command with elevated privileges?</a><br>
+Directions on how to run the command prompt with Administrator rights.</li>
+<li><a href="http://msdn.microsoft.com/en-us/library/k6h9cz8h%28v=vs.100%29.aspx" dideo-checked="true">aspnet_regiis.exe options</a><br>
+For those that might want to know what <code>-ir</code> or <code>-i</code> does (or the difference between them) or what other options are available. <em>(I typically use <code>-ir</code> to prevent any older sites currently running from breaking on a framework change but that's up to you.)</em></li>
+</ol>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2011-02-03T18:50:34"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://stackoverflow.com/a/4890368" title="short permalink to this answer" class="short-link" itemprop="url" id="link-post-4890368" dideo-checked="true">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/4890368/edit" class="suggest-edit-post" title="" dideo-checked="true">improve this answer</a></div>                    </div>
+    <div class="post-signature grid--cell fl0">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/4890368/revisions" title="show all edits to this post" dideo-checked="true">edited <span title="2014-03-03 18:10:54Z" class="relativetime">Mar 3 '14 at 18:10</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/1945631/andy-brown" dideo-checked="true"><div class="gravatar-wrapper-32"><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/1bbe246a87cf1d03efc825cdfdb15985.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/1945631/andy-brown" dideo-checked="true">Andy Brown</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 16,619" dir="ltr">16.6k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="37 silver badges"><span class="badge2"></span><span class="badgecount">37</span></span><span title="51 bronze badges"><span class="badge3"></span><span class="badgecount">51</span></span>
+        </div>
+    </div>
+</div>    </div>
+            
+
+
+    <div class="post-signature grid--cell fl0">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-02-03 18:50:34Z" class="relativetime">Feb 3 '11 at 18:50</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/298053/brad-christie" dideo-checked="true"><div class="gravatar-wrapper-32"><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/4ba6db482e54ae5cbb940e6708c23859.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/298053/brad-christie" dideo-checked="true">Brad Christie</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 86,976" dir="ltr">87k</span><span title="13 gold badges"><span class="badge1"></span><span class="badgecount">13</span></span><span title="120 silver badges"><span class="badge2"></span><span class="badgecount">120</span></span><span title="176 bronze badges"><span class="badge3"></span><span class="badgecount">176</span></span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+</div>
+    
+    <div class="post-layout--right">
+	    <div id="comments-4890368" class="comments js-comments-container ">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="11" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+    <li id="comment-5869870" class="comment js-comment " data-comment-id="5869870">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score">
+                    <span title="number of 'useful comment' votes received" class="hot">21</span>
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body" style="display: block;">
+                <span class="comment-copy">Just make sure to run the cmd prompt with Administrative rights</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/268667/ahmad" title="11,343 reputation" class="comment-user" dideo-checked="true">Ahmad</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment5869870_4890368" dideo-checked="true"><span title="2011-03-07 10:19:53Z" class="relativetime-clean">Mar 7 '11 at 10:19</span></a></span>
+                                                                            </div>
+        </div>
+    </li>
+    <li id="comment-11986830" class="comment js-comment " data-comment-id="11986830">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score">
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body" style="display: block;">
+                <span class="comment-copy">Thanks for this - setup a new
+ web server installed everything from web PI, latest framework updates 
+and what do you know? IIS isn't even aware of ASP.NET ... this has 
+happened too many times before, Microsoft, you really need to great rid 
+of the clowns responsible for this.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/177811/dal" title="2,030 reputation" class="comment-user" dideo-checked="true">Dal</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment11986830_4890368" dideo-checked="true"><span title="2012-02-27 21:19:20Z" class="relativetime-clean">Feb 27 '12 at 21:19</span></a></span>
+                                                                            </div>
+        </div>
+    </li>
+    <li id="comment-12165328" class="comment js-comment " data-comment-id="12165328">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score">
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body" style="display: block;">
+                <span class="comment-copy">@Brad I didn't get a new app 
+pool.  The log file from running regiis, shows .NET 4 was successfully 
+installed, and now I can select .NET 4 as the "ASP.NET version" for a 
+site.  But it seems I still have to manually create a new app pool(since
+ I can't mix v2 apps with v4 apps in the same pool).</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/84206/aaronls" title="26,851 reputation" class="comment-user" dideo-checked="true">AaronLS</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12165328_4890368" dideo-checked="true"><span title="2012-03-06 21:08:09Z" class="relativetime-clean">Mar 6 '12 at 21:08</span></a></span>
+                                                                            </div>
+        </div>
+    </li>
+    <li id="comment-12165407" class="comment js-comment " data-comment-id="12165407">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score">
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body" style="display: block;">
+                <span class="comment-copy">@AaronLS: So your site now has .NET 4 visible, but no .NET 4 AppPool to select from?</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/298053/brad-christie" title="86,976 reputation" class="comment-user" dideo-checked="true">Brad Christie</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12165407_4890368" dideo-checked="true"><span title="2012-03-06 21:11:54Z" class="relativetime-clean">Mar 6 '12 at 21:11</span></a></span>
+                                                                            </div>
+        </div>
+    </li>
+    <li id="comment-12166570" class="comment js-comment " data-comment-id="12166570">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score">
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body" style="display: block;">
+                <span class="comment-copy">Yes, correct.  The App Pools 
+node doesn't have anything new, and from the site there is no new pool 
+to select.  I can select .NET 4 as the "ASP.NET Version", but if it is 
+in the default app pool with the .NET 2 apps, then it won't run and 
+Event Log shows the error about different .NET versions running in the 
+same app pool. This is IIS 6 if that is relevant.  So I manually created
+ a new app pool to put my new .NET 4 application in.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/84206/aaronls" title="26,851 reputation" class="comment-user" dideo-checked="true">AaronLS</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12166570_4890368" dideo-checked="true"><span title="2012-03-06 22:03:25Z" class="relativetime-clean">Mar 6 '12 at 22:03</span></a></span>
+                                                                            </div>
+        </div>
+    </li>
+            </ul>
+	    </div>
+
+        <div id="comments-link-4890368" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." dideo-checked="true"></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="#" onclick="" dideo-checked="true">show <b>11</b> more comments</a>
+        </div>         
+    </div>    </div>
+</div>
+<div id="clc-mlb" class="everyonelovesstackoverflow everyoneloves__mid-leaderboard" data-google-query-id="COSVy5S10d8CFUQr4AodtmkMMg" data-clc-prefilled="true" data-clc-ready="true"><div id="google_ads_iframe_/248424177/stackoverflow.com/mlb/question-pages_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/248424177/stackoverflow.com/mlb/question-pages_0" title="3rd party ad content" name="google_ads_iframe_/248424177/stackoverflow.com/mlb/question-pages_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" srcdoc="" data-google-container-id="2" data-load-complete="true" width="728" height="90" frameborder="0"></iframe></div></div>
+  
+<a name="4890277" dideo-checked="true"></a>
+<div id="answer-4890277" class="answer" data-answerid="4890277" itemprop="suggestedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="4890277">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is useful" aria-pressed="false" aria-label="up vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="16">16</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is not useful" aria-pressed="false" aria-label="down vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4 d-none" title="loading when this answer was accepted..." aria-label="accepted"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+
+<div class="answercell post-layout--right">
+    <div class="post-text" itemprop="text">
+<p>In the top level of the IIS Manager (above Sites), you should see the
+ Application Pools tree node. Right click on "Application Pools", choose
+ "Add Application Pool".</p>
+
+<p>Give it a name, choose .NET Framework 4.0 and either Integrated or Classic mode.</p>
+
+<p>When you add or edit a web site, your new application pools will now show up in the list.</p>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2011-02-03T18:41:37"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://stackoverflow.com/a/4890277" title="short permalink to this answer" class="short-link" itemprop="url" id="link-post-4890277" dideo-checked="true">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/4890277/edit" class="suggest-edit-post" title="" dideo-checked="true">improve this answer</a></div>                    </div>
+            
+
+
+    <div class="post-signature grid--cell fl0">
+<div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-02-03 18:41:37Z" class="relativetime">Feb 3 '11 at 18:41</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/506236/scott" dideo-checked="true"><div class="gravatar-wrapper-32"><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/7e101bd46b9b5ad9ce59c4e9ba52d49f.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/506236/scott" dideo-checked="true">Scott</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">8,783</span><span title="18 gold badges"><span class="badge1"></span><span class="badgecount">18</span></span><span title="76 silver badges"><span class="badge2"></span><span class="badgecount">76</span></span><span title="133 bronze badges"><span class="badge3"></span><span class="badgecount">133</span></span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+</div>
+    
+    <div class="post-layout--right">
+	    <div id="comments-4890277" class="comments js-comments-container  dno">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+            </ul>
+	    </div>
+
+        <div id="comments-link-4890277" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." dideo-checked="true">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick="" dideo-checked="true"></a>
+        </div>         
+    </div>    </div>
+</div>
+
+  
+<a name="4890320" dideo-checked="true"></a>
+<div id="answer-4890320" class="answer" data-answerid="4890320" itemprop="suggestedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="4890320">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is useful" aria-pressed="false" aria-label="up vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="14">14</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is not useful" aria-pressed="false" aria-label="down vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4 d-none" title="loading when this answer was accepted..." aria-label="accepted"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+
+<div class="answercell post-layout--right">
+    <div class="post-text" itemprop="text">
+<p>Open a windows command line. Switch directories to <code>C:\Windows\Microsoft.Net\Framework\v4.0.xxxx</code> where the x's are the build number. Type <code>aspnet_regiis -ir</code>
+ and hit enter. This should register .Net v4.0 and create the 
+application pools by default. If it doesn't, you will need to create 
+them manually by right-clicking the <code>Application Pools</code> folder in IIS and choosing <code>Add Application Pool</code>.</p>
+
+<p><strong>Edit:</strong> As a reference, please refer to the section of the linked document referring to the -i argument.</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/k6h9cz8h.aspx" rel="noreferrer" dideo-checked="true">http://msdn.microsoft.com/en-us/library/k6h9cz8h.aspx</a></p>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2011-02-03T18:46:03"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://stackoverflow.com/a/4890320" title="short permalink to this answer" class="short-link" itemprop="url" id="link-post-4890320" dideo-checked="true">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/4890320/edit" class="suggest-edit-post" title="" dideo-checked="true">improve this answer</a></div>                    </div>
+            
+
+
+    <div class="post-signature grid--cell fl0">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-02-03 18:46:03Z" class="relativetime">Feb 3 '11 at 18:46</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/250832/joel-etherton" dideo-checked="true"><div class="gravatar-wrapper-32"><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/90e7b318eb752ffaff96b5469a5068d5.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/250832/joel-etherton" dideo-checked="true">Joel Etherton</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 33,315" dir="ltr">33.3k</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="71 silver badges"><span class="badge2"></span><span class="badgecount">71</span></span><span title="94 bronze badges"><span class="badge3"></span><span class="badgecount">94</span></span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+</div>
+    
+    <div class="post-layout--right">
+	    <div id="comments-4890320" class="comments js-comments-container ">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+    <li id="comment-28309069" class="comment js-comment " data-comment-id="28309069">
+        <div class="js-comment-actions comment-actions">
+            <div class="comment-score">
+                    <span title="number of 'useful comment' votes received" class="cool">2</span>
+            </div>
+                    </div>
+        <div class="comment-text js-comment-text-and-form">
+            <div class="comment-body" style="display: block;">
+                <span class="comment-copy">(This is the step to take if you have .NET 4.0 installed, but don't have the .NET 4.0 app pools registered)</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/606602/ciaran-gallagher" title="2,030 reputation" class="comment-user" dideo-checked="true">Ciaran Gallagher</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment28309069_4890320" dideo-checked="true"><span title="2013-10-02 15:32:28Z" class="relativetime-clean">Oct 2 '13 at 15:32</span></a></span>
+                                                                            </div>
+        </div>
+    </li>
+            </ul>
+	    </div>
+
+        <div id="comments-link-4890320" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." dideo-checked="true">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick="" dideo-checked="true"></a>
+        </div>         
+    </div>    </div>
+</div>
+
+  
+<a name="9405958" dideo-checked="true"></a>
+<div id="answer-9405958" class="answer" data-answerid="9405958" itemprop="suggestedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="9405958">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is useful" aria-pressed="false" aria-label="up vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="4">4</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is not useful" aria-pressed="false" aria-label="down vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4 d-none" title="loading when this answer was accepted..." aria-label="accepted"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+
+<div class="answercell post-layout--right">
+    <div class="post-text" itemprop="text">
+<p>I just encountered this and whilst we already had .NET 4.0 installed 
+on the server it turns out we only had the "Client Profile" version and 
+not the "Full" version. Installing the latter fixed the problem.</p>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2012-02-23T01:42:01"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://stackoverflow.com/a/9405958" title="short permalink to this answer" class="short-link" itemprop="url" id="link-post-9405958" dideo-checked="true">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/9405958/edit" class="suggest-edit-post" title="" dideo-checked="true">improve this answer</a></div>                    </div>
+            
+
+
+    <div class="post-signature grid--cell fl0">
+<div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-02-23 01:42:01Z" class="relativetime">Feb 23 '12 at 1:42</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/28896/chris-simpson" dideo-checked="true"><div class="gravatar-wrapper-32"><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/5df14e7859d41c3dac63d0ce13f2c24d.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/28896/chris-simpson" dideo-checked="true">Chris Simpson</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">5,170</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="39 silver badges"><span class="badge2"></span><span class="badgecount">39</span></span><span title="63 bronze badges"><span class="badge3"></span><span class="badgecount">63</span></span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+</div>
+    
+    <div class="post-layout--right">
+	    <div id="comments-9405958" class="comments js-comments-container  dno">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+            </ul>
+	    </div>
+
+        <div id="comments-link-9405958" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." dideo-checked="true">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick="" dideo-checked="true"></a>
+        </div>         
+    </div>    </div>
+</div>
+
+  
+<a name="29742959" dideo-checked="true"></a>
+<div id="answer-29742959" class="answer" data-answerid="29742959" itemprop="suggestedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+    <div class="post-layout">
+            <div class="votecell post-layout--left">
+                
+
+<div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200" data-post-id="29742959">
+        <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is useful" aria-pressed="false" aria-label="up vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 26h32L18 10z"></path></svg></button>
+        <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount" data-value="0">0</div>
+        <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is not useful" aria-pressed="false" aria-label="down vote" data-selected-classes="fc-theme-primary"><svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36"><path d="M2 10h32L18 26z"></path></svg></button>
+
+
+                <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4 d-none" title="loading when this answer was accepted..." aria-label="accepted"><svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8z"></path></svg></div>
+
+</div>
+
+            </div>
+            
+
+
+<div class="answercell post-layout--right">
+    <div class="post-text" itemprop="text">
+<p>Installing framework 4.0 redistributable is also enough to create application pool. You can <a href="http://www.microsoft.com/en-in/download/details.aspx?id=17718" rel="nofollow" dideo-checked="true">download</a> it from <a href="http://www.microsoft.com/en-in/download/details.aspx?id=17718" rel="nofollow" dideo-checked="true">here</a>.</p>
+    </div>
+    <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+        <time itemprop="dateCreated" datetime="2015-04-20T08:40:30"></time>
+    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+<div class="post-menu"><a href="https://stackoverflow.com/a/29742959" title="short permalink to this answer" class="short-link" itemprop="url" id="link-post-29742959" dideo-checked="true">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/29742959/edit" class="suggest-edit-post" title="" dideo-checked="true">improve this answer</a></div>                    </div>
+            
+
+
+    <div class="post-signature grid--cell fl0">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-04-20 08:40:30Z" class="relativetime">Apr 20 '15 at 8:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/2282080/pranav-labhe" dideo-checked="true"><div class="gravatar-wrapper-32"><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/FH6hx.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/2282080/pranav-labhe" dideo-checked="true">Pranav Labhe</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,416</span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="22 bronze badges"><span class="badge3"></span><span class="badgecount">22</span></span>
+        </div>
+    </div>
+</div>
+
+    </div>
+    </div>
+</div>
+    
+    <div class="post-layout--right">
+	    <div id="comments-29742959" class="comments js-comments-container  dno">
+            <ul class="comments-list js-comments-list" data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+            </ul>
+	    </div>
+
+        <div id="comments-link-29742959" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." dideo-checked="true">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick="" dideo-checked="true"></a>
+        </div>         
+    </div>    </div>
+</div>
+                    <div class="question-status">
+        <h2>                    <b>protected</b> by <a href="https://stackoverflow.com/users/-1/community" dideo-checked="true">Community</a><span class="mod-flair" title="moderator">♦</span> <span dir="ltr"><span title="2013-06-10 13:16:18Z" class="relativetime">Jun 10 '13 at 13:16</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality or spam answers that had to be removed, posting an answer now requires 10 <a href="https://stackoverflow.com/help/whats-reputation" dideo-checked="true">reputation</a> on this site (the <a href="https://stackoverflow.com/help/privileges/new-user" dideo-checked="true">association bonus does not count</a>).
+<br><br>
+Would you like to answer one of these <a href="https://stackoverflow.com/unanswered?fromProtectedNotice=true" dideo-checked="true">unanswered questions</a> instead?</p>
+    </div>
+
+
+
+
+
+                        <h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?                            Browse other questions tagged <a href="https://stackoverflow.com/questions/tagged/asp.net" class="post-tag" title="show questions tagged 'asp.net'" rel="tag" dideo-checked="true">asp.net</a> <a href="https://stackoverflow.com/questions/tagged/iis" class="post-tag" title="show questions tagged 'iis'" rel="tag" dideo-checked="true">iis</a>  or <a href="https://stackoverflow.com/questions/ask" dideo-checked="true">ask your own question</a>.                        </h2>
+            </div>
+        </div>
+                <div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+                            <div class="module question-stats">
+                    <table id="qinfo">
+                        <tbody><tr>
+                            <td>
+                                <p class="label-key">asked</p>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <p class="label-key" title="2011-02-03 18:39:07Z">
+                                    <b>
+                                        <time itemprop="dateCreated" datetime="2011-02-03T18:39:07">7 years, 11 months ago</time>
+                                    </b>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="label-key">viewed</p>
+                            </td>
+
+                            <td style="padding-left: 10px">
+                                <p class="label-key">
+                                    <b>397,788 times</b>
+                                </p>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <p class="label-key">active</p>
+                                </td>
+                                <td style="padding-left: 10px">
+                                    <p class="label-key"><b><a href="https://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7?lastactivity" class="lastactivity-link" title="2015-04-20 08:40:30Z" dideo-checked="true">3 years, 8 months ago</a></b></p>
+                                </td>
+                            </tr>
+                    </tbody></table>
+                </div>
+            
+<div id="clc-tsb" class="everyonelovesstackoverflow everyoneloves__top-sidebar"></div>
+            <div id="hireme" class="orange tagged tex2jax_ignore clc-jobs-multi"><a class="top " href="https://stackoverflow.com/jobs" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=10439&amp;ct=1&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%3Fmed=clc&amp;sig=W5bTOuYvzXC2zQ" dideo-checked="true"><span>Looking for a job?</span></a><div class="middle"><ul class="jobs"><li class="clc-dismissable"><div class="job-wrap"><a class="job" title="ASP.NET MVC Developer at گروه حصین. Click to learn more." href="https://stackoverflow.com/jobs/151677/aspnet-mvc-developer-%DA%AF%D8%B1%D9%88%D9%87-%D8%AD%D8%B5%DB%8C%D9%86" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=355703&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F151677%2Faspnet-mvc-developer-%25DA%25AF%25D8%25B1%25D9%2588%25D9%2587-%25D8%25AD%25D8%25B5%25DB%258C%25D9%2586%3Fmed=clc&amp;sig=HjMqegLX1zjuTQ" dideo-checked="true"><div class="title">ASP.NET MVC Developer</div><div><span class="company">گروه حصین</span><span class="location"><svg viewBox="0 0 12 12"><path d="M6 5.7c.4 0 .7-.1.9-.4.3-.3.4-.6.4-.9 0-.4-.1-.7-.4-.9-.2-.3-.5-.4-.9-.4s-.7.1-.9.4c-.3.2-.4.5-.4.9s.1.7.4.9c.2.3.5.4.9.4zm0-5c1 0 1.9.4 2.6 1.1.7.7 1.1 1.6 1.1 2.6 0 .5-.1 1.1-.4 1.8s-.5 1.3-.9 1.9c-.4.5-.7 1.1-1.1 1.6-.4.5-.7.9-.9 1.2l-.4.4c-.1-.1-.2-.3-.4-.5s-.5-.6-.9-1.2c-.4-.5-.8-1-1.1-1.6s-.7-1.1-.9-1.8c-.3-.7-.4-1.3-.4-1.8 0-1 .4-1.9 1.1-2.6S5 .7 6 .7z"></path></svg><span>Tehran, Iran</span></span></div><span class="post-tag highlight">c#</span><span class="post-tag">sql</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=355703&amp;ct=-1&amp;sig=-fk-JitRW8Wf9g" data-clc-meta-target="-1" dideo-checked="true"><svg viewBox="0 0 13.6 13.6"><path d="M11.4 2.3C8.9-.2 4.8-.2 2.3 2.3s-2.5 6.6 0 9.1 6.6 2.5 9.1 0 2.5-6.6 0-9.1zM8.6 9.5L6.8 7.7 5 9.5l-.9-.9 1.8-1.8L4.1 5l.9-.9 1.8 1.8 1.8-1.8.9.9-1.8 1.8 1.8 1.8-.9.9z"></path></svg><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="clc-dismissable"><div class="job-wrap"><a class="job" title="Senior Business Intelligence Software Developer at Keona Health. Click to learn more." href="https://stackoverflow.com/jobs/216132/senior-business-intelligence-software-developer-keona-health" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=364441&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F216132%2Fsenior-business-intelligence-software-developer-keona-health%3Fmed=clc&amp;sig=OVEKlZ5A_yZI9g" dideo-checked="true"><div class="title">Senior Business Intelligence Software Developer</div><div><span class="company">Keona Health</span><span class="location"><svg viewBox="0 0 12 12"><path d="M6 5.7c.4 0 .7-.1.9-.4.3-.3.4-.6.4-.9 0-.4-.1-.7-.4-.9-.2-.3-.5-.4-.9-.4s-.7.1-.9.4c-.3.2-.4.5-.4.9s.1.7.4.9c.2.3.5.4.9.4zm0-5c1 0 1.9.4 2.6 1.1.7.7 1.1 1.6 1.1 2.6 0 .5-.1 1.1-.4 1.8s-.5 1.3-.9 1.9c-.4.5-.7 1.1-1.1 1.6-.4.5-.7.9-.9 1.2l-.4.4c-.1-.1-.2-.3-.4-.5s-.5-.6-.9-1.2c-.4-.5-.8-1-1.1-1.6s-.7-1.1-.9-1.8c-.3-.7-.4-1.3-.4-1.8 0-1 .4-1.9 1.1-2.6S5 .7 6 .7z"></path></svg><span>No office location</span></span></div><div class="opts"><span class="opt salary"><span>$95k - $120k</span></span><span class="opt remote"><svg viewBox="0 0 12 12"><path d="M6 9.8L3.9 7.7c1.3-.9 3-.9 4.2 0L6 9.8zm3-3a4.81 4.81 0 0 0-6 0L2.2 6c2.2-1.8 5.5-1.8 7.7 0l-.9.8zm1.7-1.7a7.27 7.27 0 0 0-9.4 0l-.9-.8c3.2-2.8 7.9-2.8 11.1 0l-.8.8z"></path></svg><span>Remote</span></span></div><span class="post-tag">sql-server</span><span class="post-tag">sql</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=364441&amp;ct=-1&amp;sig=KzQaK0fsfCBuBA" data-clc-meta-target="-1" dideo-checked="true"><svg viewBox="0 0 13.6 13.6"><path d="M11.4 2.3C8.9-.2 4.8-.2 2.3 2.3s-2.5 6.6 0 9.1 6.6 2.5 9.1 0 2.5-6.6 0-9.1zM8.6 9.5L6.8 7.7 5 9.5l-.9-.9 1.8-1.8L4.1 5l.9-.9 1.8 1.8 1.8-1.8.9.9-1.8 1.8 1.8 1.8-.9.9z"></path></svg><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="clc-dismissable"><div class="job-wrap"><a class="job" title="Senior Software Engineer (.NET) at SmileDirectClub. Click to learn more." href="https://stackoverflow.com/jobs/225995/senior-software-engineer-net-smiledirectclub" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=372206&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F225995%2Fsenior-software-engineer-net-smiledirectclub%3Fmed=clc&amp;sig=y2Z2-5eEyGjtLQ" dideo-checked="true"><div class="title">Senior Software Engineer (.NET)</div><div><span class="company">SmileDirectClub</span><span class="location"><svg viewBox="0 0 12 12"><path d="M6 5.7c.4 0 .7-.1.9-.4.3-.3.4-.6.4-.9 0-.4-.1-.7-.4-.9-.2-.3-.5-.4-.9-.4s-.7.1-.9.4c-.3.2-.4.5-.4.9s.1.7.4.9c.2.3.5.4.9.4zm0-5c1 0 1.9.4 2.6 1.1.7.7 1.1 1.6 1.1 2.6 0 .5-.1 1.1-.4 1.8s-.5 1.3-.9 1.9c-.4.5-.7 1.1-1.1 1.6-.4.5-.7.9-.9 1.2l-.4.4c-.1-.1-.2-.3-.4-.5s-.5-.6-.9-1.2c-.4-.5-.8-1-1.1-1.6s-.7-1.1-.9-1.8c-.3-.7-.4-1.3-.4-1.8 0-1 .4-1.9 1.1-2.6S5 .7 6 .7z"></path></svg><span>No office location</span></span></div><div class="opts"><span class="opt remote"><svg viewBox="0 0 12 12"><path d="M6 9.8L3.9 7.7c1.3-.9 3-.9 4.2 0L6 9.8zm3-3a4.81 4.81 0 0 0-6 0L2.2 6c2.2-1.8 5.5-1.8 7.7 0l-.9.8zm1.7-1.7a7.27 7.27 0 0 0-9.4 0l-.9-.8c3.2-2.8 7.9-2.8 11.1 0l-.8.8z"></path></svg><span>Remote</span></span></div><span class="post-tag highlight">c#</span><span class="post-tag">.net</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=372206&amp;ct=-1&amp;sig=EDWpAi-nd_UwQA" data-clc-meta-target="-1" dideo-checked="true"><svg viewBox="0 0 13.6 13.6"><path d="M11.4 2.3C8.9-.2 4.8-.2 2.3 2.3s-2.5 6.6 0 9.1 6.6 2.5 9.1 0 2.5-6.6 0-9.1zM8.6 9.5L6.8 7.7 5 9.5l-.9-.9 1.8-1.8L4.1 5l.9-.9 1.8 1.8 1.8-1.8.9.9-1.8 1.8 1.8 1.8-.9.9z"></path></svg><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="clc-dismissable"><div class="job-wrap"><a class="job" title="Softwareentwickler / Global IT Business Application Developer (m/w) at Landis+Gyr GmbH. Click to learn more." href="https://stackoverflow.com/jobs/208383/softwareentwickler-global-it-business-landis-plusgyr-gmbh" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=363390&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F208383%2Fsoftwareentwickler-global-it-business-landis-plusgyr-gmbh%3Fmed=clc&amp;sig=gTGzdjJA__Db9Q" dideo-checked="true"><div class="title">Softwareentwickler / Global IT Business Application Developer (m/w)</div><div><span class="company">Landis+Gyr GmbH</span><span class="location"><svg viewBox="0 0 12 12"><path d="M6 5.7c.4 0 .7-.1.9-.4.3-.3.4-.6.4-.9 0-.4-.1-.7-.4-.9-.2-.3-.5-.4-.9-.4s-.7.1-.9.4c-.3.2-.4.5-.4.9s.1.7.4.9c.2.3.5.4.9.4zm0-5c1 0 1.9.4 2.6 1.1.7.7 1.1 1.6 1.1 2.6 0 .5-.1 1.1-.4 1.8s-.5 1.3-.9 1.9c-.4.5-.7 1.1-1.1 1.6-.4.5-.7.9-.9 1.2l-.4.4c-.1-.1-.2-.3-.4-.5s-.5-.6-.9-1.2c-.4-.5-.8-1-1.1-1.6s-.7-1.1-.9-1.8c-.3-.7-.4-1.3-.4-1.8 0-1 .4-1.9 1.1-2.6S5 .7 6 .7z"></path></svg><span>No office location</span></span></div><div class="opts"><span class="opt remote"><svg viewBox="0 0 12 12"><path d="M6 9.8L3.9 7.7c1.3-.9 3-.9 4.2 0L6 9.8zm3-3a4.81 4.81 0 0 0-6 0L2.2 6c2.2-1.8 5.5-1.8 7.7 0l-.9.8zm1.7-1.7a7.27 7.27 0 0 0-9.4 0l-.9-.8c3.2-2.8 7.9-2.8 11.1 0l-.8.8z"></path></svg><span>Remote</span></span></div><span class="post-tag highlight">c#</span><span class="post-tag">asp.net</span><div></div></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=43ojKmqYXnjNQ7VrUpAnExNL695VTE-fiSe5d6SaZTN-9LsdcDyQgYWhZwMDQ4M9IyMDy2ymj-_ZP73i-X5LlJOFgfHAvm2SVvyXKu0ZmZKVpZl-dXA_W8c7c74YIwtDyoHtrvss99zzt5_N9Gof99TXvO9uizGAxL0nnbJ82pQL1jObaW8T98VlvP-mibGA5Dj4T1seU8kDyzG4ibzcI8dp7V7CCQA&amp;cr=363390&amp;ct=-1&amp;sig=ZK0hxjfNtKLOBA" data-clc-meta-target="-1" dideo-checked="true"><svg viewBox="0 0 13.6 13.6"><path d="M11.4 2.3C8.9-.2 4.8-.2 2.3 2.3s-2.5 6.6 0 9.1 6.6 2.5 9.1 0 2.5-6.6 0-9.1zM8.6 9.5L6.8 7.7 5 9.5l-.9-.9 1.8-1.8L4.1 5l.9-.9 1.8 1.8 1.8-1.8.9.9-1.8 1.8 1.8 1.8-.9.9z"></path></svg><span class="clc-tooltip above-left">dismiss this job</span></a></li></ul></div><img src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/impression.gif" class="impression" style="display: none;"></div>
+<script>;try{(function(a){function b(a){return'string'==typeof a?document.getElementById(a):a}function c(a){return a=b(a),!!a&&'none'===getComputedStyle(a).display}function d(a){return!c(a)}function e(a){return!!a}function f(a){return /^\s*$/.test(b(a).innerHTML)}function g(a){var b=a.style;b.height=b.maxHeight=b.minHeight='auto',b.display='none',[].forEach.call(a.children,g)}function h(a,b){var c;return function(){return a&&(c=a.call(b||this,arguments),a=null),c}}function i(a){var b=document.createElement('script');b.src=a,document.body.appendChild(b)}function j(a){return k([],a)}function k(a,b){return a.push=function(a){return b(),delete this.push,this.push(a)},a}function l(){try{return!new Function('return async()=>{};')}catch(a){return!0}}function m(){return'undefined'!=typeof googletag&&!!googletag.apiReady}function n(){m()||(googletag={cmd:j(A)})}function o(){var a=document.createElement('div');a.className='adsbox',a.id='clc-abd',a.style.position='absolute',a.style.pointerEvents='none',a.innerHTML='&nbsp;',document.body.appendChild(a)}function p(a){var b=a.serviceName,c=a.slot,d=a.lineItemId;try{var e=c.getSlotElementId(),f=[];e||f.push('id=0');var h=document.getElementById(e);if(!e||h?h.hasAttribute('data-clc-stalled')&&f.push('st=1'):f.push('el=0'),0!==f.length)return void B(f.join('&'));-1===x.dh.indexOf(d)?h.setAttribute('data-clc-prefilled','true'):g(h),h.setAttribute('data-clc-ready','true')}catch(a){var i=document.querySelector('#dfp-tsb, #dfp-isb, #clc-tsb');i&&i.setAttribute('data-clc-ready','true'),B('e=1')}}function q(){return Object.keys(F.ids)}function r(a){var b=F.ids[a],c=F.slots[b];'function'==typeof c&&(c=c(a));return{path:'/'+C+'/'+E+'/'+b+'/'+D,sizes:c,zone:b}}function s(a){return!(clc.collapse&&void 0!==clc.collapse[a])||!!clc.collapse[a]}function t(a,b){'dfp-isb'===a&&b.setTargeting('Sidebar',['Inline']),'dfp-tsb'===a&&b.setTargeting('Sidebar',['Right']);var c=r(a),d=c.path,e=c.sizes,f=c.zone,g=googletag.defineSlot(d,e,a);s(f)&&g.setCollapseEmptyDiv(!0,!0),g.addService(b),!1}function u(b){var c=a.dfp&&a.dfp.targeting||{};Object.keys(c).forEach(function(a){b.setTargeting(a,c[a])})}function v(a){var g=a.map(b).filter(e);return{eligible:g.filter(f).filter(d).map(function(a){return a.id}),ineligible:g.filter(c)}}function w(b){if(void 0===b&&(b=q()),!m())return n(),void googletag.cmd.push(function(){return w(b)});var c=v(b),d=c.eligible,e=c.ineligible;if(e.forEach(g),0!==d.length){o(),googletag.destroySlots();var f=googletag.pubads();f.enableSingleRequest(),a.sreEvent||(f.addEventListener('slotRenderEnded',p),a.sreEvent=!0),u(f),d.forEach(function(a){return t(a,f)}),googletag.enableServices(),d.forEach(function(a){googletag.display(a)})}}var x=function(a){for(var b=[],c=1;c<arguments.length;c++)b[c-1]=arguments[c];for(var d,e=0,f=b;e<f.length;e++)for(var g in d=f[e],d)a[g]=d[g];return a}({"lib":"https://cdn.sstatic.net/clc/clc.min.js?v=04d772c81312","style":"https://cdn.sstatic.net/clc/styles/clc.min.css?v=1db48f495ba1","u":"https://clc.stackoverflow.com/markup.js","wa":true,"kt":2000,"tto":true,"h":"clc.stackoverflow.com","allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$","wv":true,"al":false,"dh":[4385506061,4386578282,4386579572]},a.options||{}),y=h(function(){var a=x.lib;l()&&(a=a.replace(/(\.min)?\.js(\?v=[0-9a-fA-F]+)?$/,'.ie$1.js$2')),i(a)}),z=a.cmd||[];Array.isArray(z)&&(0<z.length?y():k(z,y));var A=h(function(){i('https://www.googletagservices.com/tag/js/gpt.js')}),B=function(a){new Image().src='https://'+x.h+'/stalled.gif?'+a},C='248424177',D=/^\/tags\//.test(location.pathname)||/^\/questions\/tagged\//.test(location.pathname)?'tag-pages':'question-pages',E=location.hostname;var F={slots:{lb:[[728,90]],mlb:[[728,90]],sb:function(a){return'dfp-tsb'===a?[[300,250],[300,600]]:[[300,250]]},"tag-sponsorship":[[730,135]],"mobile-below-question":[[320,50],[300,250]]},ids:{"dfp-tlb":'lb',"dfp-mlb":'mlb',"dfp-tsb":'sb',"dfp-isb":'sb',"dfp-tag":'tag-sponsorship',"dfp-m-aq":'mobile-below-question',"clc-tlb":'lb',"clc-mlb":'mlb',"clc-tsb":'sb'}};(function(){var b=x.al;b&&z.push(function(){return a.load()})})(),n(),a.dfp={load:w},a.options=x,a.cmd=z})(this.clc=this.clc||{})}catch(a){window.console.error(a)}</script>            <script>
+                var clc = clc || {};
+                clc.collapse = { sb: !0,'tag-sponsorship':!0,lb:!1,mlb:!1,'mobile-below-question':!0};
+                clc.cmd = clc.cmd || [];
+                clc.cmd.push(function () { window.clc_request='Ao3fahJncdYIAAAAAIWeSgACAAAAAgAAAAANAAAAfGFzcC5uZXR8aWlzfAADuclY89QimVjw'; clc.load(); });
+                            </script><div class="module" id="chat-feature">
+
+    <h4><a href="http://chat.stackoverflow.com/" id="h-chat-link" title="86 users active in 42 rooms the last 60 minutes" dideo-checked="true">86 People Chatting</a></h4>
+    <div class="related" id="ad502-rooms"><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="SO Close Vote Reviewers"><a href="http://chat.stackoverflow.com/rooms/41570" dideo-checked="true">SO Close Vote Reviewers</a></span></h3><span title="2019-01-03 09:46:04Z" class="ad502-last-message">48 mins ago - <a href="http://chat.stackoverflow.com/users/462627" dideo-checked="true">Praveen Kumar Purushothaman</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/462627" dideo-checked="true"><img title="Praveen Kumar Purushothaman: 48 mins ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/f0285ad1973e938e2d2f40254c247f6f.png" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/3735529" dideo-checked="true"><img title="SmokeDetector: 53 mins ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/7cmCt.png" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/578411" dideo-checked="true"><img title="rene: 1 hour ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/qj33e.png" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/874188" dideo-checked="true"><img title="tripleee: 1 hour ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/091f411d57db5be8298e057a32e5ad72.png" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/6622587" dideo-checked="true"><img title="eyllanesc: 1 hour ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/gAYS0.jpg" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/3773011" dideo-checked="true"><img title="Makyen: 1 hour ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/268909707f084cf82523e616dd9df570.png" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/3270037" dideo-checked="true"><img title="Nick A: 1 hour ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/3ec578ed178b0a398a5e81278dee8a9a.png" width="23" height="23"></a></div></div><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="PHP"><a href="http://chat.stackoverflow.com/rooms/11" dideo-checked="true">PHP</a></span></h3><span title="2019-01-03 09:54:07Z" class="ad502-last-message">40 mins ago - <a href="http://chat.stackoverflow.com/users/508666" dideo-checked="true">PeeHaa</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/508666" dideo-checked="true"><img title="PeeHaa: 40 mins ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/GLCqP.png" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/3942918" dideo-checked="true"><img title="Paul Crovella: 42 mins ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/Rup3Y.jpg" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/6998123" dideo-checked="true"><img title="mega6382: 42 mins ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/VDwq0.gif" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/385378" dideo-checked="true"><img title="NikiC: 43 mins ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/b4ec98df44deb80b1576283152670358.jpg" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/3749523" dideo-checked="true"><img title="Sjon: 45 mins ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/4a0bfc9027da0504f91736fa45f29b89.jpg" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/1658631" dideo-checked="true"><img title="Joe Watkins: 1 hour ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/T17OR.jpg" width="23" height="23"></a><a href="http://chat.stackoverflow.com/users/4251625" dideo-checked="true"><img title="Wes: 1 hour ago" src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/JS1Fz.jpg" width="23" height="23"></a></div></div></div>
+    <script>
+    // <!--
+        StackExchange.ready(
+        function () {
+            var options = {
+                chatUrl: 'http://chat.stackoverflow.com',
+                reloadUrl: '/api/recent-chat',
+                preloadData: {"activeUsers":86,"activeRooms":42,"rooms":[{"name":"SO Close Vote Reviewers","id":41570,"lastPost":1546508764,"posts":847414,"users":[{"name":"Praveen Kumar Purushothaman","id":462627,"emailhash":"f0285ad1973e938e2d2f40254c247f6f","lastPost":1546508764},{"name":"SmokeDetector","id":3735529,"emailhash":"!https://i.stack.imgur.com/7cmCt.png?s=128\u0026g=1","lastPost":1546508478},{"name":"rene","id":578411,"emailhash":"!https://i.stack.imgur.com/qj33e.png?s=128\u0026g=1","lastPost":1546507939},{"name":"tripleee","id":874188,"emailhash":"091f411d57db5be8298e057a32e5ad72","lastPost":1546507879},{"name":"eyllanesc","id":6622587,"emailhash":"!https://i.stack.imgur.com/gAYS0.jpg?s=128\u0026g=1","lastPost":1546507012},{"name":"Makyen","id":3773011,"emailhash":"268909707f084cf82523e616dd9df570","lastPost":1546506566},{"name":"Nick A","id":3270037,"emailhash":"3ec578ed178b0a398a5e81278dee8a9a","lastPost":1546505854}],"messages":[{"date":1546508764,"user":"Praveen Kumar Purushothaman","userid":462627}],"singleImage":false,"tags":["discussion","moderation","review"]},{"name":"PHP","id":11,"lastPost":1546509247,"posts":3175845,"users":[{"name":"PeeHaa","id":508666,"emailhash":"!https://i.stack.imgur.com/GLCqP.png?s=128\u0026g=1","lastPost":1546509247},{"name":"Paul Crovella","id":3942918,"emailhash":"!https://i.stack.imgur.com/Rup3Y.jpg?s=128\u0026g=1","lastPost":1546509153},{"name":"mega6382","id":6998123,"emailhash":"!https://i.stack.imgur.com/VDwq0.gif?s=128\u0026g=1","lastPost":1546509151},{"name":"NikiC","id":385378,"emailhash":"b4ec98df44deb80b1576283152670358","lastPost":1546509091},{"name":"Sjon","id":3749523,"emailhash":"4a0bfc9027da0504f91736fa45f29b89","lastPost":1546508957},{"name":"Joe Watkins","id":1658631,"emailhash":"!https://i.stack.imgur.com/T17OR.jpg?s=128\u0026g=1","lastPost":1546507661},{"name":"Wes","id":4251625,"emailhash":"!https://i.stack.imgur.com/JS1Fz.jpg?s=128\u0026g=1","lastPost":1546506858}],"messages":[{"date":1546509247,"user":"PeeHaa","userid":508666}],"singleImage":false,"tags":["friday","php"]}]} 
+            };
+
+            StackExchange.chatAd.init(options);
+        });
+    // -->
+    </script>
+
+</div>
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/7530725?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes  large">389</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/7530725/unrecognized-attribute-targetframework-note-that-attribute-names-are-case-sen?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/10630473?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes answered-accepted large">104</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/10630473/unrecognized-attribute-targetframework-note-that-attribute-names-are-case-sen?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/6368502?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes answered-accepted default">30</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/6368502/the-configuration-section-system-servicemodel-cannot-be-read-because-it-is-mis?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">The configuration section 'system.servicemodel' cannot be read because it is missing a section declaration</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/12143777?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes  default">11</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/12143777/asp-net-mcv4-framework-issue?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">Asp.net MCV4 framework issue</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/11383085?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes answered-accepted default">8</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/11383085/parser-error-message-unrecognized-attribute-targetframework-note-that-attrib?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">Parser Error Message: Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/17851626?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes answered-accepted default">-1</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/17851626/setting-up-an-asp-net-website?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">Setting up an ASP.NET website</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/18231255?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/18231255/server-error-in-application-target-framework?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">Server Error in '/' Application (target framework)</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/31168857?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/31168857/error-in-publishing-web-page-with-iis?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">Error in publishing web page with IIS</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/36190394?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/36190394/asp-net-the-targetframework-attribute-is-not-allowed?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">ASP.NET the targetframework attribute is not allowed</a>
+</div>
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/15155385?lq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/15155385/use-iis-7-manager-to-set-permissions?noredirect=1&amp;lq=1" class="question-hyperlink" dideo-checked="true">use IIS 7 Manager to set permissions</a>
+</div>					<div class="spacer more">
+				<a href="https://stackoverflow.com/questions/linked/4890245?lq=1" dideo-checked="true">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+                <div class="module sidebar-related">
+                    <h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/398037?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes answered-accepted large">803</div></a><a href="https://stackoverflow.com/questions/398037/asp-net-web-site-or-asp-net-web-application?rq=1" class="question-hyperlink" dideo-checked="true">ASP.NET Web Site or ASP.NET Web Application?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/759304?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes default">50</div></a><a href="https://stackoverflow.com/questions/759304/what-is-the-difference-between-defaultapppool-and-classic-net-apppool-in-iis7?rq=1" class="question-hyperlink" dideo-checked="true">What is the difference between DefaultAppPool and Classic .NET AppPool in IIS7?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/2939852?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes answered-accepted default">11</div></a><a href="https://stackoverflow.com/questions/2939852/how-to-add-users-in-iis-manager-for-an-asp-net-4-0-application?rq=1" class="question-hyperlink" dideo-checked="true">How to add users in IIS Manager for an ASP.NET 4.0 application?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/3070530?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes answered-accepted default">2</div></a><a href="https://stackoverflow.com/questions/3070530/why-does-not-asp-net-mvc-application-work-on-asp-net-classic-application-pool?rq=1" class="question-hyperlink" dideo-checked="true">Why does not Asp.net mvc application work on Asp.Net Classic Application Pool?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/4209999?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes answered-accepted large">370</div></a><a href="https://stackoverflow.com/questions/4209999/an-asp-net-setting-has-been-detected-that-does-not-apply-in-integrated-managed-p?rq=1" class="question-hyperlink" dideo-checked="true">An ASP.NET setting has been detected that does not apply in Integrated managed pipeline mode</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/18212765?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes answered-accepted default">5</div></a><a href="https://stackoverflow.com/questions/18212765/asp-net-mvc-3-application-failing-randomly-upon-application-pool-recycle?rq=1" class="question-hyperlink" dideo-checked="true">ASP.Net MVC 3 application failing randomly upon application pool recycle</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/18962270?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/18962270/iis6-asp-net-4-0-application-pools?rq=1" class="question-hyperlink" dideo-checked="true">iis6 asp.net 4.0 Application Pools</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/24205099?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes default">1</div></a><a href="https://stackoverflow.com/questions/24205099/creating-msi-in-vs-2012?rq=1" class="question-hyperlink" dideo-checked="true">Creating MSI in VS 2012</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/34743964?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/34743964/application-pool-asp-net?rq=1" class="question-hyperlink" dideo-checked="true">Application pool Asp.net</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/34951442?rq=1" title="Vote score (upvotes - downvotes)" dideo-checked="true"><div class="answer-votes answered-accepted default">0</div></a><a href="https://stackoverflow.com/questions/34951442/how-do-i-target-a-specific-application-pool-when-using-visual-studio-2012s-web?rq=1" class="question-hyperlink" dideo-checked="true">How do I target a specific Application Pool when using Visual Studio 2012's Web Deploy?</a></div>
+                    </div>
+                </div>
+
+<div id="hot-network-questions" class="module tex2jax_ignore">
+    <h4>
+        <a href="https://stackexchange.com/questions?tab=hot" class="js-gps-track s-link s-link__inherit" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })" dideo-checked="true">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/479405/word-for-significant-enough-to-make-a-difference" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Word for "Significant enough to make a difference"
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-bicycles" title="Bicycles Stack Exchange"></div><a href="https://bicycles.stackexchange.com/questions/58720/what-are-the-disadvantages-of-having-an-old-worn-cogset" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:126 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    What are the disadvantages of having an old, worn cogset?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-gis" title="Geographic Information Systems Stack Exchange"></div><a href="https://gis.stackexchange.com/questions/307421/change-color-polygons-by-area-of-polygons" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:79 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Change color polygons by area of polygons
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-law" title="Law Stack Exchange"></div><a href="https://law.stackexchange.com/questions/35880/can-i-invert-other-companies-logos-and-use-them-for-advertising-them-on-my-site" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:617 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Can I invert other companies logos and use them for advertising them on my site?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/135411/how-could-a-planet-have-a-sky-without-stars-at-night" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    How could a planet have a sky without stars at night?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/125653/new-manager-is-a-jerk-is-it-ok-to-quit-without-providing-a-reason" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    New manager is a jerk - is it OK to quit without providing a reason?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/479605/how-do-you-say-in-all-directions-in-a-single-word" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    How do you say "in all directions" in a single word?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/135354/how-can-an-abortion-cause-infertility-in-a-witch" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    How can an abortion cause infertility in a witch?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="https://unix.stackexchange.com/questions/492030/flattening-directory-hierarchy-preserving-directory-names-in-new-directory-name" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Flattening directory hierarchy preserving directory names in new directory name
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/125715/can-i-work-just-what-im-paid-for-while-leaving" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Can I work just what I'm paid for while leaving?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="https://scifi.stackexchange.com/questions/202622/is-lex-luthors-40-cake-theft-canonical" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Is Lex Luthor's 40-cake theft canonical?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/138309/can-any-creature-other-than-pcs-use-two-weapon-fighting" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Can any creature other than PCs use Two-Weapon Fighting?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="https://stackoverflow.com/questions/54019203/anonymous-inner-classes-showing-unwanted-modifier" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Anonymous inner classes showing unwanted modifier
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/178227/get-the-date-of-the-nth-day-of-week-in-a-given-year-and-month" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Get the date of the nth day of week in a given year and month
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/138349/what-is-the-point-of-the-battle-master-fighters-evasive-footwork-maneuver" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    What is the point of the Battle Master fighter's Evasive Footwork maneuver?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="https://ell.stackexchange.com/questions/191677/can-someone-explain-this-quote" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Can someone explain this quote?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-cooking" title="Seasoned Advice"></div><a href="https://cooking.stackexchange.com/questions/95271/how-to-cook-dried-red-beans-faster" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:49 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    How to cook dried red beans faster?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="https://math.stackexchange.com/questions/3060277/easier-way-to-find-amount-of-solutions-between-a-line-and-quadratic" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Easier way to find amount of solutions between a line and quadratic?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-softwareengineering" title="Software Engineering Stack Exchange"></div><a href="https://softwareengineering.stackexchange.com/questions/384861/how-to-stop-wasting-time-designing-architechture" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    How to stop wasting time designing architechture
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="https://scifi.stackexchange.com/questions/202607/cant-remember-name-of-sci-fi-first-contact-novel-solution-to-the-fermi-parado" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Can't remember name of Sci Fi first contact Novel, "solution to the Fermi paradox"
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="https://mathoverflow.net/questions/319893/jean-bourgains-relatively-lesser-known-significant-contributions" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Jean Bourgain's Relatively Lesser Known Significant Contributions
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="https://puzzling.stackexchange.com/questions/78008/the-lazy-laser-physicist" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    The Lazy Laser Physicist
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="https://unix.stackexchange.com/questions/492044/why-does-the-updatedb-program-run-so-fast" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    Why does the `updatedb` program run so fast?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="https://academia.stackexchange.com/questions/122401/how-does-the-government-shutdown-in-the-united-states-affect-research-projects-a" class="js-gps-track question-hyperlink mb0" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" dideo-checked="true">
+                    How does the government shutdown in the United 
+States affect research projects at universities and national labs?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+
+<div id="feed-link">
+    <a href="https://stackoverflow.com/feeds/question/4890245" title="feed of this question and its answers" dideo-checked="true">
+        <svg aria-hidden="true" class="svg-icon fc-orange-400 iconRss" width="18" height="18" viewBox="0 0 18 18"><path d="M1 3c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5z"></path></svg>
+        question feed
+    </a>
+</div>
+        </div>
+    </div>
+<script>StackExchange.ready(function(){$.get('/posts/4890245/ivc/c227');});</script>
+<noscript><div><img src="/posts/4890245/ivc/c227" class="dno" alt="" width="0" height="0"></div></noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+        </div>
+    </div><script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/clc.js"></script>
+
+    <footer id="footer" class="site-footer js-footer" role="contentinfo">
+        <div class="site-footer--container">
+                <div class="site-footer--logo">
+
+                    
+                    <a href="https://stackoverflow.com/" dideo-checked="true"><svg aria-hidden="true" class="svg-icon native iconLogoGlyphMd" width="32" height="37" viewBox="0 0 32 37"><g><path fill="#BCBBBB" d="M26 33v-9h4v13H0V24h4v9z"></path><path d="M23.1 25.99l.68-2.95-16.1-3.35L7 23l16.1 2.99zM9.1 15.2l15 7 1.4-3-15-7-1.4 3zm4.2-7.4L26 18.4l2.1-2.5L15.4 5.3l-2.1 2.5zM21.5 0l-2.7 2 9.9 13.3 2.7-2L21.5 0zM7 30h16v-3H7v3z" fill="#F48024"></path></g></svg></a>
+                </div>
+            
+            <nav class="site-footer--nav">
+                    <div class="site-footer--col site-footer--col__visible js-footer-col" data-name="default">
+                        <h5 class="-title"><a href="https://stackoverflow.com/" class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 15})" dideo-checked="true">Stack Overflow</a></h5>
+                        <ul class="-list js-primary-footer-links">
+                            <li class="-item"><a href="https://stackoverflow.com/questions" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 16})" dideo-checked="true">Questions</a></li>
+                                <li class="-item"><a href="https://stackoverflow.com/jobs" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 17})" dideo-checked="true">Jobs</a></li>
+                                <li class="-item"><a href="https://stackoverflow.com/jobs/directory/developer-jobs" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 11})" dideo-checked="true">Developer Jobs Directory</a></li>
+                                     <li class="-item"><a href="https://stackoverflow.com/jobs/salary" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 28})" dideo-checked="true">Salary Calculator</a></li>
+                                                            <li class="-item"><a href="https://stackoverflow.com/help" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 3 })" dideo-checked="true">Help</a></li>
+                                <li class="-item"><a onclick='StackExchange.switchMobile("on")' class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 12 })" dideo-checked="true">Mobile</a></li>
+                        <li class="-item"><a class="-link" role="button" dideo-checked="true">Disable Responsiveness</a></li></ul>
+                    </div>
+                    <div class="site-footer--col site-footer--col__visible js-footer-col" data-name="default">
+                        <h5 class="-title"><a href="https://www.stackoverflowbusiness.com/" class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 19 })" dideo-checked="true">Products</a></h5>
+                        <ul class="-list">
+                            <li class="-item"><a href="https://stackoverflow.com/teams" class="js-gps-track -link" data-ga="[&quot;teams traffic&quot;,&quot;footer - site nav&quot;,&quot;stackoverflow.com/teams&quot;,null,{&quot;dimension4&quot;:&quot;teams&quot;}]" data-gps-track="footer.click({ location: 2, link: 29 })" dideo-checked="true">Teams</a></li>
+                            <li class="-item"><a href="https://www.stackoverflowbusiness.com/talent" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 20 })" dideo-checked="true">Talent</a></li>
+                            <li class="-item"><a href="https://www.stackoverflowbusiness.com/advertise" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 21 })" dideo-checked="true">Engagement</a></li>
+                            <li class="-item"><a href="https://stackoverflow.com/enterprise" class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 22 })" dideo-checked="true">Enterprise</a></li>
+                        </ul>
+                    </div>
+                <div class="site-footer--col site-footer--col__visible js-footer-col" data-name="default">
+                    <h5 class="-title"><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.com/company/about" dideo-checked="true">Company</a></h5>
+                    <ul class="-list">
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.com/company/about" dideo-checked="true">About</a></li>
+                                                <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 27 })" href="https://stackoverflow.com/company/press" dideo-checked="true">Press</a></li>
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 9 })" href="https://stackoverflow.com/company/work-here" dideo-checked="true">Work Here</a></li>
+                        <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 7 })" href="https://stackoverflow.com/legal" dideo-checked="true">Legal</a></li>
+                        <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 8 })" href="https://stackoverflow.com/legal/privacy-policy" dideo-checked="true">Privacy Policy</a></li>
+                            <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 13 })" href="https://stackoverflow.com/company/contact" dideo-checked="true">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer--col site-footer--categories-nav site-footer--col__visible">
+                    <a href="#" class="site-footer--back js-footer-back" dideo-checked="true"><svg aria-hidden="true" class="svg-icon iconArrowLeftAlt" width="18" height="18" viewBox="0 0 18 18"><path d="M10.58 16L12 14.59 6.4 9 12 3.41 10.57 2l-7 7z"></path></svg></a>
+                    <div>
+                        <h5 class="-title"><a href="https://stackexchange.com/" dideo-checked="true">Stack Exchange<br> Network</a></h5>
+                        <ul class="-list">
+                            <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Technology" dideo-checked="true">Technology</a></li>
+                            <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Life / Arts" dideo-checked="true">Life / Arts</a></li>
+                            <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Culture / Recreation" dideo-checked="true">Culture / Recreation</a></li>
+                            <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Science" dideo-checked="true">Science</a></li>
+                            <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger js-gps-track" data-gps-track="footer.click({ location: 2, link: 24 })" data-target="Other" dideo-checked="true">Other</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="site-footer--categories">
+                    <div class="site-footer--col site-footer--category js-footer-col" data-name="Technology">
+        <ul class="-list">
+                <li class="-item"><a href="https://stackoverflow.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional and enthusiast programmers" dideo-checked="true">Stack Overflow</a></li>
+                <li class="-item"><a href="https://serverfault.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="system and network administrators" dideo-checked="true">Server Fault</a></li>
+                <li class="-item"><a href="https://superuser.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="computer enthusiasts and power users" dideo-checked="true">Super User</a></li>
+                <li class="-item"><a href="https://webapps.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="power users of web applications" dideo-checked="true">Web Applications</a></li>
+                <li class="-item"><a href="https://askubuntu.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Ubuntu users and developers" dideo-checked="true">Ask Ubuntu</a></li>
+                <li class="-item"><a href="https://webmasters.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="pro webmasters" dideo-checked="true">Webmasters</a></li>
+                <li class="-item"><a href="https://gamedev.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional and independent game developers" dideo-checked="true">Game Development</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://tex.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems" dideo-checked="true">TeX - LaTeX</a></li>
+                <li class="-item"><a href="https://softwareengineering.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professionals, academics, and students working within the systems development life cycle" dideo-checked="true">Software Engineering</a></li>
+                <li class="-item"><a href="https://unix.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of Linux, FreeBSD and other Un*x-like operating systems" dideo-checked="true">Unix &amp; Linux</a></li>
+                <li class="-item"><a href="https://apple.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="power users of Apple hardware and software" dideo-checked="true">Ask Different (Apple)</a></li>
+                <li class="-item"><a href="https://wordpress.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="WordPress developers and administrators" dideo-checked="true">WordPress Development</a></li>
+                <li class="-item"><a href="https://gis.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="cartographers, geographers and GIS professionals" dideo-checked="true">Geographic Information Systems</a></li>
+                <li class="-item"><a href="https://electronics.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="electronics and electrical engineering professionals, students, and enthusiasts" dideo-checked="true">Electrical Engineering</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://android.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="enthusiasts and power users of the Android operating system" dideo-checked="true">Android Enthusiasts</a></li>
+                <li class="-item"><a href="https://security.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="information security professionals" dideo-checked="true">Information Security</a></li>
+                <li class="-item"><a href="https://dba.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="database professionals who wish to improve their database skills and learn from others in the community" dideo-checked="true">Database Administrators</a></li>
+                <li class="-item"><a href="https://drupal.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Drupal developers and administrators" dideo-checked="true">Drupal Answers</a></li>
+                <li class="-item"><a href="https://sharepoint.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="SharePoint enthusiasts" dideo-checked="true">SharePoint</a></li>
+                <li class="-item"><a href="https://ux.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="user experience researchers and experts" dideo-checked="true">User Experience</a></li>
+                <li class="-item"><a href="https://mathematica.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of Wolfram Mathematica" dideo-checked="true">Mathematica</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://salesforce.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Salesforce administrators, implementation experts, developers and anybody in-between" dideo-checked="true">Salesforce</a></li>
+                <li class="-item"><a href="https://expressionengine.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="administrators, end users, developers and designers for ExpressionEngine® CMS" dideo-checked="true">ExpressionEngine® Answers</a></li>
+                <li class="-item"><a href="https://pt.stackoverflow.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="programadores profissionais e entusiastas" dideo-checked="true">Stack Overflow em Português</a></li>
+                <li class="-item"><a href="https://blender.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people who use Blender to create 3D graphics, animations, or games" dideo-checked="true">Blender</a></li>
+                <li class="-item"><a href="https://networkengineering.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="network engineers" dideo-checked="true">Network Engineering</a></li>
+                <li class="-item"><a href="https://crypto.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="software developers, mathematicians and others interested in cryptography" dideo-checked="true">Cryptography</a></li>
+                <li class="-item"><a href="https://codereview.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="peer programmer code reviews" dideo-checked="true">Code Review</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://magento.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of the Magento e-Commerce platform" dideo-checked="true">Magento</a></li>
+                <li class="-item"><a href="https://softwarerecs.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people seeking specific software recommendations" dideo-checked="true">Software Recommendations</a></li>
+                <li class="-item"><a href="https://dsp.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="practitioners of the art and science of signal, image and video processing" dideo-checked="true">Signal Processing</a></li>
+                <li class="-item"><a href="https://emacs.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="those using, extending or developing Emacs" dideo-checked="true">Emacs</a></li>
+                <li class="-item"><a href="https://raspberrypi.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users and developers of hardware and software for Raspberry Pi" dideo-checked="true">Raspberry Pi</a></li>
+                <li class="-item"><a href="https://ru.stackoverflow.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="программистов" dideo-checked="true">Stack Overflow на русском</a></li>
+                <li class="-item"><a href="https://codegolf.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="programming puzzle enthusiasts and code golfers" dideo-checked="true">Programming Puzzles &amp; Code Golf</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
+                <li class="-item"><a href="https://es.stackoverflow.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="programadores y profesionales de la informática" dideo-checked="true">Stack Overflow en español</a></li>
+                <li class="-item"><a href="https://ethereum.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="users of Ethereum, the decentralized application platform and smart contract enabled blockchain" dideo-checked="true">Ethereum</a></li>
+                <li class="-item"><a href="https://datascience.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Data science professionals, Machine Learning specialists, and those interested in learning more about the field" dideo-checked="true">Data Science</a></li>
+                <li class="-item"><a href="https://arduino.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="developers of open-source hardware and software that is compatible with Arduino" dideo-checked="true">Arduino</a></li>
+                <li class="-item"><a href="https://bitcoin.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Bitcoin crypto-currency enthusiasts" dideo-checked="true">Bitcoin</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#technology" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })" dideo-checked="true">
+                        <strong>
+                            more (30)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="site-footer--col site-footer--category js-footer-col" data-name="Life / Arts">
+        <ul class="-list">
+                <li class="-item"><a href="https://photo.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional, enthusiast and amateur photographers" dideo-checked="true">Photography</a></li>
+                <li class="-item"><a href="https://scifi.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="science fiction and fantasy enthusiasts" dideo-checked="true">Science Fiction &amp; Fantasy</a></li>
+                <li class="-item"><a href="https://graphicdesign.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="Graphic Design professionals, students, and enthusiasts" dideo-checked="true">Graphic Design</a></li>
+                <li class="-item"><a href="https://movies.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="movie and tv enthusiasts" dideo-checked="true">Movies &amp; TV</a></li>
+                <li class="-item"><a href="https://music.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="musicians, students, and enthusiasts" dideo-checked="true">Music: Practice &amp; Theory</a></li>
+                <li class="-item"><a href="https://worldbuilding.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="writers/artists using science, geography and culture to construct imaginary worlds and settings" dideo-checked="true">Worldbuilding</a></li>
+                <li class="-item"><a href="https://cooking.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional and amateur chefs" dideo-checked="true">Seasoned Advice (cooking)</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Life / Arts"><ul class="-list">
+                <li class="-item"><a href="https://diy.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="contractors and serious DIYers" dideo-checked="true">Home Improvement</a></li>
+                <li class="-item"><a href="https://money.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people who want to be financially literate" dideo-checked="true">Personal Finance &amp; Money</a></li>
+                <li class="-item"><a href="https://academia.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="academics and those enrolled in higher education" dideo-checked="true">Academia</a></li>
+                <li class="-item"><a href="https://law.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="legal professionals, students, and others with experience or interest in law" dideo-checked="true">Law</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#lifearts" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })" dideo-checked="true">
+                        <strong>
+                            more (15)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="site-footer--col site-footer--category js-footer-col" data-name="Culture / Recreation">
+        <ul class="-list">
+                <li class="-item"><a href="https://english.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="linguists, etymologists, and serious English language enthusiasts" dideo-checked="true">English Language &amp; Usage</a></li>
+                <li class="-item"><a href="https://skeptics.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="scientific skepticism" dideo-checked="true">Skeptics</a></li>
+                <li class="-item"><a href="https://judaism.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="those who base their lives on Jewish law and tradition and anyone interested in learning more" dideo-checked="true">Mi Yodeya (Judaism)</a></li>
+                <li class="-item"><a href="https://travel.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="road warriors and seasoned travelers" dideo-checked="true">Travel</a></li>
+                <li class="-item"><a href="https://christianity.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="committed Christians, experts in Christianity and those interested in learning more" dideo-checked="true">Christianity</a></li>
+                <li class="-item"><a href="https://ell.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="speakers of other languages learning English" dideo-checked="true">English Language Learners</a></li>
+                <li class="-item"><a href="https://japanese.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language" dideo-checked="true">Japanese Language</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Culture / Recreation"><ul class="-list">
+                <li class="-item"><a href="https://gaming.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="passionate videogamers on all platforms" dideo-checked="true">Arqade (gaming)</a></li>
+                <li class="-item"><a href="https://bicycles.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people who build and repair bicycles, people who train cycling, or commute on bicycles" dideo-checked="true">Bicycles</a></li>
+                <li class="-item"><a href="https://rpg.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="gamemasters and players of tabletop, paper-and-pencil role-playing games" dideo-checked="true">Role-playing Games</a></li>
+                <li class="-item"><a href="https://anime.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="anime and manga fans" dideo-checked="true">Anime &amp; Manga</a></li>
+                <li class="-item"><a href="https://puzzling.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="those who create, solve, and study puzzles" dideo-checked="true">Puzzling</a></li>
+                <li class="-item"><a href="https://mechanics.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles" dideo-checked="true">Motor Vehicle Maintenance &amp; Repair</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#culturerecreation" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })" dideo-checked="true">
+                        <strong>
+                            more (33)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="site-footer--col site-footer--category js-footer-col" data-name="Science">
+        <ul class="-list">
+                <li class="-item"><a href="https://mathoverflow.net/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="professional mathematicians" dideo-checked="true">MathOverflow</a></li>
+                <li class="-item"><a href="https://math.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people studying math at any level and professionals in related fields" dideo-checked="true">Mathematics</a></li>
+                <li class="-item"><a href="https://stats.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization" dideo-checked="true">Cross Validated (stats)</a></li>
+                <li class="-item"><a href="https://cstheory.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="theoretical computer scientists and researchers in related fields" dideo-checked="true">Theoretical Computer Science</a></li>
+                <li class="-item"><a href="https://physics.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="active researchers, academics and students of physics" dideo-checked="true">Physics</a></li>
+                <li class="-item"><a href="https://chemistry.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="scientists, academics, teachers, and students in the field of chemistry" dideo-checked="true">Chemistry</a></li>
+                <li class="-item"><a href="https://biology.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="biology researchers, academics, and students" dideo-checked="true">Biology</a></li>
+                    </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Science"><ul class="-list">
+                <li class="-item"><a href="https://cs.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="students, researchers and practitioners of computer science" dideo-checked="true">Computer Science</a></li>
+                <li class="-item"><a href="https://philosophy.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="those interested in the study of the fundamental nature of knowledge, reality, and existence" dideo-checked="true">Philosophy</a></li>
+                            <li class="-item">
+                    <a href="https://stackexchange.com/sites#science" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })" dideo-checked="true">
+                        <strong>
+                            more (10)
+                        </strong>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="site-footer--col site-footer--category js-footer-col" data-name="Other">
+        <ul class="-list">
+                <li class="-item"><a href="https://meta.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="meta-discussion of the Stack Exchange family of Q&amp;A websites" dideo-checked="true">Meta Stack Exchange</a></li>
+                <li class="-item"><a href="https://stackapps.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="apps, scripts, and development with the Stack Exchange API" dideo-checked="true">Stack Apps</a></li>
+                <li class="-item"><a href="https://api.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="programmatic interaction with Stack Exchange sites" dideo-checked="true">API</a></li>
+                <li class="-item"><a href="https://data.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="querying Stack Exchange data using SQL" dideo-checked="true">Data</a></li>
+                <li class="-item"><a href="https://area51.stackexchange.com/" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })" title="proposing new sites in the Stack Exchange network" dideo-checked="true">Area 51</a></li>
+                    </ul>
+    </div>
+                </div>
+            </nav>
+            <div class="site-footer--copyright fs-fine">
+                <ul class="-list">
+                    <li class="-item"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link:4 })" href="https://stackoverflow.blog/?blb=1" dideo-checked="true">Blog</a></li>
+                    <li class="-item"><a href="https://www.facebook.com/officialstackoverflow/" class="-link" dideo-checked="true">Facebook</a></li>
+                    <li class="-item"><a href="https://twitter.com/stackoverflow" class="-link" dideo-checked="true">Twitter</a></li>
+                    <li class="-item"><a href="https://linkedin.com/company/stack-overflow" class="-link" dideo-checked="true">LinkedIn</a></li>
+                </ul>
+
+                <p class="mt-auto mb24">
+site design / logo © 2019 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license" dideo-checked="true">cc by-sa 3.0</a>
+                            with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/" rel="license" dideo-checked="true">attribution required</a>.
+                    <span id="svnrev">rev&nbsp;2019.1.2.32509</span>
+                </p>
+            </div>
+        </div>
+
+            </footer>
+            <script>StackExchange.ready(function () { StackExchange.responsiveness.addSwitcher(); })</script>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled
+            <img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno">
+        </div>
+    </noscript>
+
+<script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            StackExchange.ready(function () {
+
+                StackExchange.ga.init({
+                    sendTitles: true,
+                    tracker: window.ga,
+                    trackingCodes: [
+                        'UA-108242619-1'
+                    ]
+                });
+
+
+
+                    StackExchange.ga.setDimension('dimension2', '|asp.net|iis|');
+
+                    StackExchange.ga.setDimension('dimension3', 'Questions/Show');
+
+
+                StackExchange.ga.trackPageView();
+            });
+            
+/**/
+            
+            var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+            (function() {
+                var ssl = 'https:' == document.location.protocol,
+                    s = document.getElementsByTagName('script')[0],
+                    qc = document.createElement('script');
+                 qc.async = true;
+                    qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                    s.parentNode.insertBefore(qc, s);
+                    _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+/**/
+                 var sc = document.createElement('script');
+                    sc.async = true;
+                    sc.src = (ssl ? 'https://sb' : 'http://b') + '.scorecardresearch.com/beacon.js';
+                    s.parentNode.insertBefore(sc, s);
+                    _comscore.push({ c1: "2", c2: "17440561" });
+            })();
+            
+
+</script>
+            
+    
+    
+<script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/markup.js"></script><script src="How%20to%20add%20ASP.NET%204.0%20as%20Application%20Pool%20on%20IIS%207,%20Windows%207%20-%20Stack%20Overflow_files/gpt.js"></script><div class="adsbox" id="clc-abd" style="position: absolute; pointer-events: none;">&nbsp;</div><iframe id="google_osd_static_frame_3905007867471" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe></body></html>
