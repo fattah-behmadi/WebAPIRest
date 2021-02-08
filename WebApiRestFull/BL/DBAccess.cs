@@ -9,7 +9,7 @@ using Model;
 
 namespace BL
 {
-  public static  class DBAccess
+    public static class DBAccess
     {
 
         public static SanResturantEntities DBRestaurant { get; set; }

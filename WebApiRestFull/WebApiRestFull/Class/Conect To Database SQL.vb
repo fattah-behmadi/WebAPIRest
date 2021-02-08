@@ -12,6 +12,7 @@ Imports System.Text.RegularExpressions
 Imports System.Globalization
 Imports System.Threading
 Imports System.Web.Configuration
+Imports BL
 
 Public Class ConectToDatabaseSQL
 
@@ -40,7 +41,8 @@ Public Class ConectToDatabaseSQL
             End Using
         End Using
         constr = String.Format($"Data Source={serverName.Trim(";")};Initial Catalog=Gishniz;User ID=gish;Password=gishniz$2020@!;MultipleActiveResultSets=true;")
-        BL.DBAccess.SetConnection(constr)
+        DBAccess._ConnectionDatabase = constr
+        DBAccess.SetConnection(constr)
     End Sub
     Private Sub ConToDB()
 
