@@ -14,6 +14,14 @@ Imports System.Threading
 Imports System.Web.Configuration
 
 Public Class ConectToDatabaseSQL
+
+    Public Sub New()
+        ReadConnection()
+        sqlCon.ConnectionString = constr
+    End Sub
+
+
+
     Public Enum CommandType
         Insert = 1
         Update = 2
@@ -21,21 +29,18 @@ Public Class ConectToDatabaseSQL
     End Enum
 
     Private haveConErr As Boolean
-    Private sqlCon As New SqlConnection(constr)
+    Private sqlCon As New SqlConnection()
     Private sqlCmd As New SqlCommand
 
     Public Sub ReadConnection()
-
+        Dim serverName As String = ".\sqlexpress"
         Using fs As New FileStream(System.Web.HttpContext.Current.Server.MapPath("~/ConnectionSQL.dat"), FileMode.Open, FileAccess.Read)
             Using r As New StreamReader(fs)
-                constr = r.ReadToEnd
+                serverName = r.ReadToEnd
             End Using
         End Using
-
-        'WebConfigurationManager.ConnectionStrings("SanResturantConnectionString").ConnectionString = "Data Source=2020;Initial Catalog=db;User ID=sa;Password=heyzha@2228932;"
-        'Dim str = WebConfigurationManager.ConnectionStrings("SanResturantConnectionString").ConnectionString
-
-
+        constr = String.Format($"Data Source={serverName.Trim(";")};Initial Catalog=Gishniz;User ID=gish;Password=gishniz$2020@!;MultipleActiveResultSets=true;")
+        BL.DBAccess.SetConnection(constr)
     End Sub
     Private Sub ConToDB()
 
@@ -273,14 +278,14 @@ Public Class ConectToDatabaseSQL
             SqlQ.Append("SELECT " & cmd & " FROM ")
             SqlQ.Append(Table.ToString & " ")
             If Not String.IsNullOrEmpty(exp) Then SqlQ.Append("WHERE " & exp.ToString)
-            sqlcmd.Connection = sqlcon
+            sqlCmd.Connection = sqlCon
             'Call ConToDB()
-            If sqlcon.State <> ConnectionState.Open Then sqlcon.Open()
+            If sqlCon.State <> ConnectionState.Open Then sqlCon.Open()
 
 
             sqlCmd.CommandType = System.Data.CommandType.Text
             sqlCmd.CommandText = SqlQ.ToString
-            sqldr = sqlcmd.ExecuteReader
+            sqldr = sqlCmd.ExecuteReader
             If sqldr.HasRows Then
                 sqldr.Read()
                 value = sqldr.Item(0).ToString()
@@ -289,7 +294,7 @@ Public Class ConectToDatabaseSQL
                 Return value
             Else
                 Return 0
-                End If
+            End If
 
 
 

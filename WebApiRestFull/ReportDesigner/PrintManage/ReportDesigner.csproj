@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EEDB439B-5590-4F02-A0F7-7E0E8042A944}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReportDesigner</RootNamespace>
+    <AssemblyName>ReportDesigner</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v16.1.UI, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1.UI, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v16.1.Wizard, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v16.1.Extensions, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="JntNum2Text">
+      <HintPath>..\..\..\AppShopStore\AppStore\AppStore\bin\JntNum2Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmReportDesignet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportDesignet.Designer.cs">
+      <DependentUpon>frmReportDesignet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="PrintRibbonControllerResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintRibbonControllerResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\DesinerReports.cs" />
+    <Compile Include="XRDesignRibbonControllerResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XRDesignRibbonControllerResources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmReportDesignet.resx">
+      <DependentUpon>frmReportDesignet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Release\PrintManage.frmMain.resources" />
+    <EmbeddedResource Include="obj\Release\PrintManage.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Release\PrintManage.xrSaleInvoice.resources" />
+    <EmbeddedResource Include="PrintRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrintRibbonControllerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="XRDesignRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>XRDesignRibbonControllerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="bin\Debug\PrintManage.exe.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\PrintManage.vshost.exe.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\PrintManage.vshost.exe.manifest" />
+    <None Include="bin\Release\PrintManage.exe.config" />
+    <None Include="bin\Release\PrintManage.vshost.exe.Config" />
+    <None Include="bin\Release\PrintManage.vshost.exe.manifest" />
+    <None Include="obj\Release\build.force" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\PrintManage.csproj.GenerateResource.Cache" />
+    <None Include="obj\Release\PrintManage.csprojResolveAssemblyReference.cache" />
+    <None Include="PrintManage.csproj.bak" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\DevExpress.Charts.v16.1.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Charts.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.CodeParser.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.Data.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.Data.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.Data.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.DataAccess.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.DataAccess.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.DataAccess.v16.2.UI.dll" />
+    <Content Include="bin\Debug\DevExpress.DataAccess.v16.2.UI.xml" />
+    <Content Include="bin\Debug\DevExpress.DataAccess.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.Diagram.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Diagram.v16.2.Core.xml" />
+    <Content Include="bin\Debug\DevExpress.Mvvm.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.Mvvm.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.Office.v16.1.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Office.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Office.v16.2.Core.xml" />
+    <Content Include="bin\Debug\DevExpress.Pdf.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Pdf.v16.2.Core.xml" />
+    <Content Include="bin\Debug\DevExpress.PivotGrid.v16.1.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.PivotGrid.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.PivotGrid.v16.2.Core.xml" />
+    <Content Include="bin\Debug\DevExpress.Printing.v16.1.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Printing.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Printing.v16.2.Core.xml" />
+    <Content Include="bin\Debug\DevExpress.RichEdit.v16.1.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.RichEdit.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.RichEdit.v16.2.Core.xml" />
+    <Content Include="bin\Debug\DevExpress.Sparkline.v16.1.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Sparkline.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.Sparkline.v16.2.Core.xml" />
+    <Content Include="bin\Debug\DevExpress.Utils.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.Utils.v16.1.UI.dll" />
+    <Content Include="bin\Debug\DevExpress.Utils.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.Utils.v16.2.UI.dll" />
+    <Content Include="bin\Debug\DevExpress.Utils.v16.2.UI.xml" />
+    <Content Include="bin\Debug\DevExpress.Utils.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.Xpf.Core.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.Xpf.Core.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.Xpo.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.Xpo.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.Xpo.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraBars.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraBars.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraCharts.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraCharts.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraCharts.v16.2.Extensions.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraCharts.v16.2.Wizard.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraCharts.v16.2.Wizard.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraCharts.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraDiagram.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraEditors.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraEditors.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraEditors.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraGauges.v16.1.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraGauges.v16.2.Core.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraGauges.v16.2.Core.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraGrid.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraGrid.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraGrid.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraLayout.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraLayout.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraNavBar.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraPivotGrid.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraPivotGrid.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraPrinting.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraPrinting.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraPrinting.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraReports.v16.1.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraReports.v16.1.Extensions.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraReports.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraReports.v16.2.Extensions.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraReports.v16.2.Extensions.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraReports.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraRichEdit.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraRichEdit.v16.2.xml" />
+    <Content Include="bin\Debug\DevExpress.XtraTreeList.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraVerticalGrid.v16.2.dll" />
+    <Content Include="bin\Debug\DevExpress.XtraWizard.v16.2.dll" />
+    <Content Include="bin\Debug\Domain.dll" />
+    <Content Include="bin\Debug\Domain.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\Error.txt" />
+    <Content Include="bin\Debug\JntNum2Text.dll" />
+    <Content Include="bin\Debug\Microsoft.CSharp.dll" />
+    <Content Include="bin\Debug\PrintManage.exe" />
+    <Content Include="bin\Debug\PrintManage.pdb" />
+    <Content Include="bin\Debug\PrintManage.vshost.exe" />
+    <Content Include="bin\Debug\Services.dll" />
+    <Content Include="bin\Debug\Services.pdb" />
+    <Content Include="bin\Debug\System.Configuration.dll" />
+    <Content Include="bin\Debug\System.Data.DataSetExtensions.dll" />
+    <Content Include="bin\Debug\System.Data.dll" />
+    <Content Include="bin\Debug\System.Deployment.dll" />
+    <Content Include="bin\Debug\System.dll" />
+    <Content Include="bin\Debug\System.Drawing.dll" />
+    <Content Include="bin\Debug\System.Net.Http.dll" />
+    <Content Include="bin\Debug\System.Windows.Forms.dll" />
+    <Content Include="bin\Debug\System.Xml.dll" />
+    <Content Include="bin\Debug\System.Xml.Linq.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\DevExpress.Charts.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.CodeParser.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.Data.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.DataAccess.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.DataAccess.v16.1.UI.dll" />
+    <Content Include="bin\Release\DevExpress.Diagram.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.Office.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.Pdf.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.Pdf.v16.1.Drawing.dll" />
+    <Content Include="bin\Release\DevExpress.PivotGrid.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.Printing.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.RichEdit.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.Sparkline.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.Utils.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.Utils.v16.1.UI.dll" />
+    <Content Include="bin\Release\DevExpress.Xpo.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraBars.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraCharts.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraCharts.v16.1.Extensions.dll" />
+    <Content Include="bin\Release\DevExpress.XtraCharts.v16.1.Wizard.dll" />
+    <Content Include="bin\Release\DevExpress.XtraDiagram.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraEditors.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraGauges.v16.1.Core.dll" />
+    <Content Include="bin\Release\DevExpress.XtraGrid.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraLayout.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraNavBar.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraPivotGrid.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraPrinting.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraReports.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraReports.v16.1.Extensions.dll" />
+    <Content Include="bin\Release\DevExpress.XtraRichEdit.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraTreeList.v16.1.dll" />
+    <Content Include="bin\Release\DevExpress.XtraVerticalGrid.v16.1.dll" />
+    <Content Include="bin\Release\Domain.dll" />
+    <Content Include="bin\Release\Domain.pdb" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\JntNum2Text.dll" />
+    <Content Include="bin\Release\Microsoft.CSharp.dll" />
+    <Content Include="bin\Release\PrintManage.exe" />
+    <Content Include="bin\Release\PrintManage.pdb" />
+    <Content Include="bin\Release\PrintManage.vshost.exe" />
+    <Content Include="bin\Release\Services.dll" />
+    <Content Include="bin\Release\Services.pdb" />
+    <Content Include="bin\Release\System.Configuration.dll" />
+    <Content Include="bin\Release\System.Data.DataSetExtensions.dll" />
+    <Content Include="bin\Release\System.Data.dll" />
+    <Content Include="bin\Release\System.Deployment.dll" />
+    <Content Include="bin\Release\System.dll" />
+    <Content Include="bin\Release\System.Drawing.dll" />
+    <Content Include="bin\Release\System.Net.Http.dll" />
+    <Content Include="bin\Release\System.Windows.Forms.dll" />
+    <Content Include="bin\Release\System.Xml.dll" />
+    <Content Include="bin\Release\System.Xml.Linq.dll" />
+    <Content Include="obj\Release\PrintManage.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\PrintManage.exe" />
+    <Content Include="obj\Release\printmanage.exe.licenses" />
+    <Content Include="obj\Release\PrintManage.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Release\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,6 +1,4 @@
-﻿Imports WebApiRestFull.SanDataBaseDataSet1TableAdapters
-
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Public Class RptGarson
     Inherits DevExpress.XtraReports.UI.XtraReport
 
@@ -56,17 +54,12 @@ Partial Public Class RptGarson
         Me.XrTableRow7 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.XrTableCell1 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell21 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.PersianDate = New DevExpress.XtraReports.Parameters.Parameter()
         Me.XrTableCell23 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.SanDataBaseDataSet1 = New WebApiRestFull.SanDataBaseDataSet1()
-        Me.TextEditFactor = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.Horof = New DevExpress.XtraReports.Parameters.Parameter()
         Me.Title = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.FieldCaption = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.PageInfo = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.DataField = New DevExpress.XtraReports.UI.XRControlStyle()
-        Me.Vw_PrintFrooshTableAdapter1 = New WebApiRestFull.SanDataBaseDataSet1TableAdapters.Vw_PrintFrooshTableAdapter()
         Me.XrControlStyle1 = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.GroupFooter1 = New DevExpress.XtraReports.UI.GroupFooterBand()
         Me.XrTable3 = New DevExpress.XtraReports.UI.XRTable()
@@ -74,13 +67,10 @@ Partial Public Class RptGarson
         Me.XrTableCell7 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell8 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.AAATblParent_FrooshKalaTableAdapter = New WebApiRestFull.SanDataBaseDataSet1TableAdapters.TblParent_FrooshKalaTableAdapter()
-        Me.TblCompany_InfoTableAdapter1 = New WebApiRestFull.SanDataBaseDataSet1TableAdapters.tblCompany_InfoTableAdapter()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SanDataBaseDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
@@ -105,7 +95,7 @@ Partial Public Class RptGarson
         Me.XrTable2.Dpi = 100.0!
         Me.XrTable2.EvenStyleName = "XrControlStyle1"
         Me.XrTable2.Font = New System.Drawing.Font("B Nazanin", 8.25!)
-        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 0.0!)
+        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrTable2.Name = "XrTable2"
         Me.XrTable2.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow2})
         Me.XrTable2.SizeF = New System.Drawing.SizeF(264.7332!, 24.73075!)
@@ -173,7 +163,7 @@ Partial Public Class RptGarson
         'TopMargin
         '
         Me.TopMargin.Dpi = 100.0!
-        Me.TopMargin.HeightF = 0.0!
+        Me.TopMargin.HeightF = 0!
         Me.TopMargin.Name = "TopMargin"
         Me.TopMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
         Me.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
@@ -198,7 +188,7 @@ Partial Public Class RptGarson
         Me.XrPanel1.BackColor = System.Drawing.Color.Silver
         Me.XrPanel1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel6, Me.XrLabel46, Me.XrPictureBox2, Me.XrLabel1})
         Me.XrPanel1.Dpi = 100.0!
-        Me.XrPanel1.LocationFloat = New DevExpress.Utils.PointFloat(0.06561543!, 0.0!)
+        Me.XrPanel1.LocationFloat = New DevExpress.Utils.PointFloat(0.06561543!, 0!)
         Me.XrPanel1.Name = "XrPanel1"
         Me.XrPanel1.SizeF = New System.Drawing.SizeF(264.895!, 47.56941!)
         Me.XrPanel1.StylePriority.UseBackColor = False
@@ -323,7 +313,7 @@ Partial Public Class RptGarson
         Me.XrTable1.Dpi = 100.0!
         Me.XrTable1.Font = New System.Drawing.Font("B Titr", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrTable1.ForeColor = System.Drawing.Color.Black
-        Me.XrTable1.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 112.3801!)
+        Me.XrTable1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 112.3801!)
         Me.XrTable1.Name = "XrTable1"
         Me.XrTable1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow1})
         Me.XrTable1.SizeF = New System.Drawing.SizeF(264.7332!, 20.75733!)
@@ -456,18 +446,11 @@ Partial Public Class RptGarson
         '
         'XrTableCell21
         '
-        Me.XrTableCell21.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding(Me.PersianDate, "Text", "{0}")})
         Me.XrTableCell21.Dpi = 100.0!
         Me.XrTableCell21.Font = New System.Drawing.Font("B Nazanin", 8.25!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell21.Name = "XrTableCell21"
         Me.XrTableCell21.StylePriority.UseFont = False
         Me.XrTableCell21.Weight = 0.6742803452630165R
-        '
-        'PersianDate
-        '
-        Me.PersianDate.Description = "تاریخ"
-        Me.PersianDate.Name = "PersianDate"
-        Me.PersianDate.Visible = False
         '
         'XrTableCell23
         '
@@ -495,22 +478,6 @@ Partial Public Class RptGarson
         Me.XrLabel3.StylePriority.UseTextAlignment = False
         Me.XrLabel3.Text = "XrLabel3"
         Me.XrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        '
-        'SanDataBaseDataSet1
-        '
-        Me.SanDataBaseDataSet1.DataSetName = "SanDataBaseDataSet"
-        Me.SanDataBaseDataSet1.EnforceConstraints = False
-        Me.SanDataBaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TextEditFactor
-        '
-        Me.TextEditFactor.Description = "Text Edit Factor"
-        Me.TextEditFactor.Name = "TextEditFactor"
-        '
-        'Horof
-        '
-        Me.Horof.Description = "مبلغ به حروف"
-        Me.Horof.Name = "Horof"
         '
         'Title
         '
@@ -553,11 +520,8 @@ Partial Public Class RptGarson
         Me.DataField.Name = "DataField"
         Me.DataField.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         '
-        'Vw_PrintFrooshTableAdapter1
+        'TblCompany_InfoTableAdapter1
         '
-        Me.Vw_PrintFrooshTableAdapter1.ClearBeforeFill = True
-        '
-        'XrControlStyle1
         '
         Me.XrControlStyle1.BackColor = System.Drawing.Color.Silver
         Me.XrControlStyle1.Name = "XrControlStyle1"
@@ -574,7 +538,7 @@ Partial Public Class RptGarson
         'XrTable3
         '
         Me.XrTable3.Dpi = 100.0!
-        Me.XrTable3.LocationFloat = New DevExpress.Utils.PointFloat(0.1287413!, 0.0!)
+        Me.XrTable3.LocationFloat = New DevExpress.Utils.PointFloat(0.1287413!, 0!)
         Me.XrTable3.Name = "XrTable3"
         Me.XrTable3.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow3})
         Me.XrTable3.SizeF = New System.Drawing.SizeF(264.5743!, 28.25754!)
@@ -620,34 +584,24 @@ Partial Public Class RptGarson
         Me.XrLabel5.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Vw_PrintFroosh.ForooshKalaParent_Tozih")})
         Me.XrLabel5.Dpi = 100.0!
         Me.XrLabel5.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 40.09466!)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(0!, 40.09466!)
         Me.XrLabel5.Name = "XrLabel5"
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel5.SizeF = New System.Drawing.SizeF(264.7332!, 43.83334!)
         Me.XrLabel5.StylePriority.UseBorders = False
         Me.XrLabel5.StylePriority.UseFont = False
         Me.XrLabel5.StylePriority.UseTextAlignment = False
+        Me.XrLabel5.Text = "XrLabel5"
         Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
-        'AAATblParent_FrooshKalaTableAdapter
-        '
-        Me.AAATblParent_FrooshKalaTableAdapter.ClearBeforeFill = True
-        '
-        'TblCompany_InfoTableAdapter1
-        '
-        Me.TblCompany_InfoTableAdapter1.ClearBeforeFill = True
         '
         'RptGarson
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.ReportHeaderBand1, Me.GroupFooter1})
-        Me.DataAdapter = Me.Vw_PrintFrooshTableAdapter1
-        Me.DataMember = "Vw_PrintFroosh"
-        Me.DataSource = Me.SanDataBaseDataSet1
         Me.Margins = New System.Drawing.Printing.Margins(18, 0, 0, 3)
         Me.PageHeight = 1969
         Me.PageWidth = 283
         Me.PaperKind = System.Drawing.Printing.PaperKind.Custom
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.Horof, Me.PersianDate, Me.TextEditFactor})
         Me.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.Yes
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.ShowPrintMarginsWarning = False
@@ -659,7 +613,6 @@ Partial Public Class RptGarson
         CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SanDataBaseDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
@@ -672,9 +625,6 @@ Partial Public Class RptGarson
     Friend WithEvents FieldCaption As DevExpress.XtraReports.UI.XRControlStyle
     Friend WithEvents PageInfo As DevExpress.XtraReports.UI.XRControlStyle
     Friend WithEvents DataField As DevExpress.XtraReports.UI.XRControlStyle
-    Friend WithEvents SanDataBaseDataSet1 As SanDataBaseDataSet1
-    'Friend WithEvents TblCompany_InfoTableAdapter1 As SanDataBaseDataSet1.tblcontblCompany_InfoTableAdapter
-    Friend WithEvents Vw_PrintFrooshTableAdapter1 As SanDataBaseDataSet1TableAdapters.Vw_PrintFrooshTableAdapter
     Friend WithEvents XrTable2 As DevExpress.XtraReports.UI.XRTable
     Friend WithEvents XrTableRow2 As DevExpress.XtraReports.UI.XRTableRow
     Friend WithEvents XrTableCell6 As DevExpress.XtraReports.UI.XRTableCell
@@ -706,15 +656,10 @@ Partial Public Class RptGarson
     Friend WithEvents GroupFooter1 As DevExpress.XtraReports.UI.GroupFooterBand
     Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents AAATblParent_FrooshKalaTableAdapter As TblParent_FrooshKalaTableAdapter
     Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
-    Public WithEvents Horof As DevExpress.XtraReports.Parameters.Parameter
-    Public WithEvents PersianDate As DevExpress.XtraReports.Parameters.Parameter
-    Public WithEvents TextEditFactor As DevExpress.XtraReports.Parameters.Parameter
     Friend WithEvents XrLabel6 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrTable3 As DevExpress.XtraReports.UI.XRTable
     Friend WithEvents XrTableRow3 As DevExpress.XtraReports.UI.XRTableRow
     Friend WithEvents XrTableCell7 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell8 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents TblCompany_InfoTableAdapter1 As WebApiRestFull.SanDataBaseDataSet1TableAdapters.tblCompany_InfoTableAdapter
 End Class
