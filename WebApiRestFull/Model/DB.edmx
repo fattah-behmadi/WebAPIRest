@@ -222,6 +222,22 @@
           <Property Name="Kardekskala_Mande" Type="float" />
           <Property Name="Kardekskala_GheymatTamamShode" Type="bigint" />
         </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login_UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login_Password" Type="nvarchar" MaxLength="500" />
+          <Property Name="Login_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login_Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Login_Pic" Type="image" />
+          <Property Name="Login_RoleID" Type="int" />
+          <Property Name="Login_Active" Type="bit" />
+          <Property Name="Login_SetUser" Type="bit" />
+          <Property Name="Login_Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login_IsAdmin" Type="bit" />
+        </EntityType>
         <EntityType Name="tblMobile">
           <Key>
             <PropertyRef Name="Mobile_ID" />
@@ -669,6 +685,18 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblSandogh_tblLogin">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="0..1" />
+          <End Role="tblSandogh" Type="Self.tblSandogh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="tblSandogh">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSandogh_tblTafzili">
           <End Role="tblTafzili" Type="Self.tblTafzili" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -712,6 +740,7 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
           <EntitySet Name="TblGroupKala" EntityType="Self.TblGroupKala" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblKala" EntityType="Self.TblKala" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblKardeksKala" EntityType="Self.TblKardeksKala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMobile" EntityType="Self.tblMobile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblParent_FrooshKala" EntityType="Self.TblParent_FrooshKala" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblParent_KharidKala" EntityType="Self.TblParent_KharidKala" Schema="dbo" store:Type="Tables" />
@@ -831,6 +860,10 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
             <End Role="TblKala" EntitySet="TblKala" />
             <End Role="tblPriceChangeKala" EntitySet="tblPriceChangeKala" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblSandogh_tblLogin" Association="Self.FK_tblSandogh_tblLogin">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblSandogh" EntitySet="tblSandogh" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSandogh_tblTafzili" Association="Self.FK_tblSandogh_tblTafzili">
             <End Role="tblTafzili" EntitySet="tblTafzili" />
             <End Role="tblSandogh" EntitySet="tblSandogh" />
@@ -937,6 +970,11 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
             <End Role="tblSandogh" EntitySet="tblSandoghs" />
           </AssociationSet>
           <EntitySet Name="TblSokhans" EntityType="SanResturantModel.TblSokhan" />
+          <EntitySet Name="tblLogins" EntityType="SanResturantModel.tblLogin" />
+          <AssociationSet Name="FK_tblSandogh_tblLogin" Association="SanResturantModel.FK_tblSandogh_tblLogin">
+            <End Role="tblLogin" EntitySet="tblLogins" />
+            <End Role="tblSandogh" EntitySet="tblSandoghs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblAdress">
           <Key>
@@ -1624,6 +1662,7 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
           <Property Name="MovjodiAvalDovre" Type="Int64" />
           <Property Name="Exp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblTafzili" Relationship="SanResturantModel.FK_tblSandogh_tblTafzili" FromRole="tblSandogh" ToRole="tblTafzili" />
+          <NavigationProperty Name="tblLogin" Relationship="SanResturantModel.FK_tblSandogh_tblLogin" FromRole="tblSandogh" ToRole="tblLogin" />
         </EntityType>
         <EntityType Name="tblTafzili">
           <Key>
@@ -1672,6 +1711,35 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
           <Property Name="IDS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Sokhan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login_UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Login_RoleID" Type="Int32" />
+          <Property Name="Login_Active" Type="Boolean" />
+          <Property Name="Login_SetUser" Type="Boolean" />
+          <Property Name="Login_Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login_IsAdmin" Type="Boolean" />
+          <NavigationProperty Name="tblSandoghs" Relationship="SanResturantModel.FK_tblSandogh_tblLogin" FromRole="tblLogin" ToRole="tblSandogh" />
+        </EntityType>
+        <Association Name="FK_tblSandogh_tblLogin">
+          <End Type="SanResturantModel.tblLogin" Role="tblLogin" Multiplicity="0..1" />
+          <End Type="SanResturantModel.tblSandogh" Role="tblSandogh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="tblSandogh">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2176,6 +2244,23 @@ warning 6035: The relationship 'FK_SaleFoodOnlineDetaile_SaleFoodOnline' has col
               <MappingFragment StoreEntitySet="TblSokhan">
                 <ScalarProperty Name="Sokhan" ColumnName="Sokhan" />
                 <ScalarProperty Name="IDS" ColumnName="IDS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogins">
+            <EntityTypeMapping TypeName="SanResturantModel.tblLogin">
+              <MappingFragment StoreEntitySet="tblLogin">
+                <ScalarProperty Name="Login_IsAdmin" ColumnName="Login_IsAdmin" />
+                <ScalarProperty Name="Login_Mail" ColumnName="Login_Mail" />
+                <ScalarProperty Name="Login_SetUser" ColumnName="Login_SetUser" />
+                <ScalarProperty Name="Login_Active" ColumnName="Login_Active" />
+                <ScalarProperty Name="Login_RoleID" ColumnName="Login_RoleID" />
+                <ScalarProperty Name="Login_Pic" ColumnName="Login_Pic" />
+                <ScalarProperty Name="Login_Mobile" ColumnName="Login_Mobile" />
+                <ScalarProperty Name="Login_Name" ColumnName="Login_Name" />
+                <ScalarProperty Name="Login_Password" ColumnName="Login_Password" />
+                <ScalarProperty Name="Login_UserName" ColumnName="Login_UserName" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Collections;
 using System.Data;
 using AutoMapper;
+using System.Configuration;
 
 namespace UtilitiesMethod
 {
@@ -868,7 +869,7 @@ namespace UtilitiesMethod
         /// </summary>
         public static void ProtectConnectionString()
         {
-            ToggleConnectionStringProtection(System.Windows.Forms.Application.ExecutablePath, true);
+            ToggleConnectionStringProtection(AppDomain.CurrentDomain.BaseDirectory, true);
         }
 
         /// <summary>
@@ -876,7 +877,7 @@ namespace UtilitiesMethod
         /// </summary>
 		public static void UnprotectConnectionString()
         {
-            ToggleConnectionStringProtection(System.Windows.Forms.Application.ExecutablePath, false);
+            ToggleConnectionStringProtection(AppDomain.CurrentDomain.BaseDirectory, false);
         }
 
         /// <summary>
@@ -894,7 +895,15 @@ namespace UtilitiesMethod
 
             try
             {
-                oConfiguration = System.Configuration.ConfigurationManager.OpenExeConfiguration(pathName);
+                if (System.Web.HttpContext.Current != null)
+                {
+                    oConfiguration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                }
+                else
+                {
+                    oConfiguration = ConfigurationManager.OpenExeConfiguration(pathName);
+                }
+
                 if (oConfiguration != null)
                 {
                     bool blnChanged = false;

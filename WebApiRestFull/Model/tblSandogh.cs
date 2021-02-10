@@ -22,5 +22,6 @@ namespace Model
         public string Exp { get; set; }
     
         public virtual tblTafzili tblTafzili { get; set; }
+        public virtual tblLogin tblLogin { get; set; }
     }
 }

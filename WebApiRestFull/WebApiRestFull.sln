@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{E494
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilitiesMethod", "UtilitiesMethod\UtilitiesMethod.csproj", "{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Designer", "Designer\Designer.csproj", "{63E3FC90-7086-4785-B61C-DE65AEBF69B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|x64.ActiveCfg = Release|Any CPU
 		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|x64.Build.0 = Release|Any CPU
+		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Debug|x64.Build.0 = Debug|Any CPU
+		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Release|x64.ActiveCfg = Release|Any CPU
+		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

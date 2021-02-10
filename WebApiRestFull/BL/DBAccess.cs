@@ -17,8 +17,12 @@ namespace BL
 
         static DBAccess()
         {
-            DBRestaurant = SanResturantEntities.Create(_ConnectionDatabase);
-            DBRestaurant.Database.Connection.ConnectionString = _ConnectionDatabase;
+            if (_ConnectionDatabase != null)
+            {
+                DBRestaurant = SanResturantEntities.Create(_ConnectionDatabase);
+                DBRestaurant.Database.Connection.ConnectionString = _ConnectionDatabase;
+
+            }
         }
         public static void SetConnection(string connection = "")
         {

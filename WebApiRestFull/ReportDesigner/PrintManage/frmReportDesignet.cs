@@ -35,7 +35,7 @@ namespace ReportDesigner
             reportDesign = report;
             reportDesigner1.OpenReport(reportDesign);
         }
-
+   
         private void btnOpen_ItemClick(object sender, ItemClickEventArgs e)
         {
             string path = Application.StartupPath + "\\Report";    

@@ -41,7 +41,7 @@ namespace BL
         /// <returns>اگر 1 بود حذف شده است</returns>
         public int DeleteSaleInvoice(long _SaleInvoiceID)
         {
-            var saleinvoice = SaleInvoiceRepo.Find( _SaleInvoiceID);
+            var saleinvoice = SaleInvoiceRepo.Find(_SaleInvoiceID);
             if (DeleteSaleDetaileBy_SaleInvoiceID(_SaleInvoiceID))
             {
 
@@ -89,21 +89,21 @@ namespace BL
 
         //public int InsertSaleDetailes(List<SaleInvoiceDetaile> detailes)
         //{
-            //var _detaile = detailes.CopyCalss<List<TblChild_ForooshKala>>();
-            //return SaleInvoiceDetaileRepo.InsertAll(_detaile);
+        //var _detaile = detailes.CopyCalss<List<TblChild_ForooshKala>>();
+        //return SaleInvoiceDetaileRepo.InsertAll(_detaile);
 
         //}
         //public int UpdateSaleDetailes(List<SaleInvoiceDetaile> detailes)
         //{
-            //var result = this.DeleteSaleDetaileBy_SaleInvoiceID(detailes.FirstOrDefault().ChildForooshKala_ParentID.ToLong());
-            //if (result)
-            //{
-            //    var _detaile = detailes.MapperList<SaleInvoiceDetaile, TblChild_ForooshKala>();
-            //    _detaile.Select(c => c.TblKala = null).ToList();
+        //var result = this.DeleteSaleDetaileBy_SaleInvoiceID(detailes.FirstOrDefault().ChildForooshKala_ParentID.ToLong());
+        //if (result)
+        //{
+        //    var _detaile = detailes.MapperList<SaleInvoiceDetaile, TblChild_ForooshKala>();
+        //    _detaile.Select(c => c.TblKala = null).ToList();
 
-            //    return SaleInvoiceDetaileRepo.InsertAll(_detaile);
-            //}
-            //else return 0;
+        //    return SaleInvoiceDetaileRepo.InsertAll(_detaile);
+        //}
+        //else return 0;
 
         //}
 
@@ -123,7 +123,7 @@ namespace BL
         public List<SaleInvoiceDetaile> GetSaleInvoiceDetaile(long _SaleInvoiceID)
         {
             var result = SaleInvoiceDetaileRepo.FindByInclude(c => c.ChildForooshKala_ParentID == _SaleInvoiceID, x => x.TblKala);
-           List<SaleInvoiceDetaile> list = result.MapperList<TblChild_ForooshKala, SaleInvoiceDetaile>();
+            List<SaleInvoiceDetaile> list = result.MapperList<TblChild_ForooshKala, SaleInvoiceDetaile>();
             return list;
 
         }
@@ -145,14 +145,16 @@ namespace BL
             print.SaleInvoice = this.GetSaleInvoice(_SaleInvoiceID);
             if (print.SaleInvoice != null)
             {
-                print.SaleInvoice.CustomerCode = localizationDBContext.CustomersRepo.GetCustomer_ByTafsil(print.SaleInvoice.Tafsil_ID.ToLong()).Contacts_ID.ToString();
+                var result = localizationDBContext.CustomersRepo.GetCustomer_ByTafsil(print.SaleInvoice.Tafsil_ID.ToLong());
+                if (result != null)
+                    print.SaleInvoice.CustomerCode = result.Contacts_ID.ToString();
             }
             print.SaleInvoiceDetaile = this.GetSaleInvoiceDetaile(_SaleInvoiceID);
             print.Company = localizationDBContext.SettingRepo.GetCompany();
             return print;
 
         }
-       
+
         #endregion
 
     }

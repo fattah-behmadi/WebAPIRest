@@ -1,0 +1,919 @@
+/// <XRTypeInfo>
+///   <AssemblyFullName>SanSystemRestaurant, Version=2.9.52.0, Culture=neutral, PublicKeyToken=null</AssemblyFullName>
+///   <AssemblyLocation>E:\Resturant\SanSystemResturant\bin\x64\Release\SanSystemRestaurant.exe</AssemblyLocation>
+///   <TypeName>SanSystemRestaurant.RptPeyk</TypeName>
+///   <Localization>fa-IR</Localization>
+///   <Version>16.1</Version>
+///   <References>
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\SanSystemRestaurant.exe" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Data.SqlXml\v4.0_4.0.0.0__b77a5c561934e089\System.Data.SqlXml.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Security\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Security.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Numerics\v4.0_4.0.0.0__b77a5c561934e089\System.Numerics.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.VisualBasic\v4.0_10.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualBasic.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Accessibility\v4.0_4.0.0.0__b03f5f7f11d50a3a\Accessibility.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Deployment\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Deployment.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization.Formatters.Soap\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.Serialization.Formatters.Soap.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Management\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Management.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Configuration.Install\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.Install.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Serialization.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel.Internals\v4.0_4.0.0.0__31bf3856ad364e35\System.ServiceModel.Internals.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\SMDiagnostics\v4.0_4.0.0.0__b77a5c561934e089\SMDiagnostics.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.JScript\v4.0_10.0.0.0__b03f5f7f11d50a3a\Microsoft.JScript.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Remoting\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Remoting.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Transactions\v4.0_4.0.0.0__b77a5c561934e089\System.Transactions.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.DirectoryServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.DirectoryServices.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Caching\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.Caching.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Web.RegularExpressions\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.RegularExpressions.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Design\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Design.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Data.OracleClient\v4.0_4.0.0.0__b77a5c561934e089\System.Data.OracleClient.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Drawing.Design\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.Design.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Web.ApplicationServices\v4.0_4.0.0.0__31bf3856ad364e35\System.Web.ApplicationServices.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ComponentModel.DataAnnotations\v4.0_4.0.0.0__31bf3856ad364e35\System.ComponentModel.DataAnnotations.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.DirectoryServices.Protocols\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.DirectoryServices.Protocols.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ServiceProcess\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.ServiceProcess.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Web.Services\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.Build.Utilities.v4.0\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.Build.Utilities.v4.0.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.Build.Framework\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.Build.Framework.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xaml\v4.0_4.0.0.0__b77a5c561934e089\System.Xaml.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.Build.Tasks.v4.0\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.Build.Tasks.v4.0.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\EntityFramework.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.CSharp\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.CSharp.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Dynamic\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Dynamic.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraBars.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraBars.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Utils.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.Utils.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_32\PresentationCore\v4.0_4.0.0.0__31bf3856ad364e35\PresentationCore.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\WindowsBase\v4.0_4.0.0.0__31bf3856ad364e35\WindowsBase.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\UIAutomationTypes\v4.0_4.0.0.0__31bf3856ad364e35\UIAutomationTypes.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Input.Manipulations\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Input.Manipulations.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\UIAutomationProvider\v4.0_4.0.0.0__31bf3856ad364e35\UIAutomationProvider.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\UIAutomationClient\v4.0_4.0.0.0__31bf3856ad364e35\UIAutomationClient.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraEditors.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraEditors.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Data.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Data.Linq.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraCharts.v16.1.UI\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraCharts.v16.1.UI.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraCharts.v16.1.Wizard\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraCharts.v16.1.Wizard.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Utils.v16.1.UI\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.Utils.v16.1.UI.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraTreeList.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraTreeList.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraLayout.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraLayout.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraRichEdit.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraRichEdit.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraPrinting.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraPrinting.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraGrid.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraGrid.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Pdf.v16.1.Core\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.Pdf.v16.1.Core.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Pdf.v16.1.Drawing\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.Pdf.v16.1.Drawing.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraVerticalGrid.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraVerticalGrid.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraNavBar.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraNavBar.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Net.Http\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Net.Http.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\TLSharp.Core.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\TeleSharp.TL.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\office\15.0.0.0__71e9bce111e9429c\office.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC\stdole\7.0.3300.0__b03f5f7f11d50a3a\stdole.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Vbe.Interop\15.0.0.0__71e9bce111e9429c\Microsoft.Vbe.Interop.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraScheduler.v16.1.Core\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraScheduler.v16.1.Core.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\SamanPcToPos.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\AutoUpdater.NET.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\PresentationFramework\v4.0_4.0.0.0__31bf3856ad364e35\PresentationFramework.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\ReachFramework\v4.0_4.0.0.0__31bf3856ad364e35\ReachFramework.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Printing\v4.0_4.0.0.0__31bf3856ad364e35\System.Printing.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\PresentationUI\v4.0_4.0.0.0__31bf3856ad364e35\PresentationUI.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\FarsiLibrary.Win.DevExpress.16.1.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\FarsiLibrary.Utils.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\FarsiLibrary.Localization.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\FarsiLibrary.Win.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\Model.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\UtilitiesMethod.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\AutoMapper.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\Newtonsoft.Json.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\GMap.NET.WindowsForms.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\GMap.NET.Core.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Images.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.Images.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraScheduler.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraScheduler.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraScheduler.v16.1.Extensions\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraScheduler.v16.1.Extensions.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraSpellChecker.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraSpellChecker.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.SpellChecker.v16.1.Core\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.SpellChecker.v16.1.Core.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\PosInterface.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\SSP1126.PcPos.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\PcPos.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Data.DataSetExtensions\v4.0_4.0.0.0__b77a5c561934e089\System.Data.DataSetExtensions.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\SharpConfig.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\CustomGridlookupeditTest.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\BL.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\ReportDesigner.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraReports.v16.1.Extensions\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraReports.v16.1.Extensions.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.DataAccess.v16.1.UI\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.DataAccess.v16.1.UI.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraDiagram.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraDiagram.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Diagram.v16.1.Core\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.Diagram.v16.1.Core.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.CodeParser.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.CodeParser.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraCharts.v16.1.Extensions\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraCharts.v16.1.Extensions.dll" />
+///     <Reference Path="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraPivotGrid.v16.1\v4.0_16.1.5.0__b88d1754d700e49a\DevExpress.XtraPivotGrid.v16.1.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.ConnectionInfo\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ConnectionInfo.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.SqlClrProvider\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.SqlClrProvider.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.Smo\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Smo.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.Management.Sdk.Sfc\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Management.Sdk.Sfc.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.SqlEnum\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.SqlEnum.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.Dmf\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Dmf.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.Diagnostics.STrace\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Diagnostics.STrace.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.ServiceBrokerEnum\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ServiceBrokerEnum.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.Management.SmoMetadataProvider\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Management.SmoMetadataProvider.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.Management.SqlParser\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Management.SqlParser.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\TildaCIDHID.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.SmoExtended\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.SmoExtended.dll" />
+///     <Reference Path="C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.RegSvrEnum\12.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.RegSvrEnum.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\Interop.WMPLib.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\RestSharp.dll" />
+///     <Reference Path="E:\Resturant\SanSystemResturant\bin\x64\Release\JntNum2Text.dll" />
+///   </References>
+///   <Resources>
+///     <Resource Name="XtraReportSerialization.RptPeyk">
+/// zsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAABAAAAAAAAAFBBRFBBRFAF9WM2AAAAAOMAAAAiWAB0AHIAYQBSAGUAcABvAHIAdAAuAEUAdgBlAG4AdABzAAAAAAABMFJwdFBleWssQmVmb3JlUHJpbnQsUmVwb3J0RnJvb3NoS2FsYV9CZWZvcmVQcmludA==</Resource>
+///   </Resources>
+/// </XRTypeInfo>
+namespace XtraReportSerialization {
+    
+    public class RptPeyk : DevExpress.XtraReports.UI.XtraReport {
+        private DevExpress.XtraReports.UI.GroupFooterBand GroupFooter1;
+        private DevExpress.XtraReports.UI.XRTable XrTable3;
+        private DevExpress.XtraReports.UI.XRTableRow XrTableRow3;
+        private DevExpress.XtraReports.UI.XRTableCell TxtAdad;
+        private DevExpress.XtraReports.UI.XRTableCell XrTableCell11;
+        private DevExpress.XtraReports.UI.XRTableRow XrTableRow8;
+        private DevExpress.XtraReports.UI.XRTableCell TxtHorof;
+        private DevExpress.XtraReports.UI.XRTableRow XrTableRow13;
+        private DevExpress.XtraReports.UI.XRTableCell XrTableCell31;
+        private DevExpress.XtraReports.UI.XRTableRow XrTableRow16;
+        private DevExpress.XtraReports.UI.XRTableCell XrTableCell38;
+        private DevExpress.XtraReports.UI.XRTableCell XrTableCell5;
+        private DevExpress.XtraReports.UI.XRTableCell XrTableCell4;
+        private DevExpress.XtraReports.UI.XRControlStyle PageInfo;
+        private DevExpress.XtraReports.UI.XRControlStyle Title;
+        private DevExpress.XtraReports.UI.XRControlStyle DataField;
+        private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
+        private DevExpress.XtraReports.UI.XRTableCell XrTableCell17;
+        private DevExpress.XtraReports.UI.ReportHeaderBand ReportHeaderBand1;
+        private DevExpress.XtraReports.UI.XRLabel label1;
+        private DevExpress.XtraReports.UI.XRLabel label2;
+        private DevExpress.XtraReports.UI.XRLabel label10;
+        private DevExpress.XtraReports.UI.XRLabel label7;
+        private DevExpress.XtraReports.UI.XRLabel label8;
+        private DevExpress.XtraReports.UI.XRLabel label6;
+        private DevExpress.XtraReports.UI.XRLabel label5;
+        private DevExpress.XtraReports.UI.XRLabel label4;
+        private DevExpress.XtraReports.UI.XRLabel label3;
+        private DevExpress.XtraReports.UI.XRLabel XrLabel8;
+        private DevExpress.XtraReports.UI.XRTable XrTable1;
+        private DevExpress.XtraReports.UI.XRTableRow XrTableRow1;
+        private DevExpress.XtraReports.UI.XRTableCell XrTableCell2;
+        private DevExpress.XtraReports.UI.XRLabel XrLabel4;
+        private DevExpress.XtraReports.UI.XRShape shape1;
+        private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
+        private DevExpress.XtraReports.UI.XRControlStyle XrControlStyle1;
+        private DevExpress.XtraReports.UI.XRControlStyle FieldCaption;
+        private DevExpress.XtraReports.UI.DetailBand Detail;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell4;
+        private DevExpress.XtraReports.UI.XRTableRow tableRow1;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell1;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell2;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell3;
+        private DevExpress.XtraReports.UI.DetailBand Detail2;
+        private DevExpress.XtraReports.UI.XRTable table1;
+        private DevExpress.XtraReports.UI.DetailReportBand DetailReport1;
+        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
+        private System.Resources.ResourceManager _resources;
+        private string _resourceString;
+        public RptPeyk() {
+            this._resourceString = DevExpress.XtraReports.Serialization.XRResourceManager.GetResourceFor("XtraReportSerialization.RptPeyk");
+            this.InitializeComponent();
+        }
+        private System.Resources.ResourceManager resources {
+            get {
+                if (_resources == null) {
+                    this._resources = new DevExpress.XtraReports.Serialization.XRResourceManager(this._resourceString);
+                }
+                return this._resources;
+            }
+        }
+        private void InitializeComponent() {
+            DevExpress.XtraPrinting.Shape.ShapeRectangle shapeRectangle1 = new DevExpress.XtraPrinting.Shape.ShapeRectangle();
+            DevExpress.DataAccess.ObjectBinding.ObjectConstructorInfo objectConstructorInfo1 = new DevExpress.DataAccess.ObjectBinding.ObjectConstructorInfo();
+            this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
+            this.XrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.XrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
+            this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
+            this.XrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.DataField = new DevExpress.XtraReports.UI.XRControlStyle();
+            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.XrTableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.XrTable3 = new DevExpress.XtraReports.UI.XRTable();
+            this.ReportHeaderBand1 = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.XrTableCell31 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.TxtHorof = new DevExpress.XtraReports.UI.XRTableCell();
+            this.XrTable1 = new DevExpress.XtraReports.UI.XRTable();
+            this.XrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
+            this.TxtAdad = new DevExpress.XtraReports.UI.XRTableCell();
+            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.XrControlStyle1 = new DevExpress.XtraReports.UI.XRControlStyle();
+            this.XrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.XrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.XrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.XrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
+            this.XrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.FieldCaption = new DevExpress.XtraReports.UI.XRControlStyle();
+            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.tableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.XrTableRow13 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.tableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.label1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.Detail2 = new DevExpress.XtraReports.UI.DetailBand();
+            this.label5 = new DevExpress.XtraReports.UI.XRLabel();
+            this.table1 = new DevExpress.XtraReports.UI.XRTable();
+            this.DetailReport1 = new DevExpress.XtraReports.UI.DetailReportBand();
+            this.shape1 = new DevExpress.XtraReports.UI.XRShape();
+            this.label8 = new DevExpress.XtraReports.UI.XRLabel();
+            this.tableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.label7 = new DevExpress.XtraReports.UI.XRLabel();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource();
+            this.label4 = new DevExpress.XtraReports.UI.XRLabel();
+            this.label6 = new DevExpress.XtraReports.UI.XRLabel();
+            this.XrTableRow16 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.tableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.label10 = new DevExpress.XtraReports.UI.XRLabel();
+            this.XrTableCell38 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.label3 = new DevExpress.XtraReports.UI.XRLabel();
+            this.label2 = new DevExpress.XtraReports.UI.XRLabel();
+            this.tableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
+            ((System.ComponentModel.ISupportInitialize)(this.XrTable3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XrTable1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // GroupFooter1
+            // 
+            this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+                        this.XrTable3});
+            this.GroupFooter1.Dpi = 254F;
+            this.GroupFooter1.GroupUnion = DevExpress.XtraReports.UI.GroupFooterUnion.WithLastDetail;
+            this.GroupFooter1.HeightF = 218.5291F;
+            this.GroupFooter1.Name = "GroupFooter1";
+            // 
+            // XrTableCell5
+            // 
+            this.XrTableCell5.Dpi = 254F;
+            this.XrTableCell5.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.XrTableCell5.ForeColor = System.Drawing.Color.Black;
+            this.XrTableCell5.Name = "XrTableCell5";
+            this.XrTableCell5.StylePriority.UseFont = false;
+            this.XrTableCell5.StylePriority.UseForeColor = false;
+            this.XrTableCell5.Text = "ج کل";
+            this.XrTableCell5.Weight = 0.95666970802274909D;
+            // 
+            // XrTableCell4
+            // 
+            this.XrTableCell4.Dpi = 254F;
+            this.XrTableCell4.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999F, System.Drawing.FontStyle.Bold);
+            this.XrTableCell4.ForeColor = System.Drawing.Color.Black;
+            this.XrTableCell4.Name = "XrTableCell4";
+            this.XrTableCell4.StylePriority.UseFont = false;
+            this.XrTableCell4.StylePriority.UseForeColor = false;
+            this.XrTableCell4.Text = "فی";
+            this.XrTableCell4.Weight = 0.76385468394656675D;
+            // 
+            // PageInfo
+            // 
+            this.PageInfo.BackColor = System.Drawing.Color.Transparent;
+            this.PageInfo.BorderColor = System.Drawing.Color.Black;
+            this.PageInfo.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.PageInfo.BorderWidth = 1F;
+            this.PageInfo.Font = new System.Drawing.Font("Arial", 9F);
+            this.PageInfo.ForeColor = System.Drawing.Color.Black;
+            this.PageInfo.Name = "PageInfo";
+            // 
+            // Title
+            // 
+            this.Title.BackColor = System.Drawing.Color.Transparent;
+            this.Title.BorderColor = System.Drawing.Color.Black;
+            this.Title.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.Title.BorderWidth = 1F;
+            this.Title.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold);
+            this.Title.ForeColor = System.Drawing.Color.Teal;
+            this.Title.Name = "Title";
+            // 
+            // XrTableRow3
+            // 
+            this.XrTableRow3.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+                        this.TxtAdad,
+                        this.XrTableCell11});
+            this.XrTableRow3.Dpi = 254F;
+            this.XrTableRow3.Name = "XrTableRow3";
+            this.XrTableRow3.Weight = 1D;
+            // 
+            // DataField
+            // 
+            this.DataField.BackColor = System.Drawing.Color.Transparent;
+            this.DataField.BorderColor = System.Drawing.Color.Black;
+            this.DataField.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.DataField.BorderWidth = 1F;
+            this.DataField.Font = new System.Drawing.Font("Arial", 10F);
+            this.DataField.ForeColor = System.Drawing.Color.Black;
+            this.DataField.Name = "DataField";
+            this.DataField.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            // 
+            // TopMargin
+            // 
+            this.TopMargin.Dpi = 254F;
+            this.TopMargin.HeightF = 0F;
+            this.TopMargin.Name = "TopMargin";
+            this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // XrTableCell17
+            // 
+            this.XrTableCell17.Dpi = 254F;
+            this.XrTableCell17.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999F, System.Drawing.FontStyle.Bold);
+            this.XrTableCell17.ForeColor = System.Drawing.Color.Black;
+            this.XrTableCell17.Name = "XrTableCell17";
+            this.XrTableCell17.StylePriority.UseFont = false;
+            this.XrTableCell17.StylePriority.UseForeColor = false;
+            this.XrTableCell17.Text = "منــــــــــــو";
+            this.XrTableCell17.Weight = 1.11205972429707D;
+            // 
+            // XrTable3
+            // 
+            this.XrTable3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.XrTable3.Dpi = 254F;
+            this.XrTable3.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.25F, System.Drawing.FontStyle.Bold);
+            this.XrTable3.LocationFloat = new DevExpress.Utils.PointFloat(8.322025F, 0F);
+            this.XrTable3.Name = "XrTable3";
+            this.XrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+                        this.XrTableRow3,
+                        this.XrTableRow8,
+                        this.XrTableRow13,
+                        this.XrTableRow16});
+            this.XrTable3.SizeF = new System.Drawing.SizeF(707.678F, 213.1099F);
+            this.XrTable3.StylePriority.UseBackColor = false;
+            this.XrTable3.StylePriority.UseFont = false;
+            this.XrTable3.StylePriority.UseTextAlignment = false;
+            this.XrTable3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // ReportHeaderBand1
+            // 
+            this.ReportHeaderBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+                        this.label1,
+                        this.label2,
+                        this.label10,
+                        this.label7,
+                        this.label8,
+                        this.label6,
+                        this.label5,
+                        this.label4,
+                        this.label3,
+                        this.XrLabel8,
+                        this.XrTable1,
+                        this.XrLabel4,
+                        this.shape1});
+            this.ReportHeaderBand1.Dpi = 254F;
+            this.ReportHeaderBand1.HeightF = 580.7892F;
+            this.ReportHeaderBand1.Name = "ReportHeaderBand1";
+            // 
+            // XrTableCell31
+            // 
+            this.XrTableCell31.BackColor = System.Drawing.Color.White;
+            this.XrTableCell31.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.XrTableCell31.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SettingPrint.Sokhan")});
+            this.XrTableCell31.Dpi = 254F;
+            this.XrTableCell31.Font = new System.Drawing.Font("B Titr", 8.25F, System.Drawing.FontStyle.Bold);
+            this.XrTableCell31.ForeColor = System.Drawing.Color.Black;
+            this.XrTableCell31.Name = "XrTableCell31";
+            this.XrTableCell31.StylePriority.UseBackColor = false;
+            this.XrTableCell31.StylePriority.UseBorders = false;
+            this.XrTableCell31.StylePriority.UseFont = false;
+            this.XrTableCell31.StylePriority.UseForeColor = false;
+            this.XrTableCell31.Weight = 1.9644944324131006D;
+            // 
+            // TxtHorof
+            // 
+            this.TxtHorof.BackColor = System.Drawing.Color.White;
+            this.TxtHorof.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.TxtHorof.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SettingPrint.PriceText")});
+            this.TxtHorof.Dpi = 254F;
+            this.TxtHorof.Font = new System.Drawing.Font("B Nazanin", 8.75F, System.Drawing.FontStyle.Bold);
+            this.TxtHorof.ForeColor = System.Drawing.Color.Black;
+            this.TxtHorof.Name = "TxtHorof";
+            this.TxtHorof.StylePriority.UseBackColor = false;
+            this.TxtHorof.StylePriority.UseBorders = false;
+            this.TxtHorof.StylePriority.UseFont = false;
+            this.TxtHorof.StylePriority.UseForeColor = false;
+            this.TxtHorof.Text = "یک میلیون و پانصد هزار تومن";
+            this.TxtHorof.Weight = 1.9644944324131006D;
+            // 
+            // XrTable1
+            // 
+            this.XrTable1.BackColor = System.Drawing.Color.Gainsboro;
+            this.XrTable1.BorderColor = System.Drawing.Color.Black;
+            this.XrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+                        | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.XrTable1.Dpi = 254F;
+            this.XrTable1.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.XrTable1.ForeColor = System.Drawing.Color.Black;
+            this.XrTable1.LocationFloat = new DevExpress.Utils.PointFloat(8.322017F, 524.133F);
+            this.XrTable1.Name = "XrTable1";
+            this.XrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+                        this.XrTableRow1});
+            this.XrTable1.SizeF = new System.Drawing.SizeF(707.299F, 56.65616F);
+            this.XrTable1.StylePriority.UseBackColor = false;
+            this.XrTable1.StylePriority.UseBorderColor = false;
+            this.XrTable1.StylePriority.UseBorders = false;
+            this.XrTable1.StylePriority.UseFont = false;
+            this.XrTable1.StylePriority.UseForeColor = false;
+            this.XrTable1.StylePriority.UseTextAlignment = false;
+            this.XrTable1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // XrLabel4
+            // 
+            this.XrLabel4.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
+            this.XrLabel4.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+                        | DevExpress.XtraPrinting.BorderSide.Right) 
+                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.XrLabel4.BorderWidth = 2F;
+            this.XrLabel4.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "Company.Company_Name")});
+            this.XrLabel4.Dpi = 254F;
+            this.XrLabel4.Font = new System.Drawing.Font("B Titr", 15F, System.Drawing.FontStyle.Bold);
+            this.XrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(24.99998F, 0F);
+            this.XrLabel4.Name = "XrLabel4";
+            this.XrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 5, 5, 254F);
+            this.XrLabel4.SizeF = new System.Drawing.SizeF(666F, 93.63345F);
+            this.XrLabel4.StylePriority.UseBorderDashStyle = false;
+            this.XrLabel4.StylePriority.UseBorders = false;
+            this.XrLabel4.StylePriority.UseBorderWidth = false;
+            this.XrLabel4.StylePriority.UseFont = false;
+            this.XrLabel4.StylePriority.UseForeColor = false;
+            this.XrLabel4.StylePriority.UsePadding = false;
+            this.XrLabel4.StylePriority.UseTextAlignment = false;
+            this.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // TxtAdad
+            // 
+            this.TxtAdad.BackColor = System.Drawing.Color.White;
+            this.TxtAdad.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.TxtAdad.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoice.NetPrice", "{0:c0}")});
+            this.TxtAdad.Dpi = 254F;
+            this.TxtAdad.Font = new System.Drawing.Font("B Titr", 11F, System.Drawing.FontStyle.Bold);
+            this.TxtAdad.Name = "TxtAdad";
+            this.TxtAdad.StylePriority.UseBackColor = false;
+            this.TxtAdad.StylePriority.UseBorders = false;
+            this.TxtAdad.StylePriority.UseFont = false;
+            this.TxtAdad.Weight = 0.95730564619878D;
+            // 
+            // BottomMargin
+            // 
+            this.BottomMargin.Dpi = 254F;
+            this.BottomMargin.HeightF = 26F;
+            this.BottomMargin.Name = "BottomMargin";
+            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // XrControlStyle1
+            // 
+            this.XrControlStyle1.BackColor = System.Drawing.Color.Silver;
+            this.XrControlStyle1.Name = "XrControlStyle1";
+            this.XrControlStyle1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            // 
+            // XrTableCell2
+            // 
+            this.XrTableCell2.Dpi = 254F;
+            this.XrTableCell2.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999F, System.Drawing.FontStyle.Bold);
+            this.XrTableCell2.ForeColor = System.Drawing.Color.Black;
+            this.XrTableCell2.Name = "XrTableCell2";
+            this.XrTableCell2.StylePriority.UseFont = false;
+            this.XrTableCell2.StylePriority.UseForeColor = false;
+            this.XrTableCell2.Text = "مقدار";
+            this.XrTableCell2.Weight = 0.38735975423704316D;
+            // 
+            // XrTableCell11
+            // 
+            this.XrTableCell11.BackColor = System.Drawing.Color.Black;
+            this.XrTableCell11.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+                        | DevExpress.XtraPrinting.BorderSide.Right) 
+                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.XrTableCell11.Dpi = 254F;
+            this.XrTableCell11.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold);
+            this.XrTableCell11.ForeColor = System.Drawing.Color.White;
+            this.XrTableCell11.Name = "XrTableCell11";
+            this.XrTableCell11.StylePriority.UseBackColor = false;
+            this.XrTableCell11.StylePriority.UseBorders = false;
+            this.XrTableCell11.StylePriority.UseFont = false;
+            this.XrTableCell11.StylePriority.UseForeColor = false;
+            this.XrTableCell11.Text = "مبلغ قابل پرداخت";
+            this.XrTableCell11.Weight = 1.0071887862143207D;
+            // 
+            // XrTableRow8
+            // 
+            this.XrTableRow8.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+                        this.TxtHorof});
+            this.XrTableRow8.Dpi = 254F;
+            this.XrTableRow8.Name = "XrTableRow8";
+            this.XrTableRow8.Weight = 1D;
+            // 
+            // XrLabel8
+            // 
+            this.XrLabel8.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.XrLabel8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "Company.Company_Tel")});
+            this.XrLabel8.Dpi = 254F;
+            this.XrLabel8.Font = new System.Drawing.Font("B Nazanin", 9F, System.Drawing.FontStyle.Bold);
+            this.XrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(24.99999F, 93.63346F);
+            this.XrLabel8.Multiline = true;
+            this.XrLabel8.Name = "XrLabel8";
+            this.XrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.XrLabel8.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.No;
+            this.XrLabel8.SizeF = new System.Drawing.SizeF(666F, 58.95725F);
+            this.XrLabel8.StylePriority.UseBorders = false;
+            this.XrLabel8.StylePriority.UseFont = false;
+            this.XrLabel8.StylePriority.UseTextAlignment = false;
+            this.XrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // XrTableRow1
+            // 
+            this.XrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+                        this.XrTableCell5,
+                        this.XrTableCell4,
+                        this.XrTableCell17,
+                        this.XrTableCell2});
+            this.XrTableRow1.Dpi = 254F;
+            this.XrTableRow1.Name = "XrTableRow1";
+            this.XrTableRow1.Weight = 1D;
+            // 
+            // FieldCaption
+            // 
+            this.FieldCaption.BackColor = System.Drawing.Color.Transparent;
+            this.FieldCaption.BorderColor = System.Drawing.Color.Black;
+            this.FieldCaption.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.FieldCaption.BorderWidth = 1F;
+            this.FieldCaption.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.FieldCaption.ForeColor = System.Drawing.Color.Black;
+            this.FieldCaption.Name = "FieldCaption";
+            // 
+            // Detail
+            // 
+            this.Detail.Dpi = 254F;
+            this.Detail.Expanded = false;
+            this.Detail.HeightF = 33.63413F;
+            this.Detail.Name = "Detail";
+            this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.Detail.StyleName = "DataField";
+            this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // tableCell4
+            // 
+            this.tableCell4.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoiceDetaile.Qty")});
+            this.tableCell4.Dpi = 254F;
+            this.tableCell4.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999F, System.Drawing.FontStyle.Bold);
+            this.tableCell4.ForeColor = System.Drawing.Color.Black;
+            this.tableCell4.Multiline = true;
+            this.tableCell4.Name = "tableCell4";
+            this.tableCell4.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.Yes;
+            this.tableCell4.StylePriority.UseFont = false;
+            this.tableCell4.StylePriority.UseForeColor = false;
+            this.tableCell4.Text = "مقدار";
+            this.tableCell4.Weight = 0.39212459785068532D;
+            // 
+            // XrTableRow13
+            // 
+            this.XrTableRow13.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+                        this.XrTableCell31});
+            this.XrTableRow13.Dpi = 254F;
+            this.XrTableRow13.Name = "XrTableRow13";
+            this.XrTableRow13.Weight = 1D;
+            // 
+            // tableRow1
+            // 
+            this.tableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+                        this.tableCell1,
+                        this.tableCell2,
+                        this.tableCell3,
+                        this.tableCell4});
+            this.tableRow1.Dpi = 254F;
+            this.tableRow1.Name = "tableRow1";
+            this.tableRow1.Weight = 1D;
+            // 
+            // label1
+            // 
+            this.label1.Dpi = 254F;
+            this.label1.Font = new System.Drawing.Font("B Titr", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label1.LocationFloat = new DevExpress.Utils.PointFloat(585.3635F, 276.4262F);
+            this.label1.Name = "label1";
+            this.label1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.label1.SizeF = new System.Drawing.SizeF(92.09271F, 46.35626F);
+            this.label1.StylePriority.UseFont = false;
+            this.label1.StylePriority.UsePadding = false;
+            this.label1.StylePriority.UseTextAlignment = false;
+            this.label1.Text = "تلفن:";
+            this.label1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomLeft;
+            // 
+            // Detail2
+            // 
+            this.Detail2.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+                        this.table1});
+            this.Detail2.Dpi = 254F;
+            this.Detail2.HeightF = 53.30727F;
+            this.Detail2.Name = "Detail2";
+            // 
+            // label5
+            // 
+            this.label5.Dpi = 254F;
+            this.label5.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.LocationFloat = new DevExpress.Utils.PointFloat(195.5092F, 235.1374F);
+            this.label5.Name = "label5";
+            this.label5.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.label5.SizeF = new System.Drawing.SizeF(113.1427F, 41.28876F);
+            this.label5.StylePriority.UseFont = false;
+            this.label5.StylePriority.UseTextAlignment = false;
+            this.label5.Text = "ساعت :";
+            this.label5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // table1
+            // 
+            this.table1.BackColor = System.Drawing.Color.Transparent;
+            this.table1.BorderColor = System.Drawing.Color.Black;
+            this.table1.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.table1.Dpi = 254F;
+            this.table1.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.table1.ForeColor = System.Drawing.Color.Black;
+            this.table1.LocationFloat = new DevExpress.Utils.PointFloat(8.700924F, 0F);
+            this.table1.Name = "table1";
+            this.table1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+                        this.tableRow1});
+            this.table1.SizeF = new System.Drawing.SizeF(707.299F, 50F);
+            this.table1.StylePriority.UseBackColor = false;
+            this.table1.StylePriority.UseBorderColor = false;
+            this.table1.StylePriority.UseBorders = false;
+            this.table1.StylePriority.UseFont = false;
+            this.table1.StylePriority.UseForeColor = false;
+            this.table1.StylePriority.UseTextAlignment = false;
+            this.table1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // DetailReport1
+            // 
+            this.DetailReport1.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
+                        this.Detail2});
+            this.DetailReport1.DataMember = "SaleInvoiceDetaile";
+            this.DetailReport1.DataSource = this.objectDataSource1;
+            this.DetailReport1.Dpi = 254F;
+            this.DetailReport1.Level = 0;
+            this.DetailReport1.Name = "DetailReport1";
+            // 
+            // shape1
+            // 
+            this.shape1.BackColor = System.Drawing.Color.Transparent;
+            this.shape1.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.shape1.BorderWidth = 1F;
+            this.shape1.Dpi = 254F;
+            this.shape1.ForeColor = System.Drawing.Color.Black;
+            this.shape1.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.shape1.LocationFloat = new DevExpress.Utils.PointFloat(8.700925F, 170.4243F);
+            this.shape1.Name = "shape1";
+            this.shape1.Shape = shapeRectangle1;
+            this.shape1.SizeF = new System.Drawing.SizeF(707.2991F, 328.6755F);
+            this.shape1.Stretch = true;
+            this.shape1.StylePriority.UseBackColor = false;
+            this.shape1.StylePriority.UseBorders = false;
+            this.shape1.StylePriority.UseBorderWidth = false;
+            this.shape1.StylePriority.UseForeColor = false;
+            // 
+            // label8
+            // 
+            this.label8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoice.CustomerCode")});
+            this.label8.Dpi = 254F;
+            this.label8.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label8.LocationFloat = new DevExpress.Utils.PointFloat(353.1762F, 193.8486F);
+            this.label8.Name = "label8";
+            this.label8.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.label8.SizeF = new System.Drawing.SizeF(164.3832F, 82.57756F);
+            this.label8.StylePriority.UseFont = false;
+            this.label8.StylePriority.UsePadding = false;
+            this.label8.StylePriority.UseTextAlignment = false;
+            this.label8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.label8.WordWrap = false;
+            // 
+            // tableCell3
+            // 
+            this.tableCell3.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoiceDetaile.ProductName")});
+            this.tableCell3.Dpi = 254F;
+            this.tableCell3.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999F, System.Drawing.FontStyle.Bold);
+            this.tableCell3.ForeColor = System.Drawing.Color.Black;
+            this.tableCell3.Multiline = true;
+            this.tableCell3.Name = "tableCell3";
+            this.tableCell3.StylePriority.UseFont = false;
+            this.tableCell3.StylePriority.UseForeColor = false;
+            this.tableCell3.Text = "منــــــــــــو";
+            this.tableCell3.Weight = 1.1257397337634447D;
+            // 
+            // label7
+            // 
+            this.label7.Dpi = 254F;
+            this.label7.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label7.LocationFloat = new DevExpress.Utils.PointFloat(535.8767F, 193.8486F);
+            this.label7.Name = "label7";
+            this.label7.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.label7.SizeF = new System.Drawing.SizeF(141.5795F, 82.57756F);
+            this.label7.StylePriority.UseFont = false;
+            this.label7.StylePriority.UsePadding = false;
+            this.label7.StylePriority.UseTextAlignment = false;
+            this.label7.Text = "اشتراک :  ";
+            this.label7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.Constructor = objectConstructorInfo1;
+            this.objectDataSource1.DataSourceType = typeof(System.Collections.Generic.List<Model.SaleInvoicePrint>);
+            this.objectDataSource1.Name = "objectDataSource1";
+            // 
+            // label4
+            // 
+            this.label4.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoice.SaleTime")});
+            this.label4.Dpi = 254F;
+            this.label4.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.LocationFloat = new DevExpress.Utils.PointFloat(26.01762F, 235.1374F);
+            this.label4.Name = "label4";
+            this.label4.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.label4.SizeF = new System.Drawing.SizeF(169.4915F, 41.28874F);
+            this.label4.StylePriority.UseFont = false;
+            this.label4.StylePriority.UseTextAlignment = false;
+            this.label4.Text = "22:55:33";
+            this.label4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.label4.WordWrap = false;
+            // 
+            // label6
+            // 
+            this.label6.Dpi = 254F;
+            this.label6.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.LocationFloat = new DevExpress.Utils.PointFloat(195.5092F, 193.8486F);
+            this.label6.Name = "label6";
+            this.label6.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.label6.SizeF = new System.Drawing.SizeF(113.1427F, 41.28876F);
+            this.label6.StylePriority.UseFont = false;
+            this.label6.StylePriority.UseTextAlignment = false;
+            this.label6.Text = "تاریخ :";
+            this.label6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // XrTableRow16
+            // 
+            this.XrTableRow16.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+                        this.XrTableCell38});
+            this.XrTableRow16.Dpi = 254F;
+            this.XrTableRow16.Name = "XrTableRow16";
+            this.XrTableRow16.Weight = 1D;
+            // 
+            // tableCell2
+            // 
+            this.tableCell2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoiceDetaile.Price")});
+            this.tableCell2.Dpi = 254F;
+            this.tableCell2.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999F, System.Drawing.FontStyle.Bold);
+            this.tableCell2.ForeColor = System.Drawing.Color.Black;
+            this.tableCell2.Multiline = true;
+            this.tableCell2.Name = "tableCell2";
+            this.tableCell2.StylePriority.UseFont = false;
+            this.tableCell2.StylePriority.UseForeColor = false;
+            this.tableCell2.Text = "فی";
+            this.tableCell2.Weight = 0.77325181907509488D;
+            // 
+            // label10
+            // 
+            this.label10.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoice.Address")});
+            this.label10.Dpi = 254F;
+            this.label10.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.LocationFloat = new DevExpress.Utils.PointFloat(24.9999F, 322.7825F);
+            this.label10.Multiline = true;
+            this.label10.Name = "label10";
+            this.label10.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.label10.SizeF = new System.Drawing.SizeF(652.4564F, 150.9898F);
+            this.label10.StylePriority.UseBackColor = false;
+            this.label10.StylePriority.UseFont = false;
+            this.label10.StylePriority.UsePadding = false;
+            this.label10.StylePriority.UseTextAlignment = false;
+            this.label10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // XrTableCell38
+            // 
+            this.XrTableCell38.BackColor = System.Drawing.Color.LightGray;
+            this.XrTableCell38.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.XrTableCell38.Dpi = 254F;
+            this.XrTableCell38.Font = new System.Drawing.Font("B Titr", 8F, System.Drawing.FontStyle.Bold);
+            this.XrTableCell38.ForeColor = System.Drawing.Color.Black;
+            this.XrTableCell38.Name = "XrTableCell38";
+            this.XrTableCell38.StylePriority.UseBackColor = false;
+            this.XrTableCell38.StylePriority.UseBorders = false;
+            this.XrTableCell38.StylePriority.UseFont = false;
+            this.XrTableCell38.StylePriority.UseForeColor = false;
+            this.XrTableCell38.Text = "نرم افزار گیشنیز 09158836099";
+            this.XrTableCell38.Weight = 1.9644944324131006D;
+            // 
+            // label3
+            // 
+            this.label3.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoice.SaleInvoiceDate_SH")});
+            this.label3.Dpi = 254F;
+            this.label3.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.LocationFloat = new DevExpress.Utils.PointFloat(26.01762F, 193.8486F);
+            this.label3.Name = "label3";
+            this.label3.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.label3.SizeF = new System.Drawing.SizeF(169.4915F, 41.28871F);
+            this.label3.StylePriority.UseFont = false;
+            this.label3.StylePriority.UseTextAlignment = false;
+            this.label3.Text = "1399-10-11";
+            this.label3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.label3.WordWrap = false;
+            // 
+            // label2
+            // 
+            this.label2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoice.Tell")});
+            this.label2.Dpi = 254F;
+            this.label2.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.LocationFloat = new DevExpress.Utils.PointFloat(24.99999F, 276.4262F);
+            this.label2.Name = "label2";
+            this.label2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.label2.SizeF = new System.Drawing.SizeF(560.3635F, 46.35626F);
+            this.label2.StylePriority.UseFont = false;
+            this.label2.StylePriority.UseTextAlignment = false;
+            this.label2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // tableCell1
+            // 
+            this.tableCell1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+                        new DevExpress.XtraReports.UI.XRBinding("Text", null, "SaleInvoiceDetaile.SumPrice")});
+            this.tableCell1.Dpi = 254F;
+            this.tableCell1.Font = new System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.tableCell1.ForeColor = System.Drawing.Color.Black;
+            this.tableCell1.Multiline = true;
+            this.tableCell1.Name = "tableCell1";
+            this.tableCell1.StylePriority.UseFont = false;
+            this.tableCell1.StylePriority.UseForeColor = false;
+            this.tableCell1.Text = "ج کل";
+            this.tableCell1.Weight = 0.96843826426732638D;
+            // 
+            // RptPeyk
+            // 
+            this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
+                        this.Detail,
+                        this.TopMargin,
+                        this.BottomMargin,
+                        this.ReportHeaderBand1,
+                        this.GroupFooter1,
+                        this.DetailReport1});
+            this.DataSource = this.objectDataSource1;
+            this.Dpi = 254F;
+            this.Margins = new System.Drawing.Printing.Margins(0, 3, 0, 26);
+            this.Name = "RptPeyk";
+            this.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 2, 2, 254F);
+            this.PageHeight = 5001;
+            this.PageWidth = 719;
+            this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+            this.PrinterName = "Microsoft Print to PDF";
+            this.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
+            this.RequestParameters = false;
+            this.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.Yes;
+            this.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic;
+            this.ShowPrintMarginsWarning = false;
+            this.ShowPrintStatusDialog = false;
+            this.SnapGridSize = 25F;
+            this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
+                        this.Title,
+                        this.FieldCaption,
+                        this.PageInfo,
+                        this.DataField,
+                        this.XrControlStyle1});
+            this.Version = "16.1";
+            ((System.ComponentModel.ISupportInitialize)(this.XrTable3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XrTable1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+        }
+    }
+}

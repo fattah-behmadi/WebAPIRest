@@ -37,7 +37,16 @@ namespace Model
 
         private static void SetConnectionString(string buil)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            System.Configuration.Configuration config = null;
+            if (System.Web.HttpContext.Current != null)
+            {
+                config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+            }
+            else
+            {
+                config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            }
+
             if (config.ConnectionStrings.ConnectionStrings["SanResturantEntities"] != null)
             {
                 config.ConnectionStrings.ConnectionStrings["SanResturantEntities"].ConnectionString = buil;

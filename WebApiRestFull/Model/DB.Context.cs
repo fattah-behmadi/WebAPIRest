@@ -55,6 +55,7 @@ namespace Model
         public virtual DbSet<tblSandogh> tblSandoghs { get; set; }
         public virtual DbSet<tblTafzili> tblTafzilis { get; set; }
         public virtual DbSet<TblSokhan> TblSokhans { get; set; }
+        public virtual DbSet<tblLogin> tblLogins { get; set; }
     
         public virtual int sp_GetKalaSale()
         {

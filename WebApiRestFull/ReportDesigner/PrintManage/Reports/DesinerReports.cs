@@ -12,7 +12,7 @@ namespace ReportDesigner
 {
     public class DesinerReports
     {
-
+        public bool RptNotExists { get; set; }
         public DesinerReports()
         {
             ExistsDirectory();
@@ -20,7 +20,7 @@ namespace ReportDesigner
 
         void ExistsDirectory()
         {
-            string path = Application.StartupPath + "\\Report";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "\\Report";
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
@@ -88,6 +88,13 @@ namespace ReportDesigner
                 report.ShowPrintStatusDialog = false;
                 report.RequestParameters = false;
                 report.PrintingSystem.ShowMarginsWarning = false;
+                if (this.RptNotExists)
+                {
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "\\Report";
+                    path += string.Format($"\\{report.GetType().Name}.repx");
+                    report.SaveLayoutToXml(path);
+                }
+
                 //report.FillDataSource();
             }
             return report;
@@ -114,7 +121,7 @@ namespace ReportDesigner
         private XtraReport OpenReport(string ReportName)
         {
             XtraReport report = null;
-            string path = Application.StartupPath + "\\Report";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "\\Report";
             if (Directory.Exists(path))
             {
                 path += string.Format($"\\{ReportName}.repx");
@@ -129,8 +136,8 @@ namespace ReportDesigner
 
 
         }
-     
-        
+
+
         /// <summary>
         /// جستجوی فاکتور طراحی شده در سیستم
         /// </summary>
@@ -138,17 +145,19 @@ namespace ReportDesigner
         /// <returns></returns>
         private XtraReport OpenReport(XtraReport report)
         {
-                Type objtype = report.GetType();
-                string path = Application.StartupPath + "\\Report";
-                if (Directory.Exists(path))
+            Type objtype = report.GetType();
+            string path = AppDomain.CurrentDomain.BaseDirectory + "\\Report";
+            if (Directory.Exists(path))
+            {
+                path += string.Format($"\\{objtype.Name}.repx");
+                if (File.Exists(path))
                 {
-                    path += string.Format($"\\{objtype.Name}.repx");
-                    if (File.Exists(path))
-                    {
-                        //report= XtraReport.FromFile(path, true);
-                        report.LoadLayout(path);
-                    }
+                    //report= XtraReport.FromFile(path, true);
+                    report.LoadLayout(path);
                 }
+                else
+                    this.RptNotExists = true;
+            }
             return report;
 
         }

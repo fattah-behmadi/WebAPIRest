@@ -48,6 +48,8 @@
         <AssociationConnector Association="SanResturantModel.FK_TBLCONTA_RELATIONS_TBLTAFZI" />
         <AssociationConnector Association="SanResturantModel.FK_tblSandogh_tblTafzili" />
         <EntityTypeShape EntityType="SanResturantModel.TblSokhan" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="SanResturantModel.tblLogin" Width="1.5" PointX="5.375" PointY="11" />
+        <AssociationConnector Association="SanResturantModel.FK_tblSandogh_tblLogin" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

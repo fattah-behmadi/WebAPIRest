@@ -337,9 +337,13 @@ Public Class HomeController
 
         Try
             funcSql.ReadConnection()
-            _UserName = Convert.ToString(_UserName)
-            _Password = Convert.ToString(_Password)
-            Dim sqlstr As String = String.Format("SELECT Login_ID,Login_Name,''  as CurrencySymbol   FROM [tblLogin] where Login_UserName=N'{0}' AND Login_PassWord=N'{1}'", _UserName, PasswordEncrypt(_Password))
+
+            Dim sqlstr As String = String.Format($"
+                                                    SELECT Login_ID,Login_Name,''  as CurrencySymbol 
+                                                    FROM [tblLogin]
+                                                    where Login_UserName=N'{_UserName}' AND
+                                                    Login_Password=N'{PasswordEncrypt(_Password)}'")
+
             Dim sqlcom As New SqlDataAdapter(sqlstr, constr)
             Dim DtUser As New DataTable
             sqlcom.Fill(DtUser)
@@ -351,7 +355,7 @@ Public Class HomeController
                 DtUser.Rows(0)("Login_Name") = "0"
                 DtUser.Rows(0)("CurrencySymbol") = "ريال"
             Else
-                IDUser = DtUser.Rows(0)("Login_ID")
+                IDUser = DtUser.Rows(0)("Login_ID").ToString().ToInt()
             End If
             Dim Currency As String = funcSql.CellReader("tblSettingIDFactor", "Setting_CurrencySymbol", "")
             If Currency = Nothing Then
@@ -362,8 +366,10 @@ Public Class HomeController
             Dim arrayFood = JArray.Parse(JSONString)
             GetDefaultContact()
 
-            _SettingUser = localizationDBContext.SettingRepo.GetSettigPrinterUser(IDUser)
-            _SettingFactor = localizationDBContext.SettingRepo.GetSetting()
+            If IDUser > 0 Then
+                _SettingUser = localizationDBContext.SettingRepo.GetSettigPrinterUser(IDUser)
+                _SettingFactor = localizationDBContext.SettingRepo.GetSetting()
+            End If
 
 
             Return arrayFood
@@ -382,7 +388,7 @@ Public Class HomeController
     ''' لیست فاکتور هایی که در انتظار ارسال به دستگاه برای چاپ هستند
     ''' </summary>
     Dim PrintList As New List(Of XtraReport)
-    Dim IDUser As String
+    Dim IDUser As Integer
     Dim _SettingUser As tblPrinterUserSetting
     Dim _SettingFactor As tblSettingIDFactor
 
@@ -404,6 +410,7 @@ Public Class HomeController
     <HttpPost> <Route("api/home/SaveFactor/{NumberFact}/{NumFishUpdate}")>
     Public Function SaveFactor(NumberFact As String, NumFishUpdate As String, <FromBody> JsonString As List(Of ListFood)) As String
         Try
+
             'Dim ActiveLock As Boolean = funcSql.ReadActive
             Dim ActiveLock As Boolean = True '   این خط غیر فعال شود و خط بالایی فعال جهت قفل سخت افزاری
 
@@ -435,10 +442,10 @@ Public Class HomeController
                 TafziliMoshtari = Listfood.Costumer_Code
                 tahvilgirande = Listfood.Costumer_Name
                 IDUserGarson = Listfood.User_Id
-                IDUser = IDUserGarson
+                IDUser = Listfood.User_Id.ToInt()
                 SumMoney = Listfood.Price_Sum
                 ExpFood = Listfood.ChildForooshKala_SharhKala
-                IdSandogh = funcSql.CellReader("tblSandogh", "Tafzili_ID", "[User_ID]=" & IDUserGarson & "")
+                IdSandogh = funcSql.CellReader("tblSandogh", "Tafzili_ID", "[User_ID]=" & Listfood.User_Id & "")
                 Dim ValueVazeyat = Listfood.ForooshKalaParent_TypeFact
 
                 If String.IsNullOrEmpty(TafziliMoshtari) Then
@@ -448,6 +455,9 @@ Public Class HomeController
                     TafziliMoshtari = DefaultContact
                 End If
 
+
+                _SettingUser = localizationDBContext.SettingRepo.GetSettigPrinterUser(IDUser.ToInt())
+                _SettingFactor = localizationDBContext.SettingRepo.GetSetting()
 
                 If UpdateFact Then
                     result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Update, " TblParent_FrooshKala", "[ForooshKalaParent_Tafzili]=" & TafziliMoshtari & ",[ForooshKalaParent_Date]='" & DateTime.Now & "',[ForooshKalaParent_Tozih]=N'" & TozihatFactor & "',[ForooshKalaParent_JameMablaghPaye]=" & SumMoney & ",[ForooshKalaParent_JameMaliyat]=" & Listfood.JameMablaghMaliat & ",[ForooshKalaParent_JameTakhfif]=" & Listfood.JameMablaghTakhfif & ",[ForooshKalaParent_JameMablaghPasTakhfif]=" & Listfood.JameMablaghKhales & ",[ForooshKalaParent_JameKol]=" & Listfood.JameMablaghKhales & ",[ForooshKalaParent_JameService]=" & Listfood.JameMablaghServic & ",[ForooshKalaParent_UserId]=" & IDUser & ",[ForooshKalaParent_ShomareMiz]=" & NumberMiz & ",[ForooshKalaParent_ModateEntezar]=0,[ForooshKalaParent_ShomareFish]=" & NumberFish & ",[ForooshKalaParent_StatusFact]=N'ویرایش شده',[ForooshKalaParent_Time]='" & TimeOfDay.ToString("h:mm:ss tt") & "',[ForooshKalaParent_TypeFact]=N'" & ValueVazeyat & "',[ForooshKalaParent_SelectedAdress]=N'" & Listfood.Address & "',[ForooshKalaParent_SelectedTell]=N'" & Listfood.Tell & "',[ForooshKalaParent_NumberPager]=0,[ForooshKalaParent_Tahvilgirande]=N'" & tahvilgirande & "',[ForooshKalaParent_TasvieFact]=0", "[ForooshKalaParent_ID]=" & NumberFact & "")
@@ -511,11 +521,10 @@ Public Class HomeController
     ''' <param name="report">فاکتور مورد نظر برای طراحی</param>
     ''' <param name="printername">نام پرینتر مورد نظر جهت چاپ</param>
     ''' <returns></returns>
-    Function DesignReport(ByVal datasource As Model.SaleInvoicePrint, ByVal report As XtraReport, ByVal printername As String,
+    Public Function DesignReport(ByVal datasource As Model.SaleInvoicePrint, ByVal report As XtraReport, ByVal printername As String,
                           ByVal sumPrice As Long, ByVal updated As Boolean, Optional ByVal stateorderprint As String = "") As XtraReport
 
         Try
-
             Dim price As Long
             If sumPrice > 0 Then
                 If _SettingFactor.Setting_CurrencySymbol.Contains("ریال") Then
@@ -524,7 +533,6 @@ Public Class HomeController
                     price = sumPrice
                 End If
             End If
-
             Dim stateOrder = ""
             If String.IsNullOrEmpty(stateorderprint) Then
                 If updated Then
@@ -536,10 +544,8 @@ Public Class HomeController
                 stateOrder = stateorderprint
 
             End If
-
             Dim textprice = (Num2Text.ToFarsi(price) + " تومان ").ToString()
             Dim _setting As New SaleInvoicePrint.Setting
-
             _setting.DateTimeToday = DateTime.Now.JulianToPersianDate()
             _setting.PriceText = textprice
             '_setting.Sokhan = sokhan
@@ -562,17 +568,33 @@ Public Class HomeController
     ''' </summary>
     Sub PrintListReport()
         Dim resultPrint = reportDesign.PrintListReport(PrintList)
+
     End Sub
     Public Function PrintFish(SaleID As String, sumPrice As String, updated As Boolean)
+        Try
+            PrintList = New List(Of XtraReport)
+            If _SettingUser.BironbarMoshtari Or _SettingUser.DakhelSalonMoshtari Or _SettingUser.PeykMoshtari Then
+                RptCustomer(SaleID, sumPrice, updated)
+            End If
 
-        RptCustomer(SaleID, sumPrice, updated)
-        RptKitchen(SaleID, sumPrice, updated)
-        RptCashier(SaleID, sumPrice, updated)
-        PrintListReport()
+            If _SettingUser.BironbarAshpazkhane Or _SettingUser.DakhelSalonAshpazkhane Or _SettingUser.PeykAshpazkhane Then
+                RptKitchen(SaleID, sumPrice, updated)
+            End If
+
+
+            If _SettingUser.BironbarSandogh Or _SettingUser.DakhelSalonSandogh Or _SettingUser.PeykSandogh Then
+                RptCashier(SaleID, sumPrice, updated)
+            End If
+
+            PrintListReport()
+        Catch ex As Exception
+            WriteText("Print Report : " & ex.Message)
+        End Try
     End Function
     Sub RptCustomer(ByVal id As Long, ByVal sumPrice As Long, updated As Boolean)
 
         Dim data = GetSaleInvoice(id)
+
         Dim report
         If _SettingUser.Costumer5Cm Then
             report = New RptCustomerSmall
@@ -580,9 +602,7 @@ Public Class HomeController
             report = New RptCustomer
         End If
         report = DesignReport(data, report, _SettingUser.PrinterCustomer, sumPrice, updated)
-
         If report IsNot Nothing Then
-            PrintList = New List(Of XtraReport)
             PrintList.Add(report)
         End If
     End Sub
@@ -597,7 +617,6 @@ Public Class HomeController
         report = DesignReport(data, report, _SettingUser.PrinterSandogh, sumPrice, updated)
 
         If report IsNot Nothing Then
-            PrintList = New List(Of XtraReport)
             PrintList.Add(report)
         End If
 
@@ -618,7 +637,6 @@ Public Class HomeController
         report = DesignReport(data, report, _SettingUser.PrinterAshpazkhane, sumPrice, updated)
 
         If report IsNot Nothing Then
-            PrintList = New List(Of XtraReport)
             PrintList.Add(report)
         End If
 

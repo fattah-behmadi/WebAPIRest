@@ -41,8 +41,8 @@ Public Class ConectToDatabaseSQL
             End Using
         End Using
         constr = String.Format($"Data Source={serverName.Trim(";")};Initial Catalog=Gishniz;User ID=gish;Password=gishniz$2020@!;MultipleActiveResultSets=true;")
-        DBAccess._ConnectionDatabase = constr
         DBAccess.SetConnection(constr)
+
     End Sub
     Private Sub ConToDB()
 
