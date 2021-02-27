@@ -31,25 +31,15 @@ namespace ReportDesigner
         /// </summary>
         /// <param name="liReport"></param>
         /// <returns></returns>
-        public bool PrintListReport(ref List<XtraReport> liReport)
+        public  void PrintListReport( List<XtraReport> liReport)
         {
-            try
-            {
-                if (liReport.Count == 0) return false;
-                foreach (XtraReport report in liReport)
-                {
-                    ReportPrintTool pts = new ReportPrintTool(report);
-                    pts.Print();
-                }
-                liReport.Clear();
-                liReport = new List<XtraReport>();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+               if (liReport.Count == 0) return;
 
+            foreach (XtraReport report in liReport)
+            {
+                ReportPrintTool pts = new ReportPrintTool(report);
+                pts.Print();
+            }
         }
         public bool PrintListReport(XtraReport report)
         {
@@ -152,7 +142,7 @@ namespace ReportDesigner
                 path += string.Format($"\\{objtype.Name}.repx");
                 if (File.Exists(path))
                 {
-                    //report= XtraReport.FromFile(path, true);
+                    //report = XtraReport.FromFile(path, true);
                     report.LoadLayout(path);
                 }
                 else

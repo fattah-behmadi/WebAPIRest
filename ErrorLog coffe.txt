@@ -1,0 +1,12 @@
+﻿Error:Printfactcancle : Object reference not set to an instance of an object. --  DateTime:2/16/2021 7:53:35 PM
+Error:Printfactcancle : Object reference not set to an instance of an object. --  DateTime:2/16/2021 7:53:52 PM
+Error:Error Return Result End Function =  Violation of PRIMARY KEY constraint 'PK_TblParent_FrooshKala'. Cannot insert duplicate key in object 'dbo.TblParent_FrooshKala'. The duplicate key value is (21392).
+INSERT INTO  TblParent_FrooshKala   VALUES (21392,10010003,'2/16/2021 8:21:06 PM',N'ثبت فاکتور با تبلت',170000,0,0,170000.0,170000.0,0,2060,21366,'8',0,73,N'عادی','8:21:06 PM',N'داخل سالن بالا',N'0',N'0',0,N'کشتی',0,0,0) 
+The statement has been terminated. --  DateTime:2/16/2021 8:21:19 PM
+Error:Printfactcancle : Object reference not set to an instance of an object. --  DateTime:2/17/2021 11:28:06 AM
+Error:Error Return Result End Function =  Violation of PRIMARY KEY constraint 'PK_TblParent_FrooshKala'. Cannot insert duplicate key in object 'dbo.TblParent_FrooshKala'. The duplicate key value is (21587).
+INSERT INTO  TblParent_FrooshKala   VALUES (21587,10010082,'2/20/2021 11:39:37 PM',N'ثبت فاکتور با تبلت',152000,0,0,152000.0,152000.0,0,2060,21561,'0',0,105,N'عادی','11:39:37 PM',N'پیک',N'بهار 3',N'',0,N'مهمان',0,0,0) 
+The statement has been terminated. --  DateTime:2/20/2021 11:39:54 PM
+Error:Error Return Result End Function =  Violation of PRIMARY KEY constraint 'PK_TblParent_FrooshKala'. Cannot insert duplicate key in object 'dbo.TblParent_FrooshKala'. The duplicate key value is (21792).
+INSERT INTO  TblParent_FrooshKala   VALUES (21792,10010082,'2/25/2021 6:38:00 PM',N'ثبت فاکتور با تبلت',55000,0,0,55000.0,55000.0,0,2060,21764,'17',0,68,N'عادی','6:38:00 PM',N'داخل سالن بالا',N'0',N'0',0,N'مهمان',0,0,0) 
+The statement has been terminated. --  DateTime:2/25/2021 6:38:12 PM

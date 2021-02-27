@@ -26,14 +26,14 @@ namespace BL
         }
         public static void SetConnection(string connection = "")
         {
-            UtilitiFunction.UnprotectConnectionString();
+            //UtilitiFunction.UnprotectConnectionString();
             if (!string.IsNullOrEmpty(connection))
             {
                 _ConnectionDatabase = connection;
             }
             DBRestaurant = SanResturantEntities.Create(_ConnectionDatabase);
             DBRestaurant.Database.Connection.ConnectionString = _ConnectionDatabase;
-            UtilitiFunction.ProtectConnectionString();
+            //UtilitiFunction.ProtectConnectionString();
 
         }
         public static SanResturantEntities GetNewContext()

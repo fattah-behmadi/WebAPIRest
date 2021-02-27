@@ -12,6 +12,8 @@ Imports DevExpress.XtraReports.UI
 Imports Model
 Imports BL
 Imports UtilitiesMethod
+Imports System.Threading.Tasks
+Imports System.ComponentModel
 
 Public Class HomeController
     Inherits ApiController
@@ -391,6 +393,10 @@ Public Class HomeController
     Dim IDUser As Integer
     Dim _SettingUser As tblPrinterUserSetting
     Dim _SettingFactor As tblSettingIDFactor
+    Dim IdSandogh As String
+
+
+    Dim bgw As BackgroundWorker
 
 
     Sub GetDefaultContact()
@@ -409,102 +415,110 @@ Public Class HomeController
 #Region "ذخیره فاکتور"
     <HttpPost> <Route("api/home/SaveFactor/{NumberFact}/{NumFishUpdate}")>
     Public Function SaveFactor(NumberFact As String, NumFishUpdate As String, <FromBody> JsonString As List(Of ListFood)) As String
+
+        'Dim ActiveLock As Boolean = funcSql.ReadActive
+        'Dim ActiveLock As Boolean = True '   این خط غیر فعال شود و خط بالایی فعال جهت قفل سخت افزاری
+        'If ActiveLock Then
+
+        Dim SaleInvoiceID As String = "0"
+        Dim NumberFish As String = "0"
+        Dim UpdateFact As Boolean = False
+        Dim tahvilgirande As String = "تحویل گیرنده"
+        Dim TozihatFactor = "ثبت فاکتور با تبلت"
+        Dim TafziliMoshtari, ExpFood, IDUserGarson, SumMoney, NumberMiz As String
+
+
         Try
-
-            'Dim ActiveLock As Boolean = funcSql.ReadActive
-            Dim ActiveLock As Boolean = True '   این خط غیر فعال شود و خط بالایی فعال جهت قفل سخت افزاری
-
-            If ActiveLock Then
-
-                Dim TxtIDFact, NumberFish As String
-                Dim Listfood = JsonString(0)
-                funcSql.Culture_EN()
-                Dim UpdateFact As Boolean = False
-                If NumberFact <> "0" Then
-                    UpdateFact = True
-                End If
-                If Not UpdateFact Then
-                    TxtIDFact = funcSql.GetFactID_Froosh()
-
-                    Dim TimeEnChange = DateTime.Now
-
-                    NumberFish = funcSql.GetFishNumber_Froosh(TimeEnChange.ToString("yyyy-MM-dd "))
-                Else
-                    TxtIDFact = NumberFact
-                    NumberFish = NumFishUpdate
-                End If
-                Dim tahvilgirande As String = "تحویل گیرنده"
-                Dim TozihatFactor = "ثبت فاکتور با تبلت"
-                Dim TafziliMoshtari, ExpFood, IDUserGarson, SumMoney, NumberMiz As String
-                Dim CountOFFood As Integer = Listfood.ChildForooshKala_TedadAsli
-
-                NumberMiz = Listfood.Table_Number
-                TafziliMoshtari = Listfood.Costumer_Code
-                tahvilgirande = Listfood.Costumer_Name
-                IDUserGarson = Listfood.User_Id
-                IDUser = Listfood.User_Id.ToInt()
-                SumMoney = Listfood.Price_Sum
-                ExpFood = Listfood.ChildForooshKala_SharhKala
-                IdSandogh = funcSql.CellReader("tblSandogh", "Tafzili_ID", "[User_ID]=" & Listfood.User_Id & "")
-                Dim ValueVazeyat = Listfood.ForooshKalaParent_TypeFact
-
-                If String.IsNullOrEmpty(TafziliMoshtari) Then
-                    If String.IsNullOrEmpty(DefaultContact) Then
-                        GetDefaultContact()
-                    End If
-                    TafziliMoshtari = DefaultContact
-                End If
-
-
-                _SettingUser = localizationDBContext.SettingRepo.GetSettigPrinterUser(IDUser.ToInt())
-                _SettingFactor = localizationDBContext.SettingRepo.GetSetting()
-
-                If UpdateFact Then
-                    result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Update, " TblParent_FrooshKala", "[ForooshKalaParent_Tafzili]=" & TafziliMoshtari & ",[ForooshKalaParent_Date]='" & DateTime.Now & "',[ForooshKalaParent_Tozih]=N'" & TozihatFactor & "',[ForooshKalaParent_JameMablaghPaye]=" & SumMoney & ",[ForooshKalaParent_JameMaliyat]=" & Listfood.JameMablaghMaliat & ",[ForooshKalaParent_JameTakhfif]=" & Listfood.JameMablaghTakhfif & ",[ForooshKalaParent_JameMablaghPasTakhfif]=" & Listfood.JameMablaghKhales & ",[ForooshKalaParent_JameKol]=" & Listfood.JameMablaghKhales & ",[ForooshKalaParent_JameService]=" & Listfood.JameMablaghServic & ",[ForooshKalaParent_UserId]=" & IDUser & ",[ForooshKalaParent_ShomareMiz]=" & NumberMiz & ",[ForooshKalaParent_ModateEntezar]=0,[ForooshKalaParent_ShomareFish]=" & NumberFish & ",[ForooshKalaParent_StatusFact]=N'ویرایش شده',[ForooshKalaParent_Time]='" & TimeOfDay.ToString("h:mm:ss tt") & "',[ForooshKalaParent_TypeFact]=N'" & ValueVazeyat & "',[ForooshKalaParent_SelectedAdress]=N'" & Listfood.Address & "',[ForooshKalaParent_SelectedTell]=N'" & Listfood.Tell & "',[ForooshKalaParent_NumberPager]=0,[ForooshKalaParent_Tahvilgirande]=N'" & tahvilgirande & "',[ForooshKalaParent_TasvieFact]=0", "[ForooshKalaParent_ID]=" & NumberFact & "")
-                Else
-                    result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Insert, " TblParent_FrooshKala", "" & CLng(TxtIDFact) & "," & TafziliMoshtari & ",'" & DateTime.Now & "',N'" & TozihatFactor & "'," & SumMoney & "," & Listfood.JameMablaghMaliat & "," & Listfood.JameMablaghTakhfif & "," & Listfood.JameMablaghKhales & "," & Listfood.JameMablaghKhales & "," & Listfood.JameMablaghServic & "," & IDUser & "," & GetSerialSanad() & ",'" & NumberMiz & "',0," & NumberFish & ",N'عادی','" & TimeOfDay.ToString("h:mm:ss tt") & "',N'" & ValueVazeyat & "',N'" & Listfood.Address.ToString() & "',N'" & Listfood.Tell.ToString() & "',0,N'" & tahvilgirande & "',0,0,0")
-                End If
-
-
-                If result = "1" Then
-                    Dim sumFactorMaliat As Double = 0
-                    InsertChildAndKardeks(TxtIDFact, UpdateFact, JsonString, sumFactorMaliat)
-                    CreateDocument(TxtIDFact, DateTime.Now.ToString("yyyy-MM-dd ", New CultureInfo("en-US")), TimeOfDay.ToString("h:mm:ss tt", New CultureInfo("en-US")), TafziliMoshtari, ExpFood, SumMoney, 0, 0, 0, SumMoney, UpdateFact)
-                    Dim idfactor = NumberFact
-                    If idfactor = "0" Then
-                        idfactor = TxtIDFact
-                    End If
-                    Dim jameMaliat = funcSql.ConvertToDouble(funcSql.CellReader("TblChild_ForooshKala", "sum(ChildForooshKala_MaliyatMablagh)", "ChildForooshKala_ParentID=" & idfactor))
-                    Dim jamekol = funcSql.ConvertToDouble(funcSql.CellReader("TblChild_ForooshKala", "sum(ChildForooshKala_JameKol)", "ChildForooshKala_ParentID =" & idfactor))
-
-                    result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Update, " TblParent_FrooshKala", "ForooshKalaParent_JameMaliyat =" & jameMaliat & ",ForooshKalaParent_JameKol=" & sumFactorMaliat & "", "[ForooshKalaParent_ID]=" & idfactor & "")
-
-                End If
-
-
-                Dim dtSettingPrinte As DataTable = GetSettingPUser(IDUserGarson)
-                If dtSettingPrinte IsNot Nothing And dtSettingPrinte.Rows.Count > 0 Then
-
-                    Dim Print_Confirm = Listfood.Print_Confirm
-
-                    If Not Print_Confirm Then
-                        PrintFish(TxtIDFact, SumMoney, UpdateFact)
-                    End If
-
-                End If
-
-
-                If result = "1" Then
-                    Return NumberFish
-                Else
-                    WriteText("Error Return Result End Function =  " & result)
-                    Return result
-                End If
-            Else
-                Return "NotActive"
+            Dim Listfood = JsonString(0)
+            funcSql.Culture_EN()
+            If NumberFact <> "0" Then
+                UpdateFact = True
             End If
+            If Not UpdateFact Then
+                SaleInvoiceID = funcSql.GetFactID_Froosh()
+                Dim TimeEnChange = DateTime.Now
+                NumberFish = funcSql.GetFishNumber_Froosh(TimeEnChange.ToString("yyyy-MM-dd "))
+            Else
+                SaleInvoiceID = NumberFact
+                NumberFish = NumFishUpdate
+            End If
+
+            Dim CountOFFood As Integer = Listfood.ChildForooshKala_TedadAsli
+
+            NumberMiz = Listfood.Table_Number
+            TafziliMoshtari = Listfood.Costumer_Code
+            tahvilgirande = Listfood.Costumer_Name
+            IDUserGarson = Listfood.User_Id
+            IDUser = Listfood.User_Id.ToInt()
+            SumMoney = Listfood.Price_Sum
+            ExpFood = Listfood.ChildForooshKala_SharhKala
+            IdSandogh = funcSql.CellReader("tblSandogh", "Tafzili_ID", "[User_ID]=" & Listfood.User_Id & "")
+            Dim ValueVazeyat = Listfood.ForooshKalaParent_TypeFact
+
+            If String.IsNullOrEmpty(TafziliMoshtari) Then
+                If String.IsNullOrEmpty(DefaultContact) Then
+                    GetDefaultContact()
+                End If
+                TafziliMoshtari = DefaultContact
+            End If
+
+
+            _SettingUser = localizationDBContext.SettingRepo.GetSettigPrinterUser(IDUser.ToInt())
+            _SettingFactor = localizationDBContext.SettingRepo.GetSetting()
+
+            If UpdateFact Then
+                result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Update, " TblParent_FrooshKala", "[ForooshKalaParent_Tafzili]=" & TafziliMoshtari & ",[ForooshKalaParent_Date]='" & DateTime.Now & "',[ForooshKalaParent_Tozih]=N'" & TozihatFactor & "',[ForooshKalaParent_JameMablaghPaye]=" & SumMoney & ",[ForooshKalaParent_JameMaliyat]=" & Listfood.JameMablaghMaliat & ",[ForooshKalaParent_JameTakhfif]=" & Listfood.JameMablaghTakhfif & ",[ForooshKalaParent_JameMablaghPasTakhfif]=" & Listfood.JameMablaghKhales & ",[ForooshKalaParent_JameKol]=" & Listfood.JameMablaghKhales & ",[ForooshKalaParent_JameService]=" & Listfood.JameMablaghServic & ",[ForooshKalaParent_UserId]=" & IDUser & ",[ForooshKalaParent_ShomareMiz]=" & NumberMiz & ",[ForooshKalaParent_ModateEntezar]=0,[ForooshKalaParent_ShomareFish]=" & NumberFish & ",[ForooshKalaParent_StatusFact]=N'ویرایش شده',[ForooshKalaParent_Time]='" & TimeOfDay.ToString("h:mm:ss tt") & "',[ForooshKalaParent_TypeFact]=N'" & ValueVazeyat & "',[ForooshKalaParent_SelectedAdress]=N'" & Listfood.Address & "',[ForooshKalaParent_SelectedTell]=N'" & Listfood.Tell & "',[ForooshKalaParent_NumberPager]=0,[ForooshKalaParent_Tahvilgirande]=N'" & tahvilgirande & "',[ForooshKalaParent_TasvieFact]=0", "[ForooshKalaParent_ID]=" & NumberFact & "")
+            Else
+                result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Insert, " TblParent_FrooshKala", "" & CLng(SaleInvoiceID) & "," & TafziliMoshtari & ",'" & DateTime.Now & "',N'" & TozihatFactor & "'," & SumMoney & "," & Listfood.JameMablaghMaliat & "," & Listfood.JameMablaghTakhfif & "," & Listfood.JameMablaghKhales & "," & Listfood.JameMablaghKhales & "," & Listfood.JameMablaghServic & "," & IDUser & "," & GetSerialSanad() & ",'" & NumberMiz & "',0," & NumberFish & ",N'عادی','" & TimeOfDay.ToString("h:mm:ss tt") & "',N'" & ValueVazeyat & "',N'" & Listfood.Address.ToString() & "',N'" & Listfood.Tell.ToString() & "',0,N'" & tahvilgirande & "',0,0,0")
+            End If
+
+            If result = "1" Then
+                Dim sumFactorMaliat As Double = 0
+                InsertChildAndKardeks(SaleInvoiceID, UpdateFact, JsonString, sumFactorMaliat)
+                CreateDocument(SaleInvoiceID, DateTime.Now.ToString("yyyy-MM-dd ", New CultureInfo("en-US")), TimeOfDay.ToString("h:mm:ss tt", New CultureInfo("en-US")), TafziliMoshtari, ExpFood, SumMoney, 0, 0, 0, SumMoney, UpdateFact)
+                Dim idfactor = NumberFact
+                If idfactor = "0" Then
+                    idfactor = SaleInvoiceID
+                End If
+                Dim jameMaliat = funcSql.ConvertToDouble(funcSql.CellReader("TblChild_ForooshKala", "sum(ChildForooshKala_MaliyatMablagh)", "ChildForooshKala_ParentID=" & idfactor))
+                Dim jamekol = funcSql.ConvertToDouble(funcSql.CellReader("TblChild_ForooshKala", "sum(ChildForooshKala_JameKol)", "ChildForooshKala_ParentID =" & idfactor))
+                result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Update, " TblParent_FrooshKala", "ForooshKalaParent_JameMaliyat =" & jameMaliat & ",ForooshKalaParent_JameKol=" & sumFactorMaliat & "", "[ForooshKalaParent_ID]=" & idfactor & "")
+            Else
+                WriteText("not save SaleInvoice : " & result)
+
+            End If
+
+            'PrintFish(SaleInvoiceID, SumMoney, UpdateFact)
+
+            Dim printdata As New printData
+            printdata.SaleInvoiceID = SaleInvoiceID
+            printdata.SumMoney = SumMoney
+            printdata.UpdateFact = UpdateFact
+            printdata.SaleNumber = NumberFish
+
+
+            'bgw = New BackgroundWorker
+            'bgw.WorkerReportsProgress = True
+            'AddHandler bgw.DoWork, AddressOf DoWork
+            'bgw.RunWorkerAsync(printdata)
+
+            If result = "1" Then
+                Return NumberFish
+            Else
+                WriteText("Error Return Result End Function =  " & result)
+                Return result
+            End If
+
+            'Else
+            '    Return "NotActive"
+            'End If
         Catch ex As Exception
-            WriteText("SaveFactor : " & ex.Message)
+            If ex.InnerException IsNot Nothing Then
+                WriteText("SaveFactor InnerException : " & ex.InnerException.Message)
+            Else
+                WriteText("SaveFactor : " & ex.Message)
+            End If
+            Return NumberFish
         End Try
     End Function
 
@@ -521,7 +535,7 @@ Public Class HomeController
     ''' <param name="report">فاکتور مورد نظر برای طراحی</param>
     ''' <param name="printername">نام پرینتر مورد نظر جهت چاپ</param>
     ''' <returns></returns>
-    Public Function DesignReport(ByVal datasource As Model.SaleInvoicePrint, ByVal report As XtraReport, ByVal printername As String,
+    Public Function DesignReport(ByVal datasource As Model.SaleInvoicePrint, ByRef report As XtraReport, ByVal printername As String,
                           ByVal sumPrice As Long, ByVal updated As Boolean, Optional ByVal stateorderprint As String = "") As XtraReport
 
         Try
@@ -554,7 +568,6 @@ Public Class HomeController
 
             report = reportDesign.CreatReport(Of Model.SaleInvoicePrint)(datasource, report)
             report.PrinterName = printername
-
             Return report
 
         Catch ex As Exception
@@ -567,8 +580,12 @@ Public Class HomeController
     ''' چاپ لیست فاکتور ها
     ''' </summary>
     Sub PrintListReport()
-        Dim resultPrint = reportDesign.PrintListReport(PrintList)
-
+        Try
+            reportDesign.PrintListReport(PrintList)
+            PrintList = New List(Of XtraReport)
+        Catch ex As Exception
+            WriteText("PrintListReport : " & ex.Message)
+        End Try
     End Sub
     Public Function PrintFish(SaleID As String, sumPrice As String, updated As Boolean)
         Try
@@ -587,6 +604,7 @@ Public Class HomeController
             End If
 
             PrintListReport()
+
         Catch ex As Exception
             WriteText("Print Report : " & ex.Message)
         End Try
@@ -601,7 +619,9 @@ Public Class HomeController
         Else
             report = New RptCustomer
         End If
+
         report = DesignReport(data, report, _SettingUser.PrinterCustomer, sumPrice, updated)
+
         If report IsNot Nothing Then
             PrintList.Add(report)
         End If
@@ -645,6 +665,13 @@ Public Class HomeController
         Return localizationDBContext.SaleInvoiceRepo.PrintSaleInvoice(saleinvoiceID)
     End Function
 
+    Function DoWork(ByVal sender As Object, ByVal e As DoWorkEventArgs)
+        Dim ar = DirectCast(e.Argument, printData)
+        PrintFish(ar.SaleInvoiceID, ar.SumMoney, ar.UpdateFact)
+        Return ar.SaleNumber
+
+    End Function
+
 #End Region
 
 
@@ -672,7 +699,6 @@ Public Class HomeController
             WriteText("Encrypt : " & ex.Message)
         End Try
     End Function
-    Dim IdSandogh As String
     Public Function GetSerialSanad() As String
         Try
             Using myConnection As New System.Data.SqlClient.SqlConnection(constr)
@@ -1002,6 +1028,14 @@ Public Class HomeController
             WriteText("Error in ReportForush : " & ex.Message)
         End Try
     End Function
+
+    Class printData
+        Public Property SaleInvoiceID() As Long
+        Public Property SumMoney() As Long
+        Public Property UpdateFact() As Boolean
+        Public Property SaleNumber() As String
+
+    End Class
     Public Class ForushReport
         <JsonProperty("SumKolFact")>
         Public Property SumKolFact() As String
