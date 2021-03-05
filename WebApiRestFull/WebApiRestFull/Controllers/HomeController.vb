@@ -565,9 +565,9 @@ Public Class HomeController
             'report = reportDesign.CreatReport(Of Model.SaleInvoicePrint)(datasource, report)
             report.PrinterName = printername
 
-            'Dim dts As New List(Of Model.SaleInvoicePrint)
-            'dts.Add(datasource)
-            'report.DataSource = dts
+            Dim dts As New List(Of Model.SaleInvoicePrint)
+            dts.Add(datasource)
+            report.DataSource = dts
 
             Return report
 
@@ -609,7 +609,7 @@ Public Class HomeController
 
 
             If _SettingUser.BironbarSandogh Or _SettingUser.DakhelSalonSandogh Or _SettingUser.PeykSandogh Then
-                'RptCashier(data, sumPrice, updated)
+                RptCashier(data, sumPrice, updated)
             End If
 
             'PrintListReport() ' print list
@@ -628,9 +628,15 @@ Public Class HomeController
 
         report = DesignReport(data, report, _SettingUser.PrinterCustomer, sumPrice, updated)
 
+
+        report.RequestParameters = False
+        report.ShowPrintStatusDialog = False
+        report.PrintingSystem.ShowMarginsWarning = False
         report.CreateDocument(False)
         Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+        printTool.PrinterSettings.Copies = 1
         printTool.Print(_SettingUser.PrinterCustomer)
+
 
         'If report IsNot Nothing Then
         '    PrintList.Add(report)
@@ -645,9 +651,18 @@ Public Class HomeController
             report = New RptCashier
         End If
         report = DesignReport(data, report, _SettingUser.PrinterSandogh, sumPrice, updated)
-        If report IsNot Nothing Then
-            PrintList.Add(report)
-        End If
+
+        report.RequestParameters = False
+        report.ShowPrintStatusDialog = False
+        report.PrintingSystem.ShowMarginsWarning = False
+        report.CreateDocument(False)
+        Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+        printTool.PrinterSettings.Copies = 1
+        printTool.Print(_SettingUser.PrinterSandogh)
+
+        'If report IsNot Nothing Then
+        '    PrintList.Add(report)
+        'End If
 
     End Sub
     Sub RptKitchen(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
@@ -665,13 +680,17 @@ Public Class HomeController
 
         report = DesignReport(data, report, _SettingUser.PrinterAshpazkhane, sumPrice, updated)
 
+        report.RequestParameters = False
+        report.ShowPrintStatusDialog = False
+        report.PrintingSystem.ShowMarginsWarning = False
         report.CreateDocument(False)
         Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+        printTool.PrinterSettings.Copies = 1
         printTool.Print(_SettingUser.PrinterAshpazkhane)
 
-        If report IsNot Nothing Then
-            PrintList.Add(report)
-        End If
+        'If report IsNot Nothing Then
+        '    PrintList.Add(report)
+        'End If
 
 
     End Sub
@@ -1081,6 +1100,7 @@ Public Class HomeController
         End Using
 
     End Sub
+
 
 End Class
 
