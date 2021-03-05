@@ -22,10 +22,7 @@ Public Class HomeController
     Dim DefaultContact As String
     Dim funcSql As New ConectToDatabaseSQL
     Dim reportDesign As New ReportDesigner.DesinerReports
-    ''' <summary>
-    ''' لیست فاکتور هایی که در انتظار ارسال به دستگاه برای چاپ هستند
-    ''' </summary>
-    Dim PrintList As New List(Of XtraReport)
+
     Dim IDUser As Integer
     Dim _SettingUser As tblPrinterUserSetting
     Dim _SettingFactor As tblSettingIDFactor
@@ -223,11 +220,13 @@ Public Class HomeController
 
             report = DesignReport(data, report, _SettingUser.PrinterAshpazkhane, data.SaleInvoice.NetPrice, False, "سفارش مورد نظر لغو گردید")
 
-            If report IsNot Nothing Then
-                PrintList = New List(Of XtraReport)
-                PrintList.Add(report)
-            End If
-            PrintListReport() '  cancele saleinvoice
+            report.RequestParameters = False
+            report.ShowPrintStatusDialog = False
+            report.PrintingSystem.ShowMarginsWarning = False
+            report.CreateDocument(False)
+            Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+            printTool.PrinterSettings.Copies = 1
+            printTool.Print(_SettingUser.PrinterAshpazkhane)
 
             Return True
         Catch ex As Exception
@@ -578,24 +577,9 @@ Public Class HomeController
     ''' <summary>
     ''' چاپ لیست فاکتور ها
     ''' </summary>
-    Sub PrintListReport()
-        Try
 
-            'For Each report As XtraReport In PrintList
-            '    report.CreateDocument(False)
-            '    Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
-            '    printTool.Print(report.PrinterName)
-            'Next
-
-            reportDesign.PrintListReport(PrintList)
-            PrintList = New List(Of XtraReport)
-        Catch ex As Exception
-            WriteText("PrintListReport : " & ex.Message)
-        End Try
-    End Sub
     Public Function PrintFish(SaleID As String, sumPrice As String, updated As Boolean)
         Try
-            PrintList = New List(Of XtraReport)
             Dim data = GetSaleInvoice(SaleID)
             If _SettingUser.BironbarMoshtari Or _SettingUser.DakhelSalonMoshtari Or _SettingUser.PeykMoshtari Then
                 RptCustomer(data, sumPrice, updated)
@@ -610,7 +594,6 @@ Public Class HomeController
                 RptCashier(data, sumPrice, updated)
             End If
 
-            'PrintListReport() ' print list
 
         Catch ex As Exception
             WriteText("Print Report : " & ex.Message)
@@ -626,7 +609,6 @@ Public Class HomeController
 
         report = DesignReport(data, report, _SettingUser.PrinterCustomer, sumPrice, updated)
 
-
         report.RequestParameters = False
         report.ShowPrintStatusDialog = False
         report.PrintingSystem.ShowMarginsWarning = False
@@ -635,10 +617,6 @@ Public Class HomeController
         printTool.PrinterSettings.Copies = 1
         printTool.Print(_SettingUser.PrinterCustomer)
 
-
-        'If report IsNot Nothing Then
-        '    PrintList.Add(report)
-        'End If
     End Sub
     Sub RptCashier(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
 
@@ -657,10 +635,6 @@ Public Class HomeController
         Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
         printTool.PrinterSettings.Copies = 1
         printTool.Print(_SettingUser.PrinterSandogh)
-
-        'If report IsNot Nothing Then
-        '    PrintList.Add(report)
-        'End If
 
     End Sub
     Sub RptKitchen(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
@@ -685,11 +659,6 @@ Public Class HomeController
         Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
         printTool.PrinterSettings.Copies = 1
         printTool.Print(_SettingUser.PrinterAshpazkhane)
-
-        'If report IsNot Nothing Then
-        '    PrintList.Add(report)
-        'End If
-
 
     End Sub
     Function GetSaleInvoice(ByVal saleinvoiceID As Long) As Model.SaleInvoicePrint
