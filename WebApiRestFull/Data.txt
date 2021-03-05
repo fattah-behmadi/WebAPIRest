@@ -1,7 +1,4 @@
-﻿
-
-[{
-	
+﻿[{	
 	"JameMablaghKhales":"500000"
 	,"JameMablaghMaliat":"0"
 	,"JameMablaghServic":"0"
@@ -19,10 +16,8 @@
 	,"Tell":"0"
 	,"User_Id":"2059"
 	,"ForooshKalaParent_TypeFact":"بیرون بر"
-	
 }
 ,{
-	
 	"JameMablaghKhales":"30000"
 	,"JameMablaghMaliat":"0"
 	,"JameMablaghServic":"0"
@@ -40,8 +35,4 @@
 	,"Tell":"0"
 	,"User_Id":"2059"
 	,"ForooshKalaParent_TypeFact":"بیرون بر"
-	
-}
-
-
-]
+}]

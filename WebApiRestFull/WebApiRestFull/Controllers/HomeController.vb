@@ -179,10 +179,9 @@ Public Class HomeController
     <Route("api/home/CancleFactor/{IDFactor}/{SerialSanad}/{UserCode}")>
     Public Function CancleFactor(IDFactor As String, SerialSanad As String, UserCode As String) As Boolean
         Try
+            Dim response As Boolean
             result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Delete, "[tblChildeSanad]", , " [Serial_Sanad]=" & SerialSanad & "")
             If result = "1" Then
-
-
                 result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Delete, "[tblParentSanad]", , " [Serial_Sanad]=" & SerialSanad & "")
                 If result = "1" Then
                     Dim nameuser = funcSql.CellReader("[tblLogin]", "[Login_Name]", "[Login_ID]=" & UserCode & "")
@@ -192,15 +191,15 @@ Public Class HomeController
                     If result = "1" Then
                         Me.IDUser = UserCode
                         Printfactcancle(Numberfish)
-                        Return True
+                        response = True
                     End If
-                Else
-                    Return False
                 End If
 
             End If
+            Return response
         Catch ex As Exception
             WriteText("CancleFactor : " & ex.Message)
+            Return False
         End Try
 
     End Function
@@ -328,7 +327,6 @@ Public Class HomeController
     End Function
 #End Region
 
-
 #Region "لیست غذاها"
     <HttpGet>
     Public Function GetFood() As JArray
@@ -428,6 +426,7 @@ Public Class HomeController
 
 
         Try
+
             Dim Listfood = JsonString(0)
             funcSql.Culture_EN()
             If NumberFact <> "0" Then
@@ -493,7 +492,6 @@ Public Class HomeController
             'printdata.SumMoney = SumMoney
             'printdata.UpdateFact = UpdateFact
             'printdata.SaleNumber = NumberFish
-
 
             'bgw = New BackgroundWorker
             'bgw.WorkerReportsProgress = True

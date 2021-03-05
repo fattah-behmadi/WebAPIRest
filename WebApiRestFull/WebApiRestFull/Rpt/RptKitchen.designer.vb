@@ -51,6 +51,8 @@ Partial Public Class RptKitchen
         Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.GroupFooter1 = New DevExpress.XtraReports.UI.GroupFooterBand()
         Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.label7 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ObjectDataSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,34 +86,38 @@ Partial Public Class RptKitchen
         '
         'ReportHeaderBand1
         '
-        Me.ReportHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel4, Me.XrLabel3, Me.XrPanel1, Me.XrTable1})
+        Me.ReportHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel5, Me.label7, Me.XrLabel4, Me.XrLabel3, Me.XrPanel1, Me.XrTable1})
         Me.ReportHeaderBand1.Dpi = 100.0!
-        Me.ReportHeaderBand1.HeightF = 133.1374!
+        Me.ReportHeaderBand1.HeightF = 147.0263!
         Me.ReportHeaderBand1.Name = "ReportHeaderBand1"
         '
         'XrLabel4
         '
         Me.XrLabel4.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoice.NumberOrder")})
         Me.XrLabel4.Dpi = 100.0!
-        Me.XrLabel4.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(147.625!, 63.49999!)
+        Me.XrLabel4.Font = New System.Drawing.Font("B Titr", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(62.75689!, 59.29571!)
         Me.XrLabel4.Name = "XrLabel4"
         Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel4.SizeF = New System.Drawing.SizeF(109.375!, 32.375!)
+        Me.XrLabel4.SizeF = New System.Drawing.SizeF(148.2639!, 32.375!)
         Me.XrLabel4.StylePriority.UseFont = False
+        Me.XrLabel4.StylePriority.UseTextAlignment = False
         Me.XrLabel4.Text = "XrLabel4"
+        Me.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'XrLabel3
         '
         Me.XrLabel3.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoice.SaleInvoice_Type")})
         Me.XrLabel3.Dpi = 100.0!
-        Me.XrLabel3.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(8.741887!, 47.5694!)
+        Me.XrLabel3.Font = New System.Drawing.Font("B Titr", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(10.06563!, 91.67071!)
         Me.XrLabel3.Name = "XrLabel3"
         Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel3.SizeF = New System.Drawing.SizeF(110.4167!, 64.81068!)
+        Me.XrLabel3.SizeF = New System.Drawing.SizeF(131.3188!, 33.56071!)
         Me.XrLabel3.StylePriority.UseFont = False
+        Me.XrLabel3.StylePriority.UseTextAlignment = False
         Me.XrLabel3.Text = "XrLabel3"
+        Me.XrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'XrPanel1
         '
@@ -128,12 +134,14 @@ Partial Public Class RptKitchen
         Me.XrLabel1.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SettingPrint.StateSale")})
         Me.XrLabel1.Dpi = 100.0!
         Me.XrLabel1.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(10.00001!, 10.00001!)
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(10.00002!, 14.43811!)
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel1.SizeF = New System.Drawing.SizeF(155.6244!, 32.62392!)
         Me.XrLabel1.StylePriority.UseFont = False
+        Me.XrLabel1.StylePriority.UseTextAlignment = False
         Me.XrLabel1.Text = "XrLabel1"
+        Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'XrLabel46
         '
@@ -173,7 +181,7 @@ Partial Public Class RptKitchen
         Me.XrTable1.Dpi = 100.0!
         Me.XrTable1.Font = New System.Drawing.Font("B Titr", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrTable1.ForeColor = System.Drawing.Color.Black
-        Me.XrTable1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 112.3801!)
+        Me.XrTable1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 125.2314!)
         Me.XrTable1.Name = "XrTable1"
         Me.XrTable1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow1})
         Me.XrTable1.SizeF = New System.Drawing.SizeF(264.7332!, 20.75733!)
@@ -296,8 +304,9 @@ Partial Public Class RptKitchen
         'XrTable2
         '
         Me.XrTable2.BorderColor = System.Drawing.Color.Black
-        Me.XrTable2.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTable2.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable2.Dpi = 100.0!
         Me.XrTable2.Font = New System.Drawing.Font("B Nazanin", 9.0!)
         Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
@@ -323,7 +332,7 @@ Partial Public Class RptKitchen
         '
         Me.XrTableCell1.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoiceDetaile.Description")})
         Me.XrTableCell1.Dpi = 100.0!
-        Me.XrTableCell1.Font = New System.Drawing.Font("B Nazanin", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell1.Font = New System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell1.ForeColor = System.Drawing.Color.Black
         Me.XrTableCell1.Name = "XrTableCell1"
         Me.XrTableCell1.StylePriority.UseFont = False
@@ -335,7 +344,7 @@ Partial Public Class RptKitchen
         '
         Me.XrTableCell3.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoiceDetaile.Qty")})
         Me.XrTableCell3.Dpi = 100.0!
-        Me.XrTableCell3.Font = New System.Drawing.Font("B Nazanin", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell3.Font = New System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell3.ForeColor = System.Drawing.Color.Black
         Me.XrTableCell3.Name = "XrTableCell3"
         Me.XrTableCell3.StylePriority.UseFont = False
@@ -347,9 +356,10 @@ Partial Public Class RptKitchen
         '
         Me.XrTableCell4.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoiceDetaile.ProductName")})
         Me.XrTableCell4.Dpi = 100.0!
-        Me.XrTableCell4.Font = New System.Drawing.Font("B Nazanin", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell4.Font = New System.Drawing.Font("IRANSansWeb(FaNum)", 8.999999!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell4.ForeColor = System.Drawing.Color.Black
         Me.XrTableCell4.Name = "XrTableCell4"
+        Me.XrTableCell4.StylePriority.UseBorders = False
         Me.XrTableCell4.StylePriority.UseFont = False
         Me.XrTableCell4.StylePriority.UseForeColor = False
         Me.XrTableCell4.Text = "عـــنـــوان"
@@ -359,20 +369,48 @@ Partial Public Class RptKitchen
         '
         Me.GroupFooter1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel2})
         Me.GroupFooter1.Dpi = 100.0!
-        Me.GroupFooter1.HeightF = 100.0!
+        Me.GroupFooter1.HeightF = 27.77777!
         Me.GroupFooter1.Name = "GroupFooter1"
         '
         'XrLabel2
         '
         Me.XrLabel2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoice.Description")})
         Me.XrLabel2.Dpi = 100.0!
-        Me.XrLabel2.Font = New System.Drawing.Font("B Nazanin", 9.0!)
+        Me.XrLabel2.Font = New System.Drawing.Font("B Nazanin", 14.0!)
         Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(0.06561279!, 0!)
         Me.XrLabel2.Name = "XrLabel2"
         Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel2.SizeF = New System.Drawing.SizeF(264.6676!, 23.0!)
         Me.XrLabel2.StylePriority.UseFont = False
         Me.XrLabel2.Text = "XrLabel2"
+        '
+        'label7
+        '
+        Me.label7.Dpi = 100.0!
+        Me.label7.Font = New System.Drawing.Font("B Titr", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
+        Me.label7.LocationFloat = New DevExpress.Utils.PointFloat(211.0208!, 59.63677!)
+        Me.label7.Name = "label7"
+        Me.label7.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.label7.SizeF = New System.Drawing.SizeF(45.97922!, 32.03395!)
+        Me.label7.StylePriority.UseFont = False
+        Me.label7.StylePriority.UsePadding = False
+        Me.label7.StylePriority.UseTextAlignment = False
+        Me.label7.Text = "فیش :"
+        Me.label7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        '
+        'XrLabel5
+        '
+        Me.XrLabel5.Dpi = 100.0!
+        Me.XrLabel5.Font = New System.Drawing.Font("B Titr", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(141.3844!, 91.67071!)
+        Me.XrLabel5.Name = "XrLabel5"
+        Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.XrLabel5.SizeF = New System.Drawing.SizeF(115.6155!, 32.03394!)
+        Me.XrLabel5.StylePriority.UseFont = False
+        Me.XrLabel5.StylePriority.UsePadding = False
+        Me.XrLabel5.StylePriority.UseTextAlignment = False
+        Me.XrLabel5.Text = "وضعیت سفارش :"
+        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'RptKitchen
         '
@@ -426,4 +464,6 @@ Partial Public Class RptKitchen
     Friend WithEvents XrTableCell4 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents GroupFooter1 As DevExpress.XtraReports.UI.GroupFooterBand
     Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents label7 As DevExpress.XtraReports.UI.XRLabel
 End Class
