@@ -37,6 +37,10 @@ namespace ReportDesigner
 
             foreach (XtraReport report in liReport)
             {
+                report.CreateDocument(false);
+                //DevExpress.XtraPrinting.PrintToolBase print = new DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem);
+                //print.Print(report.PrinterName);
+
                 ReportPrintTool pts = new ReportPrintTool(report);
                 pts.Print();
             }
@@ -78,6 +82,7 @@ namespace ReportDesigner
                 report.ShowPrintStatusDialog = false;
                 report.RequestParameters = false;
                 report.PrintingSystem.ShowMarginsWarning = false;
+                report.CreateDocument(false);
                 if (this.RptNotExists)
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + "\\Report";

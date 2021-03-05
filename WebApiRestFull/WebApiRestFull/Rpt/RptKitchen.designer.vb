@@ -19,31 +19,47 @@ Partial Public Class RptKitchen
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RptKitchen))
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.ReportHeaderBand1 = New DevExpress.XtraReports.UI.ReportHeaderBand()
+        Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrPanel1 = New DevExpress.XtraReports.UI.XRPanel()
+        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel46 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrTable1 = New DevExpress.XtraReports.UI.XRTable()
         Me.XrTableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.XrTableCell5 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell17 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell3 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.Title = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.FieldCaption = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.PageInfo = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.DataField = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.XrControlStyle1 = New DevExpress.XtraReports.UI.XRControlStyle()
-        Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
-        Me.XrLabel46 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrPanel1 = New DevExpress.XtraReports.UI.XRPanel()
+        Me.ObjectDataSource1 = New DevExpress.DataAccess.ObjectBinding.ObjectDataSource(Me.components)
+        Me.DetailReport = New DevExpress.XtraReports.UI.DetailReportBand()
+        Me.Detail1 = New DevExpress.XtraReports.UI.DetailBand()
+        Me.XrTable2 = New DevExpress.XtraReports.UI.XRTable()
+        Me.XrTableRow2 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell1 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell3 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.GroupFooter1 = New DevExpress.XtraReports.UI.GroupFooterBand()
+        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ObjectDataSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
         '
         Me.Detail.Dpi = 100.0!
+        Me.Detail.Expanded = False
         Me.Detail.HeightF = 25.0!
         Me.Detail.Name = "Detail"
         Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
@@ -61,17 +77,92 @@ Partial Public Class RptKitchen
         'BottomMargin
         '
         Me.BottomMargin.Dpi = 100.0!
-        Me.BottomMargin.HeightF = 4.0!
+        Me.BottomMargin.HeightF = 0!
         Me.BottomMargin.Name = "BottomMargin"
         Me.BottomMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
         Me.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
         '
         'ReportHeaderBand1
         '
-        Me.ReportHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel1, Me.XrTable1})
+        Me.ReportHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel4, Me.XrLabel3, Me.XrPanel1, Me.XrTable1})
         Me.ReportHeaderBand1.Dpi = 100.0!
         Me.ReportHeaderBand1.HeightF = 133.1374!
         Me.ReportHeaderBand1.Name = "ReportHeaderBand1"
+        '
+        'XrLabel4
+        '
+        Me.XrLabel4.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoice.NumberOrder")})
+        Me.XrLabel4.Dpi = 100.0!
+        Me.XrLabel4.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(147.625!, 63.49999!)
+        Me.XrLabel4.Name = "XrLabel4"
+        Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel4.SizeF = New System.Drawing.SizeF(109.375!, 32.375!)
+        Me.XrLabel4.StylePriority.UseFont = False
+        Me.XrLabel4.Text = "XrLabel4"
+        '
+        'XrLabel3
+        '
+        Me.XrLabel3.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoice.SaleInvoice_Type")})
+        Me.XrLabel3.Dpi = 100.0!
+        Me.XrLabel3.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(8.741887!, 47.5694!)
+        Me.XrLabel3.Name = "XrLabel3"
+        Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel3.SizeF = New System.Drawing.SizeF(110.4167!, 64.81068!)
+        Me.XrLabel3.StylePriority.UseFont = False
+        Me.XrLabel3.Text = "XrLabel3"
+        '
+        'XrPanel1
+        '
+        Me.XrPanel1.BackColor = System.Drawing.Color.Silver
+        Me.XrPanel1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel1, Me.XrLabel46, Me.XrPictureBox2})
+        Me.XrPanel1.Dpi = 100.0!
+        Me.XrPanel1.LocationFloat = New DevExpress.Utils.PointFloat(0.06561543!, 0!)
+        Me.XrPanel1.Name = "XrPanel1"
+        Me.XrPanel1.SizeF = New System.Drawing.SizeF(264.895!, 47.56941!)
+        Me.XrPanel1.StylePriority.UseBackColor = False
+        '
+        'XrLabel1
+        '
+        Me.XrLabel1.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SettingPrint.StateSale")})
+        Me.XrLabel1.Dpi = 100.0!
+        Me.XrLabel1.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(10.00001!, 10.00001!)
+        Me.XrLabel1.Name = "XrLabel1"
+        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel1.SizeF = New System.Drawing.SizeF(155.6244!, 32.62392!)
+        Me.XrLabel1.StylePriority.UseFont = False
+        Me.XrLabel1.Text = "XrLabel1"
+        '
+        'XrLabel46
+        '
+        Me.XrLabel46.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel46.BorderColor = System.Drawing.Color.White
+        Me.XrLabel46.Dpi = 100.0!
+        Me.XrLabel46.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel46.ForeColor = System.Drawing.Color.White
+        Me.XrLabel46.LocationFloat = New DevExpress.Utils.PointFloat(173.7452!, 14.43811!)
+        Me.XrLabel46.Name = "XrLabel46"
+        Me.XrLabel46.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel46.SizeF = New System.Drawing.SizeF(91.08426!, 28.18582!)
+        Me.XrLabel46.StyleName = "Title"
+        Me.XrLabel46.StylePriority.UseBackColor = False
+        Me.XrLabel46.StylePriority.UseBorderColor = False
+        Me.XrLabel46.StylePriority.UseFont = False
+        Me.XrLabel46.StylePriority.UseForeColor = False
+        Me.XrLabel46.StylePriority.UseTextAlignment = False
+        Me.XrLabel46.Text = " نسخه آشپزخانه"
+        Me.XrLabel46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'XrPictureBox2
+        '
+        Me.XrPictureBox2.Dpi = 100.0!
+        Me.XrPictureBox2.Image = CType(resources.GetObject("XrPictureBox2.Image"), System.Drawing.Image)
+        Me.XrPictureBox2.LocationFloat = New DevExpress.Utils.PointFloat(165.6244!, 15.48077!)
+        Me.XrPictureBox2.Name = "XrPictureBox2"
+        Me.XrPictureBox2.SizeF = New System.Drawing.SizeF(109.0475!, 32.08864!)
+        Me.XrPictureBox2.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
         '
         'XrTable1
         '
@@ -96,7 +187,7 @@ Partial Public Class RptKitchen
         '
         'XrTableRow1
         '
-        Me.XrTableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell5, Me.XrTableCell17, Me.XrTableCell2, Me.XrTableCell3})
+        Me.XrTableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell5, Me.XrTableCell17, Me.XrTableCell2})
         Me.XrTableRow1.Dpi = 100.0!
         Me.XrTableRow1.Name = "XrTableRow1"
         Me.XrTableRow1.Weight = 1.0R
@@ -132,20 +223,7 @@ Partial Public Class RptKitchen
         Me.XrTableCell2.StylePriority.UseFont = False
         Me.XrTableCell2.StylePriority.UseForeColor = False
         Me.XrTableCell2.Text = "عـــنـــوان"
-        Me.XrTableCell2.Weight = 1.3117551213309051R
-        '
-        'XrTableCell3
-        '
-        Me.XrTableCell3.Dpi = 100.0!
-        Me.XrTableCell3.Font = New System.Drawing.Font("B Titr", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell3.ForeColor = System.Drawing.Color.Black
-        Me.XrTableCell3.Name = "XrTableCell3"
-        Me.XrTableCell3.StylePriority.UseFont = False
-        Me.XrTableCell3.StylePriority.UseForeColor = False
-        Me.XrTableCell3.StylePriority.UseTextAlignment = False
-        Me.XrTableCell3.Text = "#"
-        Me.XrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        Me.XrTableCell3.Weight = 0.21792490180064397R
+        Me.XrTableCell2.Weight = 1.5296800231315491R
         '
         'Title
         '
@@ -194,49 +272,114 @@ Partial Public Class RptKitchen
         Me.XrControlStyle1.Name = "XrControlStyle1"
         Me.XrControlStyle1.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
         '
-        'XrPictureBox2
+        'ObjectDataSource1
         '
-        Me.XrPictureBox2.Dpi = 100.0!
-        Me.XrPictureBox2.Image = CType(resources.GetObject("XrPictureBox2.Image"), System.Drawing.Image)
-        Me.XrPictureBox2.LocationFloat = New DevExpress.Utils.PointFloat(165.6244!, 15.48077!)
-        Me.XrPictureBox2.Name = "XrPictureBox2"
-        Me.XrPictureBox2.SizeF = New System.Drawing.SizeF(109.0475!, 32.08864!)
-        Me.XrPictureBox2.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
+        Me.ObjectDataSource1.DataSource = GetType(Model.SaleInvoicePrint)
+        Me.ObjectDataSource1.Name = "ObjectDataSource1"
         '
-        'XrLabel46
+        'DetailReport
         '
-        Me.XrLabel46.BackColor = System.Drawing.Color.Transparent
-        Me.XrLabel46.BorderColor = System.Drawing.Color.White
-        Me.XrLabel46.Dpi = 100.0!
-        Me.XrLabel46.Font = New System.Drawing.Font("B Titr", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel46.ForeColor = System.Drawing.Color.White
-        Me.XrLabel46.LocationFloat = New DevExpress.Utils.PointFloat(173.7452!, 14.43811!)
-        Me.XrLabel46.Name = "XrLabel46"
-        Me.XrLabel46.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel46.SizeF = New System.Drawing.SizeF(91.08426!, 28.18582!)
-        Me.XrLabel46.StyleName = "Title"
-        Me.XrLabel46.StylePriority.UseBackColor = False
-        Me.XrLabel46.StylePriority.UseBorderColor = False
-        Me.XrLabel46.StylePriority.UseFont = False
-        Me.XrLabel46.StylePriority.UseForeColor = False
-        Me.XrLabel46.StylePriority.UseTextAlignment = False
-        Me.XrLabel46.Text = " نسخه آشپزخانه"
-        Me.XrLabel46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        Me.DetailReport.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail1, Me.GroupFooter1})
+        Me.DetailReport.DataMember = "SaleInvoiceDetaile"
+        Me.DetailReport.DataSource = Me.ObjectDataSource1
+        Me.DetailReport.Dpi = 100.0!
+        Me.DetailReport.Level = 0
+        Me.DetailReport.Name = "DetailReport"
         '
-        'XrPanel1
+        'Detail1
         '
-        Me.XrPanel1.BackColor = System.Drawing.Color.Silver
-        Me.XrPanel1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel46, Me.XrPictureBox2})
-        Me.XrPanel1.Dpi = 100.0!
-        Me.XrPanel1.LocationFloat = New DevExpress.Utils.PointFloat(0.06561543!, 0!)
-        Me.XrPanel1.Name = "XrPanel1"
-        Me.XrPanel1.SizeF = New System.Drawing.SizeF(264.895!, 47.56941!)
-        Me.XrPanel1.StylePriority.UseBackColor = False
+        Me.Detail1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrTable2})
+        Me.Detail1.Dpi = 100.0!
+        Me.Detail1.HeightF = 20.75733!
+        Me.Detail1.Name = "Detail1"
+        '
+        'XrTable2
+        '
+        Me.XrTable2.BorderColor = System.Drawing.Color.Black
+        Me.XrTable2.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTable2.Dpi = 100.0!
+        Me.XrTable2.Font = New System.Drawing.Font("B Nazanin", 9.0!)
+        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.XrTable2.Name = "XrTable2"
+        Me.XrTable2.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow2})
+        Me.XrTable2.SizeF = New System.Drawing.SizeF(264.7332!, 20.75733!)
+        Me.XrTable2.StylePriority.UseBackColor = False
+        Me.XrTable2.StylePriority.UseBorderColor = False
+        Me.XrTable2.StylePriority.UseBorders = False
+        Me.XrTable2.StylePriority.UseFont = False
+        Me.XrTable2.StylePriority.UseForeColor = False
+        Me.XrTable2.StylePriority.UseTextAlignment = False
+        Me.XrTable2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        '
+        'XrTableRow2
+        '
+        Me.XrTableRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell1, Me.XrTableCell3, Me.XrTableCell4})
+        Me.XrTableRow2.Dpi = 100.0!
+        Me.XrTableRow2.Name = "XrTableRow2"
+        Me.XrTableRow2.Weight = 1.0R
+        '
+        'XrTableCell1
+        '
+        Me.XrTableCell1.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoiceDetaile.Description")})
+        Me.XrTableCell1.Dpi = 100.0!
+        Me.XrTableCell1.Font = New System.Drawing.Font("B Nazanin", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell1.ForeColor = System.Drawing.Color.Black
+        Me.XrTableCell1.Name = "XrTableCell1"
+        Me.XrTableCell1.StylePriority.UseFont = False
+        Me.XrTableCell1.StylePriority.UseForeColor = False
+        Me.XrTableCell1.Text = "توضــیحات"
+        Me.XrTableCell1.Weight = 0.77176183388841491R
+        '
+        'XrTableCell3
+        '
+        Me.XrTableCell3.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoiceDetaile.Qty")})
+        Me.XrTableCell3.Dpi = 100.0!
+        Me.XrTableCell3.Font = New System.Drawing.Font("B Nazanin", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell3.ForeColor = System.Drawing.Color.Black
+        Me.XrTableCell3.Name = "XrTableCell3"
+        Me.XrTableCell3.StylePriority.UseFont = False
+        Me.XrTableCell3.StylePriority.UseForeColor = False
+        Me.XrTableCell3.Text = "مقدار"
+        Me.XrTableCell3.Weight = 0.29458183917033154R
+        '
+        'XrTableCell4
+        '
+        Me.XrTableCell4.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoiceDetaile.ProductName")})
+        Me.XrTableCell4.Dpi = 100.0!
+        Me.XrTableCell4.Font = New System.Drawing.Font("B Nazanin", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell4.ForeColor = System.Drawing.Color.Black
+        Me.XrTableCell4.Name = "XrTableCell4"
+        Me.XrTableCell4.StylePriority.UseFont = False
+        Me.XrTableCell4.StylePriority.UseForeColor = False
+        Me.XrTableCell4.Text = "عـــنـــوان"
+        Me.XrTableCell4.Weight = 1.5296800231315491R
+        '
+        'GroupFooter1
+        '
+        Me.GroupFooter1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel2})
+        Me.GroupFooter1.Dpi = 100.0!
+        Me.GroupFooter1.HeightF = 100.0!
+        Me.GroupFooter1.Name = "GroupFooter1"
+        '
+        'XrLabel2
+        '
+        Me.XrLabel2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SaleInvoice.Description")})
+        Me.XrLabel2.Dpi = 100.0!
+        Me.XrLabel2.Font = New System.Drawing.Font("B Nazanin", 9.0!)
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(0.06561279!, 0!)
+        Me.XrLabel2.Name = "XrLabel2"
+        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel2.SizeF = New System.Drawing.SizeF(264.6676!, 23.0!)
+        Me.XrLabel2.StylePriority.UseFont = False
+        Me.XrLabel2.Text = "XrLabel2"
         '
         'RptKitchen
         '
-        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.ReportHeaderBand1})
-        Me.Margins = New System.Drawing.Printing.Margins(0, 1, 0, 4)
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.ReportHeaderBand1, Me.DetailReport})
+        Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.ObjectDataSource1})
+        Me.DataSource = Me.ObjectDataSource1
+        Me.Margins = New System.Drawing.Printing.Margins(0, 1, 0, 0)
         Me.PageHeight = 1969
         Me.PageWidth = 268
         Me.PaperKind = System.Drawing.Printing.PaperKind.Custom
@@ -248,6 +391,8 @@ Partial Public Class RptKitchen
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.Title, Me.FieldCaption, Me.PageInfo, Me.DataField, Me.XrControlStyle1})
         Me.Version = "16.1"
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ObjectDataSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -264,9 +409,21 @@ Partial Public Class RptKitchen
     Friend WithEvents XrTableCell5 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell17 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell2 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell3 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrControlStyle1 As DevExpress.XtraReports.UI.XRControlStyle
     Friend WithEvents XrPanel1 As DevExpress.XtraReports.UI.XRPanel
     Friend WithEvents XrLabel46 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrPictureBox2 As DevExpress.XtraReports.UI.XRPictureBox
+    Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents ObjectDataSource1 As DevExpress.DataAccess.ObjectBinding.ObjectDataSource
+    Friend WithEvents DetailReport As DevExpress.XtraReports.UI.DetailReportBand
+    Friend WithEvents Detail1 As DevExpress.XtraReports.UI.DetailBand
+    Friend WithEvents XrTable2 As DevExpress.XtraReports.UI.XRTable
+    Friend WithEvents XrTableRow2 As DevExpress.XtraReports.UI.XRTableRow
+    Friend WithEvents XrTableCell1 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell3 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell4 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents GroupFooter1 As DevExpress.XtraReports.UI.GroupFooterBand
+    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
 End Class

@@ -17,6 +17,22 @@ Imports System.ComponentModel
 
 Public Class HomeController
     Inherits ApiController
+
+
+    Dim DefaultContact As String
+    Dim funcSql As New ConectToDatabaseSQL
+    Dim reportDesign As New ReportDesigner.DesinerReports
+    ''' <summary>
+    ''' لیست فاکتور هایی که در انتظار ارسال به دستگاه برای چاپ هستند
+    ''' </summary>
+    Dim PrintList As New List(Of XtraReport)
+    Dim IDUser As Integer
+    Dim _SettingUser As tblPrinterUserSetting
+    Dim _SettingFactor As tblSettingIDFactor
+    Dim IdSandogh As String
+    Dim bgw As BackgroundWorker
+
+
 #Region " تابع گرفتن گروه های غذایی"
     <HttpGet>
     Public Function GetGroupFood() As JArray
@@ -175,7 +191,6 @@ Public Class HomeController
                     Dim Numberfish = funcSql.CellReader("TblParent_FrooshKala", "ForooshKalaParent_ShomareFish", "ForooshKalaParent_ID=" & IDFactor & "")
                     If result = "1" Then
                         Me.IDUser = UserCode
-                        '  ThreadPool.QueueUserWorkItem(Sub(state) Printfactcancle(Numberfish))
                         Printfactcancle(Numberfish)
                         Return True
                     End If
@@ -213,7 +228,7 @@ Public Class HomeController
                 PrintList = New List(Of XtraReport)
                 PrintList.Add(report)
             End If
-            PrintListReport()
+            PrintListReport() '  cancele saleinvoice
 
             Return True
         Catch ex As Exception
@@ -383,22 +398,6 @@ Public Class HomeController
 
 #End Region
 
-    Dim DefaultContact As String
-    Dim funcSql As New ConectToDatabaseSQL
-    Dim reportDesign As New ReportDesigner.DesinerReports
-    ''' <summary>
-    ''' لیست فاکتور هایی که در انتظار ارسال به دستگاه برای چاپ هستند
-    ''' </summary>
-    Dim PrintList As New List(Of XtraReport)
-    Dim IDUser As Integer
-    Dim _SettingUser As tblPrinterUserSetting
-    Dim _SettingFactor As tblSettingIDFactor
-    Dim IdSandogh As String
-
-
-    Dim bgw As BackgroundWorker
-
-
     Sub GetDefaultContact()
         Try
             Dim contact = funcSql.CellReader("tblSettingIDFactor", "DefultContact")
@@ -488,13 +487,12 @@ Public Class HomeController
 
             End If
 
-            'PrintFish(SaleInvoiceID, SumMoney, UpdateFact)
-
-            Dim printdata As New printData
-            printdata.SaleInvoiceID = SaleInvoiceID
-            printdata.SumMoney = SumMoney
-            printdata.UpdateFact = UpdateFact
-            printdata.SaleNumber = NumberFish
+            PrintFish(SaleInvoiceID, SumMoney, UpdateFact)
+            'Dim printdata As New printData
+            'printdata.SaleInvoiceID = SaleInvoiceID
+            'printdata.SumMoney = SumMoney
+            'printdata.UpdateFact = UpdateFact
+            'printdata.SaleNumber = NumberFish
 
 
             'bgw = New BackgroundWorker
@@ -562,12 +560,15 @@ Public Class HomeController
             Dim _setting As New SaleInvoicePrint.Setting
             _setting.DateTimeToday = DateTime.Now.JulianToPersianDate()
             _setting.PriceText = textprice
-            '_setting.Sokhan = sokhan
             _setting.StateSale = stateOrder
             datasource.SettingPrint = _setting
-
-            report = reportDesign.CreatReport(Of Model.SaleInvoicePrint)(datasource, report)
+            'report = reportDesign.CreatReport(Of Model.SaleInvoicePrint)(datasource, report)
             report.PrinterName = printername
+
+            'Dim dts As New List(Of Model.SaleInvoicePrint)
+            'dts.Add(datasource)
+            'report.DataSource = dts
+
             Return report
 
         Catch ex As Exception
@@ -581,6 +582,13 @@ Public Class HomeController
     ''' </summary>
     Sub PrintListReport()
         Try
+
+            'For Each report As XtraReport In PrintList
+            '    report.CreateDocument(False)
+            '    Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+            '    printTool.Print(report.PrinterName)
+            'Next
+
             reportDesign.PrintListReport(PrintList)
             PrintList = New List(Of XtraReport)
         Catch ex As Exception
@@ -590,29 +598,27 @@ Public Class HomeController
     Public Function PrintFish(SaleID As String, sumPrice As String, updated As Boolean)
         Try
             PrintList = New List(Of XtraReport)
+            Dim data = GetSaleInvoice(SaleID)
             If _SettingUser.BironbarMoshtari Or _SettingUser.DakhelSalonMoshtari Or _SettingUser.PeykMoshtari Then
-                RptCustomer(SaleID, sumPrice, updated)
+                RptCustomer(data, sumPrice, updated)
             End If
 
             If _SettingUser.BironbarAshpazkhane Or _SettingUser.DakhelSalonAshpazkhane Or _SettingUser.PeykAshpazkhane Then
-                RptKitchen(SaleID, sumPrice, updated)
+                RptKitchen(data, sumPrice, updated)
             End If
 
 
             If _SettingUser.BironbarSandogh Or _SettingUser.DakhelSalonSandogh Or _SettingUser.PeykSandogh Then
-                RptCashier(SaleID, sumPrice, updated)
+                'RptCashier(data, sumPrice, updated)
             End If
 
-            PrintListReport()
+            'PrintListReport() ' print list
 
         Catch ex As Exception
             WriteText("Print Report : " & ex.Message)
         End Try
     End Function
-    Sub RptCustomer(ByVal id As Long, ByVal sumPrice As Long, updated As Boolean)
-
-        Dim data = GetSaleInvoice(id)
-
+    Sub RptCustomer(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
         Dim report
         If _SettingUser.Costumer5Cm Then
             report = New RptCustomerSmall
@@ -622,12 +628,16 @@ Public Class HomeController
 
         report = DesignReport(data, report, _SettingUser.PrinterCustomer, sumPrice, updated)
 
-        If report IsNot Nothing Then
-            PrintList.Add(report)
-        End If
+        report.CreateDocument(False)
+        Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+        printTool.Print(_SettingUser.PrinterCustomer)
+
+        'If report IsNot Nothing Then
+        '    PrintList.Add(report)
+        'End If
     End Sub
-    Sub RptCashier(ByVal id As Long, ByVal sumPrice As Long, updated As Boolean)
-        Dim data = GetSaleInvoice(id)
+    Sub RptCashier(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
+
         Dim report
         If _SettingUser.Sandogh5Cm Then
             report = New RptCashierSmall
@@ -635,15 +645,13 @@ Public Class HomeController
             report = New RptCashier
         End If
         report = DesignReport(data, report, _SettingUser.PrinterSandogh, sumPrice, updated)
-
         If report IsNot Nothing Then
             PrintList.Add(report)
         End If
 
     End Sub
-    Sub RptKitchen(ByVal id As Long, ByVal sumPrice As Long, updated As Boolean)
+    Sub RptKitchen(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
 
-        Dim data = GetSaleInvoice(id)
         If data.SaleInvoice Is Nothing Then
             Return
         End If
@@ -654,11 +662,17 @@ Public Class HomeController
         Else
             report = New RptKitchen
         End If
+
         report = DesignReport(data, report, _SettingUser.PrinterAshpazkhane, sumPrice, updated)
+
+        report.CreateDocument(False)
+        Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+        printTool.Print(_SettingUser.PrinterAshpazkhane)
 
         If report IsNot Nothing Then
             PrintList.Add(report)
         End If
+
 
     End Sub
     Function GetSaleInvoice(ByVal saleinvoiceID As Long) As Model.SaleInvoicePrint
@@ -667,14 +681,12 @@ Public Class HomeController
 
     Function DoWork(ByVal sender As Object, ByVal e As DoWorkEventArgs)
         Dim ar = DirectCast(e.Argument, printData)
-        PrintFish(ar.SaleInvoiceID, ar.SumMoney, ar.UpdateFact)
+        PrintFish(ar.SaleInvoiceID, ar.SumMoney, ar.UpdateFact) ' backgroundWorker
         Return ar.SaleNumber
 
     End Function
 
 #End Region
-
-
     Public Function PasswordEncrypt(ByVal inText As String) As String
 
         Try
@@ -759,7 +771,6 @@ Public Class HomeController
         <JsonProperty("Tell")>
         Public Property Tell() As String
     End Class
-
     Function InsertChildAndKardeks(_IDFact As String, IsUpdate As Boolean, ByVal DTkala As List(Of ListFood), ByRef sumfactor As Integer) As Boolean
 
         Try
@@ -972,7 +983,6 @@ Public Class HomeController
             WriteText("CreatDocument =  " & ex.Message)
         End Try
     End Sub
-
     <HttpGet>
     <Route("api/home/ReportForush/{DateStart}/{DateEnd}")>
     Public Function ReportForush(DateStart As String, DateEnd As String) As JArray
@@ -1028,7 +1038,6 @@ Public Class HomeController
             WriteText("Error in ReportForush : " & ex.Message)
         End Try
     End Function
-
     Class printData
         Public Property SaleInvoiceID() As Long
         Public Property SumMoney() As Long
@@ -1055,8 +1064,6 @@ Public Class HomeController
 #End Region
 
     Private Sub WriteText(text As String)
-
-
         Dim FileStream As FileStream
         Dim StrPath As String = System.Web.HttpContext.Current.Server.MapPath("~/ErrorLog.txt")
 
@@ -1074,33 +1081,6 @@ Public Class HomeController
         End Using
 
     End Sub
-
-    ' GET api/<controller>
-    Public Function GetValues() As IEnumerable(Of String)
-        Return New String() {"value1", "value2"}
-    End Function
-
-    ' GET api/<controller>/5
-    Public Function GetValue(ByVal id As Integer) As String
-        Return "value"
-    End Function
-
-    ' POST api/<controller>
-    Public Sub PostValue(<FromBody()> ByVal value As String)
-
-    End Sub
-
-    ' PUT api/<controller>/5
-    Public Sub PutValue(ByVal id As Integer, <FromBody()> ByVal value As String)
-
-    End Sub
-
-    ' DELETE api/<controller>/5
-    Public Sub DeleteValue(ByVal id As Integer)
-
-    End Sub
-
-
 
 End Class
 
