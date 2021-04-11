@@ -70,11 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acc\AccountingRepository.cs" />
-    <Compile Include="Buy\BuyInvoiceRepository.cs" />
     <Compile Include="Customers\CustomersRepository.cs" />
     <Compile Include="DBAccess.cs" />
     <Compile Include="localizationDBContext.cs" />
-    <Compile Include="OnlineSale\SaleOnline.cs" />
     <Compile Include="Permission\PermissionRepository.cs" />
     <Compile Include="Products\SaleInvoiceRepository.cs" />
     <Compile Include="Products\ProductsRepository.cs" />

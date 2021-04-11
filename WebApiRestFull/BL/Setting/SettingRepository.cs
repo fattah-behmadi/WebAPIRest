@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-
+using UtilitiesMethod;
 
 namespace BL
 {
@@ -16,8 +16,10 @@ namespace BL
         internal GenericRepository<tblSettingIDFactor> SettingRepo { get; set; }
         internal GenericRepository<tblPrinterUserSetting> SettingPrinterUserRepo { get; set; }
         internal GenericRepository<tblSettingAcc> SettingAccRepo { get; set; }
+        internal GenericRepository<tblLogin> loginRepo { get; set; }
 
-        
+
+
         #endregion
 
         tblCompany_Info _companyCashing;
@@ -29,7 +31,7 @@ namespace BL
             SettingRepo = new GenericRepository<tblSettingIDFactor>(DBAccess.GetNewContext());
             SettingPrinterUserRepo = new GenericRepository<tblPrinterUserSetting>(DBAccess.GetNewContext());
             SettingAccRepo = new GenericRepository<tblSettingAcc>(DBAccess.GetNewContext());
-
+            loginRepo = new GenericRepository<tblLogin>(DBAccess.GetNewContext());
 
         }
 
@@ -83,5 +85,18 @@ namespace BL
 
         }
         #endregion
+
+        #region UserLogin
+        public tblLogin GetUser(string uName,string uPass)
+        {
+            string pass = uPass.PasswordEncrypt();
+            return this.loginRepo.FindByCondition(u => u.Login_UserName == uName && u.Login_Password == pass);
+        }
+
+
+
+        #endregion
+
+
     }
 }

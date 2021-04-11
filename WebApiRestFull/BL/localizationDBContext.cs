@@ -14,7 +14,6 @@ namespace BL
         public static SettingRepository SettingRepo { get; set; }
         public static CustomersRepository CustomersRepo { get; set; }
         public static PermissionRepository PermissionRepo { get; set; }
-        public static BuyInvoiceRepository BuyInvoiceRepo { get; set; }
         public static AccountingRepository AccRepo { get; set; }
 
 
@@ -27,7 +26,6 @@ namespace BL
             SettingRepo = new SettingRepository();
             CustomersRepo = new CustomersRepository();
             PermissionRepo = new PermissionRepository();
-            BuyInvoiceRepo = new BuyInvoiceRepository();
             AccRepo = new AccountingRepository();
         }
     }

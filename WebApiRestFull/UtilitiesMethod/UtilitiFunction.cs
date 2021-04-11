@@ -14,6 +14,7 @@ using System.Collections;
 using System.Data;
 using AutoMapper;
 using System.Configuration;
+using System.Security.Cryptography;
 
 
 namespace UtilitiesMethod
@@ -953,7 +954,50 @@ namespace UtilitiesMethod
             }
         }
 
+        public static string PasswordEncrypt( this string inText)
+        {
 
+            try
+            {
+                string key = "Heyzha@2228932_SanSystem";
+                byte[] bytesBuff = Encoding.Unicode.GetBytes(inText);
+                using (Aes aes__1 = Aes.Create())
+                {
+                    Rfc2898DeriveBytes crypto = new Rfc2898DeriveBytes(key, new byte[] {
+                0x49,
+                0x76,
+                0x61,
+                0x6e,
+                0x20,
+                0x4d,
+                0x65,
+                0x64,
+                0x76,
+                0x65,
+                0x64,
+                0x65,
+                0x76
+            });
+
+                    aes__1.Key = crypto.GetBytes(32);
+                    aes__1.IV = crypto.GetBytes(16);
+                    using (MemoryStream mStream = new MemoryStream())
+                    {
+                        using (CryptoStream cStream = new CryptoStream(mStream, aes__1.CreateEncryptor(), CryptoStreamMode.Write))
+                        {
+                            cStream.Write(bytesBuff, 0, bytesBuff.Length);
+                            cStream.Close();
+                        }
+                        inText = Convert.ToBase64String(mStream.ToArray());
+                    }
+                }
+                return inText;
+            }
+            catch (Exception ex)
+            {
+                return string.Empty;
+            }
+        }
 
     }
 }
