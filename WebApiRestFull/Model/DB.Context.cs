@@ -28,34 +28,28 @@ namespace Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblAdress> tblAdresses { get; set; }
-        public virtual DbSet<tblContact> tblContacts { get; set; }
-        public virtual DbSet<tblMobile> tblMobiles { get; set; }
         public virtual DbSet<tblPrinterUserSetting> tblPrinterUserSettings { get; set; }
         public virtual DbSet<tblSettingIDFactor> tblSettingIDFactors { get; set; }
-        public virtual DbSet<tblTell> tblTells { get; set; }
-        public virtual DbSet<TblParent_FrooshKala> TblParent_FrooshKala { get; set; }
         public virtual DbSet<tblSettingAcc> tblSettingAccs { get; set; }
         public virtual DbSet<TblExpAshpazkhane> TblExpAshpazkhane { get; set; }
-        public virtual DbSet<SaleFoodOnline> SaleFoodOnline { get; set; }
-        public virtual DbSet<SaleFoodOnlineDetaile> SaleFoodOnlineDetaile { get; set; }
-        public virtual DbSet<tblAnbar> tblAnbar { get; set; }
         public virtual DbSet<TblVahedKalaAsli> TblVahedKalaAsli { get; set; }
         public virtual DbSet<TblGroupKala> TblGroupKala { get; set; }
-        public virtual DbSet<TblKala> TblKalas { get; set; }
         public virtual DbSet<tblPriceChangeKala> tblPriceChangeKalas { get; set; }
         public virtual DbSet<Vw_PrintFroosh> Vw_PrintFroosh { get; set; }
         public virtual DbSet<tblCompany_Info> tblCompany_Info { get; set; }
-        public virtual DbSet<TblChild_ForooshKala> TblChild_ForooshKala { get; set; }
-        public virtual DbSet<Vw_TellMobileContact> Vw_TellMobileContact { get; set; }
-        public virtual DbSet<PermissionSystemLicense> PermissionSystemLicenses { get; set; }
         public virtual DbSet<TblKardeksKala> TblKardeksKalas { get; set; }
-        public virtual DbSet<TblChild_KharidKala> TblChild_KharidKala { get; set; }
-        public virtual DbSet<TblParent_KharidKala> TblParent_KharidKala { get; set; }
         public virtual DbSet<tblSandogh> tblSandoghs { get; set; }
         public virtual DbSet<tblTafzili> tblTafzilis { get; set; }
         public virtual DbSet<TblSokhan> TblSokhans { get; set; }
         public virtual DbSet<tblLogin> tblLogins { get; set; }
+        public virtual DbSet<tblAdress> tblAdresses { get; set; }
+        public virtual DbSet<TblChild_ForooshKala> TblChild_ForooshKala { get; set; }
+        public virtual DbSet<TblKala> TblKalas { get; set; }
+        public virtual DbSet<tblMobile> tblMobiles { get; set; }
+        public virtual DbSet<TblParent_FrooshKala> TblParent_FrooshKala { get; set; }
+        public virtual DbSet<tblTell> tblTells { get; set; }
+        public virtual DbSet<tblContact> tblContacts { get; set; }
+        public virtual DbSet<Vw_TellMobileContact> Vw_TellMobileContact { get; set; }
     
         public virtual int sp_GetKalaSale()
         {

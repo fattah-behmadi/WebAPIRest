@@ -81,15 +81,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PermissionSystemLicense.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SaleFoodOnline.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SaleFoodOnlineDetaile.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="SanResturantEntities.cs" />
     <Compile Include="DB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -113,13 +104,7 @@
     <Compile Include="tblAdress.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblAnbar.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="TblChild_ForooshKala.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TblChild_KharidKala.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCompany_Info.cs">
@@ -149,9 +134,6 @@
     <Compile Include="TblParent_FrooshKala.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="TblParent_KharidKala.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblPriceChangeKala.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -179,11 +161,10 @@
     <Compile Include="TblVahedKalaAsli.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="viewMoel\Product.cs" />
     <Compile Include="viewMoel\Report\SaleInvoicePrint.cs" />
-    <Compile Include="viewMoel\SaleFoodOnline.cs" />
     <Compile Include="viewMoel\SaleInvoice.cs" />
     <Compile Include="viewMoel\SaleInvoiceDetaile.cs" />
-    <Compile Include="viewMoel\tblKalaReport.cs" />
     <Compile Include="Vw_PrintFroosh.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>

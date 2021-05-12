@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Model;
+using UtilitiesMethod;
 
 namespace BL
 {
@@ -44,7 +45,7 @@ namespace BL
         }
         public tblContact GetCustomer_ByTafsil(long tafsilID)
         {
-            return customersRepo.FindBySingle(c=> c.Tafzili_ID == tafsilID);
+            return customersRepo.FindBySingle(c => c.Tafzili_ID == tafsilID);
         }
         public tblContact GetCustomer_ByID(long id)
         {
@@ -53,7 +54,7 @@ namespace BL
 
         public List<tblContact> GetAllCustomer_AT()
         {
-            return customersRepo.AllInclude(c => c.tblAdresses,t=> t.tblTells,m=> m.tblMobiles).ToList();
+            return customersRepo.AllInclude(c => c.tblAdresses, t => t.tblTells, m => m.tblMobiles).ToList();
         }
 
         #endregion
@@ -63,11 +64,11 @@ namespace BL
         {
             return addressRepo.Insert(address);
         }
-        public int InsertAddress(string address,long customerID)
+        public int InsertAddress(string address, long customerID)
         {
             if (!string.IsNullOrEmpty(address) && !string.IsNullOrWhiteSpace(address))
             {
-                tblAdress _address = new tblAdress() { Adress = address, Contact_ID = customerID };
+                tblAdress _address = new tblAdress() { Adress = address, Contact_ID = customerID.ToInt() };
                 return addressRepo.Insert(_address);
 
             }
@@ -94,7 +95,7 @@ namespace BL
         {
             if (!string.IsNullOrEmpty(tell) && !string.IsNullOrWhiteSpace(tell))
             {
-                tblTell _tell = new tblTell() { Contacts_ID=customerID, Tell_Contact=tell };
+                tblTell _tell = new tblTell() { Contacts_ID = customerID.ToInt(), Tell_Contact = tell };
                 return tellRepo.Insert(_tell);
 
             }

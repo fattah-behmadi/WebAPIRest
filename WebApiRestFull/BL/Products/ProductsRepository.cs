@@ -14,7 +14,6 @@ namespace BL
         internal GenericRepository<TblGroupKala> _groupsProduct { get; set; }
         internal GenericRepository<TblKala> _products { get; set; }
         internal GenericRepository<TblExpAshpazkhane> _descriptionFoods { get; set; }
-        internal GenericRepository<tblAnbar> _stores { get; set; }
         internal GenericRepository<TblVahedKalaAsli> _Units { get; set; }
         internal GenericRepository<tblPriceChangeKala> _PriceChangeKala { get; set; }
         internal GenericRepository<TblKardeksKala> _cardeks { get; set; }
@@ -26,7 +25,6 @@ namespace BL
             _groupsProduct = new GenericRepository<TblGroupKala>(DBAccess.GetNewContext());
             _products = new GenericRepository<TblKala>(DBAccess.GetNewContext());
             _descriptionFoods = new GenericRepository<TblExpAshpazkhane>(DBAccess.GetNewContext());
-            _stores = new GenericRepository<tblAnbar>(DBAccess.GetNewContext());
             _Units = new GenericRepository<TblVahedKalaAsli>(DBAccess.GetNewContext());
             _PriceChangeKala = new GenericRepository<tblPriceChangeKala>(DBAccess.GetNewContext());
             _cardeks = new GenericRepository<TblKardeksKala>(DBAccess.GetNewContext());
@@ -34,9 +32,10 @@ namespace BL
         }
 
         #region Groups
-        public List<TblGroupKala> GetAllGroups()
+        public List<ProductGroup> GetAllGroups()
         {
-            return _groupsProduct.All().ToList();
+            var li = _groupsProduct.All().ToList();
+            return li.MapperList<TblGroupKala, ProductGroup>();
         }
 
         public TblGroupKala GetGroupByID(int ID)
@@ -58,7 +57,7 @@ namespace BL
         {
             return _products.All().ToList();
         }
-        public List<ProductReport> GetFildUsage()
+        public List<Product> GetFildUsage()
         {
             //string sql = @"
             //        SELECT [ID_Kala],[Name_Kala],[Fk_GroupKala],[Fk_VahedKalaAsli]
@@ -68,9 +67,10 @@ namespace BL
             //        FROM [dbo].[TblKala] WHERE [Status]=1";
             //var li = db.Database.SqlQuery<sp_GetKalaSale>("sp_GetKalaSale").ToList();
 
-            return _products.ExecuteCommand<ProductReport>("sp_GetKalaSale").ToList();
+            var products = _products.ExecuteCommand<TblKala>("sp_GetKalaSale").ToList();
+            return products.MapperList<TblKala, Product>();
         }
-        public List<ProductReport> GetByGroupID(int IDGroup)
+        public List<Product> GetProductsByGroupID(long IDGroup)
         {
             string sql = @"
                     SELECT [ID_Kala],[Name_Kala],[Fk_GroupKala],[Fk_VahedKalaAsli]
@@ -79,23 +79,32 @@ namespace BL
                     ,[MojodiAvalDore],[IsOnline]
                     FROM [dbo].[TblKala] WHERE [Status]=1 and [Fk_GroupKala]=" + IDGroup;
             //return db.Database.SqlQuery<sp_GetKalaSale>(sql).ToList<sp_GetKalaSale>();
-            return _products.ExecuteCommand<ProductReport>(sql).ToList<ProductReport>();
+            var products = _products.ExecuteCommand<TblKala>(sql).ToList<TblKala>();
+            return products.MapperList<TblKala, Product>();
+
         }
         public TblKala GetProductByID(int ID)
         {
             return _products.FindByCondition(c => c.ID_Kala == ID);
         }
-        public List<ProductReport> GetListFavoritFood(string listIDKala)
+        public List<Product> GetProductsFavorit()
         {
             string sql = @"
                     SELECT [ID_Kala],[Name_Kala],[Fk_GroupKala],[Fk_VahedKalaAsli]
                     ,[GheymatForoshAsli],[DarsadTakhfif],[DarsadMaliyat],[MoafMaliyat]
                     ,[HadaghalMovjodi],[ControlCount],[Status],[Tozihat]
                     ,[MojodiAvalDore],[IsOnline],[Fk_Anbar]
-                    FROM [dbo].[TblKala] WHERE [Status]=1 AND [ID_Kala] IN(" + listIDKala + ")";
+                   FROM TblKala
+ where ID_Kala in (
+                    SELECT top   30   ChildForooshKala_KalaID AS productID 
+                    FROM dbo.TblChild_ForooshKala
+                    GROUP BY ChildForooshKala_KalaID
+                    order by COUNT(ChildForooshKala_KalaID) desc)
+                ";
 
             //return db.Database.SqlQuery<sp_GetKalaSale>(sql).ToList<sp_GetKalaSale>();
-            return _products.ExecuteCommand<ProductReport>(sql).ToList<ProductReport>();
+            var products = _products.ExecuteCommand<TblKala>(sql).ToList<TblKala>();
+            return products.MapperList<TblKala, Product>();
 
         }
 
@@ -124,19 +133,6 @@ namespace BL
         {
             return _descriptionFoods.Update(descrip.ID, descrip);
         }
-        #endregion
-
-        #region Store
-
-        public List<tblAnbar> GetAllStore()
-        {
-            return _stores.All().ToList();
-        }
-        public int DeleteStore(int idStore)
-        {
-            return _stores.Delete(_stores.FindByCondition(c => c.ID_Anbar == idStore));
-        }
-
         #endregion
 
         #region Units

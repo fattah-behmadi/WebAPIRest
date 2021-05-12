@@ -15,7 +15,7 @@ namespace Model
     public partial class tblMobile
     {
         public int Mobile_ID { get; set; }
-        public Nullable<long> Contacts_ID { get; set; }
+        public int Contacts_ID { get; set; }
         public string MobileNumber { get; set; }
     
         public virtual tblContact tblContact { get; set; }

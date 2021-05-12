@@ -21,9 +21,10 @@ namespace AppMobile.Controllers
             string constr = String.Format($@"Data Source=.\sqlexpress;Initial Catalog=Gishniz;User ID=gish;Password=gishniz$2020@!;MultipleActiveResultSets=true;");
             DBAccess.SetConnection(constr);
         }
+
         [HttpPost]
         [Route("api/OrderFood/LoginUser")]
-        public void LoginUser([FromBody] List<User> userInfo)
+        public string LoginUser([FromBody] List<User> userInfo)
         {
             User user = userInfo.FirstOrDefault();
             var UserLogin = localizationDBContext.SettingRepo.GetUser(user.UserName, user.Password);
@@ -32,12 +33,32 @@ namespace AppMobile.Controllers
             var userData = new { UserName = UserLogin.Login_UserName, Password = UserLogin.Login_Password, FullNameUser = UserLogin.Login_Name, Image = UserLogin.Login_Pic };
 
             string json = new JavaScriptSerializer().Serialize(userData);
-
             string js = JsonConvert.SerializeObject(userData);
-       
-
+            return json;
         }
 
+        [HttpGet]
+        [Route("api/OrderFood/GetGroupsProduct")]
+        public string GetGroupsProduct()
+        {
+            var groupList = localizationDBContext.ProductRepo.GetAllGroups();
+            return new JavaScriptSerializer().Serialize(groupList);
+        }
+
+        [HttpGet]
+        [Route("api/OrderFood/GetProducsGroup/{GroupID}")]
+        public string GetProducsGroup(long GroupID)
+        {
+            var products = localizationDBContext.ProductRepo.GetProductsByGroupID(GroupID);
+            return new JavaScriptSerializer().Serialize(products);
+        }
+        [HttpGet]
+        [Route("api/OrderFood/GetProductsFavorit")]
+        public string GetProductsFavorit()
+        {
+            var products = localizationDBContext.ProductRepo.GetProductsFavorit();
+            return new JavaScriptSerializer().Serialize(products);
+        }
 
     }
 

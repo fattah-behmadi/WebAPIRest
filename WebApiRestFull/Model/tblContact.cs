@@ -21,7 +21,7 @@ namespace Model
             this.tblTells = new HashSet<tblTell>();
         }
     
-        public long Contacts_ID { get; set; }
+        public int Contacts_ID { get; set; }
         public string FullName { get; set; }
         public int Pishvand_ID { get; set; }
         public Nullable<int> Tafzili_ID { get; set; }
@@ -47,8 +47,8 @@ namespace Model
         public double DiscountPercent { get; set; }
     
         public virtual ICollection<tblAdress> tblAdresses { get; set; }
+        public virtual tblTafzili tblTafzili { get; set; }
         public virtual ICollection<tblMobile> tblMobiles { get; set; }
         public virtual ICollection<tblTell> tblTells { get; set; }
-        public virtual tblTafzili tblTafzili { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Model
     public partial class tblTell
     {
         public int Tell_ID { get; set; }
-        public Nullable<long> Contacts_ID { get; set; }
+        public int Contacts_ID { get; set; }
         public string Tell_Contact { get; set; }
     
         public virtual tblContact tblContact { get; set; }

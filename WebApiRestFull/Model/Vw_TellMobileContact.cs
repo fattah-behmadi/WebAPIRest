@@ -14,8 +14,7 @@ namespace Model
     
     public partial class Vw_TellMobileContact
     {
-        public int Tell_ID { get; set; }
-        public Nullable<long> Contacts_ID { get; set; }
-        public string Tell_Contact { get; set; }
+        public int Contacts_ID { get; set; }
+        public string Phone { get; set; }
     }
 }

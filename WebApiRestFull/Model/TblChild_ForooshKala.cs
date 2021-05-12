@@ -16,7 +16,6 @@ namespace Model
     {
         public long ChildForooshKala_ID { get; set; }
         public long ChildForooshKala_KalaID { get; set; }
-        public string ProductName { get; set; }
         public Nullable<long> ChildForooshKala_ParentID { get; set; }
         public string ChildForooshKala_SharhKala { get; set; }
         public Nullable<double> ChildForooshKala_TedadAsli { get; set; }
@@ -28,6 +27,7 @@ namespace Model
         public Nullable<long> ChildForooshKala_MaliyatMablagh { get; set; }
         public Nullable<double> ChildForooshKala_MaliyatDarsad { get; set; }
         public Nullable<long> ChildForooshKala_JameKol { get; set; }
+        public string ProductName { get; set; }
     
         public virtual TblKala TblKala { get; set; }
         public virtual TblParent_FrooshKala TblParent_FrooshKala { get; set; }

@@ -16,10 +16,9 @@ namespace Model
     {
         public TblKala()
         {
-            this.tblPriceChangeKalas = new HashSet<tblPriceChangeKala>();
             this.TblChild_ForooshKala = new HashSet<TblChild_ForooshKala>();
             this.TblKardeksKalas = new HashSet<TblKardeksKala>();
-            this.TblChild_KharidKala = new HashSet<TblChild_KharidKala>();
+            this.tblPriceChangeKalas = new HashSet<tblPriceChangeKala>();
         }
     
         public long ID_Kala { get; set; }
@@ -44,12 +43,10 @@ namespace Model
         public Nullable<bool> IsOnline { get; set; }
         public double PercentProfit { get; set; }
     
-        public virtual tblAnbar tblAnbar { get; set; }
+        public virtual ICollection<TblChild_ForooshKala> TblChild_ForooshKala { get; set; }
         public virtual TblGroupKala TblGroupKala { get; set; }
         public virtual TblVahedKalaAsli TblVahedKalaAsli { get; set; }
-        public virtual ICollection<tblPriceChangeKala> tblPriceChangeKalas { get; set; }
-        public virtual ICollection<TblChild_ForooshKala> TblChild_ForooshKala { get; set; }
         public virtual ICollection<TblKardeksKala> TblKardeksKalas { get; set; }
-        public virtual ICollection<TblChild_KharidKala> TblChild_KharidKala { get; set; }
+        public virtual ICollection<tblPriceChangeKala> tblPriceChangeKalas { get; set; }
     }
 }
