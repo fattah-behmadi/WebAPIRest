@@ -93,6 +93,10 @@ namespace BL
             return this.loginRepo.FindByCondition(u => u.Login_UserName == uName && u.Login_Password == pass);
         }
 
+        public tblLogin GetUser(int _userID)
+        {
+            return this.loginRepo.FindByCondition(u => u.Login_ID == _userID);
+        }
 
 
         #endregion

@@ -39,17 +39,20 @@ namespace Model
         public virtual DbSet<tblCompany_Info> tblCompany_Info { get; set; }
         public virtual DbSet<TblKardeksKala> TblKardeksKalas { get; set; }
         public virtual DbSet<tblSandogh> tblSandoghs { get; set; }
-        public virtual DbSet<tblTafzili> tblTafzilis { get; set; }
         public virtual DbSet<TblSokhan> TblSokhans { get; set; }
         public virtual DbSet<tblLogin> tblLogins { get; set; }
+        public virtual DbSet<TblParent_FrooshKala> TblParent_FrooshKala { get; set; }
         public virtual DbSet<tblAdress> tblAdresses { get; set; }
         public virtual DbSet<TblChild_ForooshKala> TblChild_ForooshKala { get; set; }
+        public virtual DbSet<TblChild_KharidKala> TblChild_KharidKala { get; set; }
+        public virtual DbSet<tblContact> tblContacts { get; set; }
         public virtual DbSet<TblKala> TblKalas { get; set; }
         public virtual DbSet<tblMobile> tblMobiles { get; set; }
-        public virtual DbSet<TblParent_FrooshKala> TblParent_FrooshKala { get; set; }
+        public virtual DbSet<tblTafzili> tblTafzilis { get; set; }
         public virtual DbSet<tblTell> tblTells { get; set; }
-        public virtual DbSet<tblContact> tblContacts { get; set; }
         public virtual DbSet<Vw_TellMobileContact> Vw_TellMobileContact { get; set; }
+        public virtual DbSet<tblChildeSanad> tblChildeSanads { get; set; }
+        public virtual DbSet<tblParentSanad> tblParentSanads { get; set; }
     
         public virtual int sp_GetKalaSale()
         {

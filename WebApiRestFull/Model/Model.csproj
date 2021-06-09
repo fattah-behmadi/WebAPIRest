@@ -104,7 +104,13 @@
     <Compile Include="tblAdress.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblChildeSanad.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="TblChild_ForooshKala.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblChild_KharidKala.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCompany_Info.cs">
@@ -129,6 +135,9 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMobile.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblParentSanad.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="TblParent_FrooshKala.cs">

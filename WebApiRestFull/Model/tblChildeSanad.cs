@@ -12,16 +12,20 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class tblSandogh
+    public partial class tblChildeSanad
     {
-        public int ID_Sandogh { get; set; }
-        public string Onvan { get; set; }
+        public long ID_Child_Sanad { get; set; }
+        public Nullable<long> Serial_Sanad { get; set; }
+        public Nullable<int> AccountsID { get; set; }
         public Nullable<int> Tafzili_ID { get; set; }
-        public Nullable<int> User_ID { get; set; }
-        public Nullable<long> MovjodiAvalDovre { get; set; }
-        public string Exp { get; set; }
+        public Nullable<int> Moein_ID { get; set; }
+        public string Sharh_Child_Sanad { get; set; }
+        public Nullable<decimal> ID_Amaliyat { get; set; }
+        public Nullable<int> ID_TypeAmaliyat { get; set; }
+        public Nullable<long> Bedehkar { get; set; }
+        public Nullable<long> Bestankar { get; set; }
     
-        public virtual tblLogin tblLogin { get; set; }
+        public virtual tblParentSanad tblParentSanad { get; set; }
         public virtual tblTafzili tblTafzili { get; set; }
     }
 }

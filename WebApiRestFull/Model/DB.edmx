@@ -32,6 +32,43 @@
           <Property Name="ChildForooshKala_JameKol" Type="bigint" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="TblChild_KharidKala">
+          <Key>
+            <PropertyRef Name="ChildKharidKala_ID" />
+          </Key>
+          <Property Name="ChildKharidKala_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChildKharidKala_KalaID" Type="bigint" Nullable="false" />
+          <Property Name="ChildKharidKala_ParentID" Type="bigint" Nullable="false" />
+          <Property Name="ChildKharidKala_VahedAsliKala" Type="bigint" />
+          <Property Name="ChildKharidKala_TedadAsli" Type="float" />
+          <Property Name="ChildKharidKala_VahedFareKala" Type="bigint" />
+          <Property Name="ChildKharidKala_TedadFare" Type="float" />
+          <Property Name="ChildKharidKala_SharhKala" Type="nvarchar(max)" />
+          <Property Name="ChildKharidKala_GheymatPaye" Type="bigint" Nullable="false" />
+          <Property Name="ChildKharidKala_JameMablagh" Type="bigint" />
+          <Property Name="ChildKharidKala_TakhfifMablagh" Type="bigint" />
+          <Property Name="ChildKharidKala_TakhfifDarsad" Type="float" />
+          <Property Name="ChildKharidKala_MablaghPasAsTakhfif" Type="bigint" />
+          <Property Name="ChildKharidKala_MaliyatMablagh" Type="bigint" />
+          <Property Name="ChildKharidKala_MaliyatDarsad" Type="float" />
+          <Property Name="ChildKharidKala_JameKol" Type="bigint" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblChildeSanad">
+          <Key>
+            <PropertyRef Name="ID_Child_Sanad" />
+          </Key>
+          <Property Name="ID_Child_Sanad" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Serial_Sanad" Type="bigint" />
+          <Property Name="AccountsID" Type="int" />
+          <Property Name="Tafzili_ID" Type="int" />
+          <Property Name="Moein_ID" Type="int" />
+          <Property Name="Sharh_Child_Sanad" Type="nvarchar" MaxLength="500" />
+          <Property Name="ID_Amaliyat" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ID_TypeAmaliyat" Type="int" />
+          <Property Name="Bedehkar" Type="bigint" />
+          <Property Name="Bestankar" Type="bigint" />
+        </EntityType>
         <EntityType Name="tblCompany_Info">
           <Key>
             <PropertyRef Name="Company_ID" />
@@ -197,6 +234,24 @@
           <Property Name="ForooshKalaParent_Ready" Type="bit" />
           <Property Name="ForooshKalaParent_Delivery" Type="bit" />
         </EntityType>
+        <EntityType Name="tblParentSanad">
+          <Key>
+            <PropertyRef Name="Serial_Sanad" />
+          </Key>
+          <Property Name="Serial_Sanad" Type="bigint" Nullable="false" />
+          <Property Name="Number_Sanad" Type="bigint" />
+          <Property Name="StatusSanadID" Type="int" />
+          <Property Name="TypeSanad_ID" Type="int" />
+          <Property Name="Date_Sanad" Type="date" />
+          <Property Name="Time_Sanad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Exption_Sanad" Type="nvarchar" MaxLength="500" />
+          <Property Name="Taraz_Sanad" Type="bit" />
+          <Property Name="Error_Sanad" Type="bit" />
+          <Property Name="Edited_Sanad" Type="bit" />
+          <Property Name="Deleted_Sanad" Type="bit" />
+          <Property Name="Date_Modify" Type="datetime" />
+          <Property Name="User_ID" Type="int" />
+        </EntityType>
         <EntityType Name="tblPriceChangeKala">
           <Key>
             <PropertyRef Name="ID" />
@@ -225,6 +280,7 @@
           <Property Name="DakhelSalonMoshtari" Type="bit" />
           <Property Name="DakhelSalonSandogh" Type="bit" />
           <Property Name="DakhelSalonAshpazkhane" Type="bit" />
+          <Property Name="Salondar" Type="bit" />
           <Property Name="PeykMoshtari" Type="bit" />
           <Property Name="PeykSandogh" Type="bit" />
           <Property Name="PeykAshpazkhane" Type="bit" />
@@ -235,7 +291,6 @@
           <Property Name="Costumer5Cm" Type="bit" />
           <Property Name="Kitchen5Cm" Type="bit" />
           <Property Name="Peyk5Cm" Type="bit" />
-          <Property Name="Salondar" Type="bit" />
         </EntityType>
         <EntityType Name="tblSandogh">
           <Key>
@@ -418,6 +473,18 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TBLCHILD_FK_TBLCHI_TBLPAREN">
+          <End Role="tblParentSanad" Type="Self.tblParentSanad" Multiplicity="0..1" />
+          <End Role="tblChildeSanad" Type="Self.tblChildeSanad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblParentSanad">
+              <PropertyRef Name="Serial_Sanad" />
+            </Principal>
+            <Dependent Role="tblChildeSanad">
+              <PropertyRef Name="Serial_Sanad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblChild_ForooshKala_TblKala">
           <End Role="TblKala" Type="Self.TblKala" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -441,6 +508,58 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
             </Principal>
             <Dependent Role="TblChild_ForooshKala">
               <PropertyRef Name="ChildForooshKala_ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblChild_KharidKala_TblKala">
+          <End Role="TblKala" Type="Self.TblKala" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblChild_KharidKala" Type="Self.TblChild_KharidKala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblKala">
+              <PropertyRef Name="ID_Kala" />
+            </Principal>
+            <Dependent Role="TblChild_KharidKala">
+              <PropertyRef Name="ChildKharidKala_KalaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblChild_KharidKala_TblVahedFare">
+          <End Role="TblVahedKalaAsli" Type="Self.TblVahedKalaAsli" Multiplicity="0..1" />
+          <End Role="TblChild_KharidKala" Type="Self.TblChild_KharidKala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblVahedKalaAsli">
+              <PropertyRef Name="ID_Vahed" />
+            </Principal>
+            <Dependent Role="TblChild_KharidKala">
+              <PropertyRef Name="ChildKharidKala_VahedFareKala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblChild_KharidKala_TblVahedKalaAsli">
+          <End Role="TblVahedKalaAsli" Type="Self.TblVahedKalaAsli" Multiplicity="0..1" />
+          <End Role="TblChild_KharidKala" Type="Self.TblChild_KharidKala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblVahedKalaAsli">
+              <PropertyRef Name="ID_Vahed" />
+            </Principal>
+            <Dependent Role="TblChild_KharidKala">
+              <PropertyRef Name="ChildKharidKala_VahedAsliKala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLCHILD_RELATIONS_TBLTAFZIyy">
+          <End Role="tblTafzili" Type="Self.tblTafzili" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblChildeSanad" Type="Self.tblChildeSanad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTafzili">
+              <PropertyRef Name="Tafzili_ID" />
+            </Principal>
+            <Dependent Role="tblChildeSanad">
+              <PropertyRef Name="Tafzili_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -568,6 +687,8 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
         <EntityContainer Name="SanResturantModelStoreContainer">
           <EntitySet Name="tblAdress" EntityType="Self.tblAdress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblChild_ForooshKala" EntityType="Self.TblChild_ForooshKala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblChild_KharidKala" EntityType="Self.TblChild_KharidKala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChildeSanad" EntityType="Self.tblChildeSanad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCompany_Info" EntityType="Self.tblCompany_Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblContacts" EntityType="Self.tblContacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblExpAshpazkhane" EntityType="Self.TblExpAshpazkhane" Schema="dbo" store:Type="Tables" />
@@ -577,6 +698,7 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
           <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMobile" EntityType="Self.tblMobile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblParent_FrooshKala" EntityType="Self.TblParent_FrooshKala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblParentSanad" EntityType="Self.tblParentSanad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPriceChangeKala" EntityType="Self.tblPriceChangeKala" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPrinterUserSetting" EntityType="Self.tblPrinterUserSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSandogh" EntityType="Self.tblSandogh" Schema="dbo" store:Type="Tables" />
@@ -640,6 +762,10 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
             <End Role="tblContacts" EntitySet="tblContacts" />
             <End Role="tblAdress" EntitySet="tblAdress" />
           </AssociationSet>
+          <AssociationSet Name="FK_TBLCHILD_FK_TBLCHI_TBLPAREN" Association="Self.FK_TBLCHILD_FK_TBLCHI_TBLPAREN">
+            <End Role="tblParentSanad" EntitySet="tblParentSanad" />
+            <End Role="tblChildeSanad" EntitySet="tblChildeSanad" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblChild_ForooshKala_TblKala" Association="Self.FK_TblChild_ForooshKala_TblKala">
             <End Role="TblKala" EntitySet="TblKala" />
             <End Role="TblChild_ForooshKala" EntitySet="TblChild_ForooshKala" />
@@ -647,6 +773,22 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
           <AssociationSet Name="FK_TblChild_ForooshKala_TblParent_FrooshKala" Association="Self.FK_TblChild_ForooshKala_TblParent_FrooshKala">
             <End Role="TblParent_FrooshKala" EntitySet="TblParent_FrooshKala" />
             <End Role="TblChild_ForooshKala" EntitySet="TblChild_ForooshKala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblChild_KharidKala_TblKala" Association="Self.FK_TblChild_KharidKala_TblKala">
+            <End Role="TblKala" EntitySet="TblKala" />
+            <End Role="TblChild_KharidKala" EntitySet="TblChild_KharidKala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblChild_KharidKala_TblVahedFare" Association="Self.FK_TblChild_KharidKala_TblVahedFare">
+            <End Role="TblVahedKalaAsli" EntitySet="TblVahedKalaAsli" />
+            <End Role="TblChild_KharidKala" EntitySet="TblChild_KharidKala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblChild_KharidKala_TblVahedKalaAsli" Association="Self.FK_TblChild_KharidKala_TblVahedKalaAsli">
+            <End Role="TblVahedKalaAsli" EntitySet="TblVahedKalaAsli" />
+            <End Role="TblChild_KharidKala" EntitySet="TblChild_KharidKala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLCHILD_RELATIONS_TBLTAFZIyy" Association="Self.FK_TBLCHILD_RELATIONS_TBLTAFZIyy">
+            <End Role="tblTafzili" EntitySet="tblTafzili" />
+            <End Role="tblChildeSanad" EntitySet="tblChildeSanad" />
           </AssociationSet>
           <AssociationSet Name="FK_TBLCONTA_RELATIONS_TBLTAFZI" Association="Self.FK_TBLCONTA_RELATIONS_TBLTAFZI">
             <End Role="tblTafzili" EntitySet="tblTafzili" />
@@ -702,23 +844,26 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
           <EntitySet Name="tblCompany_Info" EntityType="SanResturantModel.tblCompany_Info" />
           <EntitySet Name="TblKardeksKalas" EntityType="SanResturantModel.TblKardeksKala" />
           <EntitySet Name="tblSandoghs" EntityType="SanResturantModel.tblSandogh" />
-          <EntitySet Name="tblTafzilis" EntityType="SanResturantModel.tblTafzili" />
-          <AssociationSet Name="FK_tblSandogh_tblTafzili" Association="SanResturantModel.FK_tblSandogh_tblTafzili">
-            <End Role="tblTafzili" EntitySet="tblTafzilis" />
-            <End Role="tblSandogh" EntitySet="tblSandoghs" />
-          </AssociationSet>
           <EntitySet Name="TblSokhans" EntityType="SanResturantModel.TblSokhan" />
           <EntitySet Name="tblLogins" EntityType="SanResturantModel.tblLogin" />
           <AssociationSet Name="FK_tblSandogh_tblLogin" Association="SanResturantModel.FK_tblSandogh_tblLogin">
             <End Role="tblLogin" EntitySet="tblLogins" />
             <End Role="tblSandogh" EntitySet="tblSandoghs" />
           </AssociationSet>
+          <EntitySet Name="TblParent_FrooshKala" EntityType="SanResturantModel.TblParent_FrooshKala" />
           <EntitySet Name="tblAdresses" EntityType="SanResturantModel.tblAdress" />
           <EntitySet Name="TblChild_ForooshKala" EntityType="SanResturantModel.TblChild_ForooshKala" />
+          <EntitySet Name="TblChild_KharidKala" EntityType="SanResturantModel.TblChild_KharidKala" />
+          <EntitySet Name="tblContacts" EntityType="SanResturantModel.tblContact" />
           <EntitySet Name="TblKalas" EntityType="SanResturantModel.TblKala" />
           <EntitySet Name="tblMobiles" EntityType="SanResturantModel.tblMobile" />
-          <EntitySet Name="TblParent_FrooshKala" EntityType="SanResturantModel.TblParent_FrooshKala" />
+          <EntitySet Name="tblTafzilis" EntityType="SanResturantModel.tblTafzili" />
           <EntitySet Name="tblTells" EntityType="SanResturantModel.tblTell" />
+          <EntitySet Name="Vw_TellMobileContact" EntityType="SanResturantModel.Vw_TellMobileContact" />
+          <AssociationSet Name="FK_tblAdress_tblContacts" Association="SanResturantModel.FK_tblAdress_tblContacts">
+            <End Role="tblContact" EntitySet="tblContacts" />
+            <End Role="tblAdress" EntitySet="tblAdresses" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblChild_ForooshKala_TblKala" Association="SanResturantModel.FK_TblChild_ForooshKala_TblKala">
             <End Role="TblKala" EntitySet="TblKalas" />
             <End Role="TblChild_ForooshKala" EntitySet="TblChild_ForooshKala" />
@@ -726,6 +871,30 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
           <AssociationSet Name="FK_TblChild_ForooshKala_TblParent_FrooshKala" Association="SanResturantModel.FK_TblChild_ForooshKala_TblParent_FrooshKala">
             <End Role="TblParent_FrooshKala" EntitySet="TblParent_FrooshKala" />
             <End Role="TblChild_ForooshKala" EntitySet="TblChild_ForooshKala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblChild_KharidKala_TblKala" Association="SanResturantModel.FK_TblChild_KharidKala_TblKala">
+            <End Role="TblKala" EntitySet="TblKalas" />
+            <End Role="TblChild_KharidKala" EntitySet="TblChild_KharidKala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblChild_KharidKala_TblVahedFare" Association="SanResturantModel.FK_TblChild_KharidKala_TblVahedFare">
+            <End Role="TblVahedKalaAsli" EntitySet="TblVahedKalaAsli" />
+            <End Role="TblChild_KharidKala" EntitySet="TblChild_KharidKala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblChild_KharidKala_TblVahedKalaAsli" Association="SanResturantModel.FK_TblChild_KharidKala_TblVahedKalaAsli">
+            <End Role="TblVahedKalaAsli" EntitySet="TblVahedKalaAsli" />
+            <End Role="TblChild_KharidKala" EntitySet="TblChild_KharidKala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLCONTA_RELATIONS_TBLTAFZI" Association="SanResturantModel.FK_TBLCONTA_RELATIONS_TBLTAFZI">
+            <End Role="tblTafzili" EntitySet="tblTafzilis" />
+            <End Role="tblContact" EntitySet="tblContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLMOBIL_RELATIONS_TBLCONTA" Association="SanResturantModel.FK_TBLMOBIL_RELATIONS_TBLCONTA">
+            <End Role="tblContact" EntitySet="tblContacts" />
+            <End Role="tblMobile" EntitySet="tblMobiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLTELL_RELATIONS_TBLCONTA" Association="SanResturantModel.FK_TBLTELL_RELATIONS_TBLCONTA">
+            <End Role="tblContact" EntitySet="tblContacts" />
+            <End Role="tblTell" EntitySet="tblTells" />
           </AssociationSet>
           <AssociationSet Name="FK_TblKala_TblGroupKala" Association="SanResturantModel.FK_TblKala_TblGroupKala">
             <End Role="TblGroupKala" EntitySet="TblGroupKala" />
@@ -743,23 +912,19 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
             <End Role="TblKala" EntitySet="TblKalas" />
             <End Role="tblPriceChangeKala" EntitySet="tblPriceChangeKalas" />
           </AssociationSet>
-          <EntitySet Name="tblContacts" EntityType="SanResturantModel.tblContact" />
-          <EntitySet Name="Vw_TellMobileContact" EntityType="SanResturantModel.Vw_TellMobileContact" />
-          <AssociationSet Name="FK_tblAdress_tblContacts" Association="SanResturantModel.FK_tblAdress_tblContacts">
-            <End Role="tblContact" EntitySet="tblContacts" />
-            <End Role="tblAdress" EntitySet="tblAdresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBLCONTA_RELATIONS_TBLTAFZI" Association="SanResturantModel.FK_TBLCONTA_RELATIONS_TBLTAFZI">
+          <AssociationSet Name="FK_tblSandogh_tblTafzili" Association="SanResturantModel.FK_tblSandogh_tblTafzili">
             <End Role="tblTafzili" EntitySet="tblTafzilis" />
-            <End Role="tblContact" EntitySet="tblContacts" />
+            <End Role="tblSandogh" EntitySet="tblSandoghs" />
           </AssociationSet>
-          <AssociationSet Name="FK_TBLMOBIL_RELATIONS_TBLCONTA" Association="SanResturantModel.FK_TBLMOBIL_RELATIONS_TBLCONTA">
-            <End Role="tblContact" EntitySet="tblContacts" />
-            <End Role="tblMobile" EntitySet="tblMobiles" />
+          <EntitySet Name="tblChildeSanads" EntityType="SanResturantModel.tblChildeSanad" />
+          <EntitySet Name="tblParentSanads" EntityType="SanResturantModel.tblParentSanad" />
+          <AssociationSet Name="FK_TBLCHILD_FK_TBLCHI_TBLPAREN" Association="SanResturantModel.FK_TBLCHILD_FK_TBLCHI_TBLPAREN">
+            <End Role="tblParentSanad" EntitySet="tblParentSanads" />
+            <End Role="tblChildeSanad" EntitySet="tblChildeSanads" />
           </AssociationSet>
-          <AssociationSet Name="FK_TBLTELL_RELATIONS_TBLCONTA" Association="SanResturantModel.FK_TBLTELL_RELATIONS_TBLCONTA">
-            <End Role="tblContact" EntitySet="tblContacts" />
-            <End Role="tblTell" EntitySet="tblTells" />
+          <AssociationSet Name="FK_TBLCHILD_RELATIONS_TBLTAFZIyy" Association="SanResturantModel.FK_TBLCHILD_RELATIONS_TBLTAFZIyy">
+            <End Role="tblTafzili" EntitySet="tblTafzilis" />
+            <End Role="tblChildeSanad" EntitySet="tblChildeSanads" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblPrinterUserSetting">
@@ -888,6 +1053,8 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
           </Key>
           <Property Name="ID_Vahed" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameVahed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblChild_KharidKala" Relationship="SanResturantModel.FK_TblChild_KharidKala_TblVahedFare" FromRole="TblVahedKalaAsli" ToRole="TblChild_KharidKala" />
+          <NavigationProperty Name="TblChild_KharidKala1" Relationship="SanResturantModel.FK_TblChild_KharidKala_TblVahedKalaAsli" FromRole="TblVahedKalaAsli" ToRole="TblChild_KharidKala" />
           <NavigationProperty Name="TblKalas" Relationship="SanResturantModel.FK_TblKala_TblVahedKalaAsli" FromRole="TblVahedKalaAsli" ToRole="TblKala" />
           </EntityType>
         <EntityType Name="TblGroupKala">
@@ -1008,35 +1175,9 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
           <Property Name="User_ID" Type="Int32" />
           <Property Name="MovjodiAvalDovre" Type="Int64" />
           <Property Name="Exp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tblTafzili" Relationship="SanResturantModel.FK_tblSandogh_tblTafzili" FromRole="tblSandogh" ToRole="tblTafzili" />
           <NavigationProperty Name="tblLogin" Relationship="SanResturantModel.FK_tblSandogh_tblLogin" FromRole="tblSandogh" ToRole="tblLogin" />
+          <NavigationProperty Name="tblTafzili" Relationship="SanResturantModel.FK_tblSandogh_tblTafzili" FromRole="tblSandogh" ToRole="tblTafzili" />
         </EntityType>
-        <EntityType Name="tblTafzili">
-          <Key>
-            <PropertyRef Name="Tafzili_ID" />
-          </Key>
-          <Property Name="Tafzili_ID" Type="Int32" Nullable="false" />
-          <Property Name="GroupTafzili_ID" Type="Int32" />
-          <Property Name="Tafzili_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="User_ID_Tafzili" Type="Int32" />
-          <Property Name="TypeAcc_ID" Type="Int32" />
-          <NavigationProperty Name="tblSandoghs" Relationship="SanResturantModel.FK_tblSandogh_tblTafzili" FromRole="tblTafzili" ToRole="tblSandogh" />
-          <NavigationProperty Name="tblContacts" Relationship="SanResturantModel.FK_TBLCONTA_RELATIONS_TBLTAFZI" FromRole="tblTafzili" ToRole="tblContact" />
-        </EntityType>
-        <Association Name="FK_tblSandogh_tblTafzili">
-          <End Type="SanResturantModel.tblTafzili" Role="tblTafzili" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="SanResturantModel.tblSandogh" Role="tblSandogh" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblTafzili">
-              <PropertyRef Name="Tafzili_ID" />
-            </Principal>
-            <Dependent Role="tblSandogh">
-              <PropertyRef Name="Tafzili_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="TblSokhan">
           <Key>
             <PropertyRef Name="IDS" />
@@ -1073,76 +1214,6 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tblAdress">
-          <Key>
-            <PropertyRef Name="Address_ID" />
-          </Key>
-          <Property Name="Address_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Contact_ID" Type="Int32" Nullable="false" />
-          <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tblContact" Relationship="SanResturantModel.FK_tblAdress_tblContacts" FromRole="tblAdress" ToRole="tblContact" />
-        </EntityType>
-        <EntityType Name="TblChild_ForooshKala">
-          <Key>
-            <PropertyRef Name="ChildForooshKala_ID" />
-          </Key>
-          <Property Name="ChildForooshKala_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChildForooshKala_KalaID" Type="Int64" Nullable="false" />
-          <Property Name="ChildForooshKala_ParentID" Type="Int64" />
-          <Property Name="ChildForooshKala_SharhKala" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ChildForooshKala_TedadAsli" Type="Double" />
-          <Property Name="ChildForooshKala_GheymatPaye" Type="Int64" />
-          <Property Name="ChildForooshKala_JameMablagh" Type="Int64" />
-          <Property Name="ChildForooshKala_TakhfifMablagh" Type="Int64" />
-          <Property Name="ChildForooshKala_TakhfifDarsad" Type="Double" />
-          <Property Name="ChildForooshKala_MablaghPasTakhfif" Type="Int64" />
-          <Property Name="ChildForooshKala_MaliyatMablagh" Type="Int64" />
-          <Property Name="ChildForooshKala_MaliyatDarsad" Type="Double" />
-          <Property Name="ChildForooshKala_JameKol" Type="Int64" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblKala" Relationship="SanResturantModel.FK_TblChild_ForooshKala_TblKala" FromRole="TblChild_ForooshKala" ToRole="TblKala" />
-          <NavigationProperty Name="TblParent_FrooshKala" Relationship="SanResturantModel.FK_TblChild_ForooshKala_TblParent_FrooshKala" FromRole="TblChild_ForooshKala" ToRole="TblParent_FrooshKala" />
-        </EntityType>
-        <EntityType Name="TblKala">
-          <Key>
-            <PropertyRef Name="ID_Kala" />
-          </Key>
-          <Property Name="ID_Kala" Type="Int64" Nullable="false" />
-          <Property Name="Name_Kala" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fk_GroupKala" Type="Int64" />
-          <Property Name="Fk_VahedKalaAsli" Type="Int64" />
-          <Property Name="Fk_Anbar" Type="Int64" />
-          <Property Name="GheymatKharidAsli" Type="Int64" />
-          <Property Name="GheymatForoshAsli" Type="Int64" />
-          <Property Name="DarsadTakhfif" Type="Int32" />
-          <Property Name="DarsadMaliyat" Type="Int32" />
-          <Property Name="MoafMaliyat" Type="Boolean" />
-          <Property Name="HadaghalMovjodi" Type="Int32" />
-          <Property Name="ControlCount" Type="Boolean" />
-          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Serial_kala" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" />
-          <Property Name="Tozihat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MojodiAvalDore" Type="Double" />
-          <Property Name="MianginFiAvalDovre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SerialSanadEftetahiye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsOnline" Type="Boolean" />
-          <Property Name="PercentProfit" Type="Double" Nullable="false" />
-          <NavigationProperty Name="TblChild_ForooshKala" Relationship="SanResturantModel.FK_TblChild_ForooshKala_TblKala" FromRole="TblKala" ToRole="TblChild_ForooshKala" />
-          <NavigationProperty Name="TblGroupKala" Relationship="SanResturantModel.FK_TblKala_TblGroupKala" FromRole="TblKala" ToRole="TblGroupKala" />
-          <NavigationProperty Name="TblVahedKalaAsli" Relationship="SanResturantModel.FK_TblKala_TblVahedKalaAsli" FromRole="TblKala" ToRole="TblVahedKalaAsli" />
-          <NavigationProperty Name="TblKardeksKalas" Relationship="SanResturantModel.FK_TblKardeksKala_TblKardeksKala" FromRole="TblKala" ToRole="TblKardeksKala" />
-          <NavigationProperty Name="tblPriceChangeKalas" Relationship="SanResturantModel.FK_tblPriceChangeKala_TblKala" FromRole="TblKala" ToRole="tblPriceChangeKala" />
-        </EntityType>
-        <EntityType Name="tblMobile">
-          <Key>
-            <PropertyRef Name="Mobile_ID" />
-          </Key>
-          <Property Name="Mobile_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Contacts_ID" Type="Int32" Nullable="false" />
-          <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tblContact" Relationship="SanResturantModel.FK_TBLMOBIL_RELATIONS_TBLCONTA" FromRole="tblMobile" ToRole="tblContact" />
-        </EntityType>
         <EntityType Name="TblParent_FrooshKala">
           <Key>
             <PropertyRef Name="ForooshKalaParent_ID" />
@@ -1174,6 +1245,148 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
           <Property Name="ForooshKalaParent_Delivery" Type="Boolean" />
           <NavigationProperty Name="TblChild_ForooshKala" Relationship="SanResturantModel.FK_TblChild_ForooshKala_TblParent_FrooshKala" FromRole="TblParent_FrooshKala" ToRole="TblChild_ForooshKala" />
         </EntityType>
+        <EntityType Name="tblAdress">
+          <Key>
+            <PropertyRef Name="Address_ID" />
+          </Key>
+          <Property Name="Address_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contact_ID" Type="Int32" Nullable="false" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblContact" Relationship="SanResturantModel.FK_tblAdress_tblContacts" FromRole="tblAdress" ToRole="tblContact" />
+        </EntityType>
+        <EntityType Name="TblChild_ForooshKala">
+          <Key>
+            <PropertyRef Name="ChildForooshKala_ID" />
+          </Key>
+          <Property Name="ChildForooshKala_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChildForooshKala_KalaID" Type="Int64" Nullable="false" />
+          <Property Name="ChildForooshKala_ParentID" Type="Int64" />
+          <Property Name="ChildForooshKala_SharhKala" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChildForooshKala_TedadAsli" Type="Double" />
+          <Property Name="ChildForooshKala_GheymatPaye" Type="Int64" />
+          <Property Name="ChildForooshKala_JameMablagh" Type="Int64" />
+          <Property Name="ChildForooshKala_TakhfifMablagh" Type="Int64" />
+          <Property Name="ChildForooshKala_TakhfifDarsad" Type="Double" />
+          <Property Name="ChildForooshKala_MablaghPasTakhfif" Type="Int64" />
+          <Property Name="ChildForooshKala_MaliyatMablagh" Type="Int64" />
+          <Property Name="ChildForooshKala_MaliyatDarsad" Type="Double" />
+          <Property Name="ChildForooshKala_JameKol" Type="Int64" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblKala" Relationship="SanResturantModel.FK_TblChild_ForooshKala_TblKala" FromRole="TblChild_ForooshKala" ToRole="TblKala" />
+          <NavigationProperty Name="TblParent_FrooshKala" Relationship="SanResturantModel.FK_TblChild_ForooshKala_TblParent_FrooshKala" FromRole="TblChild_ForooshKala" ToRole="TblParent_FrooshKala" />
+        </EntityType>
+        <EntityType Name="TblChild_KharidKala">
+          <Key>
+            <PropertyRef Name="ChildKharidKala_ID" />
+          </Key>
+          <Property Name="ChildKharidKala_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChildKharidKala_KalaID" Type="Int64" Nullable="false" />
+          <Property Name="ChildKharidKala_ParentID" Type="Int64" Nullable="false" />
+          <Property Name="ChildKharidKala_VahedAsliKala" Type="Int64" />
+          <Property Name="ChildKharidKala_TedadAsli" Type="Double" />
+          <Property Name="ChildKharidKala_VahedFareKala" Type="Int64" />
+          <Property Name="ChildKharidKala_TedadFare" Type="Double" />
+          <Property Name="ChildKharidKala_SharhKala" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChildKharidKala_GheymatPaye" Type="Int64" Nullable="false" />
+          <Property Name="ChildKharidKala_JameMablagh" Type="Int64" />
+          <Property Name="ChildKharidKala_TakhfifMablagh" Type="Int64" />
+          <Property Name="ChildKharidKala_TakhfifDarsad" Type="Double" />
+          <Property Name="ChildKharidKala_MablaghPasAsTakhfif" Type="Int64" />
+          <Property Name="ChildKharidKala_MaliyatMablagh" Type="Int64" />
+          <Property Name="ChildKharidKala_MaliyatDarsad" Type="Double" />
+          <Property Name="ChildKharidKala_JameKol" Type="Int64" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblKala" Relationship="SanResturantModel.FK_TblChild_KharidKala_TblKala" FromRole="TblChild_KharidKala" ToRole="TblKala" />
+          <NavigationProperty Name="TblVahedKalaAsli" Relationship="SanResturantModel.FK_TblChild_KharidKala_TblVahedFare" FromRole="TblChild_KharidKala" ToRole="TblVahedKalaAsli" />
+          <NavigationProperty Name="TblVahedKalaAsli1" Relationship="SanResturantModel.FK_TblChild_KharidKala_TblVahedKalaAsli" FromRole="TblChild_KharidKala" ToRole="TblVahedKalaAsli" />
+        </EntityType>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="Contacts_ID" />
+          </Key>
+          <Property Name="Contacts_ID" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pishvand_ID" Type="Int32" Nullable="false" />
+          <Property Name="Tafzili_ID" Type="Int32" />
+          <Property Name="Know_ID" Type="Int32" />
+          <Property Name="GroupContact" Type="Int32" />
+          <Property Name="ID_ZamineyeFaliyat" Type="Int32" />
+          <Property Name="Haghighi" Type="Boolean" />
+          <Property Name="Hoghoghi" Type="Boolean" />
+          <Property Name="Code_Eghtesadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code_Melli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SaghfeEtebar" Type="Int64" />
+          <Property Name="User_ID_Contacts" Type="Int32" />
+          <Property Name="RateContacts" Type="Int16" />
+          <Property Name="ImageContact" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="XYMapContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MandeAvalDovre" Type="Int64" />
+          <Property Name="StatusMande" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerialSanadEftetahiye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Date_Marid" Type="DateTime" Precision="0" />
+          <Property Name="Status_Marid" Type="Boolean" />
+          <Property Name="DiscountPercent" Type="Double" Nullable="false" />
+          <NavigationProperty Name="tblAdresses" Relationship="SanResturantModel.FK_tblAdress_tblContacts" FromRole="tblContact" ToRole="tblAdress" />
+          <NavigationProperty Name="tblTafzili" Relationship="SanResturantModel.FK_TBLCONTA_RELATIONS_TBLTAFZI" FromRole="tblContact" ToRole="tblTafzili" />
+          <NavigationProperty Name="tblMobiles" Relationship="SanResturantModel.FK_TBLMOBIL_RELATIONS_TBLCONTA" FromRole="tblContact" ToRole="tblMobile" />
+          <NavigationProperty Name="tblTells" Relationship="SanResturantModel.FK_TBLTELL_RELATIONS_TBLCONTA" FromRole="tblContact" ToRole="tblTell" />
+        </EntityType>
+        <EntityType Name="TblKala">
+          <Key>
+            <PropertyRef Name="ID_Kala" />
+          </Key>
+          <Property Name="ID_Kala" Type="Int64" Nullable="false" />
+          <Property Name="Name_Kala" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fk_GroupKala" Type="Int64" />
+          <Property Name="Fk_VahedKalaAsli" Type="Int64" />
+          <Property Name="Fk_Anbar" Type="Int64" />
+          <Property Name="GheymatKharidAsli" Type="Int64" />
+          <Property Name="GheymatForoshAsli" Type="Int64" />
+          <Property Name="DarsadTakhfif" Type="Int32" />
+          <Property Name="DarsadMaliyat" Type="Int32" />
+          <Property Name="MoafMaliyat" Type="Boolean" />
+          <Property Name="HadaghalMovjodi" Type="Int32" />
+          <Property Name="ControlCount" Type="Boolean" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Serial_kala" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Tozihat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MojodiAvalDore" Type="Double" />
+          <Property Name="MianginFiAvalDovre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerialSanadEftetahiye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsOnline" Type="Boolean" />
+          <Property Name="PercentProfit" Type="Double" Nullable="false" />
+          <NavigationProperty Name="TblChild_ForooshKala" Relationship="SanResturantModel.FK_TblChild_ForooshKala_TblKala" FromRole="TblKala" ToRole="TblChild_ForooshKala" />
+          <NavigationProperty Name="TblChild_KharidKala" Relationship="SanResturantModel.FK_TblChild_KharidKala_TblKala" FromRole="TblKala" ToRole="TblChild_KharidKala" />
+          <NavigationProperty Name="TblGroupKala" Relationship="SanResturantModel.FK_TblKala_TblGroupKala" FromRole="TblKala" ToRole="TblGroupKala" />
+          <NavigationProperty Name="TblVahedKalaAsli" Relationship="SanResturantModel.FK_TblKala_TblVahedKalaAsli" FromRole="TblKala" ToRole="TblVahedKalaAsli" />
+          <NavigationProperty Name="TblKardeksKalas" Relationship="SanResturantModel.FK_TblKardeksKala_TblKardeksKala" FromRole="TblKala" ToRole="TblKardeksKala" />
+          <NavigationProperty Name="tblPriceChangeKalas" Relationship="SanResturantModel.FK_tblPriceChangeKala_TblKala" FromRole="TblKala" ToRole="tblPriceChangeKala" />
+        </EntityType>
+        <EntityType Name="tblMobile">
+          <Key>
+            <PropertyRef Name="Mobile_ID" />
+          </Key>
+          <Property Name="Mobile_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contacts_ID" Type="Int32" Nullable="false" />
+          <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblContact" Relationship="SanResturantModel.FK_TBLMOBIL_RELATIONS_TBLCONTA" FromRole="tblMobile" ToRole="tblContact" />
+        </EntityType>
+        <EntityType Name="tblTafzili">
+          <Key>
+            <PropertyRef Name="Tafzili_ID" />
+          </Key>
+          <Property Name="Tafzili_ID" Type="Int32" Nullable="false" />
+          <Property Name="GroupTafzili_ID" Type="Int32" />
+          <Property Name="Tafzili_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID_Tafzili" Type="Int32" />
+          <Property Name="TypeAcc_ID" Type="Int32" />
+          <NavigationProperty Name="tblContacts" Relationship="SanResturantModel.FK_TBLCONTA_RELATIONS_TBLTAFZI" FromRole="tblTafzili" ToRole="tblContact" />
+          <NavigationProperty Name="tblSandoghs" Relationship="SanResturantModel.FK_tblSandogh_tblTafzili" FromRole="tblTafzili" ToRole="tblSandogh" />
+          <NavigationProperty Name="tblChildeSanads" Relationship="SanResturantModel.FK_TBLCHILD_RELATIONS_TBLTAFZIyy" FromRole="tblTafzili" ToRole="tblChildeSanad" />
+        </EntityType>
         <EntityType Name="tblTell">
           <Key>
             <PropertyRef Name="Tell_ID" />
@@ -1183,6 +1396,28 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
           <Property Name="Tell_Contact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblContact" Relationship="SanResturantModel.FK_TBLTELL_RELATIONS_TBLCONTA" FromRole="tblTell" ToRole="tblContact" />
         </EntityType>
+        <EntityType Name="Vw_TellMobileContact">
+          <Key>
+            <PropertyRef Name="Contacts_ID" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="Contacts_ID" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_tblAdress_tblContacts">
+          <End Type="SanResturantModel.tblContact" Role="tblContact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SanResturantModel.tblAdress" Role="tblAdress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact">
+              <PropertyRef Name="Contacts_ID" />
+            </Principal>
+            <Dependent Role="tblAdress">
+              <PropertyRef Name="Contact_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblChild_ForooshKala_TblKala">
           <End Type="SanResturantModel.TblKala" Role="TblKala" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1206,6 +1441,86 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
             </Principal>
             <Dependent Role="TblChild_ForooshKala">
               <PropertyRef Name="ChildForooshKala_ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblChild_KharidKala_TblKala">
+          <End Type="SanResturantModel.TblKala" Role="TblKala" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SanResturantModel.TblChild_KharidKala" Role="TblChild_KharidKala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblKala">
+              <PropertyRef Name="ID_Kala" />
+            </Principal>
+            <Dependent Role="TblChild_KharidKala">
+              <PropertyRef Name="ChildKharidKala_KalaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblChild_KharidKala_TblVahedFare">
+          <End Type="SanResturantModel.TblVahedKalaAsli" Role="TblVahedKalaAsli" Multiplicity="0..1" />
+          <End Type="SanResturantModel.TblChild_KharidKala" Role="TblChild_KharidKala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblVahedKalaAsli">
+              <PropertyRef Name="ID_Vahed" />
+            </Principal>
+            <Dependent Role="TblChild_KharidKala">
+              <PropertyRef Name="ChildKharidKala_VahedFareKala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblChild_KharidKala_TblVahedKalaAsli">
+          <End Type="SanResturantModel.TblVahedKalaAsli" Role="TblVahedKalaAsli" Multiplicity="0..1" />
+          <End Type="SanResturantModel.TblChild_KharidKala" Role="TblChild_KharidKala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblVahedKalaAsli">
+              <PropertyRef Name="ID_Vahed" />
+            </Principal>
+            <Dependent Role="TblChild_KharidKala">
+              <PropertyRef Name="ChildKharidKala_VahedAsliKala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLCONTA_RELATIONS_TBLTAFZI">
+          <End Type="SanResturantModel.tblTafzili" Role="tblTafzili" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SanResturantModel.tblContact" Role="tblContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTafzili">
+              <PropertyRef Name="Tafzili_ID" />
+            </Principal>
+            <Dependent Role="tblContact">
+              <PropertyRef Name="Tafzili_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLMOBIL_RELATIONS_TBLCONTA">
+          <End Type="SanResturantModel.tblContact" Role="tblContact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SanResturantModel.tblMobile" Role="tblMobile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact">
+              <PropertyRef Name="Contacts_ID" />
+            </Principal>
+            <Dependent Role="tblMobile">
+              <PropertyRef Name="Contacts_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLTELL_RELATIONS_TBLCONTA">
+          <End Type="SanResturantModel.tblContact" Role="tblContact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SanResturantModel.tblTell" Role="tblTell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContact">
+              <PropertyRef Name="Contacts_ID" />
+            </Principal>
+            <Dependent Role="tblTell">
+              <PropertyRef Name="Contacts_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1261,100 +1576,79 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tblContact">
-          <Key>
-            <PropertyRef Name="Contacts_ID" />
-          </Key>
-          <Property Name="Contacts_ID" Type="Int32" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pishvand_ID" Type="Int32" Nullable="false" />
-          <Property Name="Tafzili_ID" Type="Int32" />
-          <Property Name="Know_ID" Type="Int32" />
-          <Property Name="GroupContact" Type="Int32" />
-          <Property Name="ID_ZamineyeFaliyat" Type="Int32" />
-          <Property Name="Haghighi" Type="Boolean" />
-          <Property Name="Hoghoghi" Type="Boolean" />
-          <Property Name="Code_Eghtesadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Code_Melli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SaghfeEtebar" Type="Int64" />
-          <Property Name="User_ID_Contacts" Type="Int32" />
-          <Property Name="RateContacts" Type="Int16" />
-          <Property Name="ImageContact" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="XYMapContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MandeAvalDovre" Type="Int64" />
-          <Property Name="StatusMande" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SerialSanadEftetahiye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Date_Birth" Type="DateTime" Precision="0" />
-          <Property Name="Date_Marid" Type="DateTime" Precision="0" />
-          <Property Name="Status_Marid" Type="Boolean" />
-          <Property Name="DiscountPercent" Type="Double" Nullable="false" />
-          <NavigationProperty Name="tblAdresses" Relationship="SanResturantModel.FK_tblAdress_tblContacts" FromRole="tblContact" ToRole="tblAdress" />
-          <NavigationProperty Name="tblTafzili" Relationship="SanResturantModel.FK_TBLCONTA_RELATIONS_TBLTAFZI" FromRole="tblContact" ToRole="tblTafzili" />
-          <NavigationProperty Name="tblMobiles" Relationship="SanResturantModel.FK_TBLMOBIL_RELATIONS_TBLCONTA" FromRole="tblContact" ToRole="tblMobile" />
-          <NavigationProperty Name="tblTells" Relationship="SanResturantModel.FK_TBLTELL_RELATIONS_TBLCONTA" FromRole="tblContact" ToRole="tblTell" />
-        </EntityType>
-        <EntityType Name="Vw_TellMobileContact">
-          <Key>
-            <PropertyRef Name="Contacts_ID" />
-            <PropertyRef Name="Phone" />
-          </Key>
-          <Property Name="Contacts_ID" Type="Int32" Nullable="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_tblAdress_tblContacts">
-          <End Type="SanResturantModel.tblContact" Role="tblContact" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="SanResturantModel.tblAdress" Role="tblAdress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblContact">
-              <PropertyRef Name="Contacts_ID" />
-            </Principal>
-            <Dependent Role="tblAdress">
-              <PropertyRef Name="Contact_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBLCONTA_RELATIONS_TBLTAFZI">
+        <Association Name="FK_tblSandogh_tblTafzili">
           <End Type="SanResturantModel.tblTafzili" Role="tblTafzili" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="SanResturantModel.tblContact" Role="tblContact" Multiplicity="*" />
+          <End Type="SanResturantModel.tblSandogh" Role="tblSandogh" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblTafzili">
               <PropertyRef Name="Tafzili_ID" />
             </Principal>
-            <Dependent Role="tblContact">
+            <Dependent Role="tblSandogh">
               <PropertyRef Name="Tafzili_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TBLMOBIL_RELATIONS_TBLCONTA">
-          <End Type="SanResturantModel.tblContact" Role="tblContact" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="SanResturantModel.tblMobile" Role="tblMobile" Multiplicity="*" />
+        <EntityType Name="tblChildeSanad">
+          <Key>
+            <PropertyRef Name="ID_Child_Sanad" />
+          </Key>
+          <Property Name="ID_Child_Sanad" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Serial_Sanad" Type="Int64" />
+          <Property Name="AccountsID" Type="Int32" />
+          <Property Name="Tafzili_ID" Type="Int32" />
+          <Property Name="Moein_ID" Type="Int32" />
+          <Property Name="Sharh_Child_Sanad" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Amaliyat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ID_TypeAmaliyat" Type="Int32" />
+          <Property Name="Bedehkar" Type="Int64" />
+          <Property Name="Bestankar" Type="Int64" />
+          <NavigationProperty Name="tblParentSanad" Relationship="SanResturantModel.FK_TBLCHILD_FK_TBLCHI_TBLPAREN" FromRole="tblChildeSanad" ToRole="tblParentSanad" />
+          <NavigationProperty Name="tblTafzili" Relationship="SanResturantModel.FK_TBLCHILD_RELATIONS_TBLTAFZIyy" FromRole="tblChildeSanad" ToRole="tblTafzili" />
+        </EntityType>
+        <EntityType Name="tblParentSanad">
+          <Key>
+            <PropertyRef Name="Serial_Sanad" />
+          </Key>
+          <Property Name="Serial_Sanad" Type="Int64" Nullable="false" />
+          <Property Name="Number_Sanad" Type="Int64" />
+          <Property Name="StatusSanadID" Type="Int32" />
+          <Property Name="TypeSanad_ID" Type="Int32" />
+          <Property Name="Date_Sanad" Type="DateTime" Precision="0" />
+          <Property Name="Time_Sanad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Exption_Sanad" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Taraz_Sanad" Type="Boolean" />
+          <Property Name="Error_Sanad" Type="Boolean" />
+          <Property Name="Edited_Sanad" Type="Boolean" />
+          <Property Name="Deleted_Sanad" Type="Boolean" />
+          <Property Name="Date_Modify" Type="DateTime" Precision="3" />
+          <Property Name="User_ID" Type="Int32" />
+          <NavigationProperty Name="tblChildeSanads" Relationship="SanResturantModel.FK_TBLCHILD_FK_TBLCHI_TBLPAREN" FromRole="tblParentSanad" ToRole="tblChildeSanad" />
+        </EntityType>
+        <Association Name="FK_TBLCHILD_FK_TBLCHI_TBLPAREN">
+          <End Type="SanResturantModel.tblParentSanad" Role="tblParentSanad" Multiplicity="0..1" />
+          <End Type="SanResturantModel.tblChildeSanad" Role="tblChildeSanad" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblContact">
-              <PropertyRef Name="Contacts_ID" />
+            <Principal Role="tblParentSanad">
+              <PropertyRef Name="Serial_Sanad" />
             </Principal>
-            <Dependent Role="tblMobile">
-              <PropertyRef Name="Contacts_ID" />
+            <Dependent Role="tblChildeSanad">
+              <PropertyRef Name="Serial_Sanad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TBLTELL_RELATIONS_TBLCONTA">
-          <End Type="SanResturantModel.tblContact" Role="tblContact" Multiplicity="1">
+        <Association Name="FK_TBLCHILD_RELATIONS_TBLTAFZIyy">
+          <End Type="SanResturantModel.tblTafzili" Role="tblTafzili" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="SanResturantModel.tblTell" Role="tblTell" Multiplicity="*" />
+          <End Type="SanResturantModel.tblChildeSanad" Role="tblChildeSanad" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblContact">
-              <PropertyRef Name="Contacts_ID" />
+            <Principal Role="tblTafzili">
+              <PropertyRef Name="Tafzili_ID" />
             </Principal>
-            <Dependent Role="tblTell">
-              <PropertyRef Name="Contacts_ID" />
+            <Dependent Role="tblChildeSanad">
+              <PropertyRef Name="Tafzili_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1600,17 +1894,6 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblTafzilis">
-            <EntityTypeMapping TypeName="SanResturantModel.tblTafzili">
-              <MappingFragment StoreEntitySet="tblTafzili">
-                <ScalarProperty Name="TypeAcc_ID" ColumnName="TypeAcc_ID" />
-                <ScalarProperty Name="User_ID_Tafzili" ColumnName="User_ID_Tafzili" />
-                <ScalarProperty Name="Tafzili_Name" ColumnName="Tafzili_Name" />
-                <ScalarProperty Name="GroupTafzili_ID" ColumnName="GroupTafzili_ID" />
-                <ScalarProperty Name="Tafzili_ID" ColumnName="Tafzili_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TblSokhans">
             <EntityTypeMapping TypeName="SanResturantModel.TblSokhan">
               <MappingFragment StoreEntitySet="TblSokhan">
@@ -1633,6 +1916,37 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
                 <ScalarProperty Name="Login_Password" ColumnName="Login_Password" />
                 <ScalarProperty Name="Login_UserName" ColumnName="Login_UserName" />
                 <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblParent_FrooshKala">
+            <EntityTypeMapping TypeName="SanResturantModel.TblParent_FrooshKala">
+              <MappingFragment StoreEntitySet="TblParent_FrooshKala">
+                <ScalarProperty Name="ForooshKalaParent_Delivery" ColumnName="ForooshKalaParent_Delivery" />
+                <ScalarProperty Name="ForooshKalaParent_Ready" ColumnName="ForooshKalaParent_Ready" />
+                <ScalarProperty Name="ForooshKalaParent_TasvieFact" ColumnName="ForooshKalaParent_TasvieFact" />
+                <ScalarProperty Name="ForooshKalaParent_Tahvilgirande" ColumnName="ForooshKalaParent_Tahvilgirande" />
+                <ScalarProperty Name="ForooshKalaParent_NumberPager" ColumnName="ForooshKalaParent_NumberPager" />
+                <ScalarProperty Name="ForooshKalaParent_SelectedTell" ColumnName="ForooshKalaParent_SelectedTell" />
+                <ScalarProperty Name="ForooshKalaParent_SelectedAdress" ColumnName="ForooshKalaParent_SelectedAdress" />
+                <ScalarProperty Name="ForooshKalaParent_TypeFact" ColumnName="ForooshKalaParent_TypeFact" />
+                <ScalarProperty Name="ForooshKalaParent_Time" ColumnName="ForooshKalaParent_Time" />
+                <ScalarProperty Name="ForooshKalaParent_StatusFact" ColumnName="ForooshKalaParent_StatusFact" />
+                <ScalarProperty Name="ForooshKalaParent_ShomareFish" ColumnName="ForooshKalaParent_ShomareFish" />
+                <ScalarProperty Name="ForooshKalaParent_ModateEntezar" ColumnName="ForooshKalaParent_ModateEntezar" />
+                <ScalarProperty Name="ForooshKalaParent_ShomareMiz" ColumnName="ForooshKalaParent_ShomareMiz" />
+                <ScalarProperty Name="ForooshKalaParent_SerialSanad" ColumnName="ForooshKalaParent_SerialSanad" />
+                <ScalarProperty Name="ForooshKalaParent_UserId" ColumnName="ForooshKalaParent_UserId" />
+                <ScalarProperty Name="ForooshKalaParent_JameService" ColumnName="ForooshKalaParent_JameService" />
+                <ScalarProperty Name="ForooshKalaParent_JameKol" ColumnName="ForooshKalaParent_JameKol" />
+                <ScalarProperty Name="ForooshKalaParent_JameMablaghPasTakhfif" ColumnName="ForooshKalaParent_JameMablaghPasTakhfif" />
+                <ScalarProperty Name="ForooshKalaParent_JameTakhfif" ColumnName="ForooshKalaParent_JameTakhfif" />
+                <ScalarProperty Name="ForooshKalaParent_JameMaliyat" ColumnName="ForooshKalaParent_JameMaliyat" />
+                <ScalarProperty Name="ForooshKalaParent_JameMablaghPaye" ColumnName="ForooshKalaParent_JameMablaghPaye" />
+                <ScalarProperty Name="ForooshKalaParent_Tozih" ColumnName="ForooshKalaParent_Tozih" />
+                <ScalarProperty Name="ForooshKalaParent_Date" ColumnName="ForooshKalaParent_Date" />
+                <ScalarProperty Name="ForooshKalaParent_Tafzili" ColumnName="ForooshKalaParent_Tafzili" />
+                <ScalarProperty Name="ForooshKalaParent_ID" ColumnName="ForooshKalaParent_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1662,6 +1976,59 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
                 <ScalarProperty Name="ChildForooshKala_ParentID" ColumnName="ChildForooshKala_ParentID" />
                 <ScalarProperty Name="ChildForooshKala_KalaID" ColumnName="ChildForooshKala_KalaID" />
                 <ScalarProperty Name="ChildForooshKala_ID" ColumnName="ChildForooshKala_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblChild_KharidKala">
+            <EntityTypeMapping TypeName="SanResturantModel.TblChild_KharidKala">
+              <MappingFragment StoreEntitySet="TblChild_KharidKala">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ChildKharidKala_JameKol" ColumnName="ChildKharidKala_JameKol" />
+                <ScalarProperty Name="ChildKharidKala_MaliyatDarsad" ColumnName="ChildKharidKala_MaliyatDarsad" />
+                <ScalarProperty Name="ChildKharidKala_MaliyatMablagh" ColumnName="ChildKharidKala_MaliyatMablagh" />
+                <ScalarProperty Name="ChildKharidKala_MablaghPasAsTakhfif" ColumnName="ChildKharidKala_MablaghPasAsTakhfif" />
+                <ScalarProperty Name="ChildKharidKala_TakhfifDarsad" ColumnName="ChildKharidKala_TakhfifDarsad" />
+                <ScalarProperty Name="ChildKharidKala_TakhfifMablagh" ColumnName="ChildKharidKala_TakhfifMablagh" />
+                <ScalarProperty Name="ChildKharidKala_JameMablagh" ColumnName="ChildKharidKala_JameMablagh" />
+                <ScalarProperty Name="ChildKharidKala_GheymatPaye" ColumnName="ChildKharidKala_GheymatPaye" />
+                <ScalarProperty Name="ChildKharidKala_SharhKala" ColumnName="ChildKharidKala_SharhKala" />
+                <ScalarProperty Name="ChildKharidKala_TedadFare" ColumnName="ChildKharidKala_TedadFare" />
+                <ScalarProperty Name="ChildKharidKala_VahedFareKala" ColumnName="ChildKharidKala_VahedFareKala" />
+                <ScalarProperty Name="ChildKharidKala_TedadAsli" ColumnName="ChildKharidKala_TedadAsli" />
+                <ScalarProperty Name="ChildKharidKala_VahedAsliKala" ColumnName="ChildKharidKala_VahedAsliKala" />
+                <ScalarProperty Name="ChildKharidKala_ParentID" ColumnName="ChildKharidKala_ParentID" />
+                <ScalarProperty Name="ChildKharidKala_KalaID" ColumnName="ChildKharidKala_KalaID" />
+                <ScalarProperty Name="ChildKharidKala_ID" ColumnName="ChildKharidKala_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContacts">
+            <EntityTypeMapping TypeName="SanResturantModel.tblContact">
+              <MappingFragment StoreEntitySet="tblContacts">
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="Status_Marid" ColumnName="Status_Marid" />
+                <ScalarProperty Name="Date_Marid" ColumnName="Date_Marid" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="SerialSanadEftetahiye" ColumnName="SerialSanadEftetahiye" />
+                <ScalarProperty Name="StatusMande" ColumnName="StatusMande" />
+                <ScalarProperty Name="MandeAvalDovre" ColumnName="MandeAvalDovre" />
+                <ScalarProperty Name="XYMapContact" ColumnName="XYMapContact" />
+                <ScalarProperty Name="ImageContact" ColumnName="ImageContact" />
+                <ScalarProperty Name="RateContacts" ColumnName="RateContacts" />
+                <ScalarProperty Name="User_ID_Contacts" ColumnName="User_ID_Contacts" />
+                <ScalarProperty Name="SaghfeEtebar" ColumnName="SaghfeEtebar" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Code_Melli" ColumnName="Code_Melli" />
+                <ScalarProperty Name="Code_Eghtesadi" ColumnName="Code_Eghtesadi" />
+                <ScalarProperty Name="Hoghoghi" ColumnName="Hoghoghi" />
+                <ScalarProperty Name="Haghighi" ColumnName="Haghighi" />
+                <ScalarProperty Name="ID_ZamineyeFaliyat" ColumnName="ID_ZamineyeFaliyat" />
+                <ScalarProperty Name="GroupContact" ColumnName="GroupContact" />
+                <ScalarProperty Name="Know_ID" ColumnName="Know_ID" />
+                <ScalarProperty Name="Tafzili_ID" ColumnName="Tafzili_ID" />
+                <ScalarProperty Name="Pishvand_ID" ColumnName="Pishvand_ID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Contacts_ID" ColumnName="Contacts_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1701,34 +2068,14 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblParent_FrooshKala">
-            <EntityTypeMapping TypeName="SanResturantModel.TblParent_FrooshKala">
-              <MappingFragment StoreEntitySet="TblParent_FrooshKala">
-                <ScalarProperty Name="ForooshKalaParent_Delivery" ColumnName="ForooshKalaParent_Delivery" />
-                <ScalarProperty Name="ForooshKalaParent_Ready" ColumnName="ForooshKalaParent_Ready" />
-                <ScalarProperty Name="ForooshKalaParent_TasvieFact" ColumnName="ForooshKalaParent_TasvieFact" />
-                <ScalarProperty Name="ForooshKalaParent_Tahvilgirande" ColumnName="ForooshKalaParent_Tahvilgirande" />
-                <ScalarProperty Name="ForooshKalaParent_NumberPager" ColumnName="ForooshKalaParent_NumberPager" />
-                <ScalarProperty Name="ForooshKalaParent_SelectedTell" ColumnName="ForooshKalaParent_SelectedTell" />
-                <ScalarProperty Name="ForooshKalaParent_SelectedAdress" ColumnName="ForooshKalaParent_SelectedAdress" />
-                <ScalarProperty Name="ForooshKalaParent_TypeFact" ColumnName="ForooshKalaParent_TypeFact" />
-                <ScalarProperty Name="ForooshKalaParent_Time" ColumnName="ForooshKalaParent_Time" />
-                <ScalarProperty Name="ForooshKalaParent_StatusFact" ColumnName="ForooshKalaParent_StatusFact" />
-                <ScalarProperty Name="ForooshKalaParent_ShomareFish" ColumnName="ForooshKalaParent_ShomareFish" />
-                <ScalarProperty Name="ForooshKalaParent_ModateEntezar" ColumnName="ForooshKalaParent_ModateEntezar" />
-                <ScalarProperty Name="ForooshKalaParent_ShomareMiz" ColumnName="ForooshKalaParent_ShomareMiz" />
-                <ScalarProperty Name="ForooshKalaParent_SerialSanad" ColumnName="ForooshKalaParent_SerialSanad" />
-                <ScalarProperty Name="ForooshKalaParent_UserId" ColumnName="ForooshKalaParent_UserId" />
-                <ScalarProperty Name="ForooshKalaParent_JameService" ColumnName="ForooshKalaParent_JameService" />
-                <ScalarProperty Name="ForooshKalaParent_JameKol" ColumnName="ForooshKalaParent_JameKol" />
-                <ScalarProperty Name="ForooshKalaParent_JameMablaghPasTakhfif" ColumnName="ForooshKalaParent_JameMablaghPasTakhfif" />
-                <ScalarProperty Name="ForooshKalaParent_JameTakhfif" ColumnName="ForooshKalaParent_JameTakhfif" />
-                <ScalarProperty Name="ForooshKalaParent_JameMaliyat" ColumnName="ForooshKalaParent_JameMaliyat" />
-                <ScalarProperty Name="ForooshKalaParent_JameMablaghPaye" ColumnName="ForooshKalaParent_JameMablaghPaye" />
-                <ScalarProperty Name="ForooshKalaParent_Tozih" ColumnName="ForooshKalaParent_Tozih" />
-                <ScalarProperty Name="ForooshKalaParent_Date" ColumnName="ForooshKalaParent_Date" />
-                <ScalarProperty Name="ForooshKalaParent_Tafzili" ColumnName="ForooshKalaParent_Tafzili" />
-                <ScalarProperty Name="ForooshKalaParent_ID" ColumnName="ForooshKalaParent_ID" />
+          <EntitySetMapping Name="tblTafzilis">
+            <EntityTypeMapping TypeName="SanResturantModel.tblTafzili">
+              <MappingFragment StoreEntitySet="tblTafzili">
+                <ScalarProperty Name="TypeAcc_ID" ColumnName="TypeAcc_ID" />
+                <ScalarProperty Name="User_ID_Tafzili" ColumnName="User_ID_Tafzili" />
+                <ScalarProperty Name="Tafzili_Name" ColumnName="Tafzili_Name" />
+                <ScalarProperty Name="GroupTafzili_ID" ColumnName="GroupTafzili_ID" />
+                <ScalarProperty Name="Tafzili_ID" ColumnName="Tafzili_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1741,41 +2088,46 @@ warning 6002: The table/view 'Gishniz.dbo.Vw_TellMobileContact' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblContacts">
-            <EntityTypeMapping TypeName="SanResturantModel.tblContact">
-              <MappingFragment StoreEntitySet="tblContacts">
-                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
-                <ScalarProperty Name="Status_Marid" ColumnName="Status_Marid" />
-                <ScalarProperty Name="Date_Marid" ColumnName="Date_Marid" />
-                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
-                <ScalarProperty Name="SerialSanadEftetahiye" ColumnName="SerialSanadEftetahiye" />
-                <ScalarProperty Name="StatusMande" ColumnName="StatusMande" />
-                <ScalarProperty Name="MandeAvalDovre" ColumnName="MandeAvalDovre" />
-                <ScalarProperty Name="XYMapContact" ColumnName="XYMapContact" />
-                <ScalarProperty Name="ImageContact" ColumnName="ImageContact" />
-                <ScalarProperty Name="RateContacts" ColumnName="RateContacts" />
-                <ScalarProperty Name="User_ID_Contacts" ColumnName="User_ID_Contacts" />
-                <ScalarProperty Name="SaghfeEtebar" ColumnName="SaghfeEtebar" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Code_Melli" ColumnName="Code_Melli" />
-                <ScalarProperty Name="Code_Eghtesadi" ColumnName="Code_Eghtesadi" />
-                <ScalarProperty Name="Hoghoghi" ColumnName="Hoghoghi" />
-                <ScalarProperty Name="Haghighi" ColumnName="Haghighi" />
-                <ScalarProperty Name="ID_ZamineyeFaliyat" ColumnName="ID_ZamineyeFaliyat" />
-                <ScalarProperty Name="GroupContact" ColumnName="GroupContact" />
-                <ScalarProperty Name="Know_ID" ColumnName="Know_ID" />
-                <ScalarProperty Name="Tafzili_ID" ColumnName="Tafzili_ID" />
-                <ScalarProperty Name="Pishvand_ID" ColumnName="Pishvand_ID" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Contacts_ID" ColumnName="Contacts_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Vw_TellMobileContact">
             <EntityTypeMapping TypeName="SanResturantModel.Vw_TellMobileContact">
               <MappingFragment StoreEntitySet="Vw_TellMobileContact">
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Contacts_ID" ColumnName="Contacts_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChildeSanads">
+            <EntityTypeMapping TypeName="SanResturantModel.tblChildeSanad">
+              <MappingFragment StoreEntitySet="tblChildeSanad">
+                <ScalarProperty Name="Bestankar" ColumnName="Bestankar" />
+                <ScalarProperty Name="Bedehkar" ColumnName="Bedehkar" />
+                <ScalarProperty Name="ID_TypeAmaliyat" ColumnName="ID_TypeAmaliyat" />
+                <ScalarProperty Name="ID_Amaliyat" ColumnName="ID_Amaliyat" />
+                <ScalarProperty Name="Sharh_Child_Sanad" ColumnName="Sharh_Child_Sanad" />
+                <ScalarProperty Name="Moein_ID" ColumnName="Moein_ID" />
+                <ScalarProperty Name="Tafzili_ID" ColumnName="Tafzili_ID" />
+                <ScalarProperty Name="AccountsID" ColumnName="AccountsID" />
+                <ScalarProperty Name="Serial_Sanad" ColumnName="Serial_Sanad" />
+                <ScalarProperty Name="ID_Child_Sanad" ColumnName="ID_Child_Sanad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParentSanads">
+            <EntityTypeMapping TypeName="SanResturantModel.tblParentSanad">
+              <MappingFragment StoreEntitySet="tblParentSanad">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Date_Modify" ColumnName="Date_Modify" />
+                <ScalarProperty Name="Deleted_Sanad" ColumnName="Deleted_Sanad" />
+                <ScalarProperty Name="Edited_Sanad" ColumnName="Edited_Sanad" />
+                <ScalarProperty Name="Error_Sanad" ColumnName="Error_Sanad" />
+                <ScalarProperty Name="Taraz_Sanad" ColumnName="Taraz_Sanad" />
+                <ScalarProperty Name="Exption_Sanad" ColumnName="Exption_Sanad" />
+                <ScalarProperty Name="Time_Sanad" ColumnName="Time_Sanad" />
+                <ScalarProperty Name="Date_Sanad" ColumnName="Date_Sanad" />
+                <ScalarProperty Name="TypeSanad_ID" ColumnName="TypeSanad_ID" />
+                <ScalarProperty Name="StatusSanadID" ColumnName="StatusSanadID" />
+                <ScalarProperty Name="Number_Sanad" ColumnName="Number_Sanad" />
+                <ScalarProperty Name="Serial_Sanad" ColumnName="Serial_Sanad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

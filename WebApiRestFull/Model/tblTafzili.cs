@@ -16,8 +16,9 @@ namespace Model
     {
         public tblTafzili()
         {
-            this.tblSandoghs = new HashSet<tblSandogh>();
             this.tblContacts = new HashSet<tblContact>();
+            this.tblSandoghs = new HashSet<tblSandogh>();
+            this.tblChildeSanads = new HashSet<tblChildeSanad>();
         }
     
         public int Tafzili_ID { get; set; }
@@ -26,7 +27,8 @@ namespace Model
         public Nullable<int> User_ID_Tafzili { get; set; }
         public Nullable<int> TypeAcc_ID { get; set; }
     
-        public virtual ICollection<tblSandogh> tblSandoghs { get; set; }
         public virtual ICollection<tblContact> tblContacts { get; set; }
+        public virtual ICollection<tblSandogh> tblSandoghs { get; set; }
+        public virtual ICollection<tblChildeSanad> tblChildeSanads { get; set; }
     }
 }

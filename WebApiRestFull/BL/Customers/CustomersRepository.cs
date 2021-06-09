@@ -47,7 +47,7 @@ namespace BL
         {
             return customersRepo.FindBySingle(c => c.Tafzili_ID == tafsilID);
         }
-        public tblContact GetCustomer_ByID(long id)
+        public tblContact GetCustomer_ByID(int id)
         {
             return customersRepo.FindBySingle(c => c.Contacts_ID == id);
         }
@@ -64,7 +64,7 @@ namespace BL
         {
             return addressRepo.Insert(address);
         }
-        public int InsertAddress(string address, long customerID)
+        public int InsertAddress(string address, int customerID)
         {
             if (!string.IsNullOrEmpty(address) && !string.IsNullOrWhiteSpace(address))
             {
@@ -75,7 +75,7 @@ namespace BL
             else return 0;
         }
 
-        public List<tblAdress> GetAddress(long customerID)
+        public List<tblAdress> GetAddress(int customerID)
         {
             return addressRepo.FindAll(a => a.Contact_ID == customerID).ToList();
         }
@@ -83,7 +83,7 @@ namespace BL
         #endregion
 
         #region tell
-        public List<Vw_TellMobileContact> GetTellMobile(long customerID)
+        public List<Vw_TellMobileContact> GetTellMobile(int customerID)
         {
             return vwTellRepo.FindAll(t => t.Contacts_ID == customerID).ToList();
         }
@@ -91,7 +91,7 @@ namespace BL
         {
             return tellRepo.Insert(tell);
         }
-        public int InsertTell(string tell, long customerID)
+        public int InsertTell(string tell, int customerID)
         {
             if (!string.IsNullOrEmpty(tell) && !string.IsNullOrWhiteSpace(tell))
             {
@@ -101,6 +101,8 @@ namespace BL
             }
             else return 0;
         }
+
+
         #endregion
 
     }

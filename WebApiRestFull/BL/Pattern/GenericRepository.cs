@@ -185,6 +185,7 @@ namespace BL
         {
             try
             {
+                if (entity == null) return 0;
                 _dbset.Remove(entity);
                 return _context.SaveChanges();
             }
@@ -204,6 +205,7 @@ namespace BL
         {
             try
             {
+                if (entity == null) return 0;
                 //_dbset.Attach(entity);
                 _dbset.RemoveRange(entity);
                 //_context.Entry(entity).State = EntityState.Deleted;

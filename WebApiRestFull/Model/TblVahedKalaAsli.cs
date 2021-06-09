@@ -16,12 +16,16 @@ namespace Model
     {
         public TblVahedKalaAsli()
         {
+            this.TblChild_KharidKala = new HashSet<TblChild_KharidKala>();
+            this.TblChild_KharidKala1 = new HashSet<TblChild_KharidKala>();
             this.TblKalas = new HashSet<TblKala>();
         }
     
         public long ID_Vahed { get; set; }
         public string NameVahed { get; set; }
     
+        public virtual ICollection<TblChild_KharidKala> TblChild_KharidKala { get; set; }
+        public virtual ICollection<TblChild_KharidKala> TblChild_KharidKala1 { get; set; }
         public virtual ICollection<TblKala> TblKalas { get; set; }
     }
 }

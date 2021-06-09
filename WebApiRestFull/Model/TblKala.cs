@@ -17,6 +17,7 @@ namespace Model
         public TblKala()
         {
             this.TblChild_ForooshKala = new HashSet<TblChild_ForooshKala>();
+            this.TblChild_KharidKala = new HashSet<TblChild_KharidKala>();
             this.TblKardeksKalas = new HashSet<TblKardeksKala>();
             this.tblPriceChangeKalas = new HashSet<tblPriceChangeKala>();
         }
@@ -44,6 +45,7 @@ namespace Model
         public double PercentProfit { get; set; }
     
         public virtual ICollection<TblChild_ForooshKala> TblChild_ForooshKala { get; set; }
+        public virtual ICollection<TblChild_KharidKala> TblChild_KharidKala { get; set; }
         public virtual TblGroupKala TblGroupKala { get; set; }
         public virtual TblVahedKalaAsli TblVahedKalaAsli { get; set; }
         public virtual ICollection<TblKardeksKala> TblKardeksKalas { get; set; }

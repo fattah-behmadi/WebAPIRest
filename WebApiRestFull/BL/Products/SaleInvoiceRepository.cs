@@ -10,13 +10,21 @@ namespace BL
 {
     public class SaleInvoiceRepository
     {
+        AccountingRepository acc;
+        SettingRepository settingRepo;
+        
         internal GenericRepository<TblParent_FrooshKala> SaleInvoiceRepo { get; set; }
         internal GenericRepository<TblChild_ForooshKala> SaleInvoiceDetaileRepo { get; set; }
+        internal GenericRepository<Vw_PrintFroosh> vwSaleInvoicePrint { get; set; }
+
 
         public SaleInvoiceRepository()
         {
+            acc = new AccountingRepository();
+            settingRepo = new SettingRepository();
             SaleInvoiceRepo = new GenericRepository<TblParent_FrooshKala>(DBAccess.GetNewContext());
             SaleInvoiceDetaileRepo = new GenericRepository<TblChild_ForooshKala>(DBAccess.GetNewContext());
+            vwSaleInvoicePrint = new GenericRepository<Vw_PrintFroosh>(DBAccess.GetNewContext());
         }
 
 
@@ -61,6 +69,25 @@ namespace BL
             return saleinvoice;
         }
         /// <summary>
+        /// دریافت تعداد اخرین فاکتورهای فروش
+        /// </summary>
+        /// <param name="count">تعداد فاکتورهای بازگشتی</param>
+        /// <returns></returns>
+        public List<SaleInvoice> GetLastSaleInvoice(int count)
+        {
+            DateTime nowDate = DateTime.Now.ToString("yyyy-MM-dd").ToDateTime();
+            DateTime yesterday = nowDate.AddDays(-1);
+
+            TblParent_FrooshKala saleinvoice = SaleInvoiceRepo.FindByLasted(c =>
+                                                            c.ForooshKalaParent_Date.Value >= yesterday &&
+                                                             c.ForooshKalaParent_Date.Value <= nowDate
+                                                             , o => o.ForooshKalaParent_Date.Value, 1
+                                                            ).FirstOrDefault();
+
+            return saleinvoice.MapperList<TblParent_FrooshKala, SaleInvoice>();
+        }
+
+        /// <summary>
         /// جستجو بر اساس شماره فیش و تاریخ سفارش
         /// </summary>
         /// <param name="NumberOrdersaleinvoice">شماره فیش</param>
@@ -82,6 +109,27 @@ namespace BL
             return saleinvoice.Mapper<TblParent_FrooshKala, SaleInvoice>();
 
         }
+
+
+        public SaleInvoice CancelSaleInvoice(long _saleInvoice_ID, long GL_ID, int UserID)
+        {
+            if (acc.DeleteGL_ByID(GL_ID))
+            {
+                var user=settingRepo.GetUser(UserID);
+                var saleInvoice = this.GetSaleInvoice(_saleInvoice_ID);
+
+                saleInvoice.Description = string.Format($"لغو فاکتور توسط کاربر {user.Login_Name} ");
+                saleInvoice.Edited = "لغو";
+                saleInvoice.UserID = UserID;
+               var result= this.UpdateSaleInvoice(saleInvoice);
+                if (result == 1)
+                    return saleInvoice;
+                else return null;
+            }
+            else
+                return null;
+        }
+
         #endregion
 
         #region SaleInvoiceDetails
@@ -152,6 +200,11 @@ namespace BL
             print.Company = localizationDBContext.SettingRepo.GetCompany();
             return print;
 
+        }
+
+        public List<Vw_PrintFroosh> GetSaleInvoicePrint(long SaleInvoiceID)
+        {
+           return this.vwSaleInvoicePrint.FindAll(c => c.ForooshKalaParent_ID == SaleInvoiceID).ToList();
         }
 
         #endregion

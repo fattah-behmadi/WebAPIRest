@@ -30,211 +30,6 @@ Public Class HomeController
     Dim bgw As BackgroundWorker
 
 
-#Region " تابع گرفتن گروه های غذایی"
-    <HttpGet>
-    Public Function GetGroupFood() As JArray
-        Try
-            funcSql.ReadConnection()
-            Dim sqlcom As New SqlDataAdapter("SELECT * FROM [TblGroupKala]  WHERE [TypeGroup] <> N'فقط خریدنی'", constr)
-            Dim DtGroupFood As New DataTable
-            sqlcom.Fill(DtGroupFood)
-            Dim JSONString As String = String.Empty
-            JSONString = JsonConvert.SerializeObject(DtGroupFood)
-            Dim arrayFood = JArray.Parse(JSONString)
-            Return arrayFood
-        Catch ex As Exception
-            WriteText("GetGroupFood : " & ex.Message)
-
-        End Try
-    End Function
-#End Region
-
-#Region " تابع گرفتن غذاهای مورد علاقه"
-    <HttpGet>
-    Public Function GetFoodFavorite() As JArray
-        Try
-            funcSql.ReadConnection()
-            Dim sqlcom As New SqlDataAdapter("SELECT top 30  WITH TIES [IDKala] FROM [VwChart_FrooshKala] ORDER BY [Count]  DESC", constr)
-            Dim DtGroupFood As New DataTable
-            sqlcom.Fill(DtGroupFood)
-            Dim JSONString As String = String.Empty
-            JSONString = JsonConvert.SerializeObject(DtGroupFood)
-            Dim arrayFood = JArray.Parse(JSONString)
-            Return arrayFood
-
-        Catch ex As Exception
-            WriteText("GetFoodFavorite : " & ex.Message)
-        End Try
-
-
-    End Function
-#End Region
-
-#Region " تابع لیست تلفن مخاطبین"
-    <HttpGet>
-    <Route("api/home/GetTellContact/{IDContact}")>
-    Public Function GetTellContact(IDContact As String) As JArray
-
-        Try
-            funcSql.ReadConnection()
-            Dim dtContact As New DataTable
-            Dim Sqlda As New SqlDataAdapter("SELECT [tblTell].[Tell_Contact]  FROM [dbo].[tblTell] where [tblTell].[Contacts_ID] =" & IDContact, constr)
-            Sqlda.Fill(dtContact)
-            Dim JSONString As String = String.Empty
-            JSONString = JsonConvert.SerializeObject(dtContact)
-            Dim arrayFood = JArray.Parse(JSONString)
-            Return arrayFood
-
-        Catch ex As Exception
-            WriteText("GetTellContact : " & ex.Message)
-        End Try
-
-    End Function
-#End Region
-
-#Region " تابع لیست آدرس مخاطبین"
-    <HttpGet>
-    <Route("api/home/GetAddressContact/{IDContact}")>
-    Public Function GetAddressContact(IDContact As String) As JArray
-        Try
-            funcSql.ReadConnection()
-            Dim dtContact As New DataTable
-            Dim Sqlda As New SqlDataAdapter("select [tblAdress].[Adress] from [dbo].[tblAdress] where [tblAdress].[Contact_ID]=" & IDContact, constr)
-            Sqlda.Fill(dtContact)
-            Dim JSONString As String = String.Empty
-            JSONString = JsonConvert.SerializeObject(dtContact)
-            Dim arrayFood = JArray.Parse(JSONString)
-            Return arrayFood
-
-        Catch ex As Exception
-            WriteText("GetAddressContact : " & ex.Message)
-        End Try
-    End Function
-#End Region
-
-#Region " تابع لیست مخاطبین"
-    <HttpGet>
-    Public Function GetListContact() As JArray
-        Try
-            funcSql.ReadConnection()
-            Dim dtContact As New DataTable
-            Dim Sqlda As New SqlDataAdapter("select [FullName],[Tafzili_ID],[Contacts_ID]  FROM [dbo].[tblContacts]", constr)
-            Sqlda.Fill(dtContact)
-            Dim JSONString As String = String.Empty
-            JSONString = JsonConvert.SerializeObject(dtContact)
-            Dim arrayFood = JArray.Parse(JSONString)
-            Return arrayFood
-
-        Catch ex As Exception
-            WriteText("GetListContact : " & ex.Message)
-        End Try
-
-    End Function
-
-#End Region
-
-#Region " تابع گرفتن مبالغ مالیاتی و تخفیف"
-    <HttpGet>
-    Public Function GetSettingDarsad() As JArray
-
-        Try
-            funcSql.ReadConnection()
-            Dim dtContact As New DataTable
-            Dim Sqlda As New SqlDataAdapter("SELECT [Setting_DarsadMaliyat],[Setting_DardadTakhfif],[Setting_MablaghTakhfif],[Setting_DarsadService] ,[Setting_MablaghService]  FROM [tblSettingIDFactor]", constr)
-            Sqlda.Fill(dtContact)
-            Dim JSONString As String = String.Empty
-            JSONString = JsonConvert.SerializeObject(dtContact)
-            Dim arrayFood = JArray.Parse(JSONString)
-            Return arrayFood
-        Catch ex As Exception
-            WriteText("GetSettingDarsad : " & ex.Message)
-        End Try
-    End Function
-#End Region
-
-#Region "تابع برگرداندن آخرین فاکتور ها"
-    <HttpGet>
-    Public Function GetLastFactors() As JArray
-        Try
-            funcSql.ReadConnection()
-            Dim dtfact As New DataTable
-            Dim Sqlda As New SqlDataAdapter("SELECT TOP 30 [ForooshKalaParent_ID],[ForooshKalaParent_ShomareMiz],[ForooshKalaParent_ShomareFish],[ForooshKalaParent_Time],[ForooshKalaParent_Tahvilgirande],[ForooshKalaParent_SerialSanad],ForooshKalaParent_TypeFact FROM [TblParent_FrooshKala] WHERE [ForooshKalaParent_Date]='" & DateTime.Now.ToShortDateString() & "' AND ForooshKalaParent_StatusFact <>N'لغو' ", constr)
-            Sqlda.Fill(dtfact)
-            Dim JSONStringa As String = String.Empty
-            JSONStringa = JsonConvert.SerializeObject(dtfact)
-            Dim arrayFood = JArray.Parse(JSONStringa)
-            Return arrayFood
-
-        Catch ex As Exception
-            WriteText("GetLastFactors : " & ex.Message)
-        End Try
-    End Function
-#End Region
-
-#Region "تابع لغو فاکتور"
-    <HttpGet>
-    <Route("api/home/CancleFactor/{IDFactor}/{SerialSanad}/{UserCode}")>
-    Public Function CancleFactor(IDFactor As String, SerialSanad As String, UserCode As String) As Boolean
-        Try
-            Dim response As Boolean
-            result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Delete, "[tblChildeSanad]", , " [Serial_Sanad]=" & SerialSanad & "")
-            If result = "1" Then
-                result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Delete, "[tblParentSanad]", , " [Serial_Sanad]=" & SerialSanad & "")
-                If result = "1" Then
-                    Dim nameuser = funcSql.CellReader("[tblLogin]", "[Login_Name]", "[Login_ID]=" & UserCode & "")
-                    Dim Exp = String.Format("لغو فاکتور توسط کاربر {0}", nameuser)
-                    result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Update, "[TblParent_FrooshKala]", "ForooshKalaParent_StatusFact=N'لغو' ,ForooshKalaParent_Tozih=N'" & Exp & "'", "[ForooshKalaParent_ID]=" & IDFactor & "")
-                    Dim Numberfish = funcSql.CellReader("TblParent_FrooshKala", "ForooshKalaParent_ShomareFish", "ForooshKalaParent_ID=" & IDFactor & "")
-                    If result = "1" Then
-                        Me.IDUser = UserCode
-                        Printfactcancle(Numberfish)
-                        response = True
-                    End If
-                End If
-
-            End If
-            Return response
-        Catch ex As Exception
-            WriteText("CancleFactor : " & ex.Message)
-            Return False
-        End Try
-
-    End Function
-#End Region
-
-#Region "چاپ فاکتور لغو شده در آشپزخانه"
-    Public Function Printfactcancle(id As String)
-        Try
-
-            Dim data = GetSaleInvoice(id)
-            If data.SaleInvoice Is Nothing Then
-                Return False
-            End If
-
-            Dim report
-            If _SettingUser.Kitchen5Cm Then
-                report = New RptKitchenSmall
-            Else
-                report = New RptKitchen
-            End If
-
-            report = DesignReport(data, report, _SettingUser.PrinterAshpazkhane, data.SaleInvoice.NetPrice, False, "سفارش مورد نظر لغو گردید")
-
-            report.RequestParameters = False
-            report.ShowPrintStatusDialog = False
-            report.PrintingSystem.ShowMarginsWarning = False
-            report.CreateDocument(False)
-            Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
-            printTool.PrinterSettings.Copies = 1
-            printTool.Print(_SettingUser.PrinterAshpazkhane)
-
-            Return True
-        Catch ex As Exception
-            WriteText("Printfactcancle : " & ex.Message)
-        End Try
-
-    End Function
-#End Region
 
 #Region "تابع غذاهای یک فاکتور"
     <HttpGet>
@@ -243,7 +38,8 @@ Public Class HomeController
         Try
             funcSql.ReadConnection()
             Dim dtfact As New DataTable
-            Dim Sqlda As New SqlDataAdapter("  SELECT [ID_Kala],[Name_Kala],[ChildForooshKala_TedadAsli],[ChildForooshKala_SharhKala],[ChildForooshKala_GheymatPaye],ForooshKalaParent_TypeFact FROM dbo.[Vw_PrintFroosh]  WHERE ForooshKalaParent_ID =" & Numberfact & "", constr)
+            Dim Sqlda As New SqlDataAdapter("  SELECT [ID_Kala],[Name_Kala],[ChildForooshKala_TedadAsli],[ChildForooshKala_SharhKala],[ChildForooshKala_GheymatPaye],ForooshKalaParent_TypeFact
+FROM dbo.[Vw_PrintFroosh]  WHERE ForooshKalaParent_ID =" & Numberfact & "", constr)
             Sqlda.Fill(dtfact)
             Dim JSONString As String = String.Empty
             JSONString = JsonConvert.SerializeObject(dtfact)
@@ -256,143 +52,6 @@ Public Class HomeController
 
 
     End Function
-#End Region
-
-#Region "توضیحات آشپزخانه"
-    <HttpGet>
-    Public Function GetExpAshpazkhane() As JArray
-        Try
-            funcSql.ReadConnection()
-            Dim dtExp As New DataTable
-            Dim Sqlda As New SqlDataAdapter("SELECT  *  FROM [TblExpAshpazkhane]", constr)
-            Sqlda.Fill(dtExp)
-            Dim JSONString As String = String.Empty
-            JSONString = JsonConvert.SerializeObject(dtExp)
-            Dim arrayFood = JArray.Parse(JSONString)
-            Return arrayFood
-        Catch ex As Exception
-            WriteText("GetExpAshpazkhane : " & ex.Message)
-        End Try
-    End Function
-#End Region
-
-#Region "دستگاه های مجاز"
-    <HttpGet>
-    <Route("api/home/DeviceRegister/{DeviceID}/{DeviceName}")>
-    Public Function DeviceRegister(DeviceID As String, DeviceName As String) As Boolean
-
-        'TODO: این بخش فعال شود جهت قفل سخت افزاری 
-
-
-        'Dim NumDevice As Integer = funcSql.ReadNumberDevice
-        'If NumDevice <> 0 Then
-        '    Dim countDevice As Integer = funcSql.CellReader("TblRegisterDevice", "count(DeviceID)", "")
-        '    If (countDevice > NumDevice) Then Return False
-        '    If (NumDevice > countDevice) Then
-
-        '        Dim id = funcSql.CellReader("TblRegisterDevice", "count(DeviceID)", "DeviceID=N'" & DeviceID & "'")
-        '        If id = 0 Then
-        '            result = funcSql.DoCommand(ConectToDatabaseSQL.CommandType.Insert, "TblRegisterDevice", "N'" & DeviceID & "',N'" & DeviceName & "'")
-        '            If result = "1" Then
-        '                Return True
-        '            Else
-        '                Return False
-        '            End If
-        '        Else
-        '            Return True
-        '        End If
-
-        '    End If
-        '    If (NumDevice = countDevice) Then
-        '        '       کد را در جدول چک می کنه که ایا وجود دارد یا خیر 
-        '        Dim ExistsDevice = funcSql.CellReader("TblRegisterDevice", "count(DeviceID)", "DeviceID=N'" & DeviceID & "'")
-        '        Select Case ExistsDevice
-        '            Case "0"
-        '                Return False
-        '            Case "1"
-        '                Return True
-        '            Case Nothing
-        '                Return False
-        '        End Select
-        '    End If
-
-
-        'Else
-        '    Return False
-        'End If
-        Return True
-
-
-    End Function
-#End Region
-
-#Region "لیست غذاها"
-    <HttpGet>
-    Public Function GetFood() As JArray
-        Try
-            funcSql.ReadConnection()
-            Dim dtFood As New DataTable
-            Dim Sqlda As New SqlDataAdapter("SELECT TOP 1000 [ID_Kala],[Name_Kala],[Fk_GroupKala],[GheymatForoshAsli],[Picture]  FROM [TblKala]", constr)
-            Sqlda.Fill(dtFood)
-            Dim JSONString As String = String.Empty
-            JSONString = JsonConvert.SerializeObject(dtFood)
-            Dim arrayFood = JArray.Parse(JSONString)
-            Return arrayFood
-        Catch ex As Exception
-            WriteText("GetFood : " & ex.Message)
-        End Try
-    End Function
-#End Region
-
-#Region "ورود گارسون"
-    <HttpGet>
-    <Route("api/home/LoginGarson/{_UserName}/{_Password}")>
-    Public Function LoginGarson(_UserName As String, _Password As String) As JArray
-
-        Try
-            funcSql.ReadConnection()
-
-            Dim sqlstr As String = String.Format($"
-                                                    SELECT Login_ID,Login_Name,''  as CurrencySymbol 
-                                                    FROM [tblLogin]
-                                                    where Login_UserName=N'{_UserName}' AND
-                                                    Login_Password=N'{PasswordEncrypt(_Password)}'")
-
-            Dim sqlcom As New SqlDataAdapter(sqlstr, constr)
-            Dim DtUser As New DataTable
-            sqlcom.Fill(DtUser)
-            Dim JSONString As String = String.Empty
-            If DtUser.Rows.Count = 0 Then
-                Dim dr As DataRow = DtUser.NewRow()
-                DtUser.Rows.Add(dr)
-                DtUser.Rows(0)("Login_ID") = "0"
-                DtUser.Rows(0)("Login_Name") = "0"
-                DtUser.Rows(0)("CurrencySymbol") = "ريال"
-            Else
-                IDUser = DtUser.Rows(0)("Login_ID").ToString().ToInt()
-            End If
-            Dim Currency As String = funcSql.CellReader("tblSettingIDFactor", "Setting_CurrencySymbol", "")
-            If Currency = Nothing Then
-                Currency = "ريال"
-            End If
-            DtUser.Rows(0)("CurrencySymbol") = Currency
-            JSONString = JsonConvert.SerializeObject(DtUser)
-            Dim arrayFood = JArray.Parse(JSONString)
-            GetDefaultContact()
-
-            If IDUser > 0 Then
-                _SettingUser = localizationDBContext.SettingRepo.GetSettigPrinterUser(IDUser)
-                _SettingFactor = localizationDBContext.SettingRepo.GetSetting()
-            End If
-
-
-            Return arrayFood
-        Catch ex As Exception
-            WriteText("LoginGarson : " & ex.Message)
-        End Try
-
-    End Function
-
 #End Region
 
     Sub GetDefaultContact()
@@ -516,12 +175,45 @@ Public Class HomeController
             Return NumberFish
         End Try
     End Function
-
 #End Region
 
 #Region "توابع کاربردی"
 
 #Region "چاپ فاکتور "
+
+    ''  "چاپ فاکتور لغو شده در آشپزخانه"
+    Public Function Printfactcancle(id As String)
+        Try
+
+            Dim data = GetSaleInvoice(id)
+            If data.SaleInvoice Is Nothing Then
+                Return False
+            End If
+
+            Dim report
+            If _SettingUser.Kitchen5Cm Then
+                report = New RptKitchenSmall
+            Else
+                report = New RptKitchen
+            End If
+
+            report = DesignReport(data, report, _SettingUser.PrinterAshpazkhane, data.SaleInvoice.NetPrice, False, "سفارش مورد نظر لغو گردید")
+
+            report.RequestParameters = False
+            report.ShowPrintStatusDialog = False
+            report.PrintingSystem.ShowMarginsWarning = False
+            report.CreateDocument(False)
+            Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+            printTool.PrinterSettings.Copies = 1
+            printTool.Print(_SettingUser.PrinterAshpazkhane)
+
+            Return True
+        Catch ex As Exception
+            WriteText("Printfactcancle : " & ex.Message)
+        End Try
+
+    End Function
+
 
     ''' <summary>
     ''' طراحی فاکتور موردنظر بایک ساختار یکپارچه
@@ -578,7 +270,7 @@ Public Class HomeController
     ''' چاپ لیست فاکتور ها
     ''' </summary>
 
-    Public Function PrintFish(SaleID As String, sumPrice As String, updated As Boolean)
+    Public Sub PrintFish(SaleID As String, sumPrice As String, updated As Boolean)
         Try
             Dim data = GetSaleInvoice(SaleID)
             If _SettingUser.BironbarMoshtari Or _SettingUser.DakhelSalonMoshtari Or _SettingUser.PeykMoshtari Then
@@ -589,77 +281,83 @@ Public Class HomeController
                 RptKitchen(data, sumPrice, updated)
             End If
 
-
             If _SettingUser.BironbarSandogh Or _SettingUser.DakhelSalonSandogh Or _SettingUser.PeykSandogh Then
                 RptCashier(data, sumPrice, updated)
             End If
 
-
         Catch ex As Exception
             WriteText("Print Report : " & ex.Message)
         End Try
-    End Function
+    End Sub
+
     Sub RptCustomer(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
-        Dim report
-        If _SettingUser.Costumer5Cm Then
-            report = New RptCustomerSmall
-        Else
-            report = New RptCustomer
-        End If
+        Try
+            Dim report
+            If _SettingUser.Costumer5Cm Then
+                report = New RptCustomerSmall
+            Else
+                report = New RptCustomer
+            End If
 
-        report = DesignReport(data, report, _SettingUser.PrinterCustomer, sumPrice, updated)
+            report = DesignReport(data, report, _SettingUser.PrinterCustomer, sumPrice, updated)
 
-        report.RequestParameters = False
-        report.ShowPrintStatusDialog = False
-        report.PrintingSystem.ShowMarginsWarning = False
-        report.CreateDocument(False)
-        Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
-        printTool.PrinterSettings.Copies = 1
-        printTool.Print(_SettingUser.PrinterCustomer)
-
+            report.RequestParameters = False
+            report.ShowPrintStatusDialog = False
+            report.PrintingSystem.ShowMarginsWarning = False
+            report.CreateDocument(False)
+            Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+            printTool.PrinterSettings.Copies = 1
+            printTool.Print(_SettingUser.PrinterCustomer)
+        Catch ex As Exception
+            WriteText("Print RptCustomer : " & ex.Message)
+        End Try
     End Sub
     Sub RptCashier(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
+        Try
+            Dim report
+            If _SettingUser.Sandogh5Cm Then
+                report = New RptCashierSmall
+            Else
+                report = New RptCashier
+            End If
+            report = DesignReport(data, report, _SettingUser.PrinterSandogh, sumPrice, updated)
 
-        Dim report
-        If _SettingUser.Sandogh5Cm Then
-            report = New RptCashierSmall
-        Else
-            report = New RptCashier
-        End If
-        report = DesignReport(data, report, _SettingUser.PrinterSandogh, sumPrice, updated)
-
-        report.RequestParameters = False
-        report.ShowPrintStatusDialog = False
-        report.PrintingSystem.ShowMarginsWarning = False
-        report.CreateDocument(False)
-        Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
-        printTool.PrinterSettings.Copies = 1
-        printTool.Print(_SettingUser.PrinterSandogh)
-
+            report.RequestParameters = False
+            report.ShowPrintStatusDialog = False
+            report.PrintingSystem.ShowMarginsWarning = False
+            report.CreateDocument(False)
+            Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+            printTool.PrinterSettings.Copies = 1
+            printTool.Print(_SettingUser.PrinterSandogh)
+        Catch ex As Exception
+            WriteText("Print RptCashier : " & ex.Message)
+        End Try
     End Sub
     Sub RptKitchen(ByVal data As Model.SaleInvoicePrint, ByVal sumPrice As Long, updated As Boolean)
+        Try
+            If data.SaleInvoice Is Nothing Then
+                Return
+            End If
 
-        If data.SaleInvoice Is Nothing Then
-            Return
-        End If
+            Dim report
+            If _SettingUser.Kitchen5Cm Then
+                report = New RptKitchenSmall
+            Else
+                report = New RptKitchen
+            End If
 
-        Dim report
-        If _SettingUser.Kitchen5Cm Then
-            report = New RptKitchenSmall
-        Else
-            report = New RptKitchen
-        End If
+            report = DesignReport(data, report, _SettingUser.PrinterAshpazkhane, sumPrice, updated)
 
-        report = DesignReport(data, report, _SettingUser.PrinterAshpazkhane, sumPrice, updated)
-
-        report.RequestParameters = False
-        report.ShowPrintStatusDialog = False
-        report.PrintingSystem.ShowMarginsWarning = False
-        report.CreateDocument(False)
-        Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
-        printTool.PrinterSettings.Copies = 1
-        printTool.Print(_SettingUser.PrinterAshpazkhane)
-
+            report.RequestParameters = False
+            report.ShowPrintStatusDialog = False
+            report.PrintingSystem.ShowMarginsWarning = False
+            report.CreateDocument(False)
+            Dim printTool As New DevExpress.XtraPrinting.PrintToolBase(report.PrintingSystem)
+            printTool.PrinterSettings.Copies = 1
+            printTool.Print(_SettingUser.PrinterAshpazkhane)
+        Catch ex As Exception
+            WriteText("Print RptKitchen : " & ex.Message)
+        End Try
     End Sub
     Function GetSaleInvoice(ByVal saleinvoiceID As Long) As Model.SaleInvoicePrint
         Return localizationDBContext.SaleInvoiceRepo.PrintSaleInvoice(saleinvoiceID)
@@ -669,7 +367,6 @@ Public Class HomeController
         Dim ar = DirectCast(e.Argument, printData)
         PrintFish(ar.SaleInvoiceID, ar.SumMoney, ar.UpdateFact) ' backgroundWorker
         Return ar.SaleNumber
-
     End Function
 
 #End Region

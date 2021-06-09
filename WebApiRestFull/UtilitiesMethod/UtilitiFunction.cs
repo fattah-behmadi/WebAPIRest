@@ -953,7 +953,6 @@ namespace UtilitiesMethod
             {
             }
         }
-
         public static string PasswordEncrypt( this string inText)
         {
 
@@ -999,6 +998,29 @@ namespace UtilitiesMethod
             }
         }
 
+        public static void WriteLogFile(string text)
+        {
+            FileStream FileStream;
+            string StrPath = System.Web.HttpContext.Current.Server.MapPath("~/ErrorLog.txt");
+
+            if (File.Exists(StrPath))
+            {
+                FileStream = new FileStream(StrPath, FileMode.Append, FileAccess.Write);
+            }
+            else
+            {
+                FileStream = new FileStream(StrPath, FileMode.Create, FileAccess.Write);
+            }
+
+
+            using (StreamWriter StreamWriter = new StreamWriter(FileStream))
+            {
+                StreamWriter.WriteLine(string.Format("Error:{0} --  DateTime:{1}", text, DateTime.Now));
+                StreamWriter.Close();
+                FileStream.Close();
+            }
+
+        }
     }
 }
 
