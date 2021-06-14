@@ -152,7 +152,7 @@ namespace BL
                 saleInvoice.Edited = "لغو";
                 saleInvoice.UserID = UserID;
                 var result = this.UpdateSaleInvoice(saleInvoice);
-                if (result == 1)
+                if (result)
                     return saleInvoice;
                 else return null;
             }
@@ -166,7 +166,7 @@ namespace BL
 
         public bool InsertSaleDetailes(List<SaleInvoiceDetaile> detailes)
         {
-            if (detailes == null) return 0;
+            if (detailes == null) return false;
             var _detaile = detailes.CopyCalss<List<TblChild_ForooshKala>>();
             return SaleInvoiceDetaileRepo.InsertAll(_detaile).ToBool();
 
