@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq.Expressions;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace BL
 {
@@ -21,7 +22,6 @@ namespace BL
             _contextCash = context;
             _context = context;
             _dbset = context.Set<TEntity>();
-
 
             string con = _context.Database.Connection.ConnectionString;
             sqlcon = new SqlConnection(con);
@@ -246,6 +246,48 @@ namespace BL
             {
                 return false;
             }
+
+        }
+        public DataTable SqlQueryGetData(string sqlstr)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter(sqlstr, sqlcon);
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+        }
+
+        public string RunProcedure(string sp_Name, string param_Name)
+        {
+            string value = string.Empty;
+            try
+            {
+                sqlcom = new SqlCommand(sp_Name, sqlcon);
+                sqlcom.CommandType = CommandType.StoredProcedure;
+                sqlcom.Parameters.Add("@" + param_Name, SqlDbType.BigInt);
+                sqlcom.Parameters["@" + param_Name].Direction = ParameterDirection.Output;
+
+                if (sqlcon.State == System.Data.ConnectionState.Closed)
+                    sqlcon.Open();
+
+                sqlcom.ExecuteNonQuery();
+                value = Convert.ToString(sqlcom.Parameters["@" + param_Name].Value);
+                if (sqlcon.State == System.Data.ConnectionState.Open)
+                    sqlcon.Close();
+                return value;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
 
         }
 

@@ -31,7 +31,16 @@ namespace Model
         }
 
         [Browsable(false)]
-        public System.DateTime SaleInvoiceDate { get { return this.ForooshKalaParent_Date.Value; } set { this.ForooshKalaParent_Date = value; } }
+        public System.DateTime SaleInvoiceDate
+        {
+            get
+            {
+                if (this.ForooshKalaParent_Date.HasValue)
+                    return this.ForooshKalaParent_Date.Value;
+                else return DateTime.Now;
+            }
+            set { this.ForooshKalaParent_Date = value; }
+        }
 
         [DisplayName("تاریخ شمسی فاکتور")]
         public string SaleInvoiceDate_SH
@@ -47,7 +56,9 @@ namespace Model
         {
             get
             {
-                return this.ForooshKalaParent_Time.Value;
+                if (this.ForooshKalaParent_Time.HasValue)
+                    return this.ForooshKalaParent_Time.Value;
+                else return DateTime.Now.TimeOfDay;
             }
             set
             {
@@ -77,8 +88,7 @@ namespace Model
             get { return this.ForooshKalaParent_JameMablaghPaye.ToLong(); }
             set { this.ForooshKalaParent_JameMablaghPaye = value; }
         }
-
-
+        
         /// <summary>
         /// مبلغ مالیات
         /// </summary>
@@ -295,6 +305,29 @@ namespace Model
         [Browsable(false)]
         public List<SaleInvoiceDetaile> SaleInvoiceDetails { get; set; }
 
+
+    }
+
+    public class OrderSaleInvoice
+    {
+        public long Tafsil_ID { get; set; }
+        public string Description { get; set; }
+        public int UserID { get; set; }
+        public string NumDesk { get; set; }
+        public string SaleInvoice_Type { get; set; }
+        public string CustomerFullName { get; set; }
+        public long DiscountPrice { get; set; }
+        public long VatPrice { get; set; }
+        public List<productOrder> Products { get; set; }
+
+    }
+    public class productOrder
+    {
+        public int Product_ID { get; set; }
+        public string ProductName { get; set; }
+        public int Qty { get; set; }
+        public string Product_Description { get; set; }
+        public long Price { get; set; }
 
     }
 }

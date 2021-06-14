@@ -1,0 +1,4 @@
+Error:SaveSaleInvoice : Object reference not set to an instance of an object. --  DateTime:1400-03-24  11:04
+-----------------------------------------------
+Error:SaveSaleInvoice : Object reference not set to an instance of an object. --  DateTime:1400-03-24  11:06
+-----------------------------------------------

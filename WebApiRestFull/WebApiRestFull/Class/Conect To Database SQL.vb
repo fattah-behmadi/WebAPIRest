@@ -517,9 +517,7 @@ Public Class ConectToDatabaseSQL
                     Return (MaxID + Increment)
 
                 End If
-
                 myConnection.Close()
-
 
             End Using
 

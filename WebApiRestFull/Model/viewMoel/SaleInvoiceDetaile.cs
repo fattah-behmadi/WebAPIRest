@@ -84,7 +84,6 @@ namespace Model
             get { return ((this.DiscountPercent.ToDouble() * this.SumPrice) / 100).ToLong(); }
         }
 
-
         [DisplayName("درصد تخفیف")]
         public double DiscountPercent
         {
@@ -95,7 +94,6 @@ namespace Model
                 this.ChildForooshKala_TakhfifMablagh = this.DiscountPrice;
             }
         }
-
 
         [DisplayName("مبلغ خالص")]
         /// <summary>
@@ -110,7 +108,6 @@ namespace Model
                 return netprice;
             }
         }
-
 
         [DisplayName("مبلغ مالیات")]
         public long VatPrice

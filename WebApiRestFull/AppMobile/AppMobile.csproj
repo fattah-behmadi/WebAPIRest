@@ -44,6 +44,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="JntNum2Text, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReportDesigner\PrintManage\bin\Debug\JntNum2Text.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -155,6 +171,60 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rpt\RptCashier.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\RptCashier.Designer.cs">
+      <DependentUpon>RptCashier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\RptCustomer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\RptCustomer.Designer.cs">
+      <DependentUpon>RptCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\RptGarson.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\RptGarson.Designer.cs">
+      <DependentUpon>RptGarson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\RptKitchen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\RptKitchen.Designer.cs">
+      <DependentUpon>RptKitchen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\RptPeyk.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\RptPeyk.Designer.cs">
+      <DependentUpon>RptPeyk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\small\RptCashierSmall.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\small\RptCashierSmall.Designer.cs">
+      <DependentUpon>RptCashierSmall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\small\RptCustomerSmall.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\small\RptCustomerSmall.Designer.cs">
+      <DependentUpon>RptCustomerSmall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\small\RptKitchenSmall.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\small\RptKitchenSmall.Designer.cs">
+      <DependentUpon>RptKitchenSmall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt\small\RptPeykSmall.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt\small\RptPeykSmall.Designer.cs">
+      <DependentUpon>RptPeykSmall.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -193,6 +263,36 @@
       <Project>{7704aec9-91e9-4f2d-a3a4-0024ca68a813}</Project>
       <Name>UtilitiesMethod</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Rpt\RptCashier.resx">
+      <DependentUpon>RptCashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\RptCustomer.resx">
+      <DependentUpon>RptCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\RptGarson.resx">
+      <DependentUpon>RptGarson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\RptKitchen.resx">
+      <DependentUpon>RptKitchen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\RptPeyk.resx">
+      <DependentUpon>RptPeyk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\small\RptCashierSmall.resx">
+      <DependentUpon>RptCashierSmall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\small\RptCustomerSmall.resx">
+      <DependentUpon>RptCustomerSmall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\small\RptKitchenSmall.resx">
+      <DependentUpon>RptKitchenSmall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt\small\RptPeykSmall.resx">
+      <DependentUpon>RptPeykSmall.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

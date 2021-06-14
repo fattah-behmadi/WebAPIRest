@@ -83,9 +83,9 @@ namespace BL
             return products.MapperList<TblKala, Product>();
 
         }
-        public TblKala GetProductByID(int ID)
+        public Product GetProductByID(int ID)
         {
-            return _products.FindByCondition(c => c.ID_Kala == ID);
+            return _products.FindByCondition(c => c.ID_Kala == ID).Mapper<TblKala,Product>();
         }
         public List<Product> GetProductsFavorit()
         {
@@ -95,11 +95,11 @@ namespace BL
                     ,[HadaghalMovjodi],[ControlCount],[Status],[Tozihat]
                     ,[MojodiAvalDore],[IsOnline],[Fk_Anbar]
                    FROM TblKala
- where ID_Kala in (
-                    SELECT top   30   ChildForooshKala_KalaID AS productID 
-                    FROM dbo.TblChild_ForooshKala
-                    GROUP BY ChildForooshKala_KalaID
-                    order by COUNT(ChildForooshKala_KalaID) desc)
+                                 where ID_Kala in (
+                                SELECT top   30   ChildForooshKala_KalaID AS productID 
+                                FROM dbo.TblChild_ForooshKala
+                                GROUP BY ChildForooshKala_KalaID
+                                order by COUNT(ChildForooshKala_KalaID) desc)
                 ";
 
             //return db.Database.SqlQuery<sp_GetKalaSale>(sql).ToList<sp_GetKalaSale>();

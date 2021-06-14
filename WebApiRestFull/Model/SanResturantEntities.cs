@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Core.EntityClient;
+using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,6 @@ namespace Model
             return new SanResturantEntities(entityBuilder.ConnectionString);
 
         }
-
         private static void SetConnectionString(string buil)
         {
             System.Configuration.Configuration config = null;
@@ -55,8 +55,6 @@ namespace Model
             }
 
         }
-
-
     }
 
 

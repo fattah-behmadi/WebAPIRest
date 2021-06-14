@@ -41,15 +41,28 @@ namespace UtilitiesMethod
         /// <typeparam name="T">کلاس مورد نظر جهت تبدیل</typeparam>
         /// <param name="dt">دیتاتیبل مورد نظر جهت تبدیل</param>
         /// <returns></returns>
-        public static List<T> ConvertDataTable<T>(DataTable dt)
+        public static List<T> DataTableToClass<T>(this DataTable dt)
         {
             List<T> data = new List<T>(); /// لیستی از کلاس برای بازگرداندن اطلاعات
             foreach (DataRow row in dt.Rows)
             {
-                T item = GetItem<T>(row); /// تبدیل دیتای یک سطر به یک نمونه از کلاس 
+                T item = DataRowToClass<T>(row); /// تبدیل دیتای یک سطر به یک نمونه از کلاس 
                 data.Add(item); ///     اضافه کردن کلاس مقداردهی شده به لیست بازگشتی
             }
             return data;
+        }
+        /// <summary>
+        /// تبدیل سطر اول دیتاتیبل به کلاس
+        /// </summary>
+        /// <typeparam name="T">کلاس مقصد</typeparam>
+        /// <param name="dt">دیتاتیبل </param>
+        /// <returns></returns>
+        public static T First_DataTableToClass<T>(this DataTable dt)
+        {
+            T obj = Activator.CreateInstance<T>();  /// لیست اجزائ کلاس یا ابجکت
+            if (dt == null) return obj;
+            else
+                return dt.Rows[0].DataRowToClass<T>();
         }
 
         /// <summary>
@@ -58,7 +71,7 @@ namespace UtilitiesMethod
         /// <typeparam name="T">کلاس مورد نظر</typeparam>
         /// <param name="dr">دیتای مورد نظر</param>
         /// <returns>نمونه ای از کلاس که مقدار دهی شده ست</returns>
-        private static T GetItem<T>(DataRow dr)
+        private static T DataRowToClass<T>(this DataRow dr)
         {
             Type temp = typeof(T);  ///  مشخص نمودن نوع کلاس و جزئیات آن
             T obj = Activator.CreateInstance<T>();  /// لیست اجزائ کلاس یا ابجکت
@@ -470,14 +483,15 @@ namespace UtilitiesMethod
             return data;
         }
 
-        public static List<TDestination> MapperList<TSource,TDestination>(this object emp)
+        public static List<TDestination> MapperList<TSource, TDestination>(this object emp)
         {
             //Initialize the mapper
-            var config = new MapperConfiguration(cfg => {
+            var config = new MapperConfiguration(cfg =>
+            {
                 //cfg.AllowNullCollections = true;
                 //cfg.AllowNullDestinationValues = true;
                 cfg.CreateMap<TSource, TDestination>();
-                });
+            });
             //Using automapper
             var mapper = new Mapper(config);
             var empDTO = mapper.Map<List<TDestination>>(emp);
@@ -491,12 +505,12 @@ namespace UtilitiesMethod
         //    List<T> data = new List<T>();
         //    foreach (DataRow row in dt.Rows)
         //    {
-        //        T item = GetItem<T>(row);
+        //        T item = DataRowToClass<T>(row);
         //        data.Add(item);
         //    }
         //    return data;
         //}
-        //public static T GetItem<T>(DataRow dr)
+        //public static T DataRowToClass<T>(DataRow dr)
         //{
         //    Type temp = typeof(T);
         //    T obj = Activator.CreateInstance<T>();
@@ -525,12 +539,12 @@ namespace UtilitiesMethod
         //    List<T> data = new List<T>();
         //    foreach (DataRow row in dt.Rows)
         //    {
-        //        T item = GetItem<T>(row);
+        //        T item = DataRowToClass<T>(row);
         //        data.Add(item);
         //    }
         //    return data;
         //}
-        //private static T GetItem<T>(DataRow dr)
+        //private static T DataRowToClass<T>(DataRow dr)
         //{
         //    Type temp = typeof(T);
         //    T obj = Activator.CreateInstance<T>();
@@ -611,7 +625,7 @@ namespace UtilitiesMethod
         #endregion
 
         #region Converting DateType
- 
+
         public static string ToEmptyString(this object obj)
         {
             if (obj == null) return string.Empty;
@@ -953,7 +967,7 @@ namespace UtilitiesMethod
             {
             }
         }
-        public static string PasswordEncrypt( this string inText)
+        public static string PasswordEncrypt(this string inText)
         {
 
             try
@@ -1015,7 +1029,9 @@ namespace UtilitiesMethod
 
             using (StreamWriter StreamWriter = new StreamWriter(FileStream))
             {
-                StreamWriter.WriteLine(string.Format("Error:{0} --  DateTime:{1}", text, DateTime.Now));
+                StreamWriter.WriteLine(string.Format("Error:{0} --  DateTime:{1}", text, DateTime.Now.JulianToPersianDateTime()));
+                StreamWriter.WriteLine("-----------------------------------------------");
+
                 StreamWriter.Close();
                 FileStream.Close();
             }
