@@ -12,6 +12,8 @@ namespace BL
     {
         AccountingRepository acc;
         SettingRepository settingRepo;
+        ProductsRepository productRepo;
+        CustomersRepository customerRepo;
 
         internal GenericRepository<TblParent_FrooshKala> SaleInvoiceRepo { get; set; }
         internal GenericRepository<TblChild_ForooshKala> SaleInvoiceDetaileRepo { get; set; }
@@ -22,6 +24,9 @@ namespace BL
         {
             acc = new AccountingRepository();
             settingRepo = new SettingRepository();
+            productRepo = new ProductsRepository();
+            customerRepo = new CustomersRepository();
+
             SaleInvoiceRepo = new GenericRepository<TblParent_FrooshKala>(DBAccess.GetNewContext());
             SaleInvoiceDetaileRepo = new GenericRepository<TblChild_ForooshKala>(DBAccess.GetNewContext());
             vwSaleInvoicePrint = new GenericRepository<Vw_PrintFroosh>(DBAccess.GetNewContext());
@@ -55,20 +60,50 @@ namespace BL
             var result = SaleInvoiceRepo.RunProcedure("Sp_GetFishNumber", "FishNumber");
             return result.ToLong();
         }
-        public bool InsertSaleInvoice(SaleInvoice saleinvoice)
+        public bool InsertSaleInvoice(SaleInvoice saleinvoice, OrderSaleInvoice _saleInvoiceData)
         {
             saleinvoice.SaleInvoice_ID = this.GetNewSaleInvoice_ID();
             saleinvoice.NumberOrder = this.GetNewNumberOrder();
             saleinvoice.SaleInvoiceDate = DateTime.Now;
             saleinvoice.SaleTime = DateTime.Now.TimeOfDay;
             saleinvoice.GlID = this.acc.GetNewGLID().ToString();
+            var obj = saleinvoice.Mapper<SaleInvoice, TblParent_FrooshKala>();
+            var result = SaleInvoiceRepo.Insert(obj).ToBool();
+            if (result)
+            {
+                if (this.SaveSaleDetaile(saleinvoice, _saleInvoiceData))
+                {
+                    acc.SaveGL_SaleInvoice(saleinvoice);
+                    return true;
+                }
+                else return false;
 
-            return SaleInvoiceRepo.Insert(saleinvoice.CopyCalss<TblParent_FrooshKala>()).ToBool();
+            }
+            else return false;
+
         }
-        public bool UpdateSaleInvoice(SaleInvoice saleinvoice)
+        public SaleInvoice UpdateSaleInvoice(SaleInvoice saleinvoice)
         {
+            saleinvoice.Edited = "1";
             TblParent_FrooshKala saleEntity = saleinvoice.Mapper<SaleInvoice, TblParent_FrooshKala>();
-            return SaleInvoiceRepo.Update(saleinvoice.SaleInvoice_ID, saleEntity).ToBool();
+            var result = SaleInvoiceRepo.Update(saleinvoice.SaleInvoice_ID, saleEntity).ToBool();
+            if (result)
+                return saleinvoice;
+            else return null;
+        }
+        public bool UpdateSaleInvoice(SaleInvoice saleinvoice, OrderSaleInvoice _saleInvoiceData)
+        {
+            if (this.UpdateSaleInvoice(saleinvoice) != null)
+            {
+                if (this.SaveSaleDetaile(saleinvoice, _saleInvoiceData))
+                {
+                    acc.SaveGL_SaleInvoice(saleinvoice);
+                    return true;
+                }
+                else return false;
+
+            }
+            else return false;
         }
 
         /// <summary>
@@ -108,11 +143,11 @@ namespace BL
             DateTime nowDate = DateTime.Now.ToString("yyyy-MM-dd").ToDateTime();
             DateTime yesterday = nowDate.AddDays(-1);
 
-            TblParent_FrooshKala saleinvoice = SaleInvoiceRepo.FindByLasted(c =>
-                                                            c.ForooshKalaParent_Date.Value >= yesterday &&
-                                                             c.ForooshKalaParent_Date.Value <= nowDate
-                                                             , o => o.ForooshKalaParent_Date.Value, 1
-                                                            ).FirstOrDefault();
+            List<TblParent_FrooshKala> saleinvoice = SaleInvoiceRepo.FindByLasted(c =>
+                                                           c.ForooshKalaParent_Date.Value >= yesterday &&
+                                                            c.ForooshKalaParent_Date.Value <= nowDate
+                                                             , o => o.ForooshKalaParent_Date.Value, count
+                                                            ).ToList();
 
             return saleinvoice.MapperList<TblParent_FrooshKala, SaleInvoice>();
         }
@@ -140,7 +175,6 @@ namespace BL
 
         }
 
-
         public SaleInvoice CancelSaleInvoice(long _saleInvoice_ID, long GL_ID, int UserID)
         {
             if (acc.DeleteGL_ByID(GL_ID))
@@ -149,12 +183,9 @@ namespace BL
                 var saleInvoice = this.GetSaleInvoice(_saleInvoice_ID);
 
                 saleInvoice.Description = string.Format($"لغو فاکتور توسط کاربر {user.Login_Name} ");
-                saleInvoice.Edited = "لغو";
                 saleInvoice.UserID = UserID;
-                var result = this.UpdateSaleInvoice(saleInvoice);
-                if (result)
-                    return saleInvoice;
-                else return null;
+                saleInvoice = this.UpdateSaleInvoice(saleInvoice);
+                return saleInvoice;
             }
             else
                 return null;
@@ -164,10 +195,42 @@ namespace BL
 
         #region SaleInvoiceDetails
 
+        /// <summary>
+        /// ثبت جزئیات فاکتور
+        /// </summary>
+        /// <param name="_saleInvoice">اطلاعات فاکتور</param>
+        /// <param name="order">جزئیات فاکتور</param>
+        /// <returns></returns>
+        bool SaveSaleDetaile(SaleInvoice _saleInvoice, OrderSaleInvoice order)
+        {
+            var products = order.Products;
+            this.DeleteSaleDetaileBy_SaleInvoiceID(_saleInvoice.SaleInvoice_ID);
+            List<SaleInvoiceDetaile> detailes = new List<SaleInvoiceDetaile>();
+            foreach (var item in products)
+            {
+                var product = this.productRepo.GetProductByID(item.Product_ID);
+
+                SaleInvoiceDetaile detail = new SaleInvoiceDetaile();
+                detail.Description = item.Product_Description;
+                if (!product.IsVat)
+                    detail.VatPercent = product.VatPercent;
+
+                detail.DiscountPercent = product.DiscountPercent;
+                detail.Product_ID = item.Product_ID;
+                detail.SaleInvoice_ID = _saleInvoice.SaleInvoice_ID;
+                detail.Qty = item.Qty;
+                detail.Price = item.Price;
+                detail.ProductName = item.ProductName;
+                detailes.Add(detail);
+            }
+            return this.InsertSaleDetailes(detailes);
+        }
+
+
         public bool InsertSaleDetailes(List<SaleInvoiceDetaile> detailes)
         {
             if (detailes == null) return false;
-            var _detaile = detailes.CopyCalss<List<TblChild_ForooshKala>>();
+            var _detaile = detailes.MapperList<SaleInvoiceDetaile, TblChild_ForooshKala>();
             return SaleInvoiceDetaileRepo.InsertAll(_detaile).ToBool();
 
         }
@@ -223,12 +286,12 @@ namespace BL
             print.SaleInvoice = this.GetSaleInvoice(_SaleInvoiceID);
             if (print.SaleInvoice != null)
             {
-                var result = localizationDBContext.CustomersRepo.GetCustomer_ByTafsil(print.SaleInvoice.Tafsil_ID.ToLong());
+                var result = this.customerRepo.GetCustomer_ByTafsil(print.SaleInvoice.Tafsil_ID.ToLong());
                 if (result != null)
                     print.SaleInvoice.CustomerCode = result.Contacts_ID.ToString();
             }
             print.SaleInvoiceDetaile = this.GetSaleInvoiceDetaile(_SaleInvoiceID);
-            print.Company = localizationDBContext.SettingRepo.GetCompany();
+            print.Company = this.settingRepo.GetCompany();
             return print;
 
         }

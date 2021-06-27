@@ -32,21 +32,15 @@ namespace BL
         }
 
         #region Groups
-        public List<ProductGroup> GetAllGroups()
-        {
-            var li = _groupsProduct.All().ToList();
-            return li.MapperList<TblGroupKala, ProductGroup>();
-        }
-
         public TblGroupKala GetGroupByID(int ID)
         {
             return _groupsProduct.FindByCondition(c => c.ID_Group == ID);
         }
 
-        public List<TblGroupKala> GetGroupsByNotType(string typegroup)
+        public List<ProductGroup> GetGroupsByNotType(string typegroup)
         {
-            return _groupsProduct.FindAll(g => !g.TypeGroup.Contains(typegroup)).ToList();
-            //return _groupsProduct.ExecuteCommand("SELECT * FROM [dbo].[TblGroupKala] WHERE [TblGroupKala].[TypeGroup]<>N'" + typegroup + "'").ToList<TblGroupKala>();
+            var li= _groupsProduct.FindAll(g => !g.TypeGroup.Contains(typegroup)).ToList();
+            return li.MapperList<TblGroupKala, ProductGroup>();
         }
 
         #endregion
@@ -76,10 +70,9 @@ namespace BL
                     SELECT [ID_Kala],[Name_Kala],[Fk_GroupKala],[Fk_VahedKalaAsli]
                     ,[GheymatForoshAsli],[DarsadTakhfif],[DarsadMaliyat],[MoafMaliyat]
                     ,[HadaghalMovjodi],[ControlCount],[Status],[Tozihat]
-                    ,[MojodiAvalDore],[IsOnline]
+                    ,[MojodiAvalDore],Fk_Anbar,GheymatKharidAsli
                     FROM [dbo].[TblKala] WHERE [Status]=1 and [Fk_GroupKala]=" + IDGroup;
-            //return db.Database.SqlQuery<sp_GetKalaSale>(sql).ToList<sp_GetKalaSale>();
-            var products = _products.ExecuteCommand<TblKala>(sql).ToList<TblKala>();
+            var products = _products.FindAll(c => c.Fk_GroupKala == IDGroup && c.Status==true).ToList();
             return products.MapperList<TblKala, Product>();
 
         }
@@ -90,10 +83,7 @@ namespace BL
         public List<Product> GetProductsFavorit()
         {
             string sql = @"
-                    SELECT [ID_Kala],[Name_Kala],[Fk_GroupKala],[Fk_VahedKalaAsli]
-                    ,[GheymatForoshAsli],[DarsadTakhfif],[DarsadMaliyat],[MoafMaliyat]
-                    ,[HadaghalMovjodi],[ControlCount],[Status],[Tozihat]
-                    ,[MojodiAvalDore],[IsOnline],[Fk_Anbar]
+                    SELECT *
                    FROM TblKala
                                  where ID_Kala in (
                                 SELECT top   30   ChildForooshKala_KalaID AS productID 

@@ -69,8 +69,8 @@ namespace BL
 
         public List<tblSettingAcc> GetSettingAccAll()
         {
-            if(_settingAccCashing==null)
-            _settingAccCashing= SettingAccRepo.All().ToList();
+            if (_settingAccCashing == null)
+                _settingAccCashing = SettingAccRepo.All().ToList();
             return _settingAccCashing;
         }
 
@@ -87,7 +87,7 @@ namespace BL
         #endregion
 
         #region UserLogin
-        public tblLogin GetUser(string uName,string uPass)
+        public tblLogin GetUser(string uName, string uPass)
         {
             string pass = uPass.PasswordEncrypt();
             return this.loginRepo.FindByCondition(u => u.Login_UserName == uName && u.Login_Password == pass);

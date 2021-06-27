@@ -14,6 +14,8 @@ namespace BL
 
         tblCompany_Info _companyCashing;
         List<tblSettingAcc> _settingAccCashing;
+        tblSettingAcc DtSanad, DtDaryaft, DtKhadamat, DtArzeshAfzode, DtTakhfifForosh;
+
 
         internal GenericRepository<tblSettingAcc> SettingAccRepo { get; set; }
         internal GenericRepository<tblTafzili> tafsilRepo { get; set; }
@@ -50,7 +52,7 @@ namespace BL
             return GLDetaile.FindAll(c => c.Serial_Sanad == _glID).ToList();
         }
 
-        public bool InserGLDetaile(long glID,int? acc_ID_Debtor,int? tafsil_ID,int? moin_ID_Creditor,string description,long ActionID,int ActionTypeID,long DebtorPrice,long CreditorPrice)
+        public bool InserGLDetaile(long glID, int? acc_ID_Debtor, int? tafsil_ID, int? moin_ID_Creditor, string description, long ActionID, int ActionTypeID, long DebtorPrice, long CreditorPrice)
         {
             tblChildeSanad gld = new tblChildeSanad();
             gld.Serial_Sanad = glID;
@@ -72,8 +74,7 @@ namespace BL
         /// <returns></returns>
         public bool DeleteGlDetaile(long _glID)
         {
-            var gldetaile = this.GetGlDetaile(_glID);
-            return GLDetaile.Delete(gldetaile).ToBool();
+            return GLDetaile.SqlQuery(string.Format($"delete  FROM tblChildeSanad  where Serial_Sanad={_glID}")).ToBool();
         }
 
         /// <summary>
@@ -102,8 +103,7 @@ namespace BL
         /// <returns></returns>
         public bool DeleteGl(long _glID)
         {
-            var gl = this.GetGl(_glID);
-            return GL.Delete(gl).ToBool();
+            return GL.SqlQuery(string.Format($"delete  FROM tblParentSanad  where Serial_Sanad={_glID}")).ToBool();
         }
         /// <summary>
         /// شماره سند جدید
@@ -111,15 +111,11 @@ namespace BL
         /// <returns></returns>
         public long GetNewGLID()
         {
-            //string sql = "SELECT isnull(MAX([Serial_Sanad]),0) + 1  FROM [tblParentSanad]";
-            //var dt = this.GL.SqlQueryGetData(sql);
-            //var res = dt.Rows[0][0];
+            string sql = "SELECT isnull(MAX([Serial_Sanad]),0) + 1  FROM [tblParentSanad]";
+            var dt = this.GL.SqlQueryGetData(sql);
+            var res = dt.Rows[0][0];
+            return res.ToLong();
 
-            var gl = this.GL.FindByLasted(g => g.Serial_Sanad >= 0, x => x.Date_Sanad.Value, 20).ToList().OrderByDescending(c => c.Serial_Sanad).FirstOrDefault();
-            if (gl == null)
-                return 1;
-            else
-                return gl.Serial_Sanad + 1;
         }
         /// <summary>
         /// شماره عدد سند جدید
@@ -127,15 +123,10 @@ namespace BL
         /// <returns></returns>
         public long GetNewGLNumber()
         {
-            //string sql = "SELECT isnull(MAX([Serial_Sanad]),0) + 1  FROM [tblParentSanad]";
-            //var dt = this.GL.SqlQueryGetData(sql);
-            //var res = dt.Rows[0][0];
-
-            var gl = this.GL.FindByLasted(g => g.Number_Sanad >= 0, x => x.Date_Sanad.Value, 20).ToList().OrderByDescending(c => c.Number_Sanad).FirstOrDefault();
-            if (gl == null)
-                return 1;
-            else
-                return gl.Number_Sanad.Value + 1;
+            string sql = "SELECT isnull(MAX([Serial_Sanad]),0) + 1  FROM [tblParentSanad]";
+            var dt = this.GL.SqlQueryGetData(sql);
+            var res = dt.Rows[0][0];
+            return res.ToLong();
         }
 
         /// <summary>
@@ -150,6 +141,84 @@ namespace BL
                 return this.DeleteGl(_glID);
             }
             else return false;
+        }
+
+        /// <summary>
+        /// دریافت تنظیمات سند حسابداری
+        /// </summary>
+        void GetSettingAcc()
+        {
+            var _listSettinAcc = this.GetSettingAccAll();
+            if (_listSettinAcc != null)
+            {
+                DtSanad = _listSettinAcc.Where(c => c.NameAcc == "فروش").SingleOrDefault();
+                DtKhadamat = _listSettinAcc.Where(c => c.NameAcc == "خدمات حین فروش").SingleOrDefault();
+                DtArzeshAfzode = _listSettinAcc.Where(c => c.NameAcc == "ارزش افزوده فروش").SingleOrDefault();
+                DtTakhfifForosh = _listSettinAcc.Where(c => c.NameAcc == "تخفیف فروش").SingleOrDefault();
+                DtDaryaft = _listSettinAcc.Where(c => c.NameAcc == "دریافت نقدی صندوق").SingleOrDefault();
+            }
+        }
+        /// <summary>
+        /// ثبت سند حسابداری فاکتور
+        /// </summary>
+        /// <param name="saleinvoice"></param>
+        public void SaveGL_SaleInvoice(SaleInvoice saleinvoice)
+        {
+            this.GetSettingAcc();
+            var glNumber = this.GetNewGLNumber();
+            var glID = this.GetNewGLID();
+            string description = String.Format("فاکتور فروش به شماره {0}  ", saleinvoice.SaleInvoice_ID);
+
+            int? TafziliIDBedehkar = DtSanad.Tafzili_ID_Bedehkar;
+            var TafziliIDBes = DtSanad.Tafzili_ID_Bestankar;
+            var TafziliIDKhadamatBedehkar = DtKhadamat.Tafzili_ID_Bedehkar;
+            var TafziliIDKhadamatBes = DtKhadamat.Tafzili_ID_Bestankar;
+
+            #region GL
+            var GL = this.GetGl(saleinvoice.GlID.ToLong());
+            if (GL == null)
+            {
+                GL = new tblParentSanad();
+                GL.Serial_Sanad = glID;
+                GL.Number_Sanad = glNumber;
+                GL.Time_Sanad = DateTime.Now.ToString("HH:mm");
+                GL.Exption_Sanad = string.Format($"فاکتور فروش با تبلت به شماره فاکتور {saleinvoice.SaleInvoice_ID}");
+                GL.Date_Sanad = DateTime.Now;
+                GL.User_ID = saleinvoice.UserID.ToInt();
+                GL.StatusSanadID = 3;
+                GL.TypeSanad_ID = 4;
+                GL.Taraz_Sanad = true;
+                GL.Date_Modify = null;
+                GL.Deleted_Sanad = null;
+                GL.Error_Sanad = null;
+                this.InsertGL(GL);
+            }
+            else
+            {
+                GL.Date_Modify = DateTime.Now;
+                GL.Exption_Sanad = saleinvoice.Description;
+                GL.User_ID = saleinvoice.UserID.ToInt();
+                this.Update_GL(GL);
+                this.DeleteGlDetaile(saleinvoice.GlID.ToLong());
+            }
+
+            #endregion
+
+            if ((saleinvoice.NetPrice - saleinvoice.DiscountPrice) > 0)
+                this.InserGLDetaile(glID, DtSanad.Accounts_ID_Bedehkar, saleinvoice.Tafsil_ID.ToInt(), DtSanad.Moein_ID_Bestankar, description, saleinvoice.SaleInvoice_ID, 5, (saleinvoice.NetPrice - saleinvoice.DiscountPrice), 0);
+
+            if (saleinvoice.DiscountPrice > 0)
+                this.InserGLDetaile(glID, DtTakhfifForosh.Accounts_ID_Bedehkar, null, DtTakhfifForosh.Moein_ID_Bedehkar, description, saleinvoice.SaleInvoice_ID, 5, saleinvoice.DiscountPrice, 0);
+
+            if ((saleinvoice.NetPrice - saleinvoice.ServicePrice) > 0)
+                this.InserGLDetaile(glID, DtSanad.Accounts_ID_Bestankar, TafziliIDBes, DtSanad.Moein_ID_Bestankar, description, saleinvoice.SaleInvoice_ID, 5, 0, (saleinvoice.NetPrice - saleinvoice.ServicePrice) - saleinvoice.VatPrice);
+
+            if (saleinvoice.ServicePrice > 0)
+                this.InserGLDetaile(glID, DtKhadamat.Accounts_ID_Bestankar, TafziliIDKhadamatBes, DtKhadamat.Moein_ID_Bestankar, description, saleinvoice.SaleInvoice_ID, 5, 0, saleinvoice.ServicePrice);
+
+            if (saleinvoice.VatPrice > 0)
+                this.InserGLDetaile(glID, DtArzeshAfzode.Accounts_ID_Bestankar, null, DtArzeshAfzode.Moein_ID_Bestankar, description, saleinvoice.SaleInvoice_ID, 5, 0, saleinvoice.VatPrice);
+
         }
 
         #endregion

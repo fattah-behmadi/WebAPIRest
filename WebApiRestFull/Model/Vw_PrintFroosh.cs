@@ -14,7 +14,7 @@ namespace Model
     
     public partial class Vw_PrintFroosh
     {
-        public Nullable<long> Contacts_ID { get; set; }
+        public Nullable<int> Contacts_ID { get; set; }
         public string FullNameContact { get; set; }
         public Nullable<System.DateTime> ForooshKalaParent_Date { get; set; }
         public string ForooshKalaParent_Tozih { get; set; }

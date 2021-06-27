@@ -23,8 +23,6 @@ namespace AppMobile.Controllers
         public tblLogin UserLogin { get; set; }
         public tblSettingIDFactor Setting { get; set; }
         public tblPrinterUserSetting _SettingUser { get; set; }
-        tblSettingAcc DtSanad, DtDaryaft, DtKhadamat, DtArzeshAfzode, DtTakhfifForosh;
-
 
         public ServiceController()
         {
@@ -50,9 +48,8 @@ namespace AppMobile.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/OrderFood/LoginUser")]
-        public string LoginUser([FromBody] List<User> userInfo)
+        public string LoginUser([FromBody] User user)
         {
-            User user = userInfo.FirstOrDefault();
             this.UserLogin = localizationDBContext.SettingRepo.GetUser(user.UserName, user.Password);
             this.GetSetting();
 
@@ -71,8 +68,11 @@ namespace AppMobile.Controllers
         [Route("api/OrderFood/GetGroupsProduct")]
         public string GetGroupsProduct()
         {
-            var groupList = localizationDBContext.ProductRepo.GetAllGroups();
-            return new JavaScriptSerializer().Serialize(groupList);
+            var groupList = localizationDBContext.ProductRepo.GetGroupsByNotType("فقط خریدنی");
+            var serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = Int32.MaxValue;
+            var result = serializer.Serialize(groupList);
+            return result;
         }
 
         /// <summary>
@@ -172,46 +172,23 @@ namespace AppMobile.Controllers
         [Route("api/OrderFood/SaveSaleInvoice")]
         public string SaveSaleInvoice([FromBody] OrderSaleInvoice _saleInvoiceData)
         {
-            string NumberSaleInvoice = string.Empty;
+            string NumberOrder = string.Empty;
             try
             {
                 if (_saleInvoiceData == null)
                 {
-                    var err = new { NumberSaleInvoice = NumberSaleInvoice, Message = "لطفا سفارشی را ثبت نمایید" };
-                    return new JavaScriptSerializer().Serialize(err);
+                    var obj = new { NumberOrder = string.Empty, Message = "لطفا سفارشی را ثبت نمایید" };
+                    return new JavaScriptSerializer().Serialize(obj);
                 }
-                if (this.Setting == null)
-                    this.GetSetting();
-                this.GetUserLogin(_saleInvoiceData.UserID.ToInt());
 
-                SaleInvoice saleInvoice = new SaleInvoice();
-                if (_saleInvoiceData.Tafsil_ID.ToLong() == 0)
-                    saleInvoice.Tafsil_ID = this.Setting.DefultContact.ToLong();
-                else
-                    saleInvoice.Tafsil_ID = _saleInvoiceData.Tafsil_ID;
-
-                saleInvoice.Description = _saleInvoiceData.Description;
-                saleInvoice.SumPrice = _saleInvoiceData.Products.Select(c => c.Qty * c.Price).ToList().Sum(c => c);
-                saleInvoice.UserID = _saleInvoiceData.UserID;
-                saleInvoice.NumDesk = _saleInvoiceData.NumDesk;
-                saleInvoice.CustomerFullName = _saleInvoiceData.CustomerFullName;
-                saleInvoice.SaleInvoice_Type = _saleInvoiceData.SaleInvoice_Type;
-                saleInvoice.DiscountPrice = _saleInvoiceData.DiscountPrice;
-                saleInvoice.VatPrice = _saleInvoiceData.VatPrice;
-
-                if (localizationDBContext.SaleInvoiceRepo.InsertSaleInvoice(saleInvoice))
-                    if (this.SaveSaleDetaile(saleInvoice, _saleInvoiceData))
-                    {
-                        this.SaveGL(saleInvoice);
-                        PrintReport(saleInvoice);
-                    }
-
-                var result = new { NumberSaleInvoice = NumberSaleInvoice, Message = "اطلاعات با موفقیت ثبت گردید" };
-                return new JavaScriptSerializer().Serialize(result);
+                var saleInvoice = this.InsertSaleInvoice(_saleInvoiceData);
+                NumberOrder = saleInvoice.NumberOrder.ToString();
+                var obj_result = new { NumberOrder = NumberOrder, Message = "اطلاعات با موفقیت ثبت گردید" };
+                return new JavaScriptSerializer().Serialize(obj_result);
             }
             catch (Exception ex)
             {
-                var errorData = new { NumberSaleInvoice = NumberSaleInvoice, Exception = ex };
+                var errorData = new { NumberSaleInvoice = NumberOrder, Exception = ex.Message };
 
                 if (ex.InnerException != null)
                 {
@@ -224,104 +201,75 @@ namespace AppMobile.Controllers
             }
         }
 
-        bool SaveSaleDetaile(SaleInvoice _saleInvoice, OrderSaleInvoice order)
+        [HttpPut]
+        [Route("api/OrderFood/UpdateSaleInvoice/{_saleInvoice_ID}")]
+        public string UpdateSaleInvoice(string _saleInvoice_ID, [FromBody] OrderSaleInvoice _saleInvoiceData)
         {
-            var products = order.Products;
-            localizationDBContext.SaleInvoiceRepo.DeleteSaleDetaileBy_SaleInvoiceID(_saleInvoice.SaleInvoice_ID);
-            List<SaleInvoiceDetaile> detailes = new List<SaleInvoiceDetaile>();
-            foreach (var item in products)
+            string NumberOrder = string.Empty;
+            try
             {
-                var product = localizationDBContext.ProductRepo.GetProductByID(item.Product_ID);
+                if (_saleInvoiceData == null)
+                {
+                    var obj = new { NumberOrder = string.Empty, Message = "لطفا سفارشی را ثبت نمایید" };
+                    return new JavaScriptSerializer().Serialize(obj);
+                }
 
-                SaleInvoiceDetaile detail = new SaleInvoiceDetaile();
-                detail.Description = item.Product_Description;
-                if (!product.IsVat)
-                    detail.VatPercent = product.VatPercent;
-
-                detail.DiscountPercent = product.DiscountPercent;
-                detail.Product_ID = item.Product_ID;
-                detail.SaleInvoice_ID = _saleInvoice.SaleInvoice_ID;
-                detail.Qty = item.Qty;
-                detail.Price = item.Price;
-                detail.ProductName = item.ProductName;
-                detailes.Add(detail);
+                var saleInvoice = this.InsertSaleInvoice(_saleInvoiceData, _saleInvoice_ID.ToLong());
+                NumberOrder = saleInvoice.NumberOrder.ToString();
+                var obj_result = new { NumberOrder = NumberOrder, Message = "اطلاعات با موفقیت ثبت گردید" };
+                return new JavaScriptSerializer().Serialize(obj_result);
             }
-            return localizationDBContext.SaleInvoiceRepo.InsertSaleDetailes(detailes);
+            catch (Exception ex)
+            {
+                var errorData = new { NumberSaleInvoice = NumberOrder, Exception = ex };
+
+                if (ex.InnerException != null)
+                {
+                    UtilitiFunction.WriteLogFile("SaveSaleInvoice : " + ex.Message + "\n \t\t\t ----> InnerException: " + ex.InnerException + "\n");
+                }
+                else
+                    UtilitiFunction.WriteLogFile("SaveSaleInvoice : " + ex.Message);
+
+                return new JavaScriptSerializer().Serialize(errorData);
+            }
         }
-        void SaveGL(SaleInvoice saleinvoice)
+
+        SaleInvoice InsertSaleInvoice(OrderSaleInvoice _saleInvoiceData, long _saleinvoiceID = 0)
         {
-            this.GetSettingAcc();
-            var glNumber = localizationDBContext.AccRepo.GetNewGLNumber();
-            var glID = localizationDBContext.AccRepo.GetNewGLID();
-            string description = String.Format("فاکتور فروش به شماره {0}  ", saleinvoice.SaleInvoice_ID);
 
-            int? TafziliIDBedehkar = DtSanad.Tafzili_ID_Bedehkar;
-            var TafziliIDBes = DtSanad.Tafzili_ID_Bestankar;
-            var TafziliIDKhadamatBedehkar = DtKhadamat.Tafzili_ID_Bedehkar;
-            var TafziliIDKhadamatBes = DtKhadamat.Tafzili_ID_Bestankar;
+            if (this.Setting == null)
+                this.GetSetting();
+            this.GetUserLogin(_saleInvoiceData.UserID.ToInt());
 
-            #region GL
-            var GL = localizationDBContext.AccRepo.GetGl(saleinvoice.GlID.ToLong());
-            if (GL == null)
-            {
-                GL = new tblParentSanad();
-                GL.Serial_Sanad = glID;
-                GL.Number_Sanad = glNumber;
-                GL.Time_Sanad = DateTime.Now.ToString("HH:mm");
-                GL.Exption_Sanad = saleinvoice.Description;
-                GL.Date_Sanad = DateTime.Now;
-                GL.User_ID = saleinvoice.UserID.ToInt();
-                GL.StatusSanadID = 3;
-                GL.TypeSanad_ID = 4;
-                GL.Taraz_Sanad = true;
-                GL.Date_Modify = null;
-                GL.Deleted_Sanad = null;
-                GL.Error_Sanad = null;
-                localizationDBContext.AccRepo.InsertGL(GL);
-            }
+            SaleInvoice saleInvoice;
+            if (_saleinvoiceID > 0)
+                saleInvoice = localizationDBContext.SaleInvoiceRepo.GetSaleInvoice(_saleinvoiceID);
             else
-            {
-                GL.Date_Modify = DateTime.Now;
-                GL.Exption_Sanad = saleinvoice.Description;
-                GL.User_ID = saleinvoice.UserID.ToInt();
-                localizationDBContext.AccRepo.Update_GL(GL);
-                localizationDBContext.AccRepo.DeleteGlDetaile(saleinvoice.GlID.ToLong());
-            }
+                saleInvoice = new SaleInvoice();
 
-            #endregion
+            if (_saleInvoiceData.Tafsil_ID.ToLong() == 0)
+                saleInvoice.Tafsil_ID = this.Setting.DefultContact.ToLong();
+            else
+                saleInvoice.Tafsil_ID = _saleInvoiceData.Tafsil_ID;
 
-            if ((saleinvoice.NetPrice - saleinvoice.DiscountPrice) > 0)
-                localizationDBContext.AccRepo.InserGLDetaile(glID, DtSanad.Accounts_ID_Bedehkar, saleinvoice.Tafsil_ID.ToInt(), DtSanad.Moein_ID_Bestankar, description, saleinvoice.SaleInvoice_ID, 5, (saleinvoice.NetPrice - saleinvoice.DiscountPrice), 0);
+            saleInvoice.Description = _saleInvoiceData.Description;
+            saleInvoice.SumPrice = _saleInvoiceData.Products.Select(c => c.Qty * c.Price).ToList().Sum(c => c);
+            saleInvoice.UserID = _saleInvoiceData.UserID;
+            saleInvoice.NumDesk = _saleInvoiceData.NumDesk;
+            saleInvoice.CustomerFullName = _saleInvoiceData.CustomerFullName;
+            saleInvoice.SaleInvoice_Type = _saleInvoiceData.SaleInvoice_Type;
+            saleInvoice.DiscountPrice = _saleInvoiceData.DiscountPrice;
+            saleInvoice.VatPrice = _saleInvoiceData.VatPrice;
 
-            if (saleinvoice.DiscountPrice > 0)
-                localizationDBContext.AccRepo.InserGLDetaile(glID, DtTakhfifForosh.Accounts_ID_Bedehkar, null, DtTakhfifForosh.Moein_ID_Bedehkar, description, saleinvoice.SaleInvoice_ID, 5, saleinvoice.DiscountPrice, 0);
+            bool result;
+            if (saleInvoice.SaleInvoice_ID > 0)
+                result = localizationDBContext.SaleInvoiceRepo.UpdateSaleInvoice(saleInvoice, _saleInvoiceData);
+            else
+                result = localizationDBContext.SaleInvoiceRepo.InsertSaleInvoice(saleInvoice, _saleInvoiceData);
+            if (result)
+                PrintReport(saleInvoice);
+            return saleInvoice;
 
-            if ((saleinvoice.NetPrice - saleinvoice.ServicePrice) > 0)
-                localizationDBContext.AccRepo.InserGLDetaile(glID, DtSanad.Accounts_ID_Bestankar, TafziliIDBes, DtSanad.Moein_ID_Bestankar, description, saleinvoice.SaleInvoice_ID, 5, 0, (saleinvoice.NetPrice - saleinvoice.ServicePrice) - saleinvoice.VatPrice);
-
-            if (saleinvoice.ServicePrice > 0)
-                localizationDBContext.AccRepo.InserGLDetaile(glID, DtKhadamat.Accounts_ID_Bestankar, TafziliIDKhadamatBes, DtKhadamat.Moein_ID_Bestankar, description, saleinvoice.SaleInvoice_ID, 5, 0, saleinvoice.ServicePrice);
-
-            if (saleinvoice.VatPrice > 0)
-                localizationDBContext.AccRepo.InserGLDetaile(glID, DtArzeshAfzode.Accounts_ID_Bestankar, null, DtArzeshAfzode.Moein_ID_Bestankar, description, saleinvoice.SaleInvoice_ID, 5, 0, saleinvoice.VatPrice);
-
-        }
-        void GetSettingAcc()
-        {
-
-            var _listSettinAcc = localizationDBContext.SettingRepo.GetSettingAccAll();
-            if (_listSettinAcc != null)
-            {
-                DtSanad = _listSettinAcc.Where(c => c.NameAcc == "فروش").SingleOrDefault();
-                DtKhadamat = _listSettinAcc.Where(c => c.NameAcc == "خدمات حین فروش").SingleOrDefault();
-                DtArzeshAfzode = _listSettinAcc.Where(c => c.NameAcc == "ارزش افزوده فروش").SingleOrDefault();
-                DtTakhfifForosh = _listSettinAcc.Where(c => c.NameAcc == "تخفیف فروش").SingleOrDefault();
-                DtDaryaft = _listSettinAcc.Where(c => c.NameAcc == "دریافت نقدی صندوق").SingleOrDefault();
-            }
-        }
-        SaleInvoicePrint GetSaleInvoice(long saleinvoiceID)
-        {
-            return localizationDBContext.SaleInvoiceRepo.PrintSaleInvoice(saleinvoiceID);
         }
 
         #region Print
@@ -338,7 +286,7 @@ namespace AppMobile.Controllers
             try
             {
 
-                var data = this.GetSaleInvoice(saleinvoice.SaleInvoice_ID);
+                var data = localizationDBContext.SaleInvoiceRepo.PrintSaleInvoice(saleinvoice.SaleInvoice_ID);
                 if (_SettingUser.BironbarMoshtari.ToBool() || _SettingUser.DakhelSalonMoshtari.ToBool() || _SettingUser.PeykMoshtari.ToBool())
                     RptCustomer(data, saleinvoice.SumPrice, Edited);
 

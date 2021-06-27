@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "0158c32e-e894-439b-a5ac-7e6983c08f0a",
+		"name": "AppFood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LginUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"admin\",\r\n    \"Password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:40957/api/OrderFood/LoginUser"
+			},
+			"response": []
+		},
+		{
+			"name": "SaveSaleInvoice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\t\r\n        \"Tafsil_ID\":\"\",\r\n\"Description\":\"بدون خامه\",\r\n\"UserID\":\"2059\",\r\n\"NumDesk\":\"2\",\r\n\"SaleInvoice_Type\":\"بیرون بر\",\r\n\"CustomerFullName\":\"فتاح بهمدی\",\r\n\"DiscountPrice\":\"50000\",\r\n\"VatPrice\":\"0\",\r\n\"Products\":[\r\n                    {\r\n                    \"Product_ID\":\"104\",\r\n                    \"ProductName\":\"شیر موز\",\r\n                    \"Qty\":\"2\",\r\n                    \"Product_Description\":\"\",\r\n                    \"Price\":\"120000\"\r\n                    },\r\n                    {\r\n                    \"Product_ID\":\"100\",\r\n                    \"ProductName\":\"شیر انبه\",\r\n                    \"Qty\":\"2\",\r\n                    \"Product_Description\":\"\",\r\n                    \"Price\":\"150000\"\r\n                    }\r\n            ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:40957/api/OrderFood/SaveSaleInvoice"
+			},
+			"response": []
+		},
+		{
+			"name": "GetGroupsProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:40957/api/OrderFood/GetGroupsProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "GetDescriptionFood",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:40957/api/OrderFood/GetDescriptionFood"
+			},
+			"response": []
+		},
+		{
+			"name": "GetProducsGroup",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:40957/api/OrderFood/GetProducsGroup/2"
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductsFavorit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:40957/api/OrderFood/GetProductsFavorit"
+			},
+			"response": []
+		},
+		{
+			"name": "GetLastSaleInvoice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:40957/api/OrderFood/GetLastSaleInvoice/2"
+			},
+			"response": []
+		},
+		{
+			"name": "CancelSaleInvoice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:40957/api/OrderFood/CancelSaleInvoice/17365/14363/2059"
+			},
+			"response": []
+		},
+		{
+			"name": "GetSaleInvoiceShowDetaile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:40957/api/OrderFood/GetSaleInvoiceShowDetaile/17365"
+			},
+			"response": []
+		}
+	]
+}
