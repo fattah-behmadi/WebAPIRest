@@ -26,7 +26,8 @@ namespace AppMobile.Controllers
 
         public ServiceController()
         {
-            string constr = String.Format($@"Data Source=.\sqlexpress;Initial Catalog=Gishniz;User ID=gish;Password=gishniz$2020@!;MultipleActiveResultSets=true;");
+            string serverName = Utilities.GetServerConnection();
+            string constr = String.Format($@"Data Source={serverName};Initial Catalog=Gishniz;User ID=gish;Password=gishniz$2020@!;MultipleActiveResultSets=true;");
             DBAccess.SetConnection(constr);
         }
 

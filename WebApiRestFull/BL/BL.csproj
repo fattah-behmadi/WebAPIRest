@@ -81,13 +81,13 @@
     <Compile Include="Setting\SettingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UtilitiesMethod\UtilitiesMethod.csproj">
-      <Project>{7704aec9-91e9-4f2d-a3a4-0024ca68a813}</Project>
-      <Name>UtilitiesMethod</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{2bcbb8cc-bdbf-4af6-a80d-4452b21a0c3b}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilitiesMethod\UtilitiesMethod.csproj">
+      <Project>{7704aec9-91e9-4f2d-a3a4-0024ca68a813}</Project>
+      <Name>UtilitiesMethod</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

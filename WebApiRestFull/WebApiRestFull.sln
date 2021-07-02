@@ -3,19 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WebApiRestFull", "WebApiRestFull\WebApiRestFull.vbproj", "{81905219-976C-42D2-9538-F7A736DD0602}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportDesigner", "ReportDesigner\PrintManage\ReportDesigner.csproj", "{EEDB439B-5590-4F02-A0F7-7E0E8042A944}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{FFBD7865-B588-45DF-BD87-B1D599A81D01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{E4941A0B-ED5D-4A9E-81D0-23B9DC0F46B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilitiesMethod", "UtilitiesMethod\UtilitiesMethod.csproj", "{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Designer", "Designer\Designer.csproj", "{63E3FC90-7086-4785-B61C-DE65AEBF69B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMobile", "AppMobile\AppMobile.csproj", "{8DFA5ED8-00CC-4E17-AB77-1DEFED8C1AF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilitiesMethod", "UtilitiesMethod\UtilitiesMethod.csproj", "{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +23,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{81905219-976C-42D2-9538-F7A736DD0602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81905219-976C-42D2-9538-F7A736DD0602}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81905219-976C-42D2-9538-F7A736DD0602}.Debug|x64.ActiveCfg = Debug|x64
-		{81905219-976C-42D2-9538-F7A736DD0602}.Debug|x64.Build.0 = Debug|x64
-		{81905219-976C-42D2-9538-F7A736DD0602}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81905219-976C-42D2-9538-F7A736DD0602}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81905219-976C-42D2-9538-F7A736DD0602}.Release|x64.ActiveCfg = Release|x64
-		{81905219-976C-42D2-9538-F7A736DD0602}.Release|x64.Build.0 = Release|x64
 		{EEDB439B-5590-4F02-A0F7-7E0E8042A944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEDB439B-5590-4F02-A0F7-7E0E8042A944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEDB439B-5590-4F02-A0F7-7E0E8042A944}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -57,14 +47,6 @@ Global
 		{E4941A0B-ED5D-4A9E-81D0-23B9DC0F46B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E4941A0B-ED5D-4A9E-81D0-23B9DC0F46B2}.Release|x64.ActiveCfg = Release|Any CPU
 		{E4941A0B-ED5D-4A9E-81D0-23B9DC0F46B2}.Release|x64.Build.0 = Release|Any CPU
-		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Debug|x64.Build.0 = Debug|Any CPU
-		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|x64.ActiveCfg = Release|Any CPU
-		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|x64.Build.0 = Release|Any CPU
 		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63E3FC90-7086-4785-B61C-DE65AEBF69B0}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -81,6 +63,14 @@ Global
 		{8DFA5ED8-00CC-4E17-AB77-1DEFED8C1AF9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8DFA5ED8-00CC-4E17-AB77-1DEFED8C1AF9}.Release|x64.ActiveCfg = Release|Any CPU
 		{8DFA5ED8-00CC-4E17-AB77-1DEFED8C1AF9}.Release|x64.Build.0 = Release|Any CPU
+		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Debug|x64.Build.0 = Debug|Any CPU
+		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|x64.ActiveCfg = Release|Any CPU
+		{7704AEC9-91E9-4F2D-A3A4-0024CA68A813}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

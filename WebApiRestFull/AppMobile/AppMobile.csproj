@@ -225,6 +225,7 @@
     <Compile Include="Rpt\small\RptPeykSmall.Designer.cs">
       <DependentUpon>RptPeykSmall.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -247,17 +248,9 @@
       <Project>{e4941a0b-ed5d-4a9e-81d0-23b9dc0f46b2}</Project>
       <Name>BL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Designer\Designer.csproj">
-      <Project>{63e3fc90-7086-4785-b61c-de65aebf69b0}</Project>
-      <Name>Designer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{ffbd7865-b588-45df-bd87-b1d599a81d01}</Project>
       <Name>Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ReportDesigner\PrintManage\ReportDesigner.csproj">
-      <Project>{eedb439b-5590-4f02-a0f7-7e0e8042a944}</Project>
-      <Name>ReportDesigner</Name>
     </ProjectReference>
     <ProjectReference Include="..\UtilitiesMethod\UtilitiesMethod.csproj">
       <Project>{7704aec9-91e9-4f2d-a3a4-0024ca68a813}</Project>
